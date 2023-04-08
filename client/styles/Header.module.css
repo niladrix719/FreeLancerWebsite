@@ -1,0 +1,25 @@
+.header {
+  background-image: url(../assets/img2.jpg);
+  height: 75vh;
+  width: 100vw;
+  background-position: center;
+  background-size: cover;
+  padding: 2rem;
+  text-align: center;
+}
+
+.headingText {
+  font-size: 3rem;
+  position: relative;
+  top: 30vh;
+  color: var(--secondary-color);
+  font-weight: 700;
+}
+
+.subText {
+  font-size: 1.5rem;
+}
+
+.colorx{
+  color: var(--primaryx-color);
+}
