@@ -1,0 +1,29 @@
+.login{
+    text-align: center;
+}
+
+.form{
+    background-color: var(--primary-color);
+    height: 32rem;
+    width: 32rem;
+    display: inline-block;
+    margin-top: 7rem;
+    padding: 3rem;
+    font-size: 1.3rem;
+}
+
+.inputs{
+    background-color: var(--primary-color);
+    outline: none;
+    color: white;
+    display: inline-block;
+    border-bottom: 1px solid white;
+}
+
+.labels{
+    color: white;
+}
+
+.btn{
+    background-color: white;
+}

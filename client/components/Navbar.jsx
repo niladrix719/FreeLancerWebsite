@@ -1,6 +1,7 @@
 import styles from '../styles/Navbar.module.css'
 import Image from 'next/image'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from 'next/link';
 
 import {
   faSortDown
@@ -14,10 +15,11 @@ export default function Navbar() {
       </div>
       <div className={styles.right}>
         <ul className={styles.navigations}>
-          <li className={styles.navElement}><span>Register as a Freelancer&nbsp;&nbsp;</span><FontAwesomeIcon
-            icon={faSortDown}
-            style={{ fontSize: 10, color: "white", display: 'none' }}
-          /></li>
+          <li className={styles.navElement}>
+            <span>
+              Register as a Freelancer&nbsp;&nbsp;
+            </span>
+          </li>
 
           <li className={styles.navElement}>
             <span>Help&nbsp;&nbsp;</span>
@@ -36,7 +38,7 @@ export default function Navbar() {
               </div>
             </div>
           </li>
-          <li className={styles.login}>Login</li>
+          <li><Link href='/login' className={styles.login}>Login</Link></li>
         </ul>
       </div>
     </nav>
