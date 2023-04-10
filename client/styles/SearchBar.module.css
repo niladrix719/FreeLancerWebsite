@@ -1,17 +1,45 @@
 .searchBox{
     background-color: white;
     height: 3rem;
-    width: 25rem;
-    position: relative;
-    top: 15rem;
-    border-radius: 0.75rem;
+    width: 40rem;
+    border-radius: 0.5rem;
     box-shadow: 0 6px 27px 0 rgba(0,3,2,0.08);
     display: flex;
     align-items: center;
-    padding: 1.6rem;
+    padding-right: 0.6rem;
     gap: 1rem;
+    margin-top: 2rem;
+}
+
+.searchIcon{
+    background-color: var(--primary-color);
+    width: 10%;
+    height: 3rem;
+    text-align: center;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchInput{
+    color: rgb(169, 148, 148);
+    width: 90%;
 }
 
 .searchInput:focus{
     outline: none;
+    color: var(--primary-color);
+}
+
+.suggestions{
+    font-size: 0.9rem;
+    text-align: left;
+    margin-top: 0.75rem;
+}
+
+.link{
+    color: white;
+    border-bottom: 2px solid white;
 }
