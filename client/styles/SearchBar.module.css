@@ -1,7 +1,7 @@
 .searchBox{
     background-color: white;
     height: 3rem;
-    width: 40rem;
+    width: 38rem;
     border-radius: 0.5rem;
     box-shadow: 0 6px 27px 0 rgba(0,3,2,0.08);
     display: flex;
@@ -9,6 +9,7 @@
     padding-right: 0.6rem;
     gap: 1rem;
     margin-top: 2rem;
+    position: relative;
 }
 
 .searchIcon{
@@ -33,6 +34,10 @@
     color: var(--primary-color);
 }
 
+.searchInput:focus .searchNames{
+    display: block;
+}
+
 .suggestions{
     font-size: 0.9rem;
     text-align: left;
@@ -41,5 +46,73 @@
 
 .link{
     color: white;
-    border-bottom: 2px solid white;
+    border-bottom: 1px solid white;
+    font-size: 0.80rem;
+}
+
+.searchMain{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.location{
+    background-color: white;
+    height: 3rem;
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.95rem;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    position: relative;
+}
+
+.arrow{
+    cursor: pointer;
+}
+
+.dropDown{
+    background-color: #ffffff;
+    position: absolute;
+    top: 3.2rem;
+    left: 0;
+    padding: 1rem;
+    width: 12rem;
+    border-radius: 0.5rem;
+    display: none;
+    box-shadow: 0 6px 27px 0 rgba(0,3,2,0.08);
+}
+
+.searchNames{
+    background-color: #ffffff;
+    position: absolute;
+    top: 3.2rem;
+    left: 0;
+    width: 38rem;
+    border-radius: 0.5rem;
+    z-index: 100;
+    overflow: hidden;
+    box-shadow: 0 6px 27px 0 rgba(0,3,2,0.08);
+}
+
+.names{
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    height: 8rem;
+    justify-content: space-evenly;
+    color: rgb(157, 148, 148);
+}
+
+.name{
+    cursor: pointer;
+    padding: 0.5rem;
+    padding-left: 1rem;
+}
+
+.name:hover{
+    background-color: rgb(229, 240, 236);
 }

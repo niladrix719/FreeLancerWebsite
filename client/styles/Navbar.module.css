@@ -8,6 +8,7 @@
     width: 100%;
     justify-content: space-evenly;
     background-position: center;
+    z-index: 105;
 }
 
 .left {
