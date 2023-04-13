@@ -1,0 +1,60 @@
+.profileCard{
+    border: 1px solid rgb(209, 197, 197);
+    width: 24rem;
+    height: 20rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    box-shadow: 0 6px 27px 0 rgba(0,3,2,0.08);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    background-color: #ffffff;
+    position: relative;
+}
+
+.profileCard:hover{
+    transform: scale(1.05);
+    transition: 0.4s;
+}
+
+.image{
+    box-shadow: 0 6px 27px 0 rgba(0,3,2,0.08);
+    border-radius: 50%;
+    position: absolute;
+    top: 75px;
+    left: 20px;
+}
+
+.name{
+    color: rgb(36, 36, 229);
+    text-align: left;
+    font-size: 1.2rem;
+    margin-top: 2rem;
+}
+
+.bio{
+    font-size: 0.9rem;
+    color: rgb(145, 124, 124);
+    text-align: left;
+    margin-bottom: 2rem;
+}
+
+.category{
+    background-color: blueviolet;
+    color: white;
+    display: flex;
+    padding: 1rem;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: 1.25rem;
+}
+
+.logo{
+    font-size: 2rem;
+}
+
+.cover{
+    background-image: url(/img5.jpg);
+    height: 6rem;
+    background-size: cover;
+    background-position: center;
+}

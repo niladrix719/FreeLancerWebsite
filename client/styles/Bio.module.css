@@ -5,6 +5,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+    padding-bottom: 3rem;
 }
 
 .heading{
@@ -22,19 +24,21 @@
 
 .picturesNText{
     display: flex;
-    width: 50%;
+    width: 80%;
     margin-top: 4rem;
+    justify-content: center;
+    gap: 1rem;
 }
 
 .pictures{
     display: flex;
-    width: 100vw;
     flex-direction: column;
     align-items: center;
 }
 
 .Text{
     margin-top: 6rem;
+    width: 40%;
 }
 
 .details{
@@ -48,3 +52,13 @@
     margin-top: -2rem;
     box-shadow: 0 6px 27px 0 rgba(0,3,2,0.08);
 }
+
+/* .circle{
+    border: 1px solid #708775;
+    background-color: #35c26e;
+    border-radius: 50%;
+    height: 5rem;
+    width: 5rem;
+    position: relative;
+    top: -10rem;
+} */

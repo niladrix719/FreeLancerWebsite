@@ -17,6 +17,7 @@ export default function Bio() {
             so you can trust that you're working with skilled professionals who are committed to delivering top-notch results.</p>
         </div>
       </div>
+      <div className={styles.circle}></div>
     </div>
   )
 }
