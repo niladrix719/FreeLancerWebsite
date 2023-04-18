@@ -13,10 +13,25 @@
 
 body {
   color: rgb(var(--foreground-rgb));
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
 .app{
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to right,rgb(196, 94, 250),#ad1aff, rgb(195, 0, 255));;
 }

@@ -1,0 +1,73 @@
+.footer{
+    background-color: rgb(255, 255, 255);
+    height: 8rem;
+    width: 80vw;
+    margin-bottom: 2rem;
+}
+
+.upper , .lower{
+    display: flex;
+    justify-content: space-between;
+}
+
+.about , .help , .law , .socials {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 1rem;
+}
+
+.heading{
+    font-size: 1.1rem;
+}
+
+.subHeading{
+    cursor: pointer;
+    color: rgb(116, 107, 107);
+}
+
+.divider{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border: rgb(210, 197, 197) 1px solid;
+}
+
+.logo{
+    font-size: 2.15rem;
+}
+
+.lower{
+    align-items: center;
+    padding-bottom: 2rem !important;
+}
+
+.copyri8{
+    font-size: 0.9rem;
+    position: relative;
+    top: 0.3rem;
+}
+
+.socials{
+    display: flex;
+    flex-direction: row;
+}
+
+.social{
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+.social:hover{
+    opacity: 1;
+}
+
+.company{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.app{
+    display: flex;
+    gap: 2rem;
+}
