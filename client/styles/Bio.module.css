@@ -1,5 +1,8 @@
 .bio{
-    background-color: #f3f3f3;
+    background-image: url(/bg1.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     width: 100vw;
     text-align: center;
     display: flex;

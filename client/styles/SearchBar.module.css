@@ -3,6 +3,8 @@
     height: 3rem;
     width: 38rem;
     border-radius: 0.5rem;
+    border-bottom-left-radius: 1rem;
+    border-top-left-radius: 1rem;
     box-shadow: 0 6px 27px 0 rgba(0,3,2,0.08);
     display: flex;
     align-items: center;
@@ -110,7 +112,7 @@
 .name{
     cursor: pointer;
     padding: 0.5rem;
-    padding-left: 1rem;
+    padding-left: 0.85rem;
 }
 
 .name:hover{

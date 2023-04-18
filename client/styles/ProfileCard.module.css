@@ -1,5 +1,5 @@
 .profileCard{
-    border: 1px solid rgb(209, 197, 197);
+    border: 1px solid rgb(205, 193, 193);
     width: 24rem;
     height: 20rem;
     margin-bottom: 1.5rem;
@@ -25,7 +25,7 @@
 }
 
 .name{
-    color: rgb(36, 36, 229);
+    color: #221e3b;
     text-align: left;
     font-size: 1.2rem;
     margin-top: 2rem;
@@ -39,21 +39,21 @@
 }
 
 .category{
-    background-color: blueviolet;
+    background-color: var(--primary-color);
     color: white;
     display: flex;
     padding: 1rem;
     align-items: center;
-    justify-content: space-evenly;
-    font-size: 1.25rem;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 1rem;
 }
 
 .logo{
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 .cover{
-    background-image: url(/img5.jpg);
     height: 6rem;
     background-size: cover;
     background-position: center;
