@@ -8,6 +8,7 @@
 .upper , .lower{
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .about , .help , .law , .socials {

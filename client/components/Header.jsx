@@ -1,8 +1,6 @@
 import styles from '../styles/Header.module.css';
-import Image from 'next/image';
 import SearchBar from '../components/SearchBar';
 import React from 'react';
-import { text } from '@fortawesome/fontawesome-svg-core';
 
 class Header extends React.Component {
   constructor(props) {
