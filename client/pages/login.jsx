@@ -7,14 +7,21 @@ const inter = Inter({ subsets: ['latin'] })
 export default function login() {
   return (
     <div className={styles.login}>
-      <div className={styles.form}>
-        <form>
-          <label for='email' className={styles.labels}>Email: </label>
-          <input className={styles.inputs} type='text' placeholder='Enter Your Email' /> <br/>
-          <label for='password' className={styles.labels}>Password: </label>
-          <input className={styles.inputs} type='password' placeholder='Enter Your Password' /> <br/>
-          <button className={styles.btn}>Log In</button>
-        </form>
+      <form method="post" action='/login' className={styles.form}>
+        <div>
+          <h1 className={styles.heading}>Welcome</h1>
+          <p className={styles.subHeading}>Log In To Your Account</p>
+        </div>
+        <div id={styles.phone}>
+          <label className={styles.labels}>Phone: </label>
+          <input className={styles.inputs} type='text' placeholder='Enter Your Phone no.' /> <br />
+        </div>
+        <div>
+          <button className={styles.btn}>Send OTP</button>
+        </div>
+      </form>
+      <div className={styles.presentation}>
+        <img src="/pre1.jpg" alt="login" />
       </div>
     </div>
   )

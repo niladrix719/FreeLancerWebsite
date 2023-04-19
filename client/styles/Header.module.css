@@ -1,5 +1,5 @@
 .header {
-  background-image: url(/img6x-min.jpg);
+  background-image: url(/img6x.jpg);
   height: 75vh;
   width: 100vw;
   background-position: center;
@@ -29,7 +29,8 @@
 .AnimationText {
   display: inline-block;
   animation: bounceIn 2s infinite;
-  background: linear-gradient(to right,rgb(196, 94, 250),#ad1aff, rgb(195, 0, 255));
+  /* background: linear-gradient(to right,#d268cc,#dc6cd8,#d44ccd); */
+  background: linear-gradient(to right,#ff00f1,#ff48f9,#ff25f4);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
