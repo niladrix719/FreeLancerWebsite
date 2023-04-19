@@ -50,6 +50,7 @@ app.post('/verifyOTP', function (req, res) {
 app.post('/login', function (req, res) {
     const number = req.body.number;
     let randomNum = Math.floor(10000 + Math.random() * 90000);
+    console.log('wow' + randomNum)
 
     client.messages
         .create({ body: randomNum, from: '+16282664196', to: number })

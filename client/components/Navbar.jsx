@@ -11,7 +11,7 @@ export default function Navbar() {
   return (
     <nav className={styles.navbar}>
       <div className={styles.left}>
-        Fipezo
+      <Link href='/'>Fipezo</Link>
       </div>
       <div className={styles.right}>
         <ul className={styles.navigations}>
