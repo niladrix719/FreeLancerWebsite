@@ -6,7 +6,6 @@ function Reviews() {
     <div className={styles.reviews}>
         <Review />
         <Review />
-        <Review />
     </div>
   )
 }

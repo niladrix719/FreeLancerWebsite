@@ -10,8 +10,8 @@ export default function Bio() {
         <div className={styles.fade}><Fade delay='20'>
         <div className={styles.picturesNText}>
           <div className={styles.pictures}>
-            <Image src='/PhotographerReal.jpg' width='300' height='300' alt='image' />
-            <Image id={styles.cinematographer} src='/CinematographerReal.jpg' width='300' height='300' alt='image' />
+            <Image src='/PhotographerReal.jpg' width={300} height={300} alt='image' />
+            <Image id={styles.cinematographer} src='/CinematographerReal.jpg' width={300} height={300} alt='image' />
           </div>
           <div className={styles.Text}>
             <h1 className={styles.heading}>All Verified Freelancers</h1>

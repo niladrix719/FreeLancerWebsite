@@ -10,7 +10,7 @@ function ProfileBioCard() {
         <h1 className={styles.name}>Niladri Adhikary</h1>
         <p className={styles.bio}>Capturing Moments with love Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
         <div className={styles.equipment_available}>
-        <FontAwesomeIcon icon={faCameraRetro} style={{color: "#060f1e",}} /> <h1 className={styles.title}>Equipments Available</h1>
+        <FontAwesomeIcon icon={faCameraRetro} style={{color: "#060f1e",}} /> &nbsp;<h1 className={styles.title}>Equipments Available</h1>
           <ul className={styles.equipment}>
             <li>Canon EOS R6</li>
             <li>Sigma 35mm F1.4ART</li>

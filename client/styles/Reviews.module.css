@@ -1,5 +1,9 @@
 .reviews{
-    height: 20rem;
     width: 70%;
     padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
 }

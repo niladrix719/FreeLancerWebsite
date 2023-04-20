@@ -1,13 +1,13 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
 import styles from '../styles/login.module.css'
 import Navbar from '@/components/Navbar'
-
-const inter = Inter({ subsets: ['latin'] })
+import Head from 'next/head';
 
 export default function login() {
   return (
     <div className={styles.login}>
+      <Head>
+        <title>Login</title>
+      </Head>
       <Navbar />
       <form method="post" action='/login' className={styles.form}>
         <div>

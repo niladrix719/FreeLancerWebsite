@@ -18,8 +18,7 @@
     background-color: white;
     padding: 1rem;
     box-shadow: var(--shadow);
-    padding-left: 5rem;
-    padding-right: 5rem;
+    width: 90%;
 }
 
 .bio{
@@ -40,6 +39,7 @@
     padding: 2rem;
     box-shadow: var(--shadow);
     padding-top: 1rem;
+    width: 90%;
 }
 
 .title{
