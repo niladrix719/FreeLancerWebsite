@@ -1,6 +1,6 @@
 .login{
     text-align: center;
-    background-image: url(/bg8.jpg);
+    /* background-image: url(/bg8.jpg); */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -41,8 +41,9 @@
     color: white;
     display: inline-block;
     border-bottom: 1px solid white;
-    width: 80%;
+    width: 100%;
     padding: 0.25rem;
+    background-color: transparent;
 }
 
 .labels{
@@ -76,4 +77,5 @@
 #phone{
     display: flex;
     gap: 1rem;
+    align-items: center;
 }

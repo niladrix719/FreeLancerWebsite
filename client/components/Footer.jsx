@@ -47,10 +47,10 @@ function Footer() {
         </div>
         <div className={styles.app}>
           <div className={styles.google_play}>
-            Google Play
+            <Image src='/google-play.png' alt='Google Play' width={130} height={130}></Image>
           </div>
           <div className={styles.app_store}>
-            App Store
+            <Image src='/app_store.png' alt='App Store' width={130} height={130}></Image>
           </div>
         </div>
       </div>

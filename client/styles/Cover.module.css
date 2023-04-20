@@ -1,19 +1,9 @@
 .cover{
-    height: 45vh;
-    background-image: url(/cover4.jpg);
+    height: 25vh;
+    background-image: url(/cover5.jpg);
     background-position: center;
     background-size: cover;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
     position: relative;
-}
-
-.profile_pic{
-    border-radius: 50%;
-    border: 5px solid white;
-    position: absolute;
-    top: 28vh;
 }
 
 .name{

@@ -1,0 +1,12 @@
+.profile{
+    background-color: #f3f3f3;
+}
+
+.name{
+    color: green;
+    font-size: 1rem;
+}
+
+.profile_details{
+    display: flex;
+}

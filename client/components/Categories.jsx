@@ -1,6 +1,5 @@
 import styles from '../styles/Categories.module.css';
 import Image from 'next/image';
-import SearchBar from '../components/SearchBar';
 
 export default function Categories() {
   return (

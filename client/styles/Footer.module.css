@@ -71,4 +71,13 @@
 .app{
     display: flex;
     gap: 2rem;
+    align-items: center;
+}
+
+.google_play{
+    cursor: pointer;
+}
+
+.app_store{
+    cursor: pointer;
 }

@@ -9,6 +9,7 @@
   --primary-color: #1f1c1c;
   --secondary-color: white;
   --primaryx-color: #2b2626;
+  --shadow: 0 6px 27px 0 rgba(0,3,2,0.08);
 }
 
 body {
@@ -33,5 +34,5 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to right,#d268cc,#dc6cd8,#d44ccd);
+  background: var(--primary-color)
 }

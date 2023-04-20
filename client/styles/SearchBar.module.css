@@ -41,9 +41,9 @@
 }
 
 .suggestions{
-    font-size: 0.9rem;
+    font-size: 1rem;
     text-align: left;
-    margin-top: 0.75rem;
+    margin-top: 0.6rem;
 }
 
 .link{
@@ -104,9 +104,9 @@
     text-align: left;
     display: flex;
     flex-direction: column;
-    height: 8rem;
-    justify-content: space-evenly;
     color: rgb(157, 148, 148);
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
 }
 
 .name{

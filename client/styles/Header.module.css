@@ -10,6 +10,7 @@
   flex-direction: column;
   align-items: center;
   padding-top: 12rem;
+  box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.2);
 }
 
 .headingText {
@@ -29,10 +30,9 @@
 .AnimationText {
   display: inline-block;
   animation: bounceIn 2s infinite;
-  /* background: linear-gradient(to right,#d268cc,#dc6cd8,#d44ccd); */
-  background: linear-gradient(to right,#ff00f1,#ff48f9,#ff25f4);
+  /* background: linear-gradient(to right,#ff00f1,#ff48f9,#ff25f4);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: transparent; */
 }
 
 @keyframes bounceIn {
