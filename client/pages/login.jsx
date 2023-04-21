@@ -25,7 +25,7 @@ export default function login() {
         </div>
       </form>
       <div className={styles.presentation}>
-        <img src="/pre1.jpg" alt="login" />
+        <img src="/pre2.jpg" alt="login" />
       </div>
     </div>
   )

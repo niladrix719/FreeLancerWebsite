@@ -1,6 +1,6 @@
 .login{
     text-align: center;
-    /* background-image: url(/bg8.jpg); */
+    background-image: url(/bg10.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -51,7 +51,7 @@
 }
 
 .btn{
-    background-color: #d268cc;
+    background-color: #00aaff;
     color: white;
     font-size: 1rem;
     padding: 0.7rem;
@@ -61,7 +61,7 @@
 }
 
 .btn:hover{
-    background-color: #683168;;
+    background-color: #055882;
 }
 
 .heading{

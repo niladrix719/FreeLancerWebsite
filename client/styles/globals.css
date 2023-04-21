@@ -34,9 +34,10 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--primary-color)
+  background: #00aaff
 }
 
 ::selection {
   background-color: #ba3744;
+  color: white;
 }

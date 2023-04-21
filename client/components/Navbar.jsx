@@ -11,14 +11,28 @@ export default function Navbar() {
   return (
     <nav className={styles.navbar}>
       <div className={styles.left}>
-      <Link href='/'>Fipezo</Link>
+        <Link href='/'>Fipezo</Link>
       </div>
       <div className={styles.right}>
         <ul className={styles.navigations}>
           <li className={styles.navElement}>
             <span>
-              Register as a Freelancer&nbsp;&nbsp;
+              Register&nbsp;&nbsp;
             </span>
+            <FontAwesomeIcon
+              icon={faSortDown}
+              style={{ fontSize: 10, color: "white" }}
+            />
+            <div className={styles.dropDown} id={styles.box}>
+              <div className={styles.optionBox}>
+                <h1 className={styles.mainText}>As a Freelancer</h1>
+                <p className={styles.subText}>Empowering Your Career: Registering as a Freelancer</p>
+              </div>
+              <div className={styles.optionBox}>
+                <h1 className={styles.mainText}>As a Company</h1>
+                <p className={styles.subText}>Building Success: Registering Your Company</p>
+              </div>
+            </div>
           </li>
 
           <li className={styles.navElement}>
@@ -28,7 +42,7 @@ export default function Navbar() {
               style={{ fontSize: 10, color: "white" }}
             />
             <div className={styles.dropDown} id={styles.box}>
-            <div className={styles.optionBox}>
+              <div className={styles.optionBox}>
                 <h1 className={styles.mainText}>Contact Us</h1>
                 <p className={styles.subText}>Reach out to use for an query or help</p>
               </div>

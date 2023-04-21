@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import styles from '../styles/SearchBar.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faLocationDot, faChevronDown } from '@fortawesome/free-solid-svg-icons';

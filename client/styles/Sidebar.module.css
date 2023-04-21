@@ -1,0 +1,47 @@
+.sidebar{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.filter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: black;
+}
+
+.title{
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+}
+
+.checkbox {
+    appearance: auto;
+    -webkit-appearance: auto;
+    -moz-appearance: auto;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    cursor: pointer;
+}
+
+.inputs{
+    display: flex;
+    gap: 0.5rem;
+}
+
+.arrow{
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.divider{
+    border: #ededed 1px solid;
+}

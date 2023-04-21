@@ -1,0 +1,25 @@
+.explore{
+    background-color: #f5f6f7;
+}
+
+.body{
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 2rem;
+}
+
+.sidebar{
+    width: 18%;
+    box-shadow: var(--shadow);
+    background-color: white;
+    padding: 1.4rem;
+}
+
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    padding: 1rem;
+    gap: 1rem;
+    justify-content: center;
+}
