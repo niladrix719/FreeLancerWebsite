@@ -9,6 +9,7 @@
     border-radius: 50%;
     position: relative;
     margin-top: -7rem;
+    box-shadow: var(--shadow);
 }
 
 .name{
@@ -32,6 +33,7 @@
     padding: 1rem;
     box-shadow: var(--shadow);
     width: 90%;
+    border: 1px solid #e2e8f0;
 }
 
 .equipment_available{

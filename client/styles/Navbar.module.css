@@ -1,5 +1,5 @@
 .navbar {
-    background-color: transparent;
+    background-color: inherit;
     height: 3.5rem;
     display: flex;
     flex-direction: row;

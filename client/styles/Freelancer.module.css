@@ -1,0 +1,102 @@
+.navbar{
+    background-color: #00aaff;
+}
+
+.body{
+    padding-top: 5rem;
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+    margin-bottom: 20rem;
+}
+
+.left{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    padding: 1rem;
+}
+
+.right{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.heading{
+    font-size: 1.8rem;
+}
+
+.subHeading{
+    font-size: 0.95rem;
+    color: #8f8f8f;
+}
+
+.features{
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.freelancer{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.company{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.minHeading{
+    font-size: 1.2rem;
+}
+
+.feature{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    color: #8f8f8f;
+}
+
+.divider{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border: #ededed 1px solid;
+}
+
+.categories{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.category{
+    height: 4rem;
+    width: 14rem;
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+#photographer:hover{
+    border: 1px solid rgb(90, 86, 86);
+}
+
+#cinematographer:hover{
+    border: 1px solid black;
+}
+
+#drone_operator:hover{
+    border: 1px solid black;
+}
+
+.footer{
+    display: flex;
+    justify-content: center;
+}

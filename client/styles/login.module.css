@@ -5,6 +5,9 @@
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
+}
+
+.body{
     display: flex;
     justify-content: center;
 }
@@ -16,7 +19,7 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    margin-top: 4rem;
+    margin-top: 6rem;
     padding: 2rem;
     padding-top: 7rem;
     font-size: 1.5rem;
@@ -29,7 +32,7 @@
     background-color: white;
     height: 38rem;
     width: 38rem;
-    margin-top: 4rem;
+    margin-top: 6rem;
     padding: 3rem;
     font-size: 1.3rem;
     box-shadow: 0 6px 27px 0 rgba(0,3,2,0.08);
@@ -53,12 +56,13 @@
 
 .btn{
     background-color: #00aaff;
-    color: white;
+    color: rgb(255, 255, 255);
     font-size: 1rem;
     padding: 0.7rem;
     font-weight: 500;
     box-shadow: 0 6px 27px 0 rgba(0,3,2,0.08);
     width: 10rem;
+    border-radius: 5px;
 }
 
 .btn:hover{
@@ -78,4 +82,8 @@
     display: flex;
     gap: 1rem;
     align-items: center;
+}
+
+.navbar{
+    background-color: #00aaff;
 }

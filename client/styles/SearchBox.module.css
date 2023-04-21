@@ -1,0 +1,72 @@
+.searchBox{
+    background-color: white;
+    height: 3rem;
+    width: 38rem;
+    border-radius: 0.5rem;
+    border-bottom-left-radius: 1rem;
+    border-top-left-radius: 1rem;
+    box-shadow: 0 6px 27px 0 rgba(0,3,2,0.08);
+    display: flex;
+    align-items: center;
+    padding-right: 0.6rem;
+    gap: 1rem;
+    margin-top: 2rem;
+    position: relative;
+}
+
+.searchIcon{
+    background-color: var(--primary-color);
+    width: 10%;
+    height: 3rem;
+    text-align: center;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchInput{
+    color: rgb(169, 148, 148);
+    width: 90%;
+}
+
+.searchInput:focus{
+    outline: none;
+    color: var(--primary-color);
+}
+
+.searchInput:focus .searchNames{
+    display: block;
+}
+
+.searchNames{
+    background-color: #ffffff;
+    position: absolute;
+    top: 3.2rem;
+    left: 0;
+    width: 38rem;
+    border-radius: 0.5rem;
+    z-index: 100;
+    overflow: hidden;
+    box-shadow: 0 6px 27px 0 rgba(0,3,2,0.08);
+}
+
+.names{
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    color: rgb(157, 148, 148);
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.name{
+    cursor: pointer;
+    padding: 0.5rem;
+    padding-left: 0.85rem;
+}
+
+.name:hover{
+    background-color: rgb(229, 240, 236);
+}

@@ -23,3 +23,14 @@
     gap: 1rem;
     justify-content: center;
 }
+
+.search{
+    display: flex;
+    justify-content: center;
+    padding-top: 3rem;
+}
+
+.footer{
+    display: flex;
+    justify-content: center;
+}

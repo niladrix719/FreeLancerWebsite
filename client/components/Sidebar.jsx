@@ -9,6 +9,7 @@ class Sidebar extends React.Component {
         this.state = {
             showDropDown: true,
             showDropDownRating: true,
+            showDropDownLocation: true,
         };
     }
 
@@ -21,6 +22,12 @@ class Sidebar extends React.Component {
     toggleRating = () => {
         this.setState((prevState) => ({
             showDropDownRating: !prevState.showDropDownRating,
+        }));
+    };
+
+    toggleLocation = () => {
+        this.setState((prevState) => ({
+            showDropDownLocation: !prevState.showDropDownLocation,
         }));
     };
     
@@ -73,6 +80,22 @@ class Sidebar extends React.Component {
                             <input className={styles.checkbox} type="checkbox" id='star3' />
                             <label htmlFor="star3">
                                 3<FontAwesomeIcon icon={faStar} style={{color: "#1f1c1c", fontSize: '15px'}} /> & Above
+                            </label>
+                        </div>
+                    </div>}
+                </div>
+
+                <hr className={styles.divider} />
+
+                <div className={styles.filter} id={styles.location}>
+                    <div className={styles.title}>
+                        Location <FontAwesomeIcon onClick={this.toggleLocation} icon={faChevronDown} className={styles.arrow} />
+                    </div>
+                    {this.state.showDropDownLocation && <div className={styles.options}>
+                        <div className={styles.inputs}>
+                            <input className={styles.checkbox} type="checkbox" id='kolkata'/>
+                            <label htmlFor="kolkata">
+                                Kolkata
                             </label>
                         </div>
                     </div>}

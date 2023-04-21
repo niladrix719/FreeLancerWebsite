@@ -10,3 +10,9 @@
 .profile_details{
     display: flex;
 }
+
+.footer{
+    display: flex;
+    justify-content: center;
+    background-color: white;
+}

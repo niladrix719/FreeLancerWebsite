@@ -1,4 +1,5 @@
 import styles from '../styles/SearchBar.module.css';
+import SearchBox from '../components/SearchBox';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faLocationDot, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
@@ -19,14 +20,6 @@ class SearchBar extends React.Component {
     }));
   };
 
-  handleInputFocus = () => {
-    this.setState({ isInputFocused: true });
-  };
-
-  handleInputBlur = () => {
-    this.setState({ isInputFocused: false });
-  };
-
   render() {
     return (
       <div>
@@ -45,20 +38,7 @@ class SearchBar extends React.Component {
               <p>Currently Available in Kolkata Only</p>
             </div>
           </div>
-          <div className={styles.searchBox}>
-            <button className={styles.searchIcon}>
-              <FontAwesomeIcon icon={faMagnifyingGlass} style={{ color: 'white' }} />
-            </button>
-            <input type='text' className={styles.searchInput} placeholder='Search for services' 
-            onFocus={this.handleInputFocus} onBlur={this.handleInputBlur} />
-            {this.state.isInputFocused && <div className={styles.searchNames}>
-              <ul className={styles.names}>
-                <li className={styles.name}>Photographer</li>
-                <li className={styles.name}>Cinematographer</li>
-                <li className={styles.name}>Drone Operator</li>
-              </ul>
-            </div>}
-          </div>
+          <SearchBox />
         </div>
         <div className={styles.suggestions}>
           <Link className={styles.link} href='/photographer'>Photographer, </Link> &nbsp;

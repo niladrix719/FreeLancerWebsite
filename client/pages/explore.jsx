@@ -3,13 +3,16 @@ import styles from '../styles/Explore.module.css';
 import Navbar from '@/components/Navbar';
 import Sidebar from '@/components/Sidebar';
 import { faCameraRetro, faVideo, faClapperboard } from '@fortawesome/free-solid-svg-icons';
-import SearchBar from '@/components/SearchBar';
+import SearchBox from '@/components/SearchBox';
+import Footer from '@/components/Footer';
 
 function Explore() {
     return (
         <div className={styles.explore}>
             <Navbar />
-            <SearchBar />
+            <div className={styles.search}>
+              <SearchBox />
+            </div>
             <div className={styles.body}>
                 <div className={styles.sidebar}>
                     <Sidebar />
@@ -64,6 +67,9 @@ function Explore() {
                         icon={faCameraRetro}
                     />
                 </div>
+            </div>
+            <div className={styles.footer}>
+              <Footer />
             </div>
         </div>
     )
