@@ -31,9 +31,6 @@
 .AnimationText {
   display: inline-block;
   animation: bounceIn 2s infinite;
-  /* background: linear-gradient(to right,#ff00f1,#ff48f9,#ff25f4);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; */
 }
 
 @keyframes bounceIn {
