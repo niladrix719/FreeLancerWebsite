@@ -29,7 +29,7 @@ export default function login() {
           </div>
         </form>
         <div className={styles.presentation}>
-          <Image src="/pre2.jpg" alt="login" height="160" width="160" />
+          <Image src="/pre.jpg" alt="login" height="1006" width="1000" />
         </div>
       </div>
     </div>
