@@ -1,6 +1,7 @@
 import styles from '../styles/login.module.css'
 import Navbar from '@/components/Navbar'
 import Head from 'next/head';
+import Image from 'next/image'
 
 export default function login() {
   return (
@@ -28,7 +29,7 @@ export default function login() {
           </div>
         </form>
         <div className={styles.presentation}>
-          <img src="/pre2.jpg" alt="login" />
+          <Image src="/pre2.jpg" alt="login" height="160" width="160" />
         </div>
       </div>
     </div>

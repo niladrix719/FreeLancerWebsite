@@ -1,5 +1,5 @@
 .bio{
-    background-image: url(/bg1.jpg);
+    background-image: url(../assets/bg1.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -59,13 +59,3 @@
     margin-top: -2rem;
     box-shadow: 0 6px 27px 0 rgba(0,3,2,0.08);
 }
-
-/* .circle{
-    border: 1px solid #708775;
-    background-color: #35c26e;
-    border-radius: 50%;
-    height: 5rem;
-    width: 5rem;
-    position: relative;
-    top: -10rem;
-} */

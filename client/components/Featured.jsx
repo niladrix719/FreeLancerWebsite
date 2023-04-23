@@ -13,7 +13,7 @@ export default function Featured() {
           bio="Capturing Moments with love"
           category="Photographer"
           pic="img01"
-          cover="/cover1.jpg"
+          cover="/cover01.jpg"
           icon={faCameraRetro}
         />
         <ProfileCard
@@ -21,7 +21,7 @@ export default function Featured() {
           bio="seeking to work on projects"
           category="Cinematographer"
           pic="img02"
-          cover="/cover2.jpg"
+          cover="/cover02.jpg"
           icon={faVideo}
         />
         <ProfileCard
@@ -29,7 +29,7 @@ export default function Featured() {
           bio="Experienced Photographer"
           category="Drone Operator"
           pic="img03"
-          cover="/cover3.jpg"
+          cover="/cover03.jpg"
           icon={faClapperboard}
         />
         <ProfileCard
@@ -37,7 +37,7 @@ export default function Featured() {
           bio="Here for you"
           category="Cinematographer"
           pic="img04"
-          cover="/cover4.jpg"
+          cover="/cover04.jpg"
           icon={faVideo}
         />
         <ProfileCard
@@ -45,7 +45,7 @@ export default function Featured() {
           bio="Freeze Your Emotions"
           category="Drone Operator"
           pic="img05"
-          cover="/cover5.jpg"
+          cover="/cover05.jpg"
           icon={faClapperboard}
         />
         <ProfileCard
@@ -53,7 +53,7 @@ export default function Featured() {
           bio="Checkout my profile"
           category="Photographer"
           pic="img06"
-          cover="/cover6.jpg"
+          cover="/cover06.jpg"
           icon={faCameraRetro}
         />
       </div>
