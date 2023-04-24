@@ -5,7 +5,7 @@ import { Fade } from "react-awesome-reveal";
 export default function Bio() {
   return (
     <div className={styles.bio}>
-      <h1 className={styles.heading}>Your One-Stop Website for Freelance Talent</h1>
+      <h1 className={styles.heading} style={{fontSize: '2.8rem'}}>Your One-Stop Website for Freelance Talent</h1>
       <p className={styles.subHeading}>Find the Right Freelancer for Your Project with Our Easy-to-Use Platform</p>
         <div className={styles.fade}><Fade delay='20'>
         <div className={styles.picturesNText}>

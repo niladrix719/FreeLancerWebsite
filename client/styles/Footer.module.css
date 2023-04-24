@@ -1,8 +1,9 @@
 .footer{
     background-color: rgb(255, 255, 255);
     height: 8rem;
-    width: 80vw;
+    width: 95vw;
     margin-bottom: 2rem;
+    max-width: 1440px;
 }
 
 .upper , .lower{

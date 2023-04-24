@@ -5,6 +5,8 @@ import Categories from '../components/Categories';
 import Bio from '../components/Bio';
 import Featured from '../components/Featured';
 import Footer from '@/components/Footer';
+import VerifiedExplore from '@/components/VerifiedExplore';
+import Features from '@/components/Features';
 
 export default function Index() {
   return (
@@ -16,6 +18,8 @@ export default function Index() {
       <Header />
       <Categories />
       <Bio />
+      {/* <Features /> */}
+      <VerifiedExplore />
       <Featured />
       <Footer />
     </div>

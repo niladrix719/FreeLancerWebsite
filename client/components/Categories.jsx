@@ -13,7 +13,7 @@ export default function Categories() {
         <p className={styles.minText}>Cinematographer</p>
       </div>
       <div className={styles.category}>
-        <Image src='/drone.png' width='90' height='90' alt='cinematographer logo' />
+        <Image src='/drone.png' width='90' height='90' alt='drone logo' />
         <p className={styles.minText}>Drone Operator</p>
       </div>
     </div>
