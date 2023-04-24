@@ -1,4 +1,4 @@
-.login{
+.login {
     text-align: center;
     /* background-image: url(../assets/bg12.jpg); */
     background-position: center;
@@ -7,12 +7,12 @@
     height: 100vh;
 }
 
-.body{
+.body {
     display: flex;
     justify-content: center;
 }
 
-.form{
+.form {
     background-color: var(--primary-color);
     height: 38rem;
     width: 38rem;
@@ -23,22 +23,22 @@
     padding: 2rem;
     padding-top: 7rem;
     font-size: 1.5rem;
-    box-shadow: 0 6px 27px 0 rgba(0,3,2,0.08);
+    box-shadow: 0 6px 27px 0 rgba(0, 3, 2, 0.08);
     color: white;
     align-items: center;
 }
 
-.presentation{
+.presentation {
     background-color: white;
     height: 38rem;
     width: 38rem;
     margin-top: 5rem;
     padding: 3rem;
     font-size: 1.3rem;
-    box-shadow: 0 6px 27px 0 rgba(0,3,2,0.08);
+    box-shadow: 0 6px 27px 0 rgba(0, 3, 2, 0.08);
 }
 
-.inputs{
+.inputs {
     background-color: var(--primary-color);
     outline: none;
     color: white;
@@ -49,41 +49,47 @@
     background-color: transparent;
 }
 
-.labels{
+.labels {
     color: white;
     padding: 0.25rem;
 }
 
-.btn{
+.btn {
     background-color: white;
     color: var(--primary-color);
     font-size: 1rem;
     padding: 0.7rem;
     font-weight: 500;
-    box-shadow: 0 6px 27px 0 rgba(0,3,2,0.08);
+    box-shadow: 0 6px 27px 0 rgba(0, 3, 2, 0.08);
     width: 10rem;
     border-radius: 5px;
 }
 
-.btn:hover{
+.btn:hover {
     background-color: lightgray;
 }
 
-.heading{
+.heading {
     font-size: 2rem;
 }
 
-.subHeading{
+.subHeading {
     font-size: 0.95rem;
     opacity: 0.7;
 }
 
-#phone{
+#phone {
     display: flex;
     gap: 1rem;
     align-items: center;
 }
 
-.navbar{
+.navbar {
     color: black;
+}
+
+#number::-webkit-inner-spin-button,
+#number::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }

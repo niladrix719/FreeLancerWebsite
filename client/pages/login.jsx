@@ -22,7 +22,7 @@ export default function login() {
             <div className={styles.countryCode}>
               +91
             </div>
-            <input className={styles.inputs} type='text' placeholder='Enter Your Phone no.' /> <br />
+            <input className={styles.inputs} id={styles.number} type='number' placeholder='Enter Your Phone no.' /> <br />
           </div>
           <div>
             <button className={styles.btn}>Send OTP</button>

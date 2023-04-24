@@ -17,7 +17,7 @@ function freelancer() {
             <label htmlFor="name" className={styles.label}>Name :</label>
             <input type='text' className={styles.input} placeholder='Enter Your Name' name='name' id='name' required />
             <label htmlFor="phone" className={styles.label}>Phone :</label>
-            <input type='text' className={styles.input} placeholder='Enter Your Phone no.' name='phone' id='phone' required />
+            <input type='number' id={styles.number} className={styles.input} placeholder='Enter Your Phone no.' name='phone' required />
             <label htmlFor="profession" className={styles.label}>What is your profession?</label>
             <select className={styles.options} name="profession" id="profession">
               <option className={styles.option} value="photographer">Photographer</option>
