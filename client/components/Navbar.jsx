@@ -32,7 +32,7 @@ export default function Navbar(props) {
                 <h1 className={styles.mainText}>As a Freelancer</h1>
                 <p className={styles.subText}>Empowering Your Career: Registering as a Freelancer</p>
               </Link>
-              <Link className={styles.optionBox} href='register/company'>
+              <Link className={styles.optionBox} href='/register/company'>
                 <h1 className={styles.mainText}>As a Company</h1>
                 <p className={styles.subText}>Building Success: Registering Your Company</p>
               </Link>

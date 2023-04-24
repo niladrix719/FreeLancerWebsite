@@ -28,18 +28,6 @@ function freelancer() {
                 <FontAwesomeIcon icon={faCheck} style={{color: "#00aaff",}} /><p>Maintains Privacy and Fully Transparent</p>
               </div>
             </div>
-            <div className={styles.company}>
-              <h1 className={styles.minHeading}>For Companies</h1>
-              <div className={styles.feature}>
-                <FontAwesomeIcon icon={faCheck} style={{color: "#00aaff",}} /><p>Helps You Find Proper Client</p>
-              </div>
-              <div className={styles.feature}>
-                <FontAwesomeIcon icon={faCheck} style={{color: "#00aaff",}} /><p>All Profiles are Verified</p>
-              </div>
-              <div className={styles.feature}>
-                <FontAwesomeIcon icon={faCheck} style={{color: "#00aaff",}} /><p>Maintains Privacy and Fully Transparent</p>
-              </div>
-            </div>
           </div>
           <hr className={styles.divider} />
         </div>
