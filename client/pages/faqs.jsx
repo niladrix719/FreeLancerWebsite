@@ -4,7 +4,9 @@ import styles from '../styles/Faqs.module.css'
 function faqs() {
   return (
     <div className={styles.faqs}>
-      <Navbar />
+      <div className={styles.navbar}>
+        <Navbar />
+      </div>
     </div>
   )
 }

@@ -1,0 +1,57 @@
+.navbar{
+    background-color: var(--primary-blue);
+}
+
+.contact_form{
+    border: 1px solid lightgray;
+    height: 40rem;
+    width: 55rem;
+    margin-top: 5rem;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+}
+
+.body{
+    display: flex;
+    justify-content: center;
+}
+
+.heading{
+    font-size: 1.6rem;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+    align-items: flex-start;
+}
+
+.label{
+    font-size: 1.1rem;
+}
+
+.input , .textarea{
+    padding: 1rem;
+    border: 1px solid lightgray;
+    width: 60%;
+}
+
+.textarea{
+    resize: none;
+    height: 10rem;
+}
+
+.btn{
+    background-color: #00aaff;
+    color: rgb(255, 255, 255);
+    font-size: 1rem;
+    padding: 0.7rem;
+    font-weight: 500;
+    box-shadow: 0 6px 27px 0 rgba(0,3,2,0.08);
+    width: 10rem;
+    border-radius: 5px;
+    margin-top: 1rem;
+}
