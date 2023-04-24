@@ -4,9 +4,7 @@ import styles from '../styles/Contact.module.css'
 function contact() {
   return (
     <div className={styles.contact}>
-      <div className={styles.navbar}>
-        <Navbar />
-      </div>
+      <Navbar />
       <div className={styles.body}>
         <div className={styles.contact_form}>
           <h1 className={styles.heading}>Contact Us</h1>

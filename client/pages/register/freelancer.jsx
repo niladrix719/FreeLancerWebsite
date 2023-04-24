@@ -8,9 +8,7 @@ import Footer from '@/components/Footer'
 function freelancer() {
   return (
     <div>
-      <div className={styles.navbar}>
-        <Navbar />
-      </div>
+      <Navbar />
       <div className={styles.body}>
         <div className={styles.left}>
           <div className={styles.title}>

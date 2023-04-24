@@ -12,7 +12,7 @@ export default function Index() {
       <Head>
         <title>Fipezo</title>
       </Head>
-      <Navbar />
+      <Navbar color='white' />
       <Header />
       <Categories />
       <Bio />

@@ -8,7 +8,7 @@ import {
 
 export default function Navbar(props) {
   return (
-    <nav className={styles.navbar} style={{backgroundColor: props.color}}>
+    <nav className={styles.navbar} style={{color: props.color}}>
       <div className={styles.left}>
         <Link href='/'>Fipezo</Link>
       </div>
@@ -25,7 +25,7 @@ export default function Navbar(props) {
             </span>
             <FontAwesomeIcon
               icon={faSortDown}
-              style={{ fontSize: 10, color: "white" }}
+              style={{ fontSize: 10, color: props.color }}
             />
             <div className={styles.dropDown} id={styles.box}>
               <Link className={styles.optionBox} href='/register/freelancer'>
@@ -43,7 +43,7 @@ export default function Navbar(props) {
             <span>Help&nbsp;&nbsp;</span>
             <FontAwesomeIcon
               icon={faSortDown}
-              style={{ fontSize: 10, color: "white" }}
+              style={{ fontSize: 10, color: props.color }}
             />
             <div className={styles.dropDown} id={styles.box}>
               <Link className={styles.optionBox} href='/contact'>

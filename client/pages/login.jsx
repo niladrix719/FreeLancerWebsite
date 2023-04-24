@@ -10,7 +10,7 @@ export default function login() {
         <title>Login</title>
       </Head>
       <div className={styles.navbar}>
-        <Navbar />
+        <Navbar color='black' />
       </div>
       <div className={styles.body}>
         <form method="post" action='/login' className={styles.form}>

@@ -9,7 +9,7 @@ import Footer from '@/components/Footer';
 function profile() {
   return (
     <div className={styles.profile}>
-        <Navbar color={'transparent'} />
+      <Navbar color='white' />
       <Cover />
       <div className={styles.profile_details}>
         <ProfileBioCard />
