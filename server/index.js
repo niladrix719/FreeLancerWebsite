@@ -3,7 +3,9 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
+
+//database
+require ('./db/db');
 
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
@@ -15,62 +17,56 @@ app.use(express.json());
 
 app.use(express.static('public'));
 
-const connectDB = async () => {
-    await mongoose.connect(process.env.MONGO_URI);
-    console.log('Connected to DB');
-}
-connectDB();
+// const userSchema = new mongoose.Schema({
+//     users: Number,
+// });
 
-const userSchema = new mongoose.Schema({
-    users: Number,
-});
+// const OTP = mongoose.model('OTP', userSchema);
 
-const OTP = mongoose.model('OTP', userSchema);
+// app.post('/verifyOTP', function (req, res) {
+//     const code = req.body.code;
 
-app.post('/verifyOTP', function (req, res) {
-    const code = req.body.code;
+//     OTP.findOne({ users: code }, function (err, foundUser) {
+//         if (err) {
+//             console.log(err);
+//             return;
+//         } else if (foundUser) {
+//             res.render('/');
+//             OTP.findOneAndDelete({ users: code }, function (err) {
+//                 if (err) {
+//                     console.log(err);
+//                 }
+//             });
+//         } else {
+//             res.send('Invalid OTP');
+//         }
+//     });
+// });
 
-    OTP.findOne({ users: code }, function (err, foundUser) {
-        if (err) {
-            console.log(err);
-            return;
-        } else if (foundUser) {
-            res.render('/');
-            OTP.findOneAndDelete({ users: code }, function (err) {
-                if (err) {
-                    console.log(err);
-                }
-            });
-        } else {
-            res.send('Invalid OTP');
-        }
-    });
-});
+// app.post('/login', function (req, res) {
+//     const number = '+91'+req.body.number;
+//     let randomNum = Math.floor(10000 + Math.random() * 90000);
+//     console.log('wow' + randomNum)
 
-app.post('/login', function (req, res) {
-    const number = '+91'+req.body.number;
-    let randomNum = Math.floor(10000 + Math.random() * 90000);
-    console.log('wow' + randomNum)
+//     client.messages
+//         .create({ body: randomNum, from: '+16282664196', to: number })
+//         .then(saveUser)
+//         .catch(function (err) {
+//             console.log(err);
+//         });
 
-    client.messages
-        .create({ body: randomNum, from: '+16282664196', to: number })
-        .then(saveUser)
-        .catch(function (err) {
-            console.log(err);
-        });
-
-    function saveUser() {
-        const newUser = new OTP({
-            users: randomNum
-        });
-        newUser.save(function (err) {
-            if (err) {
-                console.log(err);
-            } else {
-                res.render('verifyOTP')
-            }
-        });
-    }
-});
+//     function saveUser() {
+//         const newUser = new OTP({
+//             users: randomNum
+//         });
+//         newUser.save(function (err) {
+//             if (err) {
+//                 console.log(err);
+//             } else {
+//                 res.render('verifyOTP')
+//             }
+//         });
+//     }
+// });
 
 app.listen(port, () => console.log(`Server started on port ${port}`));

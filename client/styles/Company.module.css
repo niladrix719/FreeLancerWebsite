@@ -1,14 +1,15 @@
 .body{
     padding-top: 5rem;
     display: flex;
-    gap: 1rem;
+    gap: 3rem;
     justify-content: center;
-    margin-bottom: 2rem;
+    margin-bottom: 20rem;
 }
 
 .right{
     display: flex;
     flex-direction: column;
+    width: 40%;
     padding: 1rem;
 }
 
@@ -16,7 +17,6 @@
     display: flex;
     flex-direction: column;
     padding: 1rem;
-    width: 40%;
 }
 
 .heading{
@@ -34,7 +34,7 @@
     margin-top: 2rem;
 }
 
-.freelancer{
+.company{
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -89,43 +89,4 @@
 .footer{
     display: flex;
     justify-content: center;
-}
-
-/* form */
-
-.form{
-    display: flex;
-    flex-direction: column;
-    margin-top: 1rem;
-}
-
-.input{
-    padding: 0.5rem;
-    border: 1px solid lightgray;
-    width: 80%;
-}
-
-.options{
-    padding: 0.5rem;
-    padding-left: 0;
-    width: 80%;
-    border: 1px solid lightgray;
-    color: #3d3d3d;
-}
-
-.option{
-    padding: 0.5rem;
-}
-
-.label{
-    padding: 1rem;
-    padding-left: 0;
-}
-
-.textarea{
-    border: 1px solid lightgray;
-    resize: none;
-    width: 80%;
-    padding: 1rem;
-    height: 10rem;
 }

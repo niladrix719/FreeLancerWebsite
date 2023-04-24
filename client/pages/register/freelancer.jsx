@@ -11,6 +11,26 @@ function freelancer() {
       <Navbar />
       <div className={styles.body}>
         <div className={styles.left}>
+          <h1 className={styles.heading}>Fill Up The Registration Form.</h1>
+          <p className={styles.subHeading}>We only allow verified Freelancers on our website.</p>
+          <form method='post' action='/register/freelancer' className={styles.form}>
+            <label htmlFor="name" className={styles.label}>Name :</label>
+            <input type='text' className={styles.input} placeholder='Enter Your Name' name='name' id='name' required />
+            <label htmlFor="phone" className={styles.label}>Phone :</label>
+            <input type='text' className={styles.input} placeholder='Enter Your Phone no.' name='phone' id='phone' required />
+            <label htmlFor="profession" className={styles.label}>What is your profession?</label>
+            <select className={styles.options} name="profession" id="profession">
+              <option className={styles.option} value="photographer">Photographer</option>
+              <option className={styles.option} value="cinematographer">Cinematographer</option>
+              <option className={styles.option} value="drone_operator">Drone Operator</option>
+            </select>
+            <label htmlFor="bio" className={styles.label}>Bio :</label>
+            <textarea name="bio" id="bio" cols="30" rows="10" className={styles.textarea} placeholder='Write Your bio here...'></textarea>
+            <label htmlFor="bio" className={styles.label}>Equipments Available :</label>
+            <textarea name="bio" id="bio" cols="30" rows="10" className={styles.textarea} placeholder='Write Your equipments here...'></textarea>
+          </form>
+        </div>
+        <div className={styles.right}>
           <div className={styles.title}>
             <h1 className={styles.heading}>Take Control of Your Career Today!</h1>
             <p className={styles.subHeading}>Join our Platform and Start Earning on Your Own Terms!</p>
@@ -19,26 +39,17 @@ function freelancer() {
             <div className={styles.freelancer}>
               <h1 className={styles.minHeading}>For Freelancers</h1>
               <div className={styles.feature}>
-                <FontAwesomeIcon icon={faCheck} style={{color: "#00aaff",}} /><p>Helps You get more reach</p>
+                <FontAwesomeIcon icon={faCheck} style={{ color: "#00aaff", }} /><p>Helps You get more reach</p>
               </div>
               <div className={styles.feature}>
-                <FontAwesomeIcon icon={faCheck} style={{color: "#00aaff",}} /><p>Find local Clients</p>
+                <FontAwesomeIcon icon={faCheck} style={{ color: "#00aaff", }} /><p>All Verified Companies</p>
               </div>
               <div className={styles.feature}>
-                <FontAwesomeIcon icon={faCheck} style={{color: "#00aaff",}} /><p>Maintains Privacy and Fully Transparent</p>
+                <FontAwesomeIcon icon={faCheck} style={{ color: "#00aaff", }} /><p>Maintains Privacy and Fully Transparent</p>
               </div>
             </div>
           </div>
           <hr className={styles.divider} />
-        </div>
-        <div className={styles.right}>
-          <h1 className={styles.heading}>What is your Profession?</h1>
-          <p className={styles.subHeading}>Choose any one category to begin with.</p>
-          <div className={styles.categories}>
-            <div className={styles.category} id={styles.photographer}>Photographer</div>
-            <div className={styles.category} id={styles.cinematographer}>Cinematographer</div>
-            <div className={styles.category} id={styles.drone_operator}> Drone Operator</div>
-          </div>
         </div>
       </div>
       <div className={styles.footer}>
@@ -48,4 +59,4 @@ function freelancer() {
   )
 }
 
-export default freelancer
+export default freelancer;
