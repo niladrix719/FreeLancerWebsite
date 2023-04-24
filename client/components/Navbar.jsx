@@ -32,10 +32,10 @@ export default function Navbar(props) {
                 <h1 className={styles.mainText}>As a Freelancer</h1>
                 <p className={styles.subText}>Empowering Your Career: Registering as a Freelancer</p>
               </Link>
-              <div className={styles.optionBox}>
+              <Link className={styles.optionBox} href='register/company'>
                 <h1 className={styles.mainText}>As a Company</h1>
                 <p className={styles.subText}>Building Success: Registering Your Company</p>
-              </div>
+              </Link>
             </div>
           </li>
 
@@ -50,7 +50,7 @@ export default function Navbar(props) {
                 <h1 className={styles.mainText}>Contact Us</h1>
                 <p className={styles.subText}>Reach out to use for an query or help</p>
               </Link>
-              <Link className={styles.optionBox} href='./faqs'>
+              <Link className={styles.optionBox} href='/faqs'>
                 <h1 className={styles.mainText}>FAQs</h1>
                 <p className={styles.subText}>Check out some asked questions</p>
               </Link>
