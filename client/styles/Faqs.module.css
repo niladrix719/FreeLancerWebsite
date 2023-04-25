@@ -1,0 +1,81 @@
+.body {
+    padding-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content {
+    display: flex;
+    width: 90vw;
+    margin-top: 4rem;
+    font-weight: 500;
+    font-size: 1.05rem;
+}
+
+.categories {
+    width: 30%;
+}
+
+.qnas {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    font-size: 1.55rem;
+    font-weight: 400;
+}
+
+.heading {
+    font-size: 2.8rem;
+    font-weight: 700;
+}
+
+.subHeading {
+    font-size: 1.2rem;
+    color: lightgray;
+}
+
+.top {
+    font-size: 1.55rem;
+}
+
+.lists {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.list {
+    cursor: pointer;
+}
+
+.divider {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border: #ededed 1px solid;
+}
+
+#general {
+    display: block;
+}
+
+#privacy {
+    display: none;
+}
+
+#services {
+    display: none;
+}
+
+#generalTab {
+    color: #00aaff;
+}
+
+#privacyTab {
+    color: black;
+}
+
+#servicesTab {
+    color: black;
+}
