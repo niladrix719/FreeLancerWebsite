@@ -1,7 +1,8 @@
-import styles from '../styles/login.module.css'
+import styles from '../styles/Login.module.css'
 import Navbar from '@/components/Navbar'
 import Head from 'next/head';
 import Image from 'next/image'
+import Link from 'next/link';
 
 export default function login() {
   return (
@@ -26,6 +27,9 @@ export default function login() {
           </div>
           <div>
             <button className={styles.btn}>Send OTP</button>
+          </div>
+          <div className={styles.lower}>
+            <Link href='/signup' className={styles.signup}>Don't have an Account? Sign up now</Link>
           </div>
         </form>
         <div className={styles.presentation}>

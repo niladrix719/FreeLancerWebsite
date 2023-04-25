@@ -22,7 +22,8 @@ app.use(express.static('public'));
 
 app.post('/signup', async function(req, res) {
     const userData = new userCollection({
-        name: req.body.name,
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
         phone: req.body.phone
     });
 
