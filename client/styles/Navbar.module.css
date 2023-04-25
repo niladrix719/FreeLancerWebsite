@@ -113,3 +113,51 @@
     font-weight: 600;
     padding: 0;
 }
+
+.profile_card{
+    width: 20rem;
+    background-color: var(--primary-color);
+    border-radius: 15px;
+    position: absolute;
+    top: 3rem;
+    left: -4rem;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.75rem;
+    gap: 1rem;
+    box-shadow: var(--shadow);
+}
+
+.dp{
+    border-radius: 50%;
+    border: 5px solid white;
+}
+
+.name{
+    font-size: 1.2rem;
+    color: white;
+}
+
+.btn{
+    padding: 0.45rem;
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+    border-radius: 1rem;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    font-weight: 600;
+    width: 80%;
+    text-align: center;
+}
+
+#user:hover .profile_card{
+    display: flex;
+}
+
+.number{
+    color: #c7c7c7;
+    margin-top: -0.75rem;
+    font-size: 0.9rem;
+}
