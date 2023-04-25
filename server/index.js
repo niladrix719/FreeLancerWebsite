@@ -1,8 +1,10 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const port = process.env.PORT || 3000;
 const bodyParser = require('body-parser');
+const userCollection = require('./model/userModel');
 
 //database
 require ('./db/db');
@@ -14,8 +16,20 @@ const client = require("twilio")(accountSid, authToken);
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cors());
 
 app.use(express.static('public'));
+
+app.post('/signup', async function(req, res) {
+    const userData = new userCollection({
+        name: req.body.name,
+        phone: req.body.phone
+    });
+
+    const postData = await userData.save();
+    // res.send(postData);
+    res.redirect('http://localhost:3001');
+});
 
 // const userSchema = new mongoose.Schema({
 //     users: Number,

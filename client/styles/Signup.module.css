@@ -1,9 +1,5 @@
-.login{
+.signup{
     text-align: center;
-    background-image: url(/bg10.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -50,18 +46,19 @@
     padding: 0.25rem;
 }
 
-.btn{
-    background-color: #00aaff;
-    color: white;
+.btn {
+    background-color: white;
+    color: var(--primary-color);
     font-size: 1rem;
     padding: 0.7rem;
     font-weight: 500;
-    box-shadow: 0 6px 27px 0 rgba(0,3,2,0.08);
+    box-shadow: 0 6px 27px 0 rgba(0, 3, 2, 0.08);
     width: 10rem;
+    border-radius: 5px;
 }
 
-.btn:hover{
-    background-color: #055882;
+.btn:hover {
+    background-color: rgb(236, 234, 234);
 }
 
 .heading{
@@ -83,4 +80,10 @@
     display: flex;
     gap: 1rem;
     align-items: center;
+}
+
+#number::-webkit-inner-spin-button,
+#number::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
