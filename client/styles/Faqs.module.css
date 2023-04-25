@@ -8,13 +8,13 @@
 .content {
     display: flex;
     width: 90vw;
-    margin-top: 4rem;
+    margin-top: 1rem;
     font-weight: 500;
     font-size: 1.05rem;
 }
 
 .categories {
-    width: 30%;
+    width: 32%;
 }
 
 .qnas {
@@ -32,7 +32,7 @@
 
 .subHeading {
     font-size: 1.2rem;
-    color: lightgray;
+    color: #7c7c7c;
 }
 
 .top {
@@ -44,10 +44,6 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-}
-
-.list {
-    cursor: pointer;
 }
 
 .divider {
@@ -70,12 +66,36 @@
 
 #generalTab {
     color: #00aaff;
+    cursor: pointer;
 }
 
 #privacyTab {
     color: black;
+    cursor: pointer;
 }
 
 #servicesTab {
     color: black;
+    cursor: pointer;
+}
+
+.summary{
+    display: inline;
+    cursor: pointer;
+}
+
+.details{
+    font-size: 1.2rem;
+    color: #7c7c7c;
+    margin-top: 0.5rem;
+}
+
+.container{
+    width: 90%;
+    text-align: center;
+}
+
+.active{
+    display: block;
+    color: #00aaff;
 }
