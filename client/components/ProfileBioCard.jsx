@@ -6,7 +6,7 @@ import { faCameraRetro } from '@fortawesome/free-solid-svg-icons'
 function ProfileBioCard() {
   return (
     <div className={styles.profile_bio_card}>
-        <Image src='/img01.jpg' width={220} height={220} className={styles.profile_pic}></Image>                                     
+        <Image src='/img01.jpg' width={220} height={220} className={styles.profile_pic} alt='display picture'></Image>                                     
         <h1 className={styles.name}>Niladri Adhikary</h1>
         <p className={styles.bio}>Capturing Moments with love Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
         <div className={styles.equipment_available}>
