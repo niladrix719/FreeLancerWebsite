@@ -2,14 +2,29 @@ import styles from '../styles/Navbar.module.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from 'next/link';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 import {
   faSortDown
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function Navbar(props) {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const userData = localStorage.getItem('user');
+      setUser(userData ? JSON.parse(userData) : null);
+    }
+  }, []);
+
+  function handelLogout () {
+    localStorage.removeItem('user');
+    setUser(null);
+  }
+
   return (
-    <nav className={styles.navbar} style={{color: props.color}}>
+    <nav className={styles.navbar} style={{ color: props.color }}>
       <div className={styles.left}>
         <Link href='/'>Fipezo</Link>
       </div>
@@ -57,21 +72,21 @@ export default function Navbar(props) {
               </Link>
             </div>
           </li>
-          {/* <li><Link href='/login' className={styles.login}>Login</Link></li> */}
-          <li className={styles.navElement} id={styles.user}>
-            <span>Niladri Adhikary&nbsp;&nbsp;</span>
+          {user === null && <li><Link href='/login' className={styles.login}>Login</Link></li>}
+          {user && <li className={styles.navElement} id={styles.user}>
+            <span>{user ? `${user.firstname} ${user.lastname}` : ''}&nbsp;&nbsp;</span>
             <FontAwesomeIcon
               icon={faSortDown}
               style={{ fontSize: 10, color: props.color }}
             />
             <div className={styles.profile_card}>
               <Image src='/dp.png' width='90' height='90' className={styles.dp} alt='display picture' />
-              <h1 className={styles.name}>Niladri Adhikary</h1>
-              <p className={styles.number}>7001599126</p>
+              <h1 className={styles.name}>{user ? `${user.firstname} ${user.lastname}` : ''}</h1>
+              <p className={styles.number}>{user ? user.phone : ''}</p>
               <Link className={styles.btn} href='/profile'>My Profile</Link>
-              <button className={styles.btn}>Log Out</button>
+              <button className={styles.btn} type='button' onClick={handelLogout}>Log Out</button>
             </div>
-          </li>
+          </li>}
         </ul>
       </div>
     </nav>
