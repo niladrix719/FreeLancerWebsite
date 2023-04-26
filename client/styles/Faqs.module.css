@@ -52,30 +52,15 @@
     border: #ededed 1px solid;
 }
 
-#general {
-    display: block;
-}
-
-#privacy {
-    display: none;
-}
-
-#services {
-    display: none;
-}
-
 #generalTab {
-    color: #00aaff;
     cursor: pointer;
 }
 
 #privacyTab {
-    color: black;
     cursor: pointer;
 }
 
 #servicesTab {
-    color: black;
     cursor: pointer;
 }
 

@@ -26,7 +26,7 @@ function verifyOTP() {
           </div>
         </form>
         <div className={styles.presentation}>
-          <Image src="/pre.jpg" alt="login" height="1006" width="1000" />
+          <Image src="/pre.jpg" alt="image" height="1006" width="1000" />
         </div>
       </div>
     </div>
