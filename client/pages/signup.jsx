@@ -4,10 +4,38 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 function Signup() {
+  function handleSubmit(event) {
+    event.preventDefault();
+    const form = event.target;
+    const formData = new FormData(form);
+
+    async function postData() {
+      try {
+        const response = await fetch('http://localhost:3000/signup', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            firstname: formData.get('firstname'),
+            lastname: formData.get('lastname'),
+            phone: formData.get('phone')
+          })
+        });
+        const data = await response.json();
+        localStorage.setItem('user', JSON.stringify(data));
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    postData();
+  }
+
   return (
     <div className={styles.signup}>
       <Navbar />
-      <form method="post" action='http://localhost:3000/signup' className={styles.form}>
+      <form onSubmit={handleSubmit} className={styles.form}>
         <div>
           <h1 className={styles.heading}>Welcome</h1>
           <p className={styles.subHeading}>Sign Up For a Free Account</p>
@@ -28,11 +56,11 @@ function Signup() {
           <button type='submit' className={styles.btn}>Submit</button>
         </div>
         <div className={styles.lower}>
-        <Link href='/login' className={styles.login}>Already have an Account? Log in</Link>
+          <Link href='/login' className={styles.login}>Already have an Account? Log in</Link>
         </div>
       </form>
       <div className={styles.presentation}>
-      <Image src="/pre.jpg" alt="image" height="1006" width="1000" />
+        <Image src="/pre.jpg" alt="image" height="1006" width="1000" />
       </div>
     </div>
   )

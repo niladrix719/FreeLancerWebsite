@@ -21,14 +21,14 @@ export default function company() {
         </div>
         <div className={styles.right}>
           <div className={styles.title}>
-            <h1 className={styles.heading}>Take Control of Your Career Today!</h1>
-            <p className={styles.subHeading}>Join our Platform and Start Earning on Your Own Terms!</p>
+            <h1 className={styles.heading}>Get the Best Talents!</h1>
+            <p className={styles.subHeading}>Join our Platform and Get all talents!</p>
           </div>
           <div className={styles.features}>
             <div className={styles.company}>
               <h1 className={styles.minHeading}>For Companies</h1>
               <div className={styles.feature}>
-                <FontAwesomeIcon icon={faCheck} style={{ color: "#00aaff", }} /><p>Helps You Find Proper Client</p>
+                <FontAwesomeIcon icon={faCheck} style={{ color: "#00aaff", }} /><p>Helps You Find Proper Freelancer</p>
               </div>
               <div className={styles.feature}>
                 <FontAwesomeIcon icon={faCheck} style={{ color: "#00aaff", }} /><p>All Profiles are Verified</p>
