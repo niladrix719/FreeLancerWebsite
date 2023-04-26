@@ -1,10 +1,11 @@
-import styles from '@/styles/Review.module.css'
+import styles from '@/styles/Review.module.css';
+import Image from 'next/image';
 
 function Review() {
   return (
     <div className={styles.review}>
       <div className={styles.user_info}>
-        <img className={styles.avatar} src="https://via.placeholder.com/50x50" alt="User avatar" />
+        <Image className={styles.avatar} src="/dp.png" alt="User avatar" width='90' height='90' />
         <div className={styles.user_details}>
           <h3 className={styles.user_name}>John Doe</h3>
           <p className={styles.user_location}>New York, NY</p>

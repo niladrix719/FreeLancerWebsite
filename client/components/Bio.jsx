@@ -15,8 +15,8 @@ export default function Bio() {
           </div>
           <div className={styles.Text}>
             <h1 className={styles.heading}>All Verified Freelancers</h1>
-            <p className={styles.details}> we believe in quality over quantity. That's why we carefully verify each freelancer on our platform,
-              so you can trust that you're working with skilled professionals who are committed to delivering top-notch results.</p>
+            <p className={styles.details}> we believe in quality over quantity. That&apos;s why we carefully verify each freelancer on our platform,
+              so you can trust that you&apos;re working with skilled professionals who are committed to delivering top-notch results.</p>
           </div>
         </div>
       </Fade></div>

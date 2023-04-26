@@ -10,7 +10,7 @@ function VerifiedExplore() {
         <Link className={styles.btn} href='/explore'>Explore Freelancers</Link>
       </div>
       <div className={styles.image}>
-      <Image src='/verified.png' width='300' height='300' />
+      <Image src='/verified.png' width='300' height='300' alt='verified tick'/>
       </div>
     </div>
   )

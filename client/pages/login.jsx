@@ -29,7 +29,7 @@ export default function login() {
             <button className={styles.btn}>Send OTP</button>
           </div>
           <div className={styles.lower}>
-            <Link href='/signup' className={styles.signup}>Don't have an Account? Sign up now</Link>
+            <Link href='/signup' className={styles.signup}>Don&apos;t have an Account? Sign up now</Link>
           </div>
         </form>
         <div className={styles.presentation}>

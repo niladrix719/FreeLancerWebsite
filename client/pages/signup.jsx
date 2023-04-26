@@ -1,6 +1,7 @@
 import styles from '../styles/Signup.module.css'
 import Navbar from '@/components/Navbar';
 import Link from 'next/link';
+import Image from 'next/image';
 
 function Signup() {
   return (
@@ -31,7 +32,7 @@ function Signup() {
         </div>
       </form>
       <div className={styles.presentation}>
-        <img src="/pre.jpg" alt="login" />
+      <Image src="/pre.jpg" alt="login" height="1006" width="1000" />
       </div>
     </div>
   )

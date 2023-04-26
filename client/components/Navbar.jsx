@@ -65,7 +65,7 @@ export default function Navbar(props) {
               style={{ fontSize: 10, color: props.color }}
             />
             <div className={styles.profile_card}>
-              <Image src='/dp.png' width='90' height='90' className={styles.dp} />
+              <Image src='/dp.png' width='90' height='90' className={styles.dp} alt='display picture' />
               <h1 className={styles.name}>Niladri Adhikary</h1>
               <p className={styles.number}>7001599126</p>
               <Link className={styles.btn} href='./profile'>My Profile</Link>

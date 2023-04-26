@@ -65,7 +65,7 @@ function faqs() {
       <div className={styles.body}>
         <h1 className={styles.heading}>Questions? Look here.</h1>
         <div className={styles.container}>
-          <Link className={styles.subHeading} href='/contact'>Can't find an Answer contact us on fipezocare@gmail.com</Link>
+          <Link className={styles.subHeading} href='/contact'>Can&apos;t find an Answer contact us on fipezocare@gmail.com</Link>
           <hr className={styles.divider} />
         </div>
         <div className={styles.content}>
