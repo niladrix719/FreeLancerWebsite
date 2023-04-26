@@ -1,5 +1,4 @@
 import Navbar from '@/components/Navbar';
-import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from '@/styles/Login.module.css';
@@ -7,9 +6,6 @@ import styles from '@/styles/Login.module.css';
 export default function login() {
   return (
     <div className={styles.login}>
-      <Head>
-        <title>Login</title>
-      </Head>
       <div className={styles.navbar}>
         <Navbar color='black' />
       </div>
