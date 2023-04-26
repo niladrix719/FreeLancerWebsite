@@ -59,7 +59,7 @@ export default function Navbar(props) {
           </li>
           {/* <li><Link href='/login' className={styles.login}>Login</Link></li> */}
           <li className={styles.navElement} id={styles.user}>
-            <span>Niladri Adhikary&nbsp;</span>
+            <span>Niladri Adhikary&nbsp;&nbsp;</span>
             <FontAwesomeIcon
               icon={faSortDown}
               style={{ fontSize: 10, color: props.color }}

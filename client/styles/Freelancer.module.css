@@ -169,6 +169,10 @@
     margin-top: 2rem;
 }
 
+.backBtn:hover{
+    background-color: #f1f1f1;
+}
+
 /* progress bar */
 
 .bar{
