@@ -4,8 +4,8 @@ import Review from '@/components/Review'
 function Reviews() {
   return (
     <div className={styles.reviews}>
-        <Review />
-        <Review />
+      <Review />
+      <Review />
     </div>
   )
 }
