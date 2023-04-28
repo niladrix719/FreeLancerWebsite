@@ -61,7 +61,6 @@ class Freelancer extends React.Component {
             <h1 className={styles.heading}>Fill Up The Registration Form.</h1>
             <p className={styles.subHeading}>We only allow verified Freelancers on our website.</p>
             <form method='post' action='/register/freelancer' className={styles.form}>
-              
               {this.state.currentPage === 1 && <div className={styles.inputField} id={styles.firstname}>
                 <label htmlFor="firstname" className={styles.label}>First name :</label>
                 <input type='text' className={styles.input} placeholder='Enter Your First name' name='firstname' id='firstname' required />
