@@ -131,6 +131,7 @@ class Freelancer extends React.Component {
             <div className={styles.title}>
               <h1 className={styles.heading}>Take Control of Your Career</h1>
               <p className={styles.subHeading}>Join our Platform and Start Earning on Your Own Terms!</p>
+              <hr className={styles.divider} />
             </div>
             <div className={styles.features}>
               <div className={styles.freelancer}>

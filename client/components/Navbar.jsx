@@ -10,6 +10,20 @@ import {
 
 export default function Navbar(props) {
   const [user, setUser] = useState(null);
+  const [background, setBackground] = useState('transparent');
+  const [color, setColor] = useState(props.color);
+
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        setColor('#000');
+        setBackground('#fff');
+      } else {
+        setColor(props.color);
+        setBackground('transparent');
+      }
+    });
+  }, []);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -24,7 +38,7 @@ export default function Navbar(props) {
   }
 
   return (
-    <nav className={styles.navbar} style={{ color: props.color }}>
+    <nav className={styles.navbar} style={{ color: color , backgroundColor: background }}>
       <div className={styles.left}>
         <Link href='/'>Fipezo</Link>
       </div>
@@ -39,9 +53,9 @@ export default function Navbar(props) {
             <span>
               Register&nbsp;&nbsp;
             </span>
-            <FontAwesomeIcon
+            <FontAwesomeIcon className={styles.icon}
               icon={faSortDown}
-              style={{ fontSize: 10, color: props.color }}
+              style={{ fontSize: 10, color: color }}
             />
             <div className={styles.dropDown} id={styles.box}>
               <Link className={styles.optionBox} href='/register/freelancer'>
@@ -57,9 +71,9 @@ export default function Navbar(props) {
 
           <li className={styles.navElement}>
             <span>Help&nbsp;&nbsp;</span>
-            <FontAwesomeIcon
+            <FontAwesomeIcon className={styles.icon}
               icon={faSortDown}
-              style={{ fontSize: 10, color: props.color }}
+              style={{ fontSize: 10, color: color }}
             />
             <div className={styles.dropDown} id={styles.box}>
               <Link className={styles.optionBox} href='/contact'>
