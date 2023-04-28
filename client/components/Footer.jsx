@@ -25,9 +25,9 @@ function Footer() {
           <li className={styles.subHeading}>Legal notices</li>
         </ul>
         <ul className={styles.law}>
-          <li className={styles.heading}>Register As a</li>
-          <li className={styles.subHeading}>Freelancer</li>
-          <li className={styles.subHeading}>Company</li>
+          <li className={styles.heading}>Register as a</li>
+          <Link className={styles.subHeading} href='/register/freelancer'>Freelancer</Link>
+          <Link className={styles.subHeading} href='/register/company'>Company</Link>
         </ul>
         <ul id={styles.socials}>
           <li className={styles.heading}>Socials</li>
