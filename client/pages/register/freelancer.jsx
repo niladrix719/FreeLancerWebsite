@@ -36,6 +36,7 @@ class Freelancer extends React.Component {
 
     if (this.state.currentPage === 4) {
       document.querySelector("." + styles.NextBtn).innerHTML = 'Submit';
+      document.querySelector("." + styles.NextBtn).type = 'submit';
     }
 
     this.setState({ currentPage: this.state.currentPage + 1 });
@@ -52,6 +53,37 @@ class Freelancer extends React.Component {
     this.setState({ currentPage: this.state.currentPage - 1 });
   }
 
+  handleSubmit = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const formData = new FormData(form);
+
+    async function postData() {
+      try {
+        const response = await fetch('http://localhost:3000/register/freelancer', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            firstname: 'Niladri',
+            lastname: 'Adhikary',
+            phone: 7001599126,
+            profession: 'Photographer',
+            bio: 'Hi i am Niladri',
+            equipments: 'none'
+          })
+        });
+        const data = await response.json();
+        localStorage.setItem('freelancer', JSON.stringify(data));
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    postData();
+  }
+
   render() {
     return (
       <div>
@@ -60,7 +92,7 @@ class Freelancer extends React.Component {
           <div className={styles.left}>
             <h1 className={styles.heading}>Fill Up The Registration Form.</h1>
             <p className={styles.subHeading}>We only allow verified Freelancers on our website.</p>
-            <form method='post' action='/register/freelancer' className={styles.form}>
+            <form onSubmit={this.handleSubmit} method='post' action='/register/freelancer' className={styles.form}>
               {this.state.currentPage === 1 && <div className={styles.inputField} id={styles.firstname}>
                 <label htmlFor="firstname" className={styles.label}>First name :</label>
                 <input type='text' className={styles.input} placeholder='Enter Your First name' name='firstname' id='firstname' required />
@@ -75,7 +107,7 @@ class Freelancer extends React.Component {
               </div>}
               {this.state.currentPage === 3 && <div className={styles.inputField} id={styles.profession}>
                 <label htmlFor="profession" className={styles.label}>What is your profession?</label>
-                <select className={styles.options} name="profession" id="profession">
+                <select required className={styles.options} name="profession" id="profession">
                   <option className={styles.option} value="photographer">Photographer</option>
                   <option className={styles.option} value="cinematographer">Cinematographer</option>
                   <option className={styles.option} value="drone_operator">Drone Operator</option>
@@ -83,11 +115,11 @@ class Freelancer extends React.Component {
               </div>}
               {this.state.currentPage === 4 && <div className={styles.inputField} id={styles.bio}>
                 <label htmlFor="bio" className={styles.label}>Bio :</label>
-                <textarea name="bio" id="bio" cols="30" rows="10" className={styles.textarea} placeholder='Write Your bio here...'></textarea>
+                <textarea required name="bio" id="bio" cols="30" rows="10" className={styles.textarea} placeholder='Write Your bio here...'></textarea>
               </div>}
               {this.state.currentPage === 5 && <div className={styles.inputField} id={styles.equipment}>
                 <label htmlFor="equipments" className={styles.label}>Equipments Available :</label>
-                <textarea name="equipments" id="equipments" cols="30" rows="10" className={styles.textarea} placeholder='Write Your equipments here...'></textarea>
+                <textarea required name="equipments" id="equipments" cols="30" rows="10" className={styles.textarea} placeholder='Write Your equipments here...'></textarea>
               </div>}
               <div className={styles.btns}>
                 <button className={styles.NextBtn} type='button' onClick={() => this.increProgress(25)}>Next</button>

@@ -24,6 +24,11 @@ function Footer() {
           <li className={styles.subHeading}>Cookies</li>
           <li className={styles.subHeading}>Legal notices</li>
         </ul>
+        <ul className={styles.law}>
+          <li className={styles.heading}>Register As a</li>
+          <li className={styles.subHeading}>Freelancer</li>
+          <li className={styles.subHeading}>Company</li>
+        </ul>
         <ul id={styles.socials}>
           <li className={styles.heading}>Socials</li>
           <li className={styles.subHeading}>Facebook</li>

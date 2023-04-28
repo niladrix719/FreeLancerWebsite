@@ -29,6 +29,8 @@
     text-align: left;
     font-size: 1.2rem;
     margin-top: 2rem;
+    display: flex;
+    align-items: center;
 }
 
 .bio{
@@ -57,4 +59,21 @@
     height: 6rem;
     background-size: cover;
     background-position: center;
+}
+
+.price{
+    background-color: white;
+    color: black;
+    font-weight: 500;
+    padding: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 0.95rem;
+}
+
+.blueTick{
+    display: inline;
+    position: relative;
+    left: -1rem;
+    top: 2.2px;
 }

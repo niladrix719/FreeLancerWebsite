@@ -1,4 +1,4 @@
-const freelancerCollection = require('../model/freelancerModel');
+const freelancerCollection = require('../models/freelancerModel');
 
 module.exports = async function (req, res) {
   try {
