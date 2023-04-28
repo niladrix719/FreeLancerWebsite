@@ -82,3 +82,9 @@
 .app_store{
     cursor: pointer;
 }
+
+#socials{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}

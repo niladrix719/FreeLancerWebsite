@@ -3,6 +3,7 @@ import React from 'react'
 import styles from '../../styles/Freelancer.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
+import Image from 'next/image'
 
 class Freelancer extends React.Component {
   constructor(props) {
@@ -60,6 +61,7 @@ class Freelancer extends React.Component {
             <h1 className={styles.heading}>Fill Up The Registration Form.</h1>
             <p className={styles.subHeading}>We only allow verified Freelancers on our website.</p>
             <form method='post' action='/register/freelancer' className={styles.form}>
+              
               {this.state.currentPage === 1 && <div className={styles.inputField} id={styles.firstname}>
                 <label htmlFor="firstname" className={styles.label}>First name :</label>
                 <input type='text' className={styles.input} placeholder='Enter Your First name' name='firstname' id='firstname' required />
@@ -112,6 +114,7 @@ class Freelancer extends React.Component {
                   <FontAwesomeIcon icon={faCheck} style={{ color: "#00aaff", }} /><p>Maintains Privacy and Fully Transparent</p>
                 </div>
               </div>
+              <Image src='/registration.png' alt='registration' width={350} height={350} />
             </div>
             <hr className={styles.divider} />
           </div>

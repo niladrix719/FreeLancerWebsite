@@ -23,7 +23,7 @@ function contact() {
             </div>
           </div>
           <div className={styles.right}>
-            <Image src='/contact_us.jpg' width='650' height='650' alt='contact_us' />
+            <Image src='/contactus.jpg' width='650' height='650' alt='contact_us' />
           </div>
         </div>
       </div>

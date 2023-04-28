@@ -1,5 +1,6 @@
 import styles from '../styles/Footer.module.css';
 import Image from 'next/image';
+import Link from 'next/link';
 
 function Footer() {
   return (
@@ -7,14 +8,14 @@ function Footer() {
       <div className={styles.upper}>
         <ul className={styles.about}>
           <li className={styles.heading}>About</li>
-          <li className={styles.subHeading}>Who are we?</li>
+          <Link href='/faqs' className={styles.subHeading}>Who are we?</Link>
           <li className={styles.subHeading}>Carrers</li>
           <li className={styles.subHeading}>Guides and Reviews</li>
         </ul>
         <ul className={styles.help}>
           <li className={styles.heading}>Help</li>
-          <li className={styles.subHeading}>Contact Us</li>
-          <li className={styles.subHeading}>FAQs</li>
+          <Link href='/contact' className={styles.subHeading}>Contact Us</Link>
+          <Link href='/faqs' className={styles.subHeading}>FAQs</Link>
         </ul>
         <ul className={styles.law}>
           <li className={styles.heading}>Law and Order</li>
@@ -23,8 +24,11 @@ function Footer() {
           <li className={styles.subHeading}>Cookies</li>
           <li className={styles.subHeading}>Legal notices</li>
         </ul>
-        <ul className={styles.Hello}>
-          <li className={styles.heading}>Hello There!</li>
+        <ul id={styles.socials}>
+          <li className={styles.heading}>Socials</li>
+          <li className={styles.subHeading}>Facebook</li>
+          <li className={styles.subHeading}>Instagram</li>
+          <li className={styles.subHeading}>Twitter</li>
         </ul>
       </div>
       <hr className={styles.divider} />
