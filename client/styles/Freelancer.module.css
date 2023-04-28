@@ -99,7 +99,7 @@
 
 .input{
     padding: 0.5rem;
-    border: 1px solid lightgray;
+    border: 1px solid rgb(133, 133, 133);
     width: 80%;
 }
 
@@ -116,6 +116,7 @@
 }
 
 .label{
+    font-size: 1.15rem;
     padding: 1rem;
     padding-left: 0;
 }
