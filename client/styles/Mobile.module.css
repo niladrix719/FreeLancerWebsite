@@ -22,3 +22,21 @@
 .img{
     border-radius: 1rem;
 }
+
+.btn{
+    background-color: var(--primary-color);
+    font-size: 1rem;
+    color: white;
+    padding: 1rem;
+    position: relative;
+    left: 7px;
+    font-weight: 400;
+    border-radius: 5px;
+    box-shadow: 0 6px 27px 0 rgba(0,3,2,0.28);
+}
+
+.btn:hover{
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+}
