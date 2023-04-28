@@ -17,8 +17,8 @@ export default function Index() {
       <Navbar color='white' />
       <Header />
       <Categories />
-      <Bio />
       {/* <Features /> */}
+      <Bio />
       <VerifiedExplore />
       <Featured />
       <Footer />

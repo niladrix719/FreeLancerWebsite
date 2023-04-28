@@ -53,9 +53,13 @@
     color: rgb(62, 57, 57);
 }
 
+#photographer{
+    box-shadow: 0 6px 27px 0 rgba(0,3,2,0.2);
+}
+
 #cinematographer{
     position: relative;
     right: 5rem;
     margin-top: -2rem;
-    box-shadow: 0 6px 27px 0 rgba(0,3,2,0.08);
+    box-shadow: 0 6px 27px 0 rgba(0,3,2,0.2);
 }
