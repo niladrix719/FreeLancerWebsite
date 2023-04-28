@@ -129,7 +129,7 @@ class Freelancer extends React.Component {
           </div>
           <div className={styles.right}>
             <div className={styles.title}>
-              <h1 className={styles.heading}>Take Control of Your Career Today!</h1>
+              <h1 className={styles.heading}>Take Control of Your Career</h1>
               <p className={styles.subHeading}>Join our Platform and Start Earning on Your Own Terms!</p>
             </div>
             <div className={styles.features}>
@@ -145,7 +145,7 @@ class Freelancer extends React.Component {
                   <FontAwesomeIcon icon={faCheck} style={{ color: "#00aaff", }} /><p>Maintains Privacy and Fully Transparent</p>
                 </div>
               </div>
-              <Image src='/registration.png' alt='registration' width={350} height={350} />
+              <Image src='/registration1.png' alt='registration' width={200} height={200} />
             </div>
             <hr className={styles.divider} />
           </div>
