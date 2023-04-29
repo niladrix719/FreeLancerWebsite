@@ -2,6 +2,7 @@ import Navbar from '@/components/Navbar';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from '@/styles/Login.module.css';
+import Footer from '@/components/Footer';
 
 export default function login() {
   return (
@@ -32,6 +33,7 @@ export default function login() {
           <Image src="/pre.jpg" alt="image" height="1006" width="1000" />
         </div>
       </div>
+      <Footer />
     </div>
   )
 }

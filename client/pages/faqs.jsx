@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 import React from 'react';
+import Footer from '@/components/Footer';
 
 class faqs extends React.Component {
   constructor(props) {
@@ -186,6 +187,7 @@ class faqs extends React.Component {
             </ul>}
           </div>
         </div>
+        <Footer />
       </div>
     )
   }

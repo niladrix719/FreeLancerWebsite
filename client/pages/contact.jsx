@@ -1,6 +1,7 @@
 import Navbar from '@/components/Navbar';
 import styles from '../styles/Contact.module.css';
 import Image from 'next/image';
+import Footer from '@/components/Footer';
 
 function contact() {
   return (
@@ -27,6 +28,7 @@ function contact() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   )
 }
