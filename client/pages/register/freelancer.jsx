@@ -12,6 +12,8 @@ class Freelancer extends React.Component {
     this.state = {
       progress: 0,
       currentPage: 1,
+      btn: 'Next',
+      btnType: 'button'
     }
   }
 
@@ -32,23 +34,26 @@ class Freelancer extends React.Component {
   }
 
   increPage = () => {
-    if (this.state.currentPage === 5)
+    if (this.state.currentPage === 5) {
       return;
+    }
 
     if (this.state.currentPage === 4) {
-      document.querySelector("." + styles.NextBtn).innerHTML = 'Submit';
-      document.querySelector("." + styles.NextBtn).type = 'submit';
+      this.setState({ btn: 'Submit' });
+      this.setState({ btnType: 'submit' });
     }
 
     this.setState({ currentPage: this.state.currentPage + 1 });
   }
+
 
   decrePage = () => {
     if (this.state.currentPage === 1)
       return;
 
     if (this.state.currentPage === 5) {
-      document.querySelector("." + styles.NextBtn).innerHTML = 'Next';
+      this.setState({ btn: 'Next' });
+      this.setState({ btnType: 'button' });
     }
 
     this.setState({ currentPage: this.state.currentPage - 1 });
@@ -72,7 +77,7 @@ class Freelancer extends React.Component {
             phone: 7001599126,
             profession: 'Photographer',
             bio: 'Hi i am Niladri',
-            equipments: 'none'
+            equipments: 'camera'
           })
         });
         const data = await response.json();
@@ -137,7 +142,7 @@ class Freelancer extends React.Component {
                 <textarea required name="equipments" id="equipments" cols="30" rows="10" className={styles.textarea} placeholder='Write Your equipments here...'></textarea>
               </div>}
               <div className={styles.btns}>
-                <button className={styles.NextBtn} type='button' onClick={() => this.increProgress(25)}>Next</button>
+                <button className={styles.NextBtn} type={this.state.btnType} onClick={() => this.increProgress(25)}>{this.state.btn}</button>
                 <button className={styles.backBtn} type='button' onClick={() => this.decreProgress(25)}>Back</button>
               </div>
             </form>
