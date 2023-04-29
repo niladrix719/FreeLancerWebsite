@@ -2,6 +2,7 @@ import styles from '../styles/SearchBox.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
+import Link from 'next/link';
 
 class SearchBox extends React.Component {
   constructor(props) {
@@ -28,9 +29,9 @@ class SearchBox extends React.Component {
           onFocus={this.handleInputFocus} onBlur={this.handleInputBlur} />
         {this.state.isInputFocused && <div className={styles.searchNames}>
           <ul className={styles.names}>
-            <li className={styles.name}>Photographer</li>
-            <li className={styles.name}>Cinematographer</li>
-            <li className={styles.name}>Drone Operator</li>
+            <Link href='/explore' className={styles.name}>Photographer</Link>
+            <Link href='/explore' className={styles.name}>Cinematographer</Link>
+            <Link href='/explore' className={styles.name}>Drone Operator</Link>
           </ul>
         </div>}
       </div>
