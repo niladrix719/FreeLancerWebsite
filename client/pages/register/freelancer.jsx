@@ -25,6 +25,7 @@ class Freelancer extends React.Component {
   }
 
   increProgress = (val) => {
+    console.log(this.state.currentPage, this.state.phone)
     if (this.state.progress + val > 100){
       return;
     }
@@ -131,8 +132,8 @@ class Freelancer extends React.Component {
             <h1 className={styles.heading}>Fill Up The Registration Form.</h1>
             <p className={styles.subHeading}>We only allow verified Freelancers on our website.</p>
             <form onSubmit={this.handleSubmit} method='post' action='/register/freelancer' className={styles.form}>
+              {this.state.error && <p className={styles.error}>Please provide all the inputs the fields.</p>}
               {this.state.currentPage === 1 && <div className={styles.inputField} id={styles.firstname}>
-                {this.state.error && <p className={styles.error}>Please provide all the inputs the fields.</p>}
                 <label htmlFor="firstname" className={styles.label}>First name :</label>
                 <input type='text' className={styles.input}
                   placeholder='Enter Your First name'
@@ -150,23 +151,27 @@ class Freelancer extends React.Component {
               </div>}
               {this.state.currentPage === 2 && <div className={styles.inputField} id={styles.phone}>
                 <label htmlFor="phone" className={styles.label}>Phone :</label>
-                <input type='number' id={styles.number} className={styles.input} placeholder='Enter Your Phone no.' name='phone' required />
+                <input type='number' id={styles.number}className={styles.input}
+                  placeholder='Enter Your Phone no.'
+                  name='phone' required
+                  onChange={(event) => this.setState({ phone: event.target.vlaue })}
+                />
               </div>}
               {this.state.currentPage === 3 && <div className={styles.inputField} id={styles.profession}>
                 <label htmlFor="profession" className={styles.label}>What is your profession?</label>
                 <select required className={styles.options} name="profession" id="profession">
-                  <option className={styles.option} value="photographer">Photographer</option>
-                  <option className={styles.option} value="cinematographer">Cinematographer</option>
-                  <option className={styles.option} value="drone_operator">Drone Operator</option>
+                  <option className={styles.option} value="photographer" onChange={(event) => this.setState({ profession: event.target.vlaue })}>Photographer</option>
+                  <option className={styles.option} value="cinematographer" onChange={(event) => this.setState({ profession: event.target.vlaue })}>Cinematographer</option>
+                  <option className={styles.option} value="drone_operator" onChange={(event) => this.setState({ profession: event.target.vlaue })}>Drone Operator</option>
                 </select>
               </div>}
               {this.state.currentPage === 4 && <div className={styles.inputField} id={styles.bio}>
                 <label htmlFor="bio" className={styles.label}>Bio :</label>
-                <textarea required name="bio" id="bio" cols="30" rows="10" className={styles.textarea} placeholder='Write Your bio here...'></textarea>
+                <textarea required name="bio" id="bio" cols="30" rows="10" onChange={(event) => this.setState({ bio: event.target.vlaue })} className={styles.textarea} placeholder='Write Your bio here...'></textarea>
               </div>}
               {this.state.currentPage === 5 && <div className={styles.inputField} id={styles.equipment}>
                 <label htmlFor="equipments" className={styles.label}>Equipments Available :</label>
-                <textarea name="equipments" id="equipments" cols="30" rows="10" className={styles.textarea} placeholder='Write Your equipments here...'></textarea>
+                <textarea name="equipments" id="equipments" cols="30" rows="10" onChange={(event) => this.setState({ equipments: event.target.vlaue })} className={styles.textarea} placeholder='Write Your equipments here...'></textarea>
               </div>}
               <div className={styles.btns}>
                 <button className={styles.NextBtn} type={this.state.btnType} onClick={() => this.increProgress(25)}>{this.state.btn}</button>
