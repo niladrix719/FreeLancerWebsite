@@ -13,7 +13,14 @@ class Freelancer extends React.Component {
       progress: 0,
       currentPage: 1,
       btn: 'Next',
-      btnType: 'button'
+      btnType: 'button',
+      firstName: '',
+      lastName: '',
+      phone: '',
+      profession: '',
+      bio: '',
+      equipments: '',
+      error: false
     }
   }
 
@@ -22,10 +29,32 @@ class Freelancer extends React.Component {
       return;
     }
 
-    console.log(this.state.progress)
+    if((this.state.firstName === '' || this.state.lastName === '') && this.state.currentPage === 1){
+      this.setState({error: true});
+      return;
+    }
+    
+    if(this.state.phone === '' && this.state.currentPage === 2){
+      this.setState({error: true});
+      return;
+    }
+
+    if(this.state.profession === '' && this.state.currentPage === 3){
+      this.setState({error: true});
+      return;
+    }
+
+    if(this.state.bio === '' && this.state.currentPage === 4){
+      this.setState({error: true});
+      return;
+    }
+
+    if(this.state.equipments === '' && this.state.currentPage === 5){
+      this.setState({error: true});
+      return;
+    }
 
     this.setState({ progress: this.state.progress + val });
-    console.log(this.state.progress);
     this.increPage();
   }
 
@@ -49,7 +78,6 @@ class Freelancer extends React.Component {
 
     this.setState({ currentPage: this.state.currentPage + 1 });
   }
-
 
   decrePage = () => {
     if (this.state.currentPage === 1)
@@ -104,12 +132,21 @@ class Freelancer extends React.Component {
             <p className={styles.subHeading}>We only allow verified Freelancers on our website.</p>
             <form onSubmit={this.handleSubmit} method='post' action='/register/freelancer' className={styles.form}>
               {this.state.currentPage === 1 && <div className={styles.inputField} id={styles.firstname}>
+                {this.state.error && <p className={styles.error}>Please provide all the inputs the fields.</p>}
                 <label htmlFor="firstname" className={styles.label}>First name :</label>
-                <input type='text' className={styles.input} placeholder='Enter Your First name' name='firstname' id='firstname' required />
+                <input type='text' className={styles.input}
+                  placeholder='Enter Your First name'
+                  name='firstname' id='firstname' required
+                  onChange={(event) => this.setState({ firstName: event.target.value })} 
+                />
               </div>}
               {this.state.currentPage === 1 && <div className={styles.inputField} id={styles.lastname}>
                 <label htmlFor="lastname" className={styles.label}>Last name :</label>
-                <input type='text' className={styles.input} placeholder='Enter Your Last name' name='lastname' id='lastname' required />
+                <input type='text' className={styles.input}
+                  placeholder='Enter Your Last name'
+                  name='lastname' id='lastname' required
+                  onChange={(event) => this.setState({ lastName: event.target.value })} 
+                />
               </div>}
               {this.state.currentPage === 2 && <div className={styles.inputField} id={styles.phone}>
                 <label htmlFor="phone" className={styles.label}>Phone :</label>
@@ -122,20 +159,6 @@ class Freelancer extends React.Component {
                   <option className={styles.option} value="cinematographer">Cinematographer</option>
                   <option className={styles.option} value="drone_operator">Drone Operator</option>
                 </select>
-                {/* <div className={styles.radioBtns}>
-                  <label className={styles.OptionBox} for="photographer">
-                    <Image src="/photographer.png" alt="Photographer" width='90' height='90' />
-                    <input className={styles.radio} type="radio" name="profession" id="photographer" value="photographer" required />
-                  </label>
-                  <label for="cinematographer">
-                    <Image src="/cinematographerr.png" alt="Cinematographer" width='90' height='90' />
-                    <input className={styles.radio} type="radio" name="profession" id="cinematographer" value="cinematographer" required />
-                  </label>
-                  <label for="drone_operator">
-                    <Image src="/drone.png" alt="Drone Operator" width='90' height='90' />
-                    <input className={styles.radio} type="radio" name="profession" id="drone_operator" value="drone_operator" required />
-                  </label>
-                </div> */}
               </div>}
               {this.state.currentPage === 4 && <div className={styles.inputField} id={styles.bio}>
                 <label htmlFor="bio" className={styles.label}>Bio :</label>
@@ -143,7 +166,7 @@ class Freelancer extends React.Component {
               </div>}
               {this.state.currentPage === 5 && <div className={styles.inputField} id={styles.equipment}>
                 <label htmlFor="equipments" className={styles.label}>Equipments Available :</label>
-                <textarea required name="equipments" id="equipments" cols="30" rows="10" className={styles.textarea} placeholder='Write Your equipments here...'></textarea>
+                <textarea name="equipments" id="equipments" cols="30" rows="10" className={styles.textarea} placeholder='Write Your equipments here...'></textarea>
               </div>}
               <div className={styles.btns}>
                 <button className={styles.NextBtn} type={this.state.btnType} onClick={() => this.increProgress(25)}>{this.state.btn}</button>

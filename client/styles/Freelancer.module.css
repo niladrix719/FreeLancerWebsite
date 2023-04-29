@@ -214,36 +214,6 @@
     border: #ededed 1px solid;
 }
 
-.radioBtns {
-    display: flex;
-    justify-content: flex-start;
-}
-
-.radioBtns label {
-    display: inline-block;
-    margin-right: 10px;
-    cursor: pointer;
-}
-
-.radio {
-    display: none;
-}
-
-.radio:checked + img{
-    border: 2px solid blue;
-}
-
-.radioBtns img {
-    width: 120px;
-    height: 90px;
-    border: 2px solid #ddd;
-    transition: all 0.3s ease;
-}
-
-.radioBtns img:hover {
-    transform: scale(1.1);
-}
-
-.optionBox{
-    padding: 1rem;
+.error{
+    color: red;
 }
