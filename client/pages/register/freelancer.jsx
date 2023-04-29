@@ -18,10 +18,14 @@ class Freelancer extends React.Component {
   }
 
   increProgress = (val) => {
-    if (this.state.progress + val > 100)
+    if (this.state.progress + val > 100){
       return;
+    }
+
+    console.log(this.state.progress)
 
     this.setState({ progress: this.state.progress + val });
+    console.log(this.state.progress);
     this.increPage();
   }
 

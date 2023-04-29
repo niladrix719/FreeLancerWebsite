@@ -23,8 +23,9 @@ const freelancerSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  equipment: {
+  equipments: {
     type: String,
+    required: true
   }
 });
 

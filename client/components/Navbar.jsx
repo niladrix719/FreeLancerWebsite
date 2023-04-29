@@ -45,7 +45,7 @@ export default function Navbar(props) {
       <div className={styles.right}>
         <ul className={styles.navigations}>
           <Link className={styles.navElement} href='/'>
-            <span>
+            <span id={styles.home}>
               Home&nbsp;&nbsp;
             </span>
           </Link>

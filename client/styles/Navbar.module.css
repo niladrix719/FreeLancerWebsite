@@ -61,7 +61,7 @@
     flex-direction: row;
     height: 3rem;
     align-items: center;
-    padding: 1rem;
+    padding: 0.4rem;
     font-size: 1.05rem;
     font-weight: 400;
     position: relative;
@@ -83,7 +83,7 @@
     width: 36rem;
     position: absolute;
     top: 3rem;
-    left: -15rem;
+    left: -17.25rem;
     display: none;
     border-radius: 1rem;
     padding: 2rem;
@@ -170,4 +170,9 @@
     color: #c7c7c7;
     margin-top: -0.75rem;
     font-size: 0.9rem;
+}
+
+#home{
+    position: relative;
+    left: 4px;
 }

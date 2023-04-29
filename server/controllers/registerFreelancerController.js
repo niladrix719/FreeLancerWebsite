@@ -1,6 +1,7 @@
 const freelancerCollection = require('../models/freelancerModel');
 
 module.exports = async function (req, res) {
+  console.log(req.body)
   try {
     const freelancerData = new freelancerCollection({
       firstname: req.body.firstname,
@@ -8,7 +9,7 @@ module.exports = async function (req, res) {
       phone: req.body.phone,
       profession: req.body.profession,
       bio: req.body.bio,
-      equipments: req.body.equipment,
+      equipments: req.body.equipments,
     });
 
     const postData = await freelancerData.save();
