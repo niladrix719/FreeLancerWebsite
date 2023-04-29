@@ -108,12 +108,12 @@ class Freelancer extends React.Component {
               </div>}
               {this.state.currentPage === 3 && <div className={styles.inputField} id={styles.profession}>
                 <label htmlFor="profession" className={styles.label}>What is your profession?</label>
-                {/* <select required className={styles.options} name="profession" id="profession">
+                <select required className={styles.options} name="profession" id="profession">
                   <option className={styles.option} value="photographer">Photographer</option>
                   <option className={styles.option} value="cinematographer">Cinematographer</option>
                   <option className={styles.option} value="drone_operator">Drone Operator</option>
-                </select> */}
-                <div className={styles.radioBtns}>
+                </select>
+                {/* <div className={styles.radioBtns}>
                   <label className={styles.OptionBox} for="photographer">
                     <Image src="/photographer.png" alt="Photographer" width='90' height='90' />
                     <input className={styles.radio} type="radio" name="profession" id="photographer" value="photographer" required />
@@ -126,7 +126,7 @@ class Freelancer extends React.Component {
                     <Image src="/drone.png" alt="Drone Operator" width='90' height='90' />
                     <input className={styles.radio} type="radio" name="profession" id="drone_operator" value="drone_operator" required />
                   </label>
-                </div>
+                </div> */}
               </div>}
               {this.state.currentPage === 4 && <div className={styles.inputField} id={styles.bio}>
                 <label htmlFor="bio" className={styles.label}>Bio :</label>
