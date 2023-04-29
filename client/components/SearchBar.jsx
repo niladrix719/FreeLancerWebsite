@@ -40,11 +40,11 @@ class SearchBar extends React.Component {
           </div>
           <SearchBox />
         </div>
-        <div className={styles.suggestions}>
+        {/* <div className={styles.suggestions}>
           <Link className={styles.link} href='/photographer'>Photographer, </Link> &nbsp;
           <Link className={styles.link} href='/cinematographer'>Cinematographer, </Link> &nbsp;
           <Link className={styles.link} href='/droneOperator'>Drone Operator</Link>
-        </div>
+        </div> */}
       </div>
     )
   }
