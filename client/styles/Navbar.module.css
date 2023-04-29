@@ -41,7 +41,8 @@
 }
 
 .login {
-    padding: 0.45rem;
+    padding-top: 0.35rem;
+    padding-bottom: 0.45rem;
     padding-left: 1.2rem;
     padding-right: 1.2rem;
     border-radius: 1rem;
