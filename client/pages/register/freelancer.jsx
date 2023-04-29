@@ -4,6 +4,7 @@ import styles from '../../styles/Freelancer.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import Image from 'next/image'
+import Footer from '@/components/Footer'
 
 class Freelancer extends React.Component {
   constructor(props) {
@@ -86,7 +87,7 @@ class Freelancer extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className={styles.main}>
         <Navbar />
         <div className={styles.body}>
           <div className={styles.left}>
@@ -107,11 +108,25 @@ class Freelancer extends React.Component {
               </div>}
               {this.state.currentPage === 3 && <div className={styles.inputField} id={styles.profession}>
                 <label htmlFor="profession" className={styles.label}>What is your profession?</label>
-                <select required className={styles.options} name="profession" id="profession">
+                {/* <select required className={styles.options} name="profession" id="profession">
                   <option className={styles.option} value="photographer">Photographer</option>
                   <option className={styles.option} value="cinematographer">Cinematographer</option>
                   <option className={styles.option} value="drone_operator">Drone Operator</option>
-                </select>
+                </select> */}
+                <div className={styles.radioBtns}>
+                  <label className={styles.OptionBox} for="photographer">
+                    <Image src="/photographer.png" alt="Photographer" width='90' height='90' />
+                    <input className={styles.radio} type="radio" name="profession" id="photographer" value="photographer" required />
+                  </label>
+                  <label for="cinematographer">
+                    <Image src="/cinematographerr.png" alt="Cinematographer" width='90' height='90' />
+                    <input className={styles.radio} type="radio" name="profession" id="cinematographer" value="cinematographer" required />
+                  </label>
+                  <label for="drone_operator">
+                    <Image src="/drone.png" alt="Drone Operator" width='90' height='90' />
+                    <input className={styles.radio} type="radio" name="profession" id="drone_operator" value="drone_operator" required />
+                  </label>
+                </div>
               </div>}
               {this.state.currentPage === 4 && <div className={styles.inputField} id={styles.bio}>
                 <label htmlFor="bio" className={styles.label}>Bio :</label>
@@ -154,6 +169,7 @@ class Freelancer extends React.Component {
         <div className={styles.bar}>
           <div className={styles.progress} style={{ width: `${this.state.progress}%` }}></div>
         </div>
+        <Footer />
       </div>
     )
   }
