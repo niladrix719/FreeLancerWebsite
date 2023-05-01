@@ -12,7 +12,7 @@ const freelancerSchema = new mongoose.Schema({
   phone: {
     type: Number,
     min: 10,
-    uqique: true,
+    unique: true,
     required: true
   },
   profession: {
