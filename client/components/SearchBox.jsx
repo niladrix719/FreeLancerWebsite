@@ -12,13 +12,10 @@ class SearchBox extends React.Component {
     };
   }
 
-  handleInputFocus = () => {
-    this.setState({ isInputFocused: true });
+  handleInputClick = () => {
+    this.setState({ isInputFocused: !this.state.isInputFocused });
   };
 
-  handleInputBlur = () => {
-    this.setState({ isInputFocused: false });
-  };
   render() {
     return (
       <div className={styles.searchBox}>
@@ -26,7 +23,7 @@ class SearchBox extends React.Component {
           <FontAwesomeIcon icon={faMagnifyingGlass} style={{ color: 'white' }} />
         </button>
         <input type='text' className={styles.searchInput} placeholder='Search for services'
-          onFocus={this.handleInputFocus} onBlur={this.handleInputBlur} />
+          onClick={this.handleInputClick} />
         {this.state.isInputFocused && <div className={styles.searchNames}>
           <ul className={styles.names}>
             <Link href='/explore' className={styles.name}>Photographer</Link>

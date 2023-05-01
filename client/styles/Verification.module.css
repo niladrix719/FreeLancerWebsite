@@ -1,0 +1,106 @@
+.verification {
+    background-color: white;
+}
+
+.body {
+    padding-top: 3rem;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 6rem;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40rem;
+}
+
+.title {
+    font-size: 2.8rem;
+    font-weight: 700;
+}
+
+.subTitle {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-top: 1rem;
+    color: #7c7c7c;
+}
+
+.dp {
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid white;
+}
+
+#cover {
+    height: 8rem;
+    width: 40rem;
+    background-color: #e4e6e7;
+    margin-top: 2rem;
+    cursor: pointer;
+}
+
+#profile_pic {
+    position: relative;
+    top: -6rem;
+}
+
+.uploads {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.upload {
+    text-align: center;
+    width: 13rem;
+}
+
+.box {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #00aaff;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 13rem;
+}
+
+.box input[type="file"] {
+    display: none;
+}
+
+.socials{
+    margin-top: 2rem;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.social{
+    justify-content: flex-start;
+    gap: 3rem;
+}
+
+.input{
+    border: 1px solid #686868;
+    padding: 0.5rem;
+    width: 17.5rem;
+    border-radius: 5px;
+}
+
+.btn{
+    background-color: var(--primary-blue);
+    color: white;
+    margin-top: 2rem;
+    padding: 0.5rem;
+    width: 40rem;
+}

@@ -1,0 +1,8 @@
+.portfolio_card{
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding: 1rem;
+}
