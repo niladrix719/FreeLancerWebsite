@@ -25,7 +25,6 @@ class Freelancer extends React.Component {
   }
 
   increProgress = (val) => {
-    console.log(this.state.currentPage, this.state.phone)
     if (this.state.progress + val > 100){
       return;
     }
@@ -56,6 +55,7 @@ class Freelancer extends React.Component {
     }
 
     this.setState({ progress: this.state.progress + val });
+    this.setState({error: false});
     this.increPage();
   }
 
@@ -134,7 +134,7 @@ class Freelancer extends React.Component {
             <form onSubmit={this.handleSubmit} method='post' action='/register/freelancer' className={styles.form}>
               {this.state.error && <p className={styles.error}>Please provide all the inputs the fields.</p>}
               {this.state.currentPage === 1 && <div className={styles.inputField} id={styles.firstname}>
-                <label htmlFor="firstname" className={styles.label}>First name :</label>
+                <label htmlFor="firstname" className={styles.label}><span style={{color : 'red'}}>* </span>First name :</label>
                 <input type='text' className={styles.input}
                   placeholder='Enter Your First name'
                   name='firstname' id='firstname' required
@@ -142,7 +142,7 @@ class Freelancer extends React.Component {
                 />
               </div>}
               {this.state.currentPage === 1 && <div className={styles.inputField} id={styles.lastname}>
-                <label htmlFor="lastname" className={styles.label}>Last name :</label>
+                <label htmlFor="lastname" className={styles.label}><span style={{color : 'red'}}>* </span>Last name :</label>
                 <input type='text' className={styles.input}
                   placeholder='Enter Your Last name'
                   name='lastname' id='lastname' required
@@ -150,7 +150,7 @@ class Freelancer extends React.Component {
                 />
               </div>}
               {this.state.currentPage === 2 && <div className={styles.inputField} id={styles.phone}>
-                <label htmlFor="phone" className={styles.label}>Phone :</label>
+                <label htmlFor="phone" className={styles.label}><span style={{color : 'red'}}>* </span>Phone :</label>
                 <input type='number' id={styles.number}className={styles.input}
                   placeholder='Enter Your Phone no.'
                   name='phone' required
@@ -158,19 +158,19 @@ class Freelancer extends React.Component {
                 />
               </div>}
               {this.state.currentPage === 3 && <div className={styles.inputField} id={styles.profession}>
-                <label htmlFor="profession" className={styles.label}>What is your profession?</label>
-                <select required className={styles.options} name="profession" id="profession">
-                  <option className={styles.option} value="photographer" onChange={(event) => this.setState({ profession: event.target.vlaue })}>Photographer</option>
-                  <option className={styles.option} value="cinematographer" onChange={(event) => this.setState({ profession: event.target.vlaue })}>Cinematographer</option>
-                  <option className={styles.option} value="drone_operator" onChange={(event) => this.setState({ profession: event.target.vlaue })}>Drone Operator</option>
+                <label htmlFor="profession" className={styles.label}><span style={{color : 'red'}}>* </span>What is your profession?</label>
+                <select required className={styles.options} name="profession" onChange={(event) => this.setState({ profession: event.target.vlaue })} id="profession">
+                  <option className={styles.option} value="photographer">Photographer</option>
+                  <option className={styles.option} value="cinematographer">Cinematographer</option>
+                  <option className={styles.option} value="drone_operator">Drone Operator</option>
                 </select>
               </div>}
               {this.state.currentPage === 4 && <div className={styles.inputField} id={styles.bio}>
-                <label htmlFor="bio" className={styles.label}>Bio :</label>
+                <label htmlFor="bio" className={styles.label}><span style={{color : 'red'}}>* </span>Bio :</label>
                 <textarea required name="bio" id="bio" cols="30" rows="10" onChange={(event) => this.setState({ bio: event.target.vlaue })} className={styles.textarea} placeholder='Write Your bio here...'></textarea>
               </div>}
               {this.state.currentPage === 5 && <div className={styles.inputField} id={styles.equipment}>
-                <label htmlFor="equipments" className={styles.label}>Equipments Available :</label>
+                <label htmlFor="equipments" className={styles.label}><span style={{color : 'red'}}>* </span>Equipments Available :</label>
                 <textarea name="equipments" id="equipments" cols="30" rows="10" onChange={(event) => this.setState({ equipments: event.target.vlaue })} className={styles.textarea} placeholder='Write Your equipments here...'></textarea>
               </div>}
               <div className={styles.btns}>
