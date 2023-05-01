@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const db = require('./db/db');
 const signupController = require('./controllers/signupController');
 const registerFreelancerController = require('./controllers/registerFreelancerController');
+const registerCompanyController = require('./controllers/registerCompanyController');
 
 // Creating the app
 const app = express();
@@ -21,6 +22,7 @@ app.use(express.static('public'));
 // Setting up the routes
 app.post('/signup', signupController);
 app.post('/register/freelancer',registerFreelancerController);
+app.post('/register/company',registerCompanyController);
 
 // Starting the server
 const port = process.env.PORT || 3000;
