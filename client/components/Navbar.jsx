@@ -25,7 +25,7 @@ export default function Navbar(props) {
         setBackground('transparent');
       }
     });
-  }, []);
+  }, [props.color]);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -38,7 +38,7 @@ export default function Navbar(props) {
     }
   }, []);
 
-  function handelLogout () {
+  function handelLogout() {
     localStorage.removeItem('user');
     localStorage.removeItem('freelancer');
     localStorage.removeItem('company');
@@ -48,7 +48,7 @@ export default function Navbar(props) {
   }
 
   return (
-    <nav className={styles.navbar} style={{ color: color , backgroundColor: background }}>
+    <nav className={styles.navbar} style={{ color: color, backgroundColor: background }}>
       <div className={styles.left}>
         <Link href='/'>Fipezo</Link>
       </div>

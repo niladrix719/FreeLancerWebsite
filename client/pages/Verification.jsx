@@ -12,10 +12,10 @@ function Verification() {
       <div className={styles.body}>
         <form className={styles.form}>
           <h1 className={styles.title}>Verification Form</h1>
-          <p className={styles.subTitle}>You're almost there! Just a final step to complete your profile.</p>
+          <p className={styles.subTitle}>You&apos;re almost there! Just a final step to complete your profile.</p>
           <div className={styles.formGroup} id={styles.cover}></div>
           <div className={styles.formGroup} id={styles.profile_pic}>
-            <Image className={styles.dp} src='/dp.png' width={180} height={180} />
+            <Image className={styles.dp} src='/dp.png' width={180} height={180} alt='profile-picture'/>
           </div>
           <div className={styles.uploads}>
             <label className={styles.box}>
