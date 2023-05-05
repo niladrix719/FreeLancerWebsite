@@ -48,7 +48,7 @@ function contact() {
             </div>
           </div>
           <div className={styles.right}>
-            <Image src='/contact.png' width='350' height='350' alt='contact_us' />
+            <Image src='/contactus.jpg' width='700' height='700' alt='contact_us' />
           </div>
         </div>
       </div>

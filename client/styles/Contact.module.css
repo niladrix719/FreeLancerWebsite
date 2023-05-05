@@ -6,7 +6,7 @@
     padding: 2rem;
     box-shadow: var(--shadow);
     display: flex;
-    align-items: flex-end;
+    align-items: center;
 }
 
 .left{

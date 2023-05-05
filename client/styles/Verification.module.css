@@ -3,17 +3,26 @@
 }
 
 .body {
-    padding-top: 3rem;
+    padding-top: 2rem;
     display: flex;
     justify-content: center;
     margin-bottom: 6rem;
+    background-image: url(/bgX.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    top: 2rem;
 }
 
 .form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 40rem;
+    border-radius: 5px;
+    border: 1px solid rgb(209, 205, 205);
+    padding: 4rem;
+    padding-top: 2rem;
+    box-shadow: var(--shadow);
 }
 
 .title {
@@ -35,8 +44,8 @@
 }
 
 #cover {
-    height: 8rem;
-    width: 40rem;
+    height: 11rem;
+    width: 100%;
     background-color: #e4e6e7;
     margin-top: 2rem;
     cursor: pointer;
@@ -65,7 +74,7 @@
     font-size: 16px;
     font-weight: bold;
     color: #fff;
-    background-color: #00aaff;
+    background-color: #323131;
     border-radius: 5px;
     cursor: pointer;
     width: 13rem;
@@ -83,6 +92,7 @@
     gap: 2.5rem;
     flex-wrap: wrap;
     justify-content: center;
+    margin-bottom: 3rem;
 }
 
 .social{
@@ -103,4 +113,56 @@
     margin-top: 2rem;
     padding: 0.5rem;
     width: 40rem;
+    font-weight: 700;
+    border-radius: 5px;
+}
+
+.portfolio{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 2rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.addBox{
+    height: 12rem;
+    width: 18rem;
+    border: 1px dashed #686868;
+    position: relative;
+    overflow: hidden;
+}
+
+.addBox [type="file"]{
+    opacity: 0;
+}
+
+.plus{
+    position: absolute;
+    top: 48%;
+    left: 48%;
+}
+
+.work{
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+
+.porfilePicturePreview{
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+
+.heading{
+    font-size: 2rem;
+    margin-bottom: 4rem;
+}
+
+.preview{
+    position: absolute;
+    top: 0;
+    left: 0;
 }
