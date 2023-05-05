@@ -258,3 +258,23 @@
     font-size: 2rem;
     margin-bottom: 4rem;
 }
+
+.check{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 4rem;
+}
+
+.checkbox{
+    height: 1rem;
+    width: 1rem;
+    position: relative;
+    top: 1.5px;
+}
+
+.links{
+    color: var(--primary-blue);
+    text-decoration: underline;
+    cursor: pointer;
+}

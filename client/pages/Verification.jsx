@@ -2,7 +2,7 @@ import Navbar from '@/components/Navbar';
 import styles from '../styles/Verification.module.css';
 import Footer from '@/components/Footer';
 import Image from 'next/image';
-import { faPlus, faCheck , faFile} from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faCheck, faFile } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
 
@@ -65,16 +65,16 @@ function Verification() {
             <label className={styles.box}>
               <FontAwesomeIcon icon={faPlus} style={{ color: 'white' }} />
               &nbsp;&nbsp;&nbsp;&nbsp;Addhar Card
-              <input type="file" className={styles.upload} onChange={(e) => handleImageChange(e,6)} accept="image/jpeg,image/png" />
+              <input type="file" className={styles.upload} onChange={(e) => handleImageChange(e, 6)} accept="image/jpeg,image/png" />
               &nbsp;&nbsp;&nbsp;&nbsp;
-              {images[6] && <FontAwesomeIcon icon={faFile} style={{color: "#ffffff",}} />}
+              {images[6] && <FontAwesomeIcon icon={faFile} style={{ color: "#ffffff", }} />}
             </label>
             <label className={styles.box}>
               <FontAwesomeIcon icon={faPlus} style={{ color: 'white' }} />
               &nbsp;&nbsp;&nbsp;&nbsp;Pan Card
-              <input type="file" className={styles.upload} onChange={(e) => handleImageChange(e,7)} accept="image/jpeg,image/png" />
+              <input type="file" className={styles.upload} onChange={(e) => handleImageChange(e, 7)} accept="image/jpeg,image/png" />
               &nbsp;&nbsp;&nbsp;&nbsp;
-              {images[7] && <FontAwesomeIcon icon={faFile} style={{color: "#ffffff",}} />}
+              {images[7] && <FontAwesomeIcon icon={faFile} style={{ color: "#ffffff", }} />}
             </label>
           </div>
           <div className={styles.socials}>
@@ -117,6 +117,9 @@ function Verification() {
               <input type="file" className={styles.work} onChange={(e) => handleImageChange(e, 3)} accept="image/jpeg,image/png" />
               {!images[3] && <FontAwesomeIcon className={styles.plus} icon={faPlus} style={{ color: '#1f1c1c' }} />}
             </div>
+          </div>
+          <div className={styles.check}><input type="checkbox" className={styles.checkbox} />
+            I Agree to the <span className={styles.links}>Terms and Conditions</span>
           </div>
           <button className={styles.btn}>Verify Now</button>
         </form>
