@@ -8,6 +8,7 @@ import { useState } from 'react';
 
 function Verification() {
   const [images, setImages] = useState([]);
+  const[warns, setWarns] = useState([false, false, false, false, false, false, false, false]);
 
   const handleImageChange = (e, index) => {
     const file = e.target.files[0];
@@ -16,6 +17,48 @@ function Verification() {
     if (!file) {
       return;
     }
+
+    if(file.size > 1048576 && index == 4) {
+      setWarns([true, false, false, false, false, false, false, false]);
+      return;
+    }
+
+    if(file.size > 1048576 && index == 5) {
+      setWarns([false, true, false, false, false, false, false, false]);
+      return;
+    }
+
+    if(file.size > 1048576 && index == 6) {
+      setWarns([false, false, true, false, false, false, false, false]);
+      return;
+    }
+
+    if(file.size > 1048576 && index == 7) {
+      setWarns([false, false, false, true, false, false, false, false]);
+      return;
+    }
+
+    if(file.size > 1048576 && index == 0) {
+      setWarns([false, false, false, false, true, false, false, false]);
+      return;
+    }
+
+    if(file.size > 1048576 && index == 1) {
+      setWarns([false, false, false, false, false, true, false, false]);
+      return;
+    }
+
+    if(file.size > 1048576 && index == 2) {
+      setWarns([false, false, false, false, false, false, true, false]);
+      return;
+    }
+
+    if(file.size > 1048576 && index == 3) {
+      setWarns([false, false, false, false, false, false, false, true]);
+      return;
+    }
+
+    setWarns([false, false, false, false, false, false, false, false]);
 
     reader.onloadend = () => {
       const newImages = [...images];
@@ -53,6 +96,7 @@ function Verification() {
             <input type="file" className={styles.coverPreview}
               onChange={(e) => handleImageChange(e, 5)} accept="image/jpeg,image/png"
             />
+            {warns[1] && <p className={styles.warn}>File size exceeds maximum limit of 1MB</p>}
           </div>
           <div className={styles.formGroup} id={styles.profile_pic} style={{
             backgroundImage: images[4] ? `url(${images[4]})` : `url(/dp.png)`,
@@ -60,6 +104,7 @@ function Verification() {
             <input type="file" className={styles.profilePicPreview}
               onChange={(e) => handleImageChange(e, 4)} accept="image/jpeg,image/png"
             />
+            {warns[0] && <p className={styles.warn}>File size exceeds maximum limit of 1MB</p>}
           </div>
           <div className={styles.uploads}>
             <label className={styles.box}>
@@ -68,6 +113,7 @@ function Verification() {
               <input type="file" className={styles.upload} onChange={(e) => handleImageChange(e, 6)} accept="image/jpeg,image/png" />
               &nbsp;&nbsp;&nbsp;&nbsp;
               {images[6] && <FontAwesomeIcon icon={faFile} style={{ color: "#ffffff", }} />}
+              {warns[2] && <p className={styles.warn}>File size exceeds maximum limit of 1MB</p>}
             </label>
             <label className={styles.box}>
               <FontAwesomeIcon icon={faPlus} style={{ color: 'white' }} />
@@ -75,6 +121,7 @@ function Verification() {
               <input type="file" className={styles.upload} onChange={(e) => handleImageChange(e, 7)} accept="image/jpeg,image/png" />
               &nbsp;&nbsp;&nbsp;&nbsp;
               {images[7] && <FontAwesomeIcon icon={faFile} style={{ color: "#ffffff", }} />}
+              {warns[3] && <p className={styles.warn}>File size exceeds maximum limit of 1MB</p>}
             </label>
           </div>
           <div className={styles.socials}>
@@ -98,6 +145,7 @@ function Verification() {
             }}>
               <input type="file" className={styles.work} onChange={(e) => handleImageChange(e, 0)} accept="image/jpeg,image/png" />
               {!images[0] && <FontAwesomeIcon className={styles.plus} icon={faPlus} style={{ color: '#1f1c1c' }} />}
+              {warns[4] && <p className={styles.warn}>File size exceeds maximum limit of 1MB</p>}
             </div>
             <div className={styles.addBox} style={{
               backgroundImage: images[1] ? `url(${images[1]})` : `none`,

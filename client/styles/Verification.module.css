@@ -111,6 +111,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    position: relative;
 }
 
 #profile_pic {
@@ -150,6 +151,7 @@
     border-radius: 5px;
     cursor: pointer;
     width: 13rem;
+    position: relative;
 }
 
 .box:hover{
@@ -277,4 +279,12 @@
     color: var(--primary-blue);
     text-decoration: underline;
     cursor: pointer;
+}
+
+.warn{
+    color: red;
+    font-size: 0.9rem;
+    position: absolute;
+    bottom: -3rem;
+    font-weight: 500;
 }
