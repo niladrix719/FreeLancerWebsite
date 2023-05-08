@@ -2,8 +2,10 @@
 
 ## Run Command (Client) : 
 cd client 
+
 npm run dev
 
 ## Run Command (Server) :
 cd server 
+
 npm start
