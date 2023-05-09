@@ -3,7 +3,7 @@
 ## Run Command (Client) : 
 cd client 
 
-npm run dev
+npm run start
 
 ## Run Command (Server) :
 cd server 

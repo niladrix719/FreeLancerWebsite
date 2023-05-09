@@ -152,18 +152,21 @@ function Verification() {
             }}>
               <input type="file" className={styles.work} onChange={(e) => handleImageChange(e, 1)} accept="image/jpeg,image/png" />
               {!images[1] && <FontAwesomeIcon className={styles.plus} icon={faPlus} style={{ color: '#1f1c1c' }} />}
+              {warns[5] && <p className={styles.warn}>File size exceeds maximum limit of 1MB</p>}
             </div>
             <div className={styles.addBox} style={{
               backgroundImage: images[2] ? `url(${images[2]})` : `none`,
             }}>
               <input type="file" className={styles.work} onChange={(e) => handleImageChange(e, 2)} accept="image/jpeg,image/png" />
               {!images[2] && <FontAwesomeIcon className={styles.plus} icon={faPlus} style={{ color: '#1f1c1c' }} />}
+              {warns[6] && <p className={styles.warn}>File size exceeds maximum limit of 1MB</p>}
             </div>
             <div className={styles.addBox} style={{
               backgroundImage: images[3] ? `url(${images[3]})` : `none`,
             }}>
               <input type="file" className={styles.work} onChange={(e) => handleImageChange(e, 3)} accept="image/jpeg,image/png" />
               {!images[3] && <FontAwesomeIcon className={styles.plus} icon={faPlus} style={{ color: '#1f1c1c' }} />}
+              {warns[7] && <p className={styles.warn}>File size exceeds maximum limit of 1MB</p>}
             </div>
           </div>
           <div className={styles.check}><input type="checkbox" className={styles.checkbox} />
