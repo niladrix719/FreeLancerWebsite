@@ -25,44 +25,64 @@ function Verification() {
       return;
     }
 
-    if (file.size > 1048576 && index == 4) {
+    if (file.size > 1048576 && index === 4) {
       setWarns([true, false, false, false, false, false, false, false]);
       return;
     }
 
-    if (file.size > 1048576 && index == 5) {
+    if(index === 4){
+      setProfilePicture(file);
+    }
+
+    if (file.size > 1048576 && index === 5) {
       setWarns([false, true, false, false, false, false, false, false]);
       return;
     }
 
-    if (file.size > 1048576 && index == 6) {
+    if(index === 5){
+      setCoverPicture(file);
+    }
+
+    if (file.size > 1048576 && index === 6) {
       setWarns([false, false, true, false, false, false, false, false]);
       return;
     }
 
-    if (file.size > 1048576 && index == 7) {
+    if(index === 6){
+      setAddharCard(file);
+    }
+
+    if (file.size > 1048576 && index === 7) {
       setWarns([false, false, false, true, false, false, false, false]);
       return;
     }
 
-    if (file.size > 1048576 && index == 0) {
+    if(index === 7){
+      setPanCard(file);
+    }
+
+    if (file.size > 1048576 && index === 0) {
       setWarns([false, false, false, false, true, false, false, false]);
       return;
     }
 
-    if (file.size > 1048576 && index == 1) {
+    if (file.size > 1048576 && index === 1) {
       setWarns([false, false, false, false, false, true, false, false]);
       return;
     }
 
-    if (file.size > 1048576 && index == 2) {
+    if (file.size > 1048576 && index === 2) {
       setWarns([false, false, false, false, false, false, true, false]);
       return;
     }
 
-    if (file.size > 1048576 && index == 3) {
+    if (file.size > 1048576 && index === 3) {
       setWarns([false, false, false, false, false, false, false, true]);
       return;
+    }
+
+    if(index === 3 || index === 2 || index === 1 || index === 0){
+      setWorks([...works, file]);
     }
 
     setWarns([false, false, false, false, false, false, false, false]);
@@ -130,16 +150,24 @@ function Verification() {
       </div>
       <div className={styles.socials}>
         <label className={styles.social}>Facebook : <br />
-          <input type="url" className={styles.input} placeholder="https://www.facebook.com/example" />
+          <input type="url" className={styles.input} placeholder="https://www.facebook.com/example"
+            onChange={(e) => setLinks({ ...links, facebook: e.target.value })} value={links.facebook}
+          />
         </label>
         <label className={styles.social}>Instagram : <br />
-          <input type="url" className={styles.input} placeholder="https://www.instagram.com/example" />
+          <input type="url" className={styles.input} placeholder="https://www.instagram.com/example"
+            onChange={(e) => setLinks({ ...links, instagram: e.target.value })} value={links.instagram}
+          />
         </label>
         <label className={styles.social}>Twitter : <br />
-          <input type="url" className={styles.input} placeholder="https://www.twitter.com/example" />
+          <input type="url" className={styles.input} placeholder="https://www.twitter.com/example"
+            onChange={(e) => setLinks({ ...links, twitter: e.target.value })} value={links.twitter}
+          />
         </label>
         <label className={styles.social}>Youtube : <br />
-          <input type="url" className={styles.input} placeholder="https://www.youtube.com/example" />
+          <input type="url" className={styles.input} placeholder="https://www.youtube.com/example"
+            onChange={(e) => setLinks({ ...links, youtube: e.target.value })} value={links.youtube}
+          />
         </label>
       </div>
       <h1 className={styles.heading}>Add Your Works</h1>
@@ -173,7 +201,9 @@ function Verification() {
           {warns[7] && <p className={styles.warn}>File size exceeds maximum limit of 1MB</p>}
         </div>
       </div>
-      <div className={styles.check}><input type="checkbox" className={styles.checkbox} />
+      <div className={styles.check}><input type="checkbox" className={styles.checkbox}
+        onChange={(e) => setTermsAndConditions(e.target.checked)}
+      />
         I Agree to the <span className={styles.links} >Terms and Conditions</span>
       </div>
       <button className={styles.btn}>Verify Now</button>

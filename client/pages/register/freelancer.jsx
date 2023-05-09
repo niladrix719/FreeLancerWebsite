@@ -16,7 +16,7 @@ class Freelancer extends React.Component {
       btn: 'Next',
       firstName: '',
       lastName: '',
-      phone: '',
+      phone: null,
       profession: 'photographer',
       bio: '',
       equipments: '',
@@ -36,7 +36,7 @@ class Freelancer extends React.Component {
       return;
     }
 
-    if (this.state.phone === '' && this.state.currentPage === 2) {
+    if ((this.state.phone === null || this.state.phone === '') && this.state.currentPage === 2) {
       this.setState({ error: true });
       return;
     }
@@ -142,7 +142,7 @@ class Freelancer extends React.Component {
                   placeholder='Enter Your First name'
                   name='firstname' id='firstname' required
                   onChange={(event) => this.setState({ firstName: event.target.value })}
-                  value={this.state.firstName !== '' ? this.state.firstName : ''}
+                  value={this.state.firstName}
                   maxLength={15}
                 />
               </div>}
@@ -152,7 +152,7 @@ class Freelancer extends React.Component {
                   placeholder='Enter Your Last name'
                   name='lastname' id='lastname' required
                   onChange={(event) => this.setState({ lastName: event.target.value })}
-                  value={this.state.lastName !== '' ? this.state.lastName : ''}
+                  value={this.state.lastName}
                   maxLength={15}
                 />
               </div>}
@@ -162,7 +162,7 @@ class Freelancer extends React.Component {
                   placeholder='Enter Your Phone no.'
                   name='phone' required
                   onChange={(event) => this.setState({ phone: event.target.value })}
-                  value={this.state.phone !== 'photographer' ? this.state.phone : 'photographer'}
+                  value={this.state.phone}
                   max={10}
                 />
               </div>}
@@ -170,7 +170,7 @@ class Freelancer extends React.Component {
                 <label htmlFor="profession" className={styles.label}><span style={{ color: 'red' }}>* </span>What is your profession?</label>
                 <select required className={styles.options} name="profession"
                   onChange={(event) => this.setState({ profession: event.target.value })} id="profession"
-                  value={this.state.profession !== '' ? this.state.profession : ''}
+                  value={this.state.profession}
                 >
                   <option className={styles.option} value="photographer">Photographer</option>
                   <option className={styles.option} value="cinematographer">Cinematographer</option>
@@ -182,7 +182,7 @@ class Freelancer extends React.Component {
                 <textarea required name="bio" id="bio" cols="30" rows="10"
                   onChange={(event) => this.setState({ bio: event.target.value })}
                   className={styles.textarea} placeholder='Write Your bio here...'
-                  value={this.state.bio !== '' ? this.state.bio : ''}>
+                  value={this.state.bio}>
                 </textarea>
               </div>}
               {!this.state.form && this.state.currentPage === 5 && <div className={styles.inputField} id={styles.equipment}>
@@ -190,7 +190,7 @@ class Freelancer extends React.Component {
                 <textarea required name="equipments" id="equipments" cols="30" rows="10"
                   onChange={(event) => this.setState({ equipments: event.target.value })}
                   className={styles.textarea} placeholder='Write Your equipments here...'
-                  value={this.state.equipments !== '' ? this.state.equipments : ''}>
+                  value={this.state.equipments}>
                 </textarea>
               </div>}
               {!this.state.form && <div className={styles.btns}>
