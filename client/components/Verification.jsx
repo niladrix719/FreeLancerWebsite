@@ -9,6 +9,13 @@ import { useState } from 'react';
 function Verification() {
   const [images, setImages] = useState([]);
   const [warns, setWarns] = useState([false, false, false, false, false, false, false, false]);
+  const [profilePicture, setProfilePicture] = useState(null);
+  const [coverPicture, setCoverPicture] = useState(null);
+  const [addharCard, setAddharCard] = useState(null);
+  const [panCard, setPanCard] = useState(null);
+  const [links, setLinks] = useState({instagram: '', facebook: '', twitter: '', youtube: ''});
+  const [works, setWorks] = useState([]);
+  const [termsAndConditions, setTermsAndConditions] = useState(false);
 
   const handleImageChange = (e, index) => {
     const file = e.target.files[0];
@@ -167,7 +174,7 @@ function Verification() {
         </div>
       </div>
       <div className={styles.check}><input type="checkbox" className={styles.checkbox} />
-        I Agree to the <span className={styles.links}>Terms and Conditions</span>
+        I Agree to the <span className={styles.links} >Terms and Conditions</span>
       </div>
       <button className={styles.btn}>Verify Now</button>
     </>
