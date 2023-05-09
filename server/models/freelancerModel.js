@@ -28,9 +28,13 @@ const freelancerSchema = new mongoose.Schema({
     required: true
   },
   profilePicture: {
-    type: String,
-    required: true
+    data: Buffer,
+    contentType: String
   },
+  coverPicture: {
+    data: Buffer,
+    contentType: String
+  }
 });
 
 const freelancerCollection = new mongoose.model('freelancercollection', freelancerSchema);

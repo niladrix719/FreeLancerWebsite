@@ -4,6 +4,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const db = require('./db/db');
+const multer = require('multer');
 const signupController = require('./controllers/signupController');
 const registerFreelancerController = require('./controllers/registerFreelancerController');
 const registerCompanyController = require('./controllers/registerCompanyController');
