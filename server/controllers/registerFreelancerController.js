@@ -10,6 +10,13 @@ module.exports = async function (req, res) {
       profession: req.body.profession,
       bio: req.body.bio,
       equipments: req.body.equipments,
+      profilePicture: req.body.profilePicture,
+      coverPicture: req.body.coverPicture,
+      addharCard: req.body.addharCard,
+      panCard: req.body.panCard,
+      links: req.body.links,
+      works: req.body.works,
+      termsAndConditions: req.body.termsAndConditions
     });
 
     const postData = await freelancerData.save();

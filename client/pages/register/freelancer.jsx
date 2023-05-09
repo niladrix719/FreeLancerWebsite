@@ -59,7 +59,6 @@ class Freelancer extends React.Component {
     if (this.state.currentPage === 5) {
       this.setState({ error: false });
       this.setState({ form: true });
-      this.handleSubmit();
       return;
     }
 
@@ -97,33 +96,6 @@ class Freelancer extends React.Component {
     }
 
     this.setState({ currentPage: this.state.currentPage - 1 });
-  }
-
-  handleSubmit = () => {
-    const postData = async () => {
-      try {
-        const response = await fetch('http://localhost:3000/register/freelancer', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            firstname: this.state.firstName,
-            lastname: this.state.lastName,
-            phone: this.state.phone,
-            profession: this.state.profession,
-            bio: this.state.bio,
-            equipments: this.state.equipments
-          })
-        });
-        const data = await response.json();
-        localStorage.setItem('freelancer', JSON.stringify(data));
-      } catch (error) {
-        console.error(error);
-      }
-    }
-
-    postData();
   }
 
   render() {
@@ -197,7 +169,14 @@ class Freelancer extends React.Component {
                 <button className={styles.NextBtn} type='button' onClick={() => this.increProgress(25)}>{this.state.btn}</button>
                 <button className={styles.backBtn} type='button' onClick={() => this.decreProgress(25)}>Back</button>
               </div>}
-              {this.state.form && <Verification />}
+              {this.state.form && <Verification
+                firstName={this.state.firstName}
+                lastName={this.state.lastName}
+                phone={this.state.phone}
+                profession={this.state.profession}
+                bio={this.state.bio}
+                equipments={this.state.equipments}
+              />}
             </form>
           </div>
           {!this.state.form && <div className={styles.right}>

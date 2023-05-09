@@ -26,7 +26,11 @@ const freelancerSchema = new mongoose.Schema({
   equipments: {
     type: String,
     required: true
-  }
+  },
+  profilePicture: {
+    type: String,
+    required: true
+  },
 });
 
 const freelancerCollection = new mongoose.model('freelancercollection', freelancerSchema);

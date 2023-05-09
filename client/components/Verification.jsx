@@ -1,12 +1,10 @@
-import Navbar from '@/components/Navbar';
 import styles from '../styles/Verification.module.css';
-import Footer from '@/components/Footer';
 import Image from 'next/image';
 import { faPlus, faCheck, faFile } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
 
-function Verification() {
+function Verification(props) {
   const [images, setImages] = useState([]);
   const [warns, setWarns] = useState([false, false, false, false, false, false, false, false]);
   const [profilePicture, setProfilePicture] = useState(null);
@@ -95,6 +93,40 @@ function Verification() {
 
     reader.readAsDataURL(file);
   };
+
+  const handleSubmit = () => {
+    const postData = async () => {
+      try {
+        const response = await fetch('http://localhost:3000/register/freelancer', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            firstname: props.firstName,
+            lastname: props.lastName,
+            phone: props.phone,
+            profession: props.profession,
+            bio: props.bio,
+            equipments: props.equipments,
+            profilePicture: profilePicture,
+            coverPicture: coverPicture,
+            addharCard: addharCard,
+            panCard: panCard,
+            links: links,
+            works: works,
+            termsAndConditions: termsAndConditions
+          })
+        });
+        const data = await response.json();
+        localStorage.setItem('freelancer', JSON.stringify(data));
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    postData();
+  }
 
   return (
     <>
@@ -206,7 +238,7 @@ function Verification() {
       />
         I Agree to the <span className={styles.links} >Terms and Conditions</span>
       </div>
-      <button className={styles.btn}>Verify Now</button>
+      <button className={styles.btn} onClick={handleSubmit}>Verify Now</button>
     </>
   )
 }
