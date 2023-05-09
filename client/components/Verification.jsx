@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 function Verification(props) {
   const [images, setImages] = useState([]);
-  const [warns, setWarns] = useState([false, false, false, false, false, false, false, false]);
+  const [warns, setWarns] = useState([false, false, false, false, false, false, false, false, false, false, false, false]);
   const [profilePicture, setProfilePicture] = useState(null);
   const [coverPicture, setCoverPicture] = useState(null);
   const [addharCard, setAddharCard] = useState(null);
@@ -14,6 +14,7 @@ function Verification(props) {
   const [links, setLinks] = useState({instagram: '', facebook: '', twitter: '', youtube: ''});
   const [works, setWorks] = useState([]);
   const [termsAndConditions, setTermsAndConditions] = useState(false);
+  const [cameras, setCameras] = useState([false, false]);
 
   const handleImageChange = (e, index) => {
     const file = e.target.files[0];
@@ -24,25 +25,27 @@ function Verification(props) {
     }
 
     if (file.size > 1048576 && index === 4) {
-      setWarns([true, false, false, false, false, false, false, false]);
+      setWarns([true, false, false, false, false, false, false, false, false, false, false, false]);
       return;
     }
 
     if(index === 4){
+      setCameras([cameras[0], true]);
       setProfilePicture(file);
     }
 
     if (file.size > 1048576 && index === 5) {
-      setWarns([false, true, false, false, false, false, false, false]);
+      setWarns([false, true, false, false, false, false, false, false, false, false, false, false]);
       return;
     }
 
     if(index === 5){
+      setCameras([true, cameras[1]]);
       setCoverPicture(file);
     }
 
     if (file.size > 1048576 && index === 6) {
-      setWarns([false, false, true, false, false, false, false, false]);
+      setWarns([false, false, true, false, false, false, false, false, false, false, false, false]);
       return;
     }
 
@@ -51,7 +54,7 @@ function Verification(props) {
     }
 
     if (file.size > 1048576 && index === 7) {
-      setWarns([false, false, false, true, false, false, false, false]);
+      setWarns([false, false, false, true, false, false, false, false, false, false, false, false]);
       return;
     }
 
@@ -60,22 +63,42 @@ function Verification(props) {
     }
 
     if (file.size > 1048576 && index === 0) {
-      setWarns([false, false, false, false, true, false, false, false]);
+      setWarns([false, false, false, false, true, false, false, false, false, false, false, false]);
       return;
     }
 
     if (file.size > 1048576 && index === 1) {
-      setWarns([false, false, false, false, false, true, false, false]);
+      setWarns([false, false, false, false, false, true, false, false, false, false, false, false]);
       return;
     }
 
     if (file.size > 1048576 && index === 2) {
-      setWarns([false, false, false, false, false, false, true, false]);
+      setWarns([false, false, false, false, false, false, true, false, false, false, false, false]);
       return;
     }
 
     if (file.size > 1048576 && index === 3) {
-      setWarns([false, false, false, false, false, false, false, true]);
+      setWarns([false, false, false, false, false, false, false, true, false, false, false, false]);
+      return;
+    }
+
+    if (file.size > 1048576 && index === 8) {
+      setWarns([false, false, false, false, false, false, false, false, true, false, false, false]);
+      return;
+    }
+
+    if (file.size > 1048576 && index === 9) {
+      setWarns([false, false, false, false, false, false, false, false, false, true, false, false]);
+      return;
+    }
+
+    if (file.size > 1048576 && index === 10) {
+      setWarns([false, false, false, false, false, false, false, false, false, false, true, false]);
+      return;
+    }
+
+    if (file.size > 1048576 && index === 11) {
+      setWarns([false, false, false, false, false, false, false, false, false, false, false, true]);
       return;
     }
 
@@ -93,6 +116,13 @@ function Verification(props) {
 
     reader.readAsDataURL(file);
   };
+
+  function handleImageClick(event) {
+    const sibling = event.currentTarget.previousElementSibling;
+    if (sibling) {
+      sibling.click();
+    }
+  }
 
   const handleSubmit = () => {
     const postData = async () => {
@@ -149,6 +179,9 @@ function Verification(props) {
       <div className={styles.formGroup} id={styles.cover} style={{
         backgroundImage: images[5] ? `url(${images[5]})` : `none`,
       }}>
+        {!cameras[0] && <Image className={styles.camera} src='/cameraIcon.png' width={40} height={40} alt='camera'
+        onClick={handleImageClick}
+        />}
         <input type="file" className={styles.coverPreview}
           onChange={(e) => handleImageChange(e, 5)} accept="image/jpeg,image/png"
         />
@@ -157,6 +190,9 @@ function Verification(props) {
       <div className={styles.formGroup} id={styles.profile_pic} style={{
         backgroundImage: images[4] ? `url(${images[4]})` : `url(/dp.png)`,
       }}>
+        {!cameras[1] && <Image className={styles.camera} id={styles.camera} src='/cameraIcon.png' width={40} height={40} alt='camera'
+        onClick={handleImageClick}
+        />}
         <input type="file" className={styles.profilePicPreview}
           onChange={(e) => handleImageChange(e, 4)} accept="image/jpeg,image/png"
         />
@@ -209,28 +245,56 @@ function Verification(props) {
         }}>
           <input type="file" className={styles.work} onChange={(e) => handleImageChange(e, 0)} accept="image/jpeg,image/png" />
           {!images[0] && <FontAwesomeIcon className={styles.plus} icon={faPlus} style={{ color: '#1f1c1c' }} />}
-          {warns[4] && <p className={styles.warn}>File size exceeds maximum limit of 1MB</p>}
+          {warns[4] && <p className={styles.warn} id={styles.warn}>File size exceeds maximum limit of 1MB</p>}
         </div>
         <div className={styles.addBox} style={{
           backgroundImage: images[1] ? `url(${images[1]})` : `none`,
         }}>
           <input type="file" className={styles.work} onChange={(e) => handleImageChange(e, 1)} accept="image/jpeg,image/png" />
           {!images[1] && <FontAwesomeIcon className={styles.plus} icon={faPlus} style={{ color: '#1f1c1c' }} />}
-          {warns[5] && <p className={styles.warn}>File size exceeds maximum limit of 1MB</p>}
+          {warns[5] && <p className={styles.warn} id={styles.warn}>File size exceeds maximum limit of 1MB</p>}
         </div>
         <div className={styles.addBox} style={{
           backgroundImage: images[2] ? `url(${images[2]})` : `none`,
         }}>
           <input type="file" className={styles.work} onChange={(e) => handleImageChange(e, 2)} accept="image/jpeg,image/png" />
           {!images[2] && <FontAwesomeIcon className={styles.plus} icon={faPlus} style={{ color: '#1f1c1c' }} />}
-          {warns[6] && <p className={styles.warn}>File size exceeds maximum limit of 1MB</p>}
+          {warns[6] && <p className={styles.warn} id={styles.warn}>File size exceeds maximum limit of 1MB</p>}
         </div>
         <div className={styles.addBox} style={{
           backgroundImage: images[3] ? `url(${images[3]})` : `none`,
         }}>
           <input type="file" className={styles.work} onChange={(e) => handleImageChange(e, 3)} accept="image/jpeg,image/png" />
           {!images[3] && <FontAwesomeIcon className={styles.plus} icon={faPlus} style={{ color: '#1f1c1c' }} />}
-          {warns[7] && <p className={styles.warn}>File size exceeds maximum limit of 1MB</p>}
+          {warns[7] && <p className={styles.warn} id={styles.warn}>File size exceeds maximum limit of 1MB</p>}
+        </div>
+        <div className={styles.addBox} style={{
+          backgroundImage: images[8] ? `url(${images[8]})` : `none`,
+        }}>
+          <input type="file" className={styles.work} onChange={(e) => handleImageChange(e, 8)} accept="image/jpeg,image/png" />
+          {!images[8] && <FontAwesomeIcon className={styles.plus} icon={faPlus} style={{ color: '#1f1c1c' }} />}
+          {warns[8] && <p className={styles.warn} id={styles.warn}>File size exceeds maximum limit of 1MB</p>}
+        </div>
+        <div className={styles.addBox} style={{
+          backgroundImage: images[9] ? `url(${images[9]})` : `none`,
+        }}>
+          <input type="file" className={styles.work} onChange={(e) => handleImageChange(e, 9)} accept="image/jpeg,image/png" />
+          {!images[9] && <FontAwesomeIcon className={styles.plus} icon={faPlus} style={{ color: '#1f1c1c' }} />}
+          {warns[9] && <p className={styles.warn} id={styles.warn}>File size exceeds maximum limit of 1MB</p>}
+        </div>
+        <div className={styles.addBox} style={{
+          backgroundImage: images[10] ? `url(${images[10]})` : `none`,
+        }}>
+          <input type="file" className={styles.work} onChange={(e) => handleImageChange(e, 10)} accept="image/jpeg,image/png" />
+          {!images[10] && <FontAwesomeIcon className={styles.plus} icon={faPlus} style={{ color: '#1f1c1c' }} />}
+          {warns[10] && <p className={styles.warn} id={styles.warn}>File size exceeds maximum limit of 1MB</p>}
+        </div>
+        <div className={styles.addBox} style={{
+          backgroundImage: images[11] ? `url(${images[11]})` : `none`,
+        }}>
+          <input type="file" className={styles.work} onChange={(e) => handleImageChange(e, 11)} accept="image/jpeg,image/png" />
+          {!images[11] && <FontAwesomeIcon className={styles.plus} icon={faPlus} style={{ color: '#1f1c1c' }} />}
+          {warns[11] && <p className={styles.warn} id={styles.warn}>File size exceeds maximum limit of 1MB</p>}
         </div>
       </div>
       <div className={styles.check}><input type="checkbox" className={styles.checkbox}
