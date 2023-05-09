@@ -316,3 +316,16 @@
 #warn{
     bottom: -1.5rem;
 }
+
+.exclamation{
+    position: absolute;
+    top: 0.5rem;
+    right: 2rem;
+    font-size: 2.5rem;
+    font-weight: 500;
+    box-shadow: var(--shadow);
+}
+
+.exclamation:hover{
+    color: rgb(0, 213, 255);
+}   

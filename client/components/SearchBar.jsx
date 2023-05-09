@@ -38,7 +38,7 @@ class SearchBar extends React.Component {
               <p>Currently Available in Kolkata Only</p>
             </div>
           </div>
-          <SearchBox />
+          <SearchBox border={this.props.border} />
         </div>
         {/* <div className={styles.suggestions}>
           <Link className={styles.link} href='/photographer'>Photographer, </Link> &nbsp;

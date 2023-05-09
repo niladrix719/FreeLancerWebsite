@@ -27,7 +27,7 @@ class Header extends React.Component {
         <div className={styles.headingText}>
           Hire Freelance <span className={styles.AnimationText}>{currentText}</span> Anywhere.
         </div>
-        <SearchBar />
+        <SearchBar border={false} />
       </div>
     )
   }

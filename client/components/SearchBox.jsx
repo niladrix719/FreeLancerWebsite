@@ -17,8 +17,9 @@ class SearchBox extends React.Component {
   };
 
   render() {
+    console.log('render')
     return (
-      <div className={styles.searchBox}>
+      <div className={styles.searchBox} style={{border: this.props.border ? '1px solid lightgray' : 'none'}}>
         <button className={styles.searchIcon}>
           <FontAwesomeIcon icon={faMagnifyingGlass} style={{ color: 'white' }} />
         </button>

@@ -22,7 +22,7 @@ function Explore() {
     <div className={styles.explore}>
       <Navbar />
       <div className={styles.search}>
-        <SearchBox />
+        <SearchBox border={true} />
       </div>
       <div className={styles.body}>
         <div className={styles.sidebar}>

@@ -12,6 +12,7 @@
     gap: 1rem;
     margin-top: 2rem;
     position: relative;
+    border-left: none;
 }
 
 .searchIcon{

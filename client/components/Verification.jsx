@@ -1,6 +1,6 @@
 import styles from '../styles/Verification.module.css';
 import Image from 'next/image';
-import { faPlus, faCheck, faFile } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faCheck, faFile , faExclamation } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
 
@@ -124,6 +124,10 @@ function Verification(props) {
     }
   }
 
+  const handelMark = (e) => {
+    e.preventDefault();
+  }
+
   const handleSubmit = () => {
     const postData = async () => {
       try {
@@ -190,6 +194,7 @@ function Verification(props) {
       <div className={styles.formGroup} id={styles.profile_pic} style={{
         backgroundImage: images[4] ? `url(${images[4]})` : `url(/dp.png)`,
       }}>
+        {/* <FontAwesomeIcon onClick={(e) => handelMark(e)} className={styles.exclamation} icon={faExclamation} style={{color: "red"}} /> */}
         {!cameras[1] && <Image className={styles.camera} id={styles.camera} src='/cameraIcon.png' width={40} height={40} alt='camera'
         onClick={handleImageClick}
         />}
