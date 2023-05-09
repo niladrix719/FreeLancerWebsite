@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import Image from 'next/image'
 import Footer from '@/components/Footer'
+import Verification from '@/components/Verification'
 
 class Freelancer extends React.Component {
   constructor(props) {
@@ -19,11 +20,13 @@ class Freelancer extends React.Component {
       profession: 'photographer',
       bio: '',
       equipments: '',
-      error: false
+      error: false,
+      form: false
     }
   }
 
   increProgress = (val) => {
+    console.log(this.state.progress + val)
     if (this.state.progress + val > 125) {
       return;
     }
@@ -55,6 +58,7 @@ class Freelancer extends React.Component {
 
     if (this.state.currentPage === 5) {
       this.setState({ error: false });
+      this.setState({ form: true });
       this.handleSubmit();
       return;
     }
@@ -126,11 +130,11 @@ class Freelancer extends React.Component {
     return (
       <div className={styles.main}>
         <Navbar />
-        <div className={styles.body}>
-          <div className={styles.left}>
-            <h1 className={styles.heading}>Fill Up The Registration Form.</h1>
-            <p className={styles.subHeading}>We only allow verified Freelancers on our website.</p>
-            <form className={styles.form}>
+        <div className={`${this.state.form ? styles.newbody : styles.body}`}>
+          <div className={`${this.state.form ? styles.newLeft : styles.left}`}>
+            {!this.state.form && <h1 className={styles.heading}>Fill Up The Registration Form.</h1>}
+            {!this.state.form && <p className={styles.subHeading}>We only allow verified Freelancers on our website.</p>}
+            <form className={`${this.state.form ? styles.newForm : styles.form}`}>
               {this.state.error && <p className={styles.error}>Please provide all the inputs the fields.</p>}
               {this.state.currentPage === 1 && <div className={styles.inputField} id={styles.firstname}>
                 <label htmlFor="firstname" className={styles.label}><span style={{ color: 'red' }}>* </span>First name :</label>
@@ -181,7 +185,7 @@ class Freelancer extends React.Component {
                   value={this.state.bio !== '' ? this.state.bio : ''}>
                 </textarea>
               </div>}
-              {this.state.currentPage === 5 && <div className={styles.inputField} id={styles.equipment}>
+              {!this.state.form && this.state.currentPage === 5 && <div className={styles.inputField} id={styles.equipment}>
                 <label htmlFor="equipments" className={styles.label}><span style={{ color: 'red' }}>* </span>Equipments Available :</label>
                 <textarea required name="equipments" id="equipments" cols="30" rows="10"
                   onChange={(event) => this.setState({ equipments: event.target.value })}
@@ -189,13 +193,14 @@ class Freelancer extends React.Component {
                   value={this.state.equipments !== '' ? this.state.equipments : ''}>
                 </textarea>
               </div>}
-              <div className={styles.btns}>
+              {!this.state.form && <div className={styles.btns}>
                 <button className={styles.NextBtn} type='button' onClick={() => this.increProgress(25)}>{this.state.btn}</button>
                 <button className={styles.backBtn} type='button' onClick={() => this.decreProgress(25)}>Back</button>
-              </div>
+              </div>}
+              {this.state.form && <Verification />}
             </form>
           </div>
-          <div className={styles.right}>
+          {!this.state.form && <div className={styles.right}>
             <div className={styles.title}>
               <h1 className={styles.heading}>Take Control of Your Career</h1>
               <p className={styles.subHeading}>Join our Platform and Start Earning on Your Own Terms!</p>
@@ -217,11 +222,11 @@ class Freelancer extends React.Component {
               <Image src='/registration1.png' alt='registration' width={200} height={200} />
             </div>
             <hr className={styles.divider} />
-          </div>
+          </div>}
         </div>
-        <div className={styles.bar}>
+        {!this.state.form && <div className={styles.bar}>
           <div className={styles.progress} style={{ width: `${this.state.progress}%` }}></div>
-        </div>
+        </div>}
         <Footer />
       </div>
     )

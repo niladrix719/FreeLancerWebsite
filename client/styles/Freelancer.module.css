@@ -13,6 +13,10 @@
     background-size: cover;
 }
 
+.newBody{
+    position: relative;
+}
+
 .right {
     display: flex;
     flex-direction: column;
@@ -28,6 +32,18 @@
     padding: 1rem;
     width: 42%;
     max-width: 660px;
+}
+
+.newLeft{
+    padding-top: 2rem;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 6rem;
+    background-image: url(/bgX.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    top: 2rem;
 }
 
 .heading {
@@ -105,6 +121,18 @@
     flex-direction: column;
     margin-top: 2.5rem;
     justify-content: flex-start;
+}
+
+.newForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+    border: 1px solid rgb(209, 205, 205);
+    padding: 4rem;
+    padding-top: 2rem;
+    box-shadow: var(--shadow);
+    position: relative;
 }
 
 .input {
