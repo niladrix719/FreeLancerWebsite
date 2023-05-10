@@ -188,6 +188,7 @@ function Verification(props) {
         />}
         <input type="file" className={styles.coverPreview}
           onChange={(e) => handleImageChange(e, 5)} accept="image/jpeg,image/png"
+          name='coverPicture'
         />
         {warns[1] && <p className={styles.warn}>File size exceeds maximum limit of 1MB</p>}
       </div>
@@ -200,6 +201,7 @@ function Verification(props) {
         />}
         <input type="file" className={styles.profilePicPreview}
           onChange={(e) => handleImageChange(e, 4)} accept="image/jpeg,image/png"
+          name='profilePicture'
         />
         {warns[0] && <p className={styles.warn}>File size exceeds maximum limit of 1MB</p>}
       </div>

@@ -22,18 +22,20 @@ app.use(cors({
 app.use(express.static('public'));
 
 const storage = multer.diskStorage({
-  destination: 'uploads',
-  filename: (req, file, cb) => {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-    cb(null, file.fieldname + '-' , uniqueSuffix)
+  destination: function(req, file, cb){
+    cb(null, 'uploads')
+  },
+  filename: function(req, file, cb){
+    cb(null, file.filename + '-' + Date.now() + '.jpg')
   }
-})
+});
 
 const upload = multer({ storage: storage }).array('photos', 2);
 
 // Setting up the routes
 app.post('/signup', signupController);
 app.post('/register/freelancer', upload, async function (req, res) {
+  console.log('hi');
   upload(req, res, async (err) => {
     if (err) {
       console.log(err);
@@ -48,14 +50,15 @@ app.post('/register/freelancer', upload, async function (req, res) {
           profession: req.body.profession,
           bio: req.body.bio,
           equipments: req.body.equipments,
-          profilePicture: {
-            data: req.files[0].filename,
-            contentType: 'image/png'
-          },
-          coverPicture: {
-            data: req.files[1].filename,
-            contentType: 'image/png'
-          }
+          // profilePicture: {
+          //   data: req.files[0].filename,
+          //   contentType: 'image/png'
+          // },
+          // coverPicture: {
+          //   data: req.files[1].filename,
+          //   contentType: 'image/png'
+          // }
+          profilePicture: req.body.profilePicture,
         });
 
         const postData = await freelancerData.save();
