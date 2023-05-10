@@ -118,7 +118,6 @@ class Freelancer extends React.Component {
           equipments: this.state.equipments,
           profilePicture: this.state.profilePicture,
         };
-        console.log(data);
         const response = await fetch('http://localhost:3000/register/freelancer', {
           method: 'POST',
           body: JSON.stringify(data),

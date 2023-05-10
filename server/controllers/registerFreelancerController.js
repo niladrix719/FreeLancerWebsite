@@ -1,6 +1,7 @@
 const freelancerCollection = require('../models/freelancerModel');
 
 module.exports = async function (req, res) {
+  console.log(req.file);
   try {
     const freelancerData = new freelancerCollection({
       firstname: req.body.firstname,

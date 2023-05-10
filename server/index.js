@@ -22,16 +22,16 @@ app.use(cors({
 }));
 app.use(express.static('public'));
 
-const storage = multer.diskStorage({
-  destination: function(req, file, cb){
-    cb(null, 'uploads')
-  },
-  filename: function(req, file, cb){
-    cb(null, file.filename + '-' + Date.now() + '.jpg')
-  }
-});
-
-const upload = multer({ storage: storage }).single('profilePicture');
+const upload = multer({
+  storage: multer.diskStorage({
+    destination: (req, file, cb) => {
+      cb(null, './uploads');
+    },
+    filename: (req,file,cb) => {
+      cb(null, file.originalname);
+    }
+  })
+}).single('profilePicture');
 
 // Setting up the routes
 app.post('/signup', signupController);
