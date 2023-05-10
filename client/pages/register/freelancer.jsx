@@ -109,32 +109,29 @@ class Freelancer extends React.Component {
     event.preventDefault();
     const postData = async () => {
       try {
-        const data = {
-          firstname: this.state.firstName,
-          lastname: this.state.lastName,
-          phone: this.state.phone,
-          profession: this.state.profession,
-          bio: this.state.bio,
-          equipments: this.state.equipments,
-          profilePicture: this.state.profilePicture,
-        };
+        const data = new FormData();
+        data.append('firstname', this.state.firstName);
+        data.append('lastname', this.state.lastName);
+        data.append('phone', this.state.phone);
+        data.append('profession', this.state.profession);
+        data.append('bio', this.state.bio);
+        data.append('equipments', this.state.equipments);
+        data.append('profilePicture', this.state.profilePicture);
+
         const response = await fetch('http://localhost:3000/register/freelancer', {
           method: 'POST',
-          body: JSON.stringify(data),
-          headers: {
-            'Content-Type': 'application/json'
-          }
+          body: data
         });
-  
+
         const responseData = await response.json();
         localStorage.setItem('freelancer', JSON.stringify(responseData));
       } catch (error) {
         console.error(error);
       }
     };
-  
+
     postData();
-  };  
+  };
 
   render() {
     return (
