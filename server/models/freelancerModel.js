@@ -28,8 +28,8 @@ const freelancerSchema = new mongoose.Schema({
     required: true
   },
   profilePicture: {
-    data: Buffer,
-    contentType: String
+    type: String,
+    required: true
   }
 });
 
