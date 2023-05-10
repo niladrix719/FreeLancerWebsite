@@ -31,7 +31,7 @@ function Verification(props) {
 
     if(index === 4){
       setCameras([cameras[0], true]);
-      props.getVericationDetails(file);
+      props.getVericationDetails(file,4);
       setProfilePicture(file);
     }
 
@@ -42,6 +42,7 @@ function Verification(props) {
 
     if(index === 5){
       setCameras([true, cameras[1]]);
+      props.getVericationDetails(file,5);
       setCoverPicture(file);
     }
 
@@ -51,6 +52,7 @@ function Verification(props) {
     }
 
     if(index === 6){
+      props.getVericationDetails(file,6);
       setAddharCard(file);
     }
 
@@ -60,6 +62,7 @@ function Verification(props) {
     }
 
     if(index === 7){
+      props.getVericationDetails(file,7);
       setPanCard(file);
     }
 
@@ -103,11 +106,12 @@ function Verification(props) {
       return;
     }
 
-    if(index === 3 || index === 2 || index === 1 || index === 0){
+    if(index === 3 || index === 2 || index === 1 || index === 0 || index === 8 || index === 9 || index === 10 || index === 11){
+      props.getVericationDetails(file,index);
       setWorks([...works, file]);
     }
 
-    setWarns([false, false, false, false, false, false, false, false]);
+    setWarns([false, false, false, false, false, false, false, false, false, false, false, false]);
 
     reader.onloadend = () => {
       const newImages = [...images];
@@ -128,40 +132,6 @@ function Verification(props) {
   const handelMark = (e) => {
     e.preventDefault();
   }
-
-  // const handleSubmit = () => {
-  //   const postData = async () => {
-  //     try {
-  //       const response = await fetch('http://localhost:3000/register/freelancer', {
-  //         method: 'POST',
-  //         headers: {
-  //           'Content-Type': 'application/json'
-  //         },
-  //         body: JSON.stringify({
-  //           firstname: props.firstName,
-  //           lastname: props.lastName,
-  //           phone: props.phone,
-  //           profession: props.profession,
-  //           bio: props.bio,
-  //           equipments: props.equipments,
-  //           profilePicture: profilePicture,
-  //           coverPicture: coverPicture,
-  //           addharCard: addharCard,
-  //           panCard: panCard,
-  //           links: links,
-  //           works: works,
-  //           termsAndConditions: termsAndConditions
-  //         })
-  //       });
-  //       const data = await response.json();
-  //       localStorage.setItem('freelancer', JSON.stringify(data));
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   }
-
-  //   postData();
-  // }
 
   return (
     <>

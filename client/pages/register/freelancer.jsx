@@ -23,6 +23,11 @@ class Freelancer extends React.Component {
       equipments: '',
       profilePicture: null,
       coverPicture: null,
+      addharCard: null,
+      panCard: null,
+      works: [],
+      links: {instagram: '', facebook: '', twitter: '', youtube: ''},
+      termsAndConditions: false,
       error: false,
       form: false
     }
@@ -101,8 +106,33 @@ class Freelancer extends React.Component {
     this.setState({ currentPage: this.state.currentPage - 1 });
   }
 
-  getVericationDetails = (profilePicture) => {
-    this.setState({ profilePicture: profilePicture });
+  getVericationDetails = (val) => {
+    if(index === 4)
+    this.setState({ profilePicture: val });
+    if(index === 5)
+    this.setState({ coverPicture: val });
+    if(index === 6)
+    this.setState({ addharCard: val });
+    if(index === 7)
+    this.setState({ panCard: val });
+    if(index === 8 || index === 9 || index === 10 || index === 11 || index === 0 || index === 1 || index === 2 || index === 3){
+      this.setState({ works: [...this.state.works, val] });
+    }
+    if(index === 12){
+      this.setState({ links: { ...this.state.links, instagram: val } });
+    }
+    if(index === 13){
+      this.setState({ links: { ...this.state.links, facebook: val } });
+    }
+    if(index === 14){
+      this.setState({ links: { ...this.state.links, twitter: val } });
+    }
+    if(index === 15){
+      this.setState({ links: { ...this.state.links, youtube: val } });
+    }
+    if(index === 16){
+      this.setState({ termsAndConditions: val });
+    }
   }
 
   handleSubmit = (event) => {
