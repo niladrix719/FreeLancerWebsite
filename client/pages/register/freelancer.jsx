@@ -101,9 +101,8 @@ class Freelancer extends React.Component {
     this.setState({ currentPage: this.state.currentPage - 1 });
   }
 
-  getVericationDetails = (profilePicture,coverPicture) => {
+  getVericationDetails = (profilePicture) => {
     this.setState({ profilePicture: profilePicture });
-    this.setState({ coverPicture: coverPicture });
   }
 
   handleSubmit = (event) => {

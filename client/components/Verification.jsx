@@ -31,6 +31,7 @@ function Verification(props) {
 
     if(index === 4){
       setCameras([cameras[0], true]);
+      props.getVericationDetails(file);
       setProfilePicture(file);
     }
 
