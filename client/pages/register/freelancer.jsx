@@ -6,6 +6,7 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import Image from 'next/image'
 import Footer from '@/components/Footer'
 import Verification from '@/components/Verification'
+import profile from '../profile'
 
 class Freelancer extends React.Component {
   constructor(props) {
@@ -20,6 +21,8 @@ class Freelancer extends React.Component {
       profession: 'photographer',
       bio: '',
       equipments: '',
+      profilePicture: null,
+      coverPicture: null,
       error: false,
       form: false
     }
@@ -98,6 +101,43 @@ class Freelancer extends React.Component {
     this.setState({ currentPage: this.state.currentPage - 1 });
   }
 
+  getVericationDetails = (profilePicture,coverPicture) => {
+    this.setState({ profilePicture: profilePicture });
+    this.setState({ coverPicture: coverPicture });
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    const postData = async () => {
+      try {
+        const data = {
+          firstname: this.state.firstName,
+          lastname: this.state.lastName,
+          phone: this.state.phone,
+          profession: this.state.profession,
+          bio: this.state.bio,
+          equipments: this.state.equipments,
+          profilePicture: this.state.profilePicture,
+        };
+        console.log(data);
+        const response = await fetch('http://localhost:3000/register/freelancer', {
+          method: 'POST',
+          body: JSON.stringify(data),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+  
+        const responseData = await response.json();
+        localStorage.setItem('freelancer', JSON.stringify(responseData));
+      } catch (error) {
+        console.error(error);
+      }
+    };
+  
+    postData();
+  };  
+
   render() {
     return (
       <div className={styles.main}>
@@ -106,7 +146,9 @@ class Freelancer extends React.Component {
           <div className={`${this.state.form ? styles.newLeft : styles.left}`}>
             {!this.state.form && <h1 className={styles.heading}>Fill Up The Registration Form.</h1>}
             {!this.state.form && <p className={styles.subHeading}>We only allow verified Freelancers on our website.</p>}
-            <form className={`${this.state.form ? styles.newForm : styles.form}`}>
+            <form className={`${this.state.form ? styles.newForm : styles.form}`}
+              onSubmit={(event) => this.handleSubmit(event)} encType="multipart/form-data"
+            >
               {this.state.error && <p className={styles.error}>Please provide all the inputs the fields.</p>}
               {this.state.currentPage === 1 && <div className={styles.inputField} id={styles.firstname}>
                 <label htmlFor="firstname" className={styles.label}><span style={{ color: 'red' }}>* </span>First name :</label>
@@ -170,12 +212,7 @@ class Freelancer extends React.Component {
                 <button className={styles.backBtn} type='button' onClick={() => this.decreProgress(25)}>Back</button>
               </div>}
               {this.state.form && <Verification
-                firstName={this.state.firstName}
-                lastName={this.state.lastName}
-                phone={this.state.phone}
-                profession={this.state.profession}
-                bio={this.state.bio}
-                equipments={this.state.equipments}
+                getVericationDetails={this.getVericationDetails}
               />}
             </form>
           </div>

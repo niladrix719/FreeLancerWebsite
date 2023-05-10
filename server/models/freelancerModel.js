@@ -30,10 +30,6 @@ const freelancerSchema = new mongoose.Schema({
   profilePicture: {
     data: Buffer,
     contentType: String
-  },
-  coverPicture: {
-    data: Buffer,
-    contentType: String
   }
 });
 

@@ -128,39 +128,39 @@ function Verification(props) {
     e.preventDefault();
   }
 
-  const handleSubmit = () => {
-    const postData = async () => {
-      try {
-        const response = await fetch('http://localhost:3000/register/freelancer', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            firstname: props.firstName,
-            lastname: props.lastName,
-            phone: props.phone,
-            profession: props.profession,
-            bio: props.bio,
-            equipments: props.equipments,
-            profilePicture: profilePicture,
-            coverPicture: coverPicture,
-            addharCard: addharCard,
-            panCard: panCard,
-            links: links,
-            works: works,
-            termsAndConditions: termsAndConditions
-          })
-        });
-        const data = await response.json();
-        localStorage.setItem('freelancer', JSON.stringify(data));
-      } catch (error) {
-        console.error(error);
-      }
-    }
+  // const handleSubmit = () => {
+  //   const postData = async () => {
+  //     try {
+  //       const response = await fetch('http://localhost:3000/register/freelancer', {
+  //         method: 'POST',
+  //         headers: {
+  //           'Content-Type': 'application/json'
+  //         },
+  //         body: JSON.stringify({
+  //           firstname: props.firstName,
+  //           lastname: props.lastName,
+  //           phone: props.phone,
+  //           profession: props.profession,
+  //           bio: props.bio,
+  //           equipments: props.equipments,
+  //           profilePicture: profilePicture,
+  //           coverPicture: coverPicture,
+  //           addharCard: addharCard,
+  //           panCard: panCard,
+  //           links: links,
+  //           works: works,
+  //           termsAndConditions: termsAndConditions
+  //         })
+  //       });
+  //       const data = await response.json();
+  //       localStorage.setItem('freelancer', JSON.stringify(data));
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   }
 
-    postData();
-  }
+  //   postData();
+  // }
 
   return (
     <>
@@ -309,7 +309,7 @@ function Verification(props) {
       />
         I Agree to the <span className={styles.links} >Terms and Conditions</span>
       </div>
-      <button className={styles.btn} type='button' onClick={handleSubmit}>Verify Now</button>
+      <button className={styles.btn} type='submit'>Verify Now</button>
     </>
   )
 }
