@@ -307,7 +307,7 @@ function Verification(props) {
       />
         I Agree to the <span className={styles.links} >Terms and Conditions</span>
       </div>
-      <button className={styles.btn} onClick={handleSubmit}>Verify Now</button>
+      <button className={styles.btn} type='button' onClick={handleSubmit}>Verify Now</button>
     </>
   )
 }
