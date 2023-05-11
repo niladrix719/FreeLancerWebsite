@@ -106,7 +106,7 @@ class Freelancer extends React.Component {
     this.setState({ currentPage: this.state.currentPage - 1 });
   }
 
-  getVericationDetails = (val) => {
+  getVericationDetails = (val,index) => {
     if(index === 4)
     this.setState({ profilePicture: val });
     if(index === 5)
