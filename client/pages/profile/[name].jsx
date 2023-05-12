@@ -7,7 +7,6 @@ import styles from '@/styles/Profile.module.css'
 import Footer from '@/components/Footer';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { data } from 'autoprefixer';
 
 function name() {
   const router = useRouter();
@@ -23,10 +22,10 @@ function name() {
       } catch (error) {
         console.error(error);
       }
-    }    
+    }
 
     fetchFreelancer();
-  }, [uid, setFreelancer]);
+  }, [uid]);
 
   return (
     <div className={styles.profile}>
