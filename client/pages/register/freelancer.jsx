@@ -152,6 +152,7 @@ class Freelancer extends React.Component {
       try {
         console.log(this.state);
         const data = new FormData();
+        data.append('uid', this.state.firstName.toLowerCase() + '_' + parseInt(this.state.phone).toString(16));
         data.append('firstname', this.state.firstName);
         data.append('lastname', this.state.lastName);
         data.append('phone', this.state.phone);

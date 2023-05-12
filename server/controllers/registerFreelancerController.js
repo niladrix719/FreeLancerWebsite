@@ -3,6 +3,7 @@ const freelancerCollection = require('../models/freelancerModel');
 module.exports = async function (req, res) {
   try {
     const freelancerData = new freelancerCollection({
+      uid: req.body.uid,
       firstname: req.body.firstname,
       lastname: req.body.lastname,
       phone: req.body.phone,

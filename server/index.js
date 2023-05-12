@@ -26,6 +26,17 @@ const upload = require('./middlewares/storage');
 app.post('/signup', signupController);
 app.post('/register/freelancer', upload, registerFreelancerController);
 app.post('/register/company', registerCompanyController);
+app.get('/profile/dhedh_15f72b9c3', async (req, res) => {
+  try {
+    const uid = 'dhedh_15f72b9c3';
+    console.log(uid)
+    const freelancer = await freelancerCollection.findOne({ uid: uid });
+    res.send(freelancer);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal server error');
+  }
+});
 
 // Starting the server
 const port = process.env.PORT || 3000;

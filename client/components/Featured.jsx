@@ -56,6 +56,22 @@ export default function Featured() {
           cover="/cover06.jpg"
           icon={faCameraRetro}
         />
+        <ProfileCard
+          name="Banhi Suresh"
+          bio="seeking to work on projects"
+          category="Cinematographer"
+          pic="img02"
+          cover="/cover02.jpg"
+          icon={faVideo}
+        />
+        <ProfileCard
+          name="Vritika Sood"
+          bio="Experienced Photographer"
+          category="Drone Operator"
+          pic="img03"
+          cover="/cover03.jpg"
+          icon={faClapperboard}
+        />
       </div>
     </div>
   )

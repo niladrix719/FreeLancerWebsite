@@ -13,7 +13,7 @@ export default function ProfileCard(props) {
       <div className={styles.category}>
         <FontAwesomeIcon icon={props.icon} className={styles.logo} />
         <h4>{props.category}</h4>
-        <div className={styles.price}>
+        <div className={styles.rate}>
           <p>Rs.1000 / Hr</p>
         </div>
       </div>
