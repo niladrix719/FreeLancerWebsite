@@ -164,10 +164,17 @@ class Freelancer extends React.Component {
         data.append('coverPicture', this.state.coverPicture);
         data.append('addharCard', this.state.addharCard);
         data.append('panCard', this.state.panCard);
-        data.append('works', this.state.works);
+        data.append('works[]', this.state.works[0]);
+        data.append('works[]', this.state.works[1]);
+        data.append('works[]', this.state.works[2]);
+        data.append('works[]', this.state.works[3]);
+        data.append('works[]', this.state.works[4]);
+        data.append('works[]', this.state.works[5]);
+        data.append('works[]', this.state.works[6]);
+        data.append('works[]', this.state.works[7]);
         data.append('links', this.state.links);
         data.append('termsAndConditions', this.state.termsAndConditions);
-        for (var [key, value] of data.entries()) { 
+        for (var [key, value] of data.entries()) {
           console.log(key, value);
         }
         const response = await fetch('http://localhost:3000/register/freelancer', {

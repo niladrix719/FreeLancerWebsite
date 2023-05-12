@@ -10,7 +10,12 @@ const upload = multer({
       cb(null, file.fieldname + '-' + uniqueSuffix + '-' + file.originalname)
     }
   })
-}).fields([{ name: 'profilePicture' }, { name: 'coverPicture' }, { name: 'addharCard' },
-{ name: 'panCard' }, { name: 'works', maxCount: 8}]);
+}).fields([
+  { name: 'profilePicture', maxCount: 1 },
+  { name: 'coverPicture', maxCount: 1 },
+  { name: 'addharCard', maxCount: 1 },
+  { name: 'panCard', maxCount: 1 },
+  { name: 'works[]', maxCount: 8 }
+]);
 
 module.exports = upload;
