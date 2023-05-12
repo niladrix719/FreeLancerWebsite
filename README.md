@@ -1,3 +1,5 @@
+![Screenshot 2023-05-12 160329](https://github.com/niladrix719/Fipezo/assets/91966855/5b87479a-6952-4eb8-8d27-7f0ed09762f0)
+
 ## A Website For Connecting Freelancers with Client / Companies
 
 ## Run Command (Client) : 
@@ -13,5 +15,3 @@ cd server
 npm install
 
 npm start
-
-![Screenshot 2023-05-12 160329](https://github.com/niladrix719/Fipezo/assets/91966855/b87bc509-7049-4c70-b83d-0e394b93179a)
