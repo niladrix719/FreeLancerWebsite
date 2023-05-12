@@ -53,12 +53,18 @@ const freelancerSchema = new mongoose.Schema({
   },
   works: {
     type: Array,
-    required: true
-  },
+    required: true,
+    items: {
+      type: String
+    }
+  },  
   links: {
-    type: String,
-    required: true
-  },
+    type: Array,
+    required: true,
+    items: {
+      type: String
+    }
+  },  
   termsAndConditions: {
     type: Boolean,
     required: true

@@ -1,3 +1,5 @@
+const multer = require('multer');
+
 export const upload = multer({
   storage: multer.diskStorage({
     destination: (req, file, cb) => {
@@ -9,4 +11,4 @@ export const upload = multer({
     }
   })
 }).fields([{ name: 'profilePicture' }, { name: 'coverPicture' }, { name: 'addharCard' },
-{ name: 'panCard' }, { name: 'works' }]);
+{ name: 'panCard' }, { name: 'works', maxCount: 8}]);

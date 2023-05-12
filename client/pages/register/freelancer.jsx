@@ -248,7 +248,7 @@ class Freelancer extends React.Component {
               {this.state.currentPage === 5 && <div className={styles.inputField} id={styles.rate}>
                 <label htmlFor="rate" className={styles.label}><span style={{ color: 'red' }}>* </span>What is your rate per hour?</label>
                 {this.state.rate && <p className={styles.rate}>Rs. {this.state.rate} / Hour</p>}
-                <input required className={styles.options} name="rate" type='range' min='0' max='2000' step='100'
+                <input required className={styles.options} name="rate" type='range' min='100' max='2000' step='100'
                   onChange={(event) => this.setState({ rate: event.target.value })} id="rate"
                   value={this.state.rate}
                 />
@@ -280,7 +280,7 @@ class Freelancer extends React.Component {
           </div>
           {!this.state.form && <div className={styles.right}>
             <div className={styles.title}>
-              <h1 className={styles.heading}>Take Control of Your Career</h1>
+              <h1 className={styles.heading}>Take Control of Your Career.</h1>
               <p className={styles.subHeading}>Join our Platform and Start Earning on Your Own Terms!</p>
               <hr className={styles.divider} />
             </div>
