@@ -17,7 +17,7 @@ class Freelancer extends React.Component {
       btn: 'Next',
       firstName: '',
       lastName: '',
-      phone: null,
+      phone: '',
       profession: 'photographer',
       bio: '',
       equipments: '',
@@ -260,7 +260,7 @@ class Freelancer extends React.Component {
                   <FontAwesomeIcon icon={faCheck} style={{ color: "#00aaff", }} /><p>Maintains Privacy and Fully Transparent</p>
                 </div>
               </div>
-              <Image src='/registration1.png' alt='registration' width={200} height={200} />
+              <Image src='/registration1.png' alt='registration' width={200} height={200} layout="responsive" style={{ height: 'auto' }} />
             </div>
             <hr className={styles.divider} />
           </div>}
