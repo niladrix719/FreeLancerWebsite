@@ -1,7 +1,6 @@
 const companyCollection = require('../models/companyModel');
 
 module.exports = async function (req, res) {
-  console.log(req.body)
   try {
     const companyData = new companyCollection({
       companyname: req.body.companyname,

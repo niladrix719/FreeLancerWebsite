@@ -22,11 +22,9 @@ class Freelancer extends React.Component {
   }
 
   increProgress = (val) => {
-    console.log(this.state.progress)
     if (this.state.progress + val > 134) {
       return;
     }
-    console.log(this.state.progress)
 
     if ((this.state.companyname === '') && this.state.currentPage === 1) {
       this.setState({ error: true });
