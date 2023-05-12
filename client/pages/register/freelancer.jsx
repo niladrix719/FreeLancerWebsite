@@ -164,9 +164,11 @@ class Freelancer extends React.Component {
         data.append('addharCard', this.state.addharCard);
         data.append('panCard', this.state.panCard);
         data.append('works', this.state.works);
-        data.append('links', JSON.stringify(this.state.links));
+        data.append('links', this.state.links);
         data.append('termsAndConditions', this.state.termsAndConditions);
-
+        for (var [key, value] of data.entries()) { 
+          console.log(key, value);
+        }
         const response = await fetch('http://localhost:3000/register/freelancer', {
           method: 'POST',
           body: data

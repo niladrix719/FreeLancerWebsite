@@ -16,7 +16,7 @@ module.exports = async function (req, res) {
       coverPicture: req.file.filename,
       addharCard: req.file.filename,
       panCard: req.file.filename,
-      works: req.body.works,
+      works: req.files.works.map(file => file.filename),
       links: req.body.links,
       termsAndConditions: req.body.termsAndConditions
     });
