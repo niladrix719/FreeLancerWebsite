@@ -1,7 +1,7 @@
 import styles from '../styles/PortfolioCard.module.css'
 import YouTube from 'react-youtube'
 
-function PortfolioCard() {
+function PortfolioCards() {
   const videoId1 = 'eT0eNDXkVC8';
   const videoId2 = 'TLoICmZ44gw';
   const videoId3 = 'LCM8EhPYtU4';
@@ -26,4 +26,4 @@ function PortfolioCard() {
   )
 }
 
-export default PortfolioCard;
+export default PortfolioCards;
