@@ -1,7 +1,9 @@
 const freelancerCollection = require('../models/freelancerModel');
 
 module.exports = async function (req, res) {
-  console.log(req.file);
+  console.log(req);
+  console.log(req.body);
+  console.log('files' , req.files);
   try {
     const freelancerData = new freelancerCollection({
       firstname: req.body.firstname,
@@ -12,11 +14,11 @@ module.exports = async function (req, res) {
       rate: req.body.rate,
       bio: req.body.bio,
       equipments: req.body.equipments,
-      profilePicture: req.file.filename,
-      coverPicture: req.file.filename,
-      addharCard: req.file.filename,
-      panCard: req.file.filename,
-      works: req.files.works.map(file => file.filename),
+      profilePicture: req.files['profilePicture'][0].filename,
+      coverPicture: req.files['coverPicture'][0].filename,
+      addharCard: req.files['addharCard'][0].filename,
+      panCard: req.files['panCard'][0].filename,
+      works: req.files['works'].works.map(file => file.filename),
       links: req.body.links,
       termsAndConditions: req.body.termsAndConditions
     });

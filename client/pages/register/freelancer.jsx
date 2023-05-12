@@ -150,6 +150,7 @@ class Freelancer extends React.Component {
     event.preventDefault();
     const postData = async () => {
       try {
+        console.log(this.state);
         const data = new FormData();
         data.append('firstname', this.state.firstName);
         data.append('lastname', this.state.lastName);
