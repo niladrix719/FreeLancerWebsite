@@ -1,6 +1,6 @@
 import styles from '../styles/Verification.module.css';
 import Image from 'next/image';
-import { faPlus, faCheck, faFile , faExclamation } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faCheck, faFile, faExclamation } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
 
@@ -11,7 +11,7 @@ function Verification(props) {
   const [coverPicture, setCoverPicture] = useState(null);
   const [addharCard, setAddharCard] = useState(null);
   const [panCard, setPanCard] = useState(null);
-  const [links, setLinks] = useState({instagram: '', facebook: '', twitter: '', youtube: ''});
+  const [links, setLinks] = useState({ instagram: '', facebook: '', twitter: '', youtube: '' });
   const [works, setWorks] = useState([]);
   const [termsAndConditions, setTermsAndConditions] = useState(false);
   const [cameras, setCameras] = useState([false, false]);
@@ -29,9 +29,9 @@ function Verification(props) {
       return;
     }
 
-    if(index === 4){
+    if (index === 4) {
       setCameras([cameras[0], true]);
-      props.getVericationDetails(file,4);
+      props.getVericationDetails(file, 4);
       setProfilePicture(file);
     }
 
@@ -40,9 +40,9 @@ function Verification(props) {
       return;
     }
 
-    if(index === 5){
+    if (index === 5) {
       setCameras([true, cameras[1]]);
-      props.getVericationDetails(file,5);
+      props.getVericationDetails(file, 5);
       setCoverPicture(file);
     }
 
@@ -51,8 +51,8 @@ function Verification(props) {
       return;
     }
 
-    if(index === 6){
-      props.getVericationDetails(file,6);
+    if (index === 6) {
+      props.getVericationDetails(file, 6);
       setAddharCard(file);
     }
 
@@ -61,8 +61,8 @@ function Verification(props) {
       return;
     }
 
-    if(index === 7){
-      props.getVericationDetails(file,7);
+    if (index === 7) {
+      props.getVericationDetails(file, 7);
       setPanCard(file);
     }
 
@@ -106,8 +106,8 @@ function Verification(props) {
       return;
     }
 
-    if(index === 3 || index === 2 || index === 1 || index === 0 || index === 8 || index === 9 || index === 10 || index === 11){
-      props.getVericationDetails(file,index);
+    if (index === 3 || index === 2 || index === 1 || index === 0 || index === 8 || index === 9 || index === 10 || index === 11) {
+      props.getVericationDetails(file, index);
       setWorks([...works, file]);
     }
 
@@ -155,7 +155,7 @@ function Verification(props) {
         backgroundImage: images[5] ? `url(${images[5]})` : `none`,
       }}>
         {!cameras[0] && <Image className={styles.camera} src='/cameraIcon.png' width={40} height={40} alt='camera'
-        onClick={handleImageClick}
+          onClick={handleImageClick}
         />}
         <input type="file" className={styles.coverPreview}
           onChange={(e) => handleImageChange(e, 5)} accept="image/jpeg,image/png"
@@ -168,7 +168,7 @@ function Verification(props) {
       }}>
         {/* <FontAwesomeIcon onClick={(e) => handelMark(e)} className={styles.exclamation} icon={faExclamation} style={{color: "red"}} /> */}
         {!cameras[1] && <Image className={styles.camera} id={styles.camera} src='/cameraIcon.png' width={40} height={40} alt='camera'
-        onClick={handleImageClick}
+          onClick={handleImageClick}
         />}
         <input type="file" className={styles.profilePicPreview}
           onChange={(e) => handleImageChange(e, 4)} accept="image/jpeg,image/png"
@@ -197,22 +197,34 @@ function Verification(props) {
       <div className={styles.socials}>
         <label className={styles.social}>Facebook : <br />
           <input type="url" className={styles.input} placeholder="https://www.facebook.com/example"
-            onChange={(e) => setLinks({ ...links, facebook: e.target.value })} value={links.facebook}
+            onChange={(e) => {
+              props.getVericationDetails(e.target.value, 12)
+              setLinks({ ...links, facebook: e.target.value })
+            }} value={links.facebook}
           />
         </label>
         <label className={styles.social}>Instagram : <br />
           <input type="url" className={styles.input} placeholder="https://www.instagram.com/example"
-            onChange={(e) => setLinks({ ...links, instagram: e.target.value })} value={links.instagram}
+            onChange={(e) => {
+              props.getVericationDetails(e.target.value, 13)
+              setLinks({ ...links, instagram: e.target.value })
+            }} value={links.instagram}
           />
         </label>
         <label className={styles.social}>Twitter : <br />
           <input type="url" className={styles.input} placeholder="https://www.twitter.com/example"
-            onChange={(e) => setLinks({ ...links, twitter: e.target.value })} value={links.twitter}
+            onChange={(e) => {
+              props.getVericationDetails(e.target.value, 14)
+              setLinks({ ...links, twitter: e.target.value })
+            }} value={links.twitter}
           />
         </label>
         <label className={styles.social}>Youtube : <br />
           <input type="url" className={styles.input} placeholder="https://www.youtube.com/example"
-            onChange={(e) => setLinks({ ...links, youtube: e.target.value })} value={links.youtube}
+            onChange={(e) => {
+              props.getVericationDetails(e.target.value, 15)
+              setLinks({ ...links, youtube: e.target.value })
+            }} value={links.youtube}
           />
         </label>
       </div>
@@ -276,7 +288,10 @@ function Verification(props) {
         </div>
       </div>
       <div className={styles.check}><input type="checkbox" className={styles.checkbox}
-        onChange={(e) => setTermsAndConditions(e.target.checked)}
+        onChange={(e) => {
+          props.getVericationDetails(e.target.checked, 16)
+          setTermsAndConditions(e.target.checked)
+        }}
       />
         I Agree to the <span className={styles.links} >Terms and Conditions</span>
       </div>

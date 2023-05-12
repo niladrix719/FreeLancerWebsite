@@ -21,20 +21,9 @@ app.use(cors({
   origin: 'http://localhost:3001'
 }));
 app.use(express.static('public'));
+const upload = require('./middlewares/storage');
 
-const upload = multer({
-  storage: multer.diskStorage({
-    destination: (req, file, cb) => {
-      cb(null, './uploads');
-    },
-    filename: (req, file, cb) => {
-      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-      cb(null, file.fieldname + '-' + uniqueSuffix + '-' + file.originalname)
-    }
-  })
-}).single('profilePicture');
-
-// Setting up the routes
+// Setting up the routes  
 app.post('/signup', signupController);
 app.post('/register/freelancer', upload, registerFreelancerController);
 app.post('/register/company', registerCompanyController);

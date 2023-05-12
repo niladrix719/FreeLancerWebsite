@@ -15,8 +15,16 @@ const freelancerSchema = new mongoose.Schema({
     unique: true,
     required: true
   },
+  location: {
+    type: String,
+    required: true
+  },
   profession: {
     type: String,
+    required: true
+  },
+  rate: {
+    type: Number,
     required: true
   },
   bio: {
@@ -29,6 +37,30 @@ const freelancerSchema = new mongoose.Schema({
   },
   profilePicture: {
     type: String,
+    required: true
+  },
+  coverPicture: {
+    type: String,
+    required: true
+  },
+  addharCard: {
+    type: String,
+    required: true
+  },
+  panCard: {
+    type: String,
+    required: true
+  },
+  works: {
+    type: Array,
+    required: true
+  },
+  links: {
+    type: String,
+    required: true
+  },
+  termsAndConditions: {
+    type: Boolean,
     required: true
   }
 });
