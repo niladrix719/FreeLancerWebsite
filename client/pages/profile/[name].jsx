@@ -8,7 +8,7 @@ import Footer from '@/components/Footer';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
-function name() {
+function Name() {
   const router = useRouter();
   const { uid } = router.query;
   const [freelancer, setFreelancer] = useState({});
@@ -42,4 +42,4 @@ function name() {
   )
 }
 
-export default name;
+export default Name;
