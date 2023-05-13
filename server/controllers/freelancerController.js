@@ -25,6 +25,7 @@ async function registerFreelancer(req, res) {
 
     const postData = await freelancerData.save();
     res.send(postData);
+    window.location.href = "http://localhost:3001";
   } catch (error) {
     console.error(error);
     res.status(500).send('Internal server error');

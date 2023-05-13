@@ -22,6 +22,9 @@
     position: absolute;
     top: 75px;
     left: 20px;
+    object-fit: cover;
+    height: 3.5rem;
+    width: 3.5rem;
 }
 
 .name{
@@ -44,7 +47,7 @@
     background-color: var(--primary-color);
     color: white;
     display: flex;
-    padding: 1rem;
+    padding: 0.7rem;
     align-items: center;
     justify-content: center;
     gap: 0.9rem;
