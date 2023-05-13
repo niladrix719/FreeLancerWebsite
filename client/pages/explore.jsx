@@ -2,7 +2,6 @@ import ProfileCard from '@/components/ProfileCard';
 import styles from '../styles/Explore.module.css';
 import Navbar from '@/components/Navbar';
 import Sidebar from '@/components/Sidebar';
-// import { faCameraRetro, faVideo, faClapperboard } from '@fortawesome/free-solid-svg-icons';
 import SearchBox from '@/components/SearchBox';
 import Footer from '@/components/Footer';
 import { useEffect, useState } from 'react';
