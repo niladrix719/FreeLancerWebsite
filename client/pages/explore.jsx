@@ -5,7 +5,8 @@ import Sidebar from '@/components/Sidebar';
 import { faCameraRetro, faVideo, faClapperboard } from '@fortawesome/free-solid-svg-icons';
 import SearchBox from '@/components/SearchBox';
 import Footer from '@/components/Footer';
-import { useState } from 'react';
+import { use, useState } from 'react';
+import PortfolioCards from '@/components/PortfolioCards';
 
 function Explore() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -18,6 +19,10 @@ function Explore() {
     setCurrentPage(currentPage - 1);
   }
 
+  // useEffect(() => {
+  //   fetch(`http://localhost:3000/`)
+  // });
+
   return (
     <div className={styles.explore}>
       <Navbar />
@@ -29,196 +34,9 @@ function Explore() {
           <Sidebar />
         </div>
         <div className={styles.main}>
-          {currentPage === 1 && <div className={styles.cards}>
-            <ProfileCard
-              name="Niladri Adhikary"
-              bio="Capturing Moments with love"
-              category="Photographer"
-              pic="img01"
-              cover="/cover01.jpg"
-              icon={faCameraRetro}
-            />
-            <ProfileCard
-              name="Banhi Suresh"
-              bio="seeking to work on projects"
-              category="Cinematographer"
-              pic="img02"
-              cover="/cover02.jpg"
-              icon={faVideo}
-            />
-            <ProfileCard
-              name="Vritika Sood"
-              bio="Experienced Photographer"
-              category="Drone Operator"
-              pic="img03"
-              cover="/cover03.jpg"
-              icon={faClapperboard}
-            />
-            <ProfileCard
-              name="Richa Saini"
-              bio="Here for you"
-              category="Cinematographer"
-              pic="img04"
-              cover="/cover04.jpg"
-              icon={faVideo}
-            />
-            <ProfileCard
-              name="Nakul Nagy"
-              bio="Freeze Your Emotions"
-              category="Drone Operator"
-              pic="img05"
-              cover="/cover05.jpg"
-              icon={faClapperboard}
-            />
-            <ProfileCard
-              name="Advik Chada"
-              bio="Checkout my profile"
-              category="Photographer"
-              pic="img06"
-              cover="/cover06.jpg"
-              icon={faCameraRetro}
-            />
-            <ProfileCard
-              name="Niladri Adhikary"
-              bio="Capturing Moments with love"
-              category="Photographer"
-              pic="img01"
-              cover="/cover01.jpg"
-              icon={faCameraRetro}
-            />
-            <ProfileCard
-              name="Banhi Suresh"
-              bio="seeking to work on projects"
-              category="Cinematographer"
-              pic="img02"
-              cover="/cover02.jpg"
-              icon={faVideo}
-            />
-            <ProfileCard
-              name="Vritika Sood"
-              bio="Experienced Photographer"
-              category="Drone Operator"
-              pic="img03"
-              cover="/cover03.jpg"
-              icon={faClapperboard}
-            />
-            <ProfileCard
-              name="Richa Saini"
-              bio="Here for you"
-              category="Cinematographer"
-              pic="img04"
-              cover="/cover04.jpg"
-              icon={faVideo}
-            />
-            <ProfileCard
-              name="Nakul Nagy"
-              bio="Freeze Your Emotions"
-              category="Drone Operator"
-              pic="img05"
-              cover="/cover05.jpg"
-              icon={faClapperboard}
-            />
-            <ProfileCard
-              name="Advik Chada"
-              bio="Checkout my profile"
-              category="Photographer"
-              pic="img06"
-              cover="/cover06.jpg"
-              icon={faCameraRetro}
-            />
-          </div>}
-          {currentPage === 2 && <div className={styles.cards}>
-            <ProfileCard
-              name="Niladri Adhikary"
-              bio="Capturing Moments with love"
-              category="Photographer"
-              pic="img01"
-              cover="/cover01.jpg"
-              icon={faCameraRetro}
-            />
-            <ProfileCard
-              name="Banhi Suresh"
-              bio="seeking to work on projects"
-              category="Cinematographer"
-              pic="img02"
-              cover="/cover02.jpg"
-              icon={faVideo}
-            />
-            <ProfileCard
-              name="Vritika Sood"
-              bio="Experienced Photographer"
-              category="Drone Operator"
-              pic="img03"
-              cover="/cover03.jpg"
-              icon={faClapperboard}
-            />
-            <ProfileCard
-              name="Richa Saini"
-              bio="Here for you"
-              category="Cinematographer"
-              pic="img04"
-              cover="/cover04.jpg"
-              icon={faVideo}
-            />
-            <ProfileCard
-              name="Nakul Nagy"
-              bio="Freeze Your Emotions"
-              category="Drone Operator"
-              pic="img05"
-              cover="/cover05.jpg"
-              icon={faClapperboard}
-            />
-          </div>}
-          {currentPage === 3 && <div className={styles.cards}>
-            <ProfileCard
-              name="Richa Saini"
-              bio="Here for you"
-              category="Cinematographer"
-              pic="img04"
-              cover="/cover04.jpg"
-              icon={faVideo}
-            />
-            <ProfileCard
-              name="Nakul Nagy"
-              bio="Freeze Your Emotions"
-              category="Drone Operator"
-              pic="img05"
-              cover="/cover05.jpg"
-              icon={faClapperboard}
-            />
-            <ProfileCard
-              name="Advik Chada"
-              bio="Checkout my profile"
-              category="Photographer"
-              pic="img06"
-              cover="/cover06.jpg"
-              icon={faCameraRetro}
-            />
-            <ProfileCard
-              name="Niladri Adhikary"
-              bio="Capturing Moments with love"
-              category="Photographer"
-              pic="img01"
-              cover="/cover01.jpg"
-              icon={faCameraRetro}
-            />
-            <ProfileCard
-              name="Banhi Suresh"
-              bio="seeking to work on projects"
-              category="Cinematographer"
-              pic="img02"
-              cover="/cover02.jpg"
-              icon={faVideo}
-            />
-            <ProfileCard
-              name="Vritika Sood"
-              bio="Experienced Photographer"
-              category="Drone Operator"
-              pic="img03"
-              cover="/cover03.jpg"
-              icon={faClapperboard}
-            />
-          </div>}
+          <div className={styles.cards}>
+            <ProfileCard />
+          </div>
           <nav className={styles.nav}>
             <div className={styles.pages}>
               <button className={styles.btn} onClick={decrePage}>Back</button>

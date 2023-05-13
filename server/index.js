@@ -4,10 +4,9 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const db = require('./db/db');
-const signupController = require('./controllers/signupController');
-const registerFreelancerController = require('./controllers/registerFreelancerController');
-const registerCompanyController = require('./controllers/registerCompanyController');
-const freelancerCollection = require('./models/freelancerModel');
+const signupController = require('./controllers/userController');
+const registerCompanyController = require('./controllers/companyController');
+const {registerFreelancer,getFreelancerProfile} = require('./controllers/freelancerController');
 
 // Creating the app
 const app = express();
@@ -25,18 +24,9 @@ const upload = require('./middlewares/storage');
 
 // Setting up the routes  
 app.post('/signup', signupController);
-app.post('/register/freelancer', upload, registerFreelancerController);
+app.post('/register/freelancer', upload, registerFreelancer);
 app.post('/register/company', registerCompanyController);
-app.get('/profile/:uid', async (req, res) => {
-  try {
-    const uid = req.params.uid;
-    const freelancer = await freelancerCollection.findOne({ uid: uid });
-    res.send(freelancer);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Internal server error');
-  }
-});
+app.get('/profile/:uid', getFreelancerProfile);
 
 // Starting the server
 const port = process.env.PORT || 3000;

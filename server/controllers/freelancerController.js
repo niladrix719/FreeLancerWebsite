@@ -1,6 +1,8 @@
 const freelancerCollection = require('../models/freelancerModel');
 
-module.exports = async function (req, res) {
+//Registration
+
+async function registerFreelancer(req, res) {
   try {
     const freelancerData = new freelancerCollection({
       uid: req.body.uid,
@@ -27,4 +29,22 @@ module.exports = async function (req, res) {
     console.error(error);
     res.status(500).send('Internal server error');
   }
+}
+
+//profile Data
+
+async function getFreelancerProfile(req, res) {
+  try {
+    const uid = req.params.uid;
+    const freelancer = await freelancerCollection.findOne({ uid: uid });
+    res.send(freelancer);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal server error');
+  }
+}
+
+module.exports = {
+  registerFreelancer,
+  getFreelancerProfile
 };
