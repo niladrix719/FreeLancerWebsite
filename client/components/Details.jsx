@@ -1,13 +1,14 @@
 import styles from '@/styles/Details.module.css'
 import ProfileNav from '@/components/ProfileNav'
 import Reviews from '@/components/Reviews'
-import PortfolioCards from '@/components/PortfolioCards'
-import { useState } from 'react'
+import PortfolioCard from '@/components/PortfolioCard'
+import { useEffect, useState } from 'react'
 
-function Details() {
-  const [showReviews,setShowReviews] = useState(true);
-  const [showPortfolio,setShowPortfolio] = useState(false);
-  
+function Details(props) {
+  const [showReviews, setShowReviews] = useState(true);
+  const [showPortfolio, setShowPortfolio] = useState(false);
+  const [works, setWorks] = useState([]);
+
   const handelReviews = () => {
     setShowReviews(true);
     setShowPortfolio(false);
@@ -18,11 +19,21 @@ function Details() {
     setShowPortfolio(true);
   }
 
+  useEffect(() => {
+    setWorks(props.works);
+  }, [props.works]);
+
   return (
     <div className={styles.details}>
       <ProfileNav handelReviews={handelReviews} handelPortfolio={handelPortfolio} />
       {showReviews && <Reviews />}
-      {showPortfolio && <PortfolioCards />}
+      {showPortfolio && <div className={styles.portfolio}>
+        {works.map((work, index) => {
+          return (
+            <PortfolioCard key={index} work={work} />
+          )
+        })}
+      </div>}
     </div>
   )
 }

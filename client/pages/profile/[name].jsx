@@ -36,7 +36,7 @@ function Name() {
         <ProfileBioCard profilePicture={freelancer.profilePicture} firstname={freelancer.firstname}
           lastname={freelancer.lastname} bio={freelancer.bio} equipments={freelancer.equipments}
         />
-        <Details />
+        <Details works={freelancer.works} />
       </div>
       <div className={styles.footer}>
         <Footer />
