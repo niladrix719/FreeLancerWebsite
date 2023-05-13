@@ -16,8 +16,7 @@ function Name() {
   useEffect(() => {
     async function fetchFreelancer() {
       try {
-        console.log(uid)
-        const response = await fetch(`http://localhost:3000/profile/${uid}`);
+        const response = await fetch(`http://localhost:3000/profile/freelancer/${uid}`);
         const data = await response.json();
         setFreelancer(data);
       } catch (error) {

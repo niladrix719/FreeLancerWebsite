@@ -1,6 +1,6 @@
 const companyCollection = require('../models/companyModel');
 
-module.exports = async function (req, res) {
+async function registerCompany (req, res) {
   try {
     const companyData = new companyCollection({
       companyname: req.body.companyname,
@@ -15,4 +15,8 @@ module.exports = async function (req, res) {
     console.error(error);
     res.status(500).send('Internal server error');
   }
+};
+
+module.exports = {
+  registerCompany
 };

@@ -2,15 +2,15 @@ import ProfileCard from '@/components/ProfileCard';
 import styles from '../styles/Explore.module.css';
 import Navbar from '@/components/Navbar';
 import Sidebar from '@/components/Sidebar';
-import { faCameraRetro, faVideo, faClapperboard } from '@fortawesome/free-solid-svg-icons';
+// import { faCameraRetro, faVideo, faClapperboard } from '@fortawesome/free-solid-svg-icons';
 import SearchBox from '@/components/SearchBox';
 import Footer from '@/components/Footer';
-import { use, useState } from 'react';
-import PortfolioCards from '@/components/PortfolioCards';
+import { useEffect, useState } from 'react';
 
 function Explore() {
   const [currentPage, setCurrentPage] = useState(1);
-  
+  const [freelancers, setFreelancers] = useState([]);
+
   const increPage = () => {
     setCurrentPage(currentPage + 1);
   }
@@ -19,9 +19,20 @@ function Explore() {
     setCurrentPage(currentPage - 1);
   }
 
-  // useEffect(() => {
-  //   fetch(`http://localhost:3000/`)
-  // });
+  useEffect(() => {
+    async function fetchFreelancer() {
+      try {
+        const response = await fetch(`http://localhost:3000/profiles/freelancer`);
+        const data = await response.json();
+        console.log(data);
+        setFreelancers(data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    fetchFreelancer();
+  }, []);
 
   return (
     <div className={styles.explore}>
@@ -35,7 +46,11 @@ function Explore() {
         </div>
         <div className={styles.main}>
           <div className={styles.cards}>
-            <ProfileCard />
+            {freelancers.map ((freelancer, index) => {
+              return(
+                <ProfileCard key={index} profile={freelancer} />
+              )
+            })}
           </div>
           <nav className={styles.nav}>
             <div className={styles.pages}>

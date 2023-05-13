@@ -10,6 +10,9 @@
     position: relative;
     margin-top: -7rem;
     box-shadow: var(--shadow);
+    height: 14rem;
+    width: 14rem;
+    object-fit: cover;
 }
 
 .name{
