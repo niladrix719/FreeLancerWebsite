@@ -40,13 +40,15 @@ function Signup() {
           <h1 className={styles.heading}>Welcome</h1>
           <p className={styles.subHeading}>Sign Up For a Free Account</p>
         </div>
-        <div className={styles.inputLabels}>
-          <label htmlFor="fisrtname">First Name : </label>
-          <input className={styles.inputs} type='text' placeholder='Enter Your firstname' id={styles.firstname} name='firstname' /> <br />
-        </div>
-        <div className={styles.inputLabels}>
-          <label htmlFor="lastname">Last Name : </label>
-          <input className={styles.inputs} type='text' placeholder='Enter Your lastname' id={styles.lastname} name='lastname' /> <br />
+        <div className={styles.name}>
+          <div className={styles.inputLabels}>
+            <label htmlFor="fisrtname">First Name : </label>
+            <input className={styles.inputs} type='text' placeholder='Enter Your firstname' id={styles.firstname} name='firstname' /> <br />
+          </div>
+          <div className={styles.inputLabels}>
+            <label htmlFor="lastname">Last Name : </label>
+            <input className={styles.inputs} type='text' placeholder='Enter Your lastname' id={styles.lastname} name='lastname' /> <br />
+          </div>
         </div>
         <div className={styles.inputLabels}>
           <label htmlFor="phone">Phone No : </label>
