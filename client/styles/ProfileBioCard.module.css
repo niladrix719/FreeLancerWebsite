@@ -13,6 +13,7 @@
     height: 14rem;
     width: 14rem;
     object-fit: cover;
+    border: 1px solid #ffffff;
 }
 
 .name{
@@ -55,4 +56,8 @@
 
 .equipment{
     color: #aea9a9;
+}
+
+.location{
+    font-size: 0.8rem;
 }

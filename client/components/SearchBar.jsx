@@ -1,8 +1,7 @@
 import styles from '../styles/SearchBar.module.css';
 import SearchBox from '../components/SearchBox';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass, faLocationDot, faChevronDown } from '@fortawesome/free-solid-svg-icons';
-import Link from 'next/link';
+import { faLocationDot, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 
 class SearchBar extends React.Component {

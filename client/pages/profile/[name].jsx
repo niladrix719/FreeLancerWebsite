@@ -35,8 +35,13 @@ function Name() {
       <div className={styles.profile_details}>
         <ProfileBioCard profilePicture={freelancer.profilePicture} firstname={freelancer.firstname}
           lastname={freelancer.lastname} bio={freelancer.bio} equipments={freelancer.equipments}
+          location={freelancer.location}
         />
         <Details works={freelancer.works} />
+        <div className={styles.btnBox}>
+          <button className={styles.btn} id={styles.hire}>Hire</button>
+          <button className={styles.btn} id={styles.msg}>Message</button>
+        </div>
       </div>
       <div className={styles.footer}>
         <Footer />
