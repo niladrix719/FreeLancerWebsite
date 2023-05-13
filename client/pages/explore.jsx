@@ -23,7 +23,6 @@ function Explore() {
       try {
         const response = await fetch(`http://localhost:3000/profiles/freelancer`);
         const data = await response.json();
-        console.log(data);
         setFreelancers(data);
       } catch (error) {
         console.error(error);
@@ -33,6 +32,22 @@ function Explore() {
     fetchFreelancer();
   }, []);
 
+  const showProfession = (val, profession) => {
+    if (val === true) {
+      async function fetchFreelancer() {
+        try {
+          const response = await fetch(`http://localhost:3000/profiles/freelancer/${profession}`);
+          const data = await response.json();
+          setFreelancers(data);
+        } catch (error) {
+          console.error(error);
+        }
+      }
+
+      fetchFreelancer();
+    }
+  }
+
   return (
     <div className={styles.explore}>
       <Navbar />
@@ -41,12 +56,12 @@ function Explore() {
       </div>
       <div className={styles.body}>
         <div className={styles.sidebar}>
-          <Sidebar />
+          <Sidebar showProfession={showProfession} />
         </div>
         <div className={styles.main}>
           <div className={styles.cards}>
-            {freelancers.map ((freelancer, index) => {
-              return(
+            {freelancers.map((freelancer, index) => {
+              return (
                 <ProfileCard key={index} profile={freelancer} />
               )
             })}

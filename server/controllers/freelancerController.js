@@ -45,7 +45,37 @@ async function getFreelancerProfile(req, res) {
   }
 }
 
+//profiles Data
+
+async function getFreelancerProfiles(req, res) {
+  try {
+    const freelancers = await freelancerCollection.find();
+    console.log(freelancers);
+    res.send(freelancers);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal server error');
+  }
+}
+
+// profession profiles Data
+
+async function getFreelancerProfessionProfiles(req, res) {
+  try {
+    console.log(req.params.profession)
+    const profession = req.params.profession.toLowerCase();
+    const freelancers = await freelancerCollection.find({profession: profession});
+    console.log(freelancers);
+    res.send(freelancers);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal server error');
+  }
+}
+
 module.exports = {
   registerFreelancer,
-  getFreelancerProfile
+  getFreelancerProfile,
+  getFreelancerProfiles,
+  getFreelancerProfessionProfiles
 };
