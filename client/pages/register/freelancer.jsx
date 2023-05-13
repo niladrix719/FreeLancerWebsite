@@ -150,7 +150,6 @@ class Freelancer extends React.Component {
     event.preventDefault();
     const postData = async () => {
       try {
-        console.log(this.state);
         const data = new FormData();
         data.append('uid', this.state.firstName.toLowerCase() + '_' + parseInt(this.state.phone).toString(16));
         data.append('firstname', this.state.firstName);
@@ -175,9 +174,6 @@ class Freelancer extends React.Component {
         data.append('works[]', this.state.works[7]);
         data.append('links', this.state.links);
         data.append('termsAndConditions', this.state.termsAndConditions);
-        for (var [key, value] of data.entries()) {
-          console.log(key, value);
-        }
         const response = await fetch('http://localhost:3000/register/freelancer', {
           method: 'POST',
           body: data

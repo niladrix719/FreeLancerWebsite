@@ -20,16 +20,16 @@ app.use(cors({
   origin: 'http://localhost:3001'
 }));
 app.use(express.static('public'));
+app.use('/uploads', express.static('uploads'));
 const upload = require('./middlewares/storage');
 
 // Setting up the routes  
 app.post('/signup', signupController);
 app.post('/register/freelancer', upload, registerFreelancerController);
 app.post('/register/company', registerCompanyController);
-app.get('/profile/dhedh_15f72b9c3', async (req, res) => {
+app.get('/profile/:uid', async (req, res) => {
   try {
-    const uid = 'dhedh_15f72b9c3';
-    console.log(uid)
+    const uid = req.params.uid;
     const freelancer = await freelancerCollection.findOne({ uid: uid });
     res.send(freelancer);
   } catch (error) {

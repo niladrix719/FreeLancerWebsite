@@ -10,13 +10,14 @@ import { useEffect, useState } from 'react';
 
 function Name() {
   const router = useRouter();
-  const { uid } = router.query;
+  const uid = router.query.name;
   const [freelancer, setFreelancer] = useState({});
 
   useEffect(() => {
     async function fetchFreelancer() {
       try {
-        const response = await fetch(`http://localhost:3000/profile/dhedh_15f72b9c3`);
+        console.log(uid)
+        const response = await fetch(`http://localhost:3000/profile/${uid}`);
         const data = await response.json();
         setFreelancer(data);
       } catch (error) {
@@ -28,11 +29,14 @@ function Name() {
   }, [uid]);
 
   return (
+    console.log(freelancer),
     <div className={styles.profile}>
       <Navbar color='white' />
       <Cover coverPicture={freelancer.coverPicture} />
       <div className={styles.profile_details}>
-        <ProfileBioCard />
+        <ProfileBioCard profilePicture={freelancer.profilePicture} firstname={freelancer.firstname}
+          lastname={freelancer.lastname} bio={freelancer.bio} equipments={freelancer.equipments}
+        />
         <Details />
       </div>
       <div className={styles.footer}>
