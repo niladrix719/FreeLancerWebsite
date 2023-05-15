@@ -11,7 +11,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 
 export default function Index() {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null);
   useEffect(() => {
     console.log('useEffect');
     console.log(localStorage.getItem('user'));
@@ -32,14 +32,19 @@ export default function Index() {
           console.error(error);
         });
     }
-  }, []);  
+  }, []);
+
+  const handelLogout = () => {
+    localStorage.removeItem('user');
+    setUser(null);
+  }
 
   return (
     <div className='app'>
       <Head>
         <title>Fipezo</title>
       </Head>
-      <Navbar color='white' user={user} />
+      <Navbar color='white' user={user} handelLogout={handelLogout} />
       <Header />
       <Categories />
       {/* <Features /> */}
