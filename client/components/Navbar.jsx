@@ -26,7 +26,6 @@ export default function Navbar(props) {
       })
         .then(res => res.json())
         .then(data => {
-          console.log(data.authData.user);
           setUser(data.authData.user);
         })
         .catch(error => {

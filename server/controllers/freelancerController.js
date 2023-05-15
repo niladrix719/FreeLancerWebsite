@@ -50,7 +50,6 @@ async function getFreelancerProfile(req, res) {
 async function getFreelancerProfiles(req, res) {
   try {
     const freelancers = await freelancerCollection.find();
-    console.log(freelancers);
     res.send(freelancers);
   } catch (error) {
     console.error(error);
@@ -62,10 +61,8 @@ async function getFreelancerProfiles(req, res) {
 
 async function getFreelancerProfessionProfiles(req, res) {
   try {
-    console.log(req.params.profession)
     const profession = req.params.profession.toLowerCase();
     const freelancers = await freelancerCollection.find({profession: profession});
-    console.log(freelancers);
     res.send(freelancers);
   } catch (error) {
     console.error(error);

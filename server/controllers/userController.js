@@ -10,8 +10,8 @@ async function signupController (req, res) {
       phone: req.body.phone
     });
 
-    const postData = await userData.save();
-    jwt.sign({ postData }, secret, { expiresIn: '30d' }, (err, token) => {
+    const user = await userData.save();
+    jwt.sign({ user }, secret, { expiresIn: '30d' }, (err, token) => {
       if (err) {
         console.log(err)
         return res.sendStatus(403);

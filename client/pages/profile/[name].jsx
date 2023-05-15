@@ -28,7 +28,6 @@ function Name() {
   }, [uid]);
 
   return (
-    console.log(freelancer),
     <div className={styles.profile}>
       <Navbar color='white' />
       <Cover coverPicture={freelancer.coverPicture} />

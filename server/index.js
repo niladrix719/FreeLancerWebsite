@@ -36,7 +36,6 @@ app.get('/profiles/freelancer/:profession', getFreelancerProfessionProfiles);
 app.get('/navbar', verifyToken, (req, res) => {
   jwt.verify(req.token, secret, (err, authData) => {
     if (err) {
-      console.log('not a logged in user');
       return;
     } else {
       res.json({
