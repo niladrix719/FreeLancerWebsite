@@ -40,19 +40,23 @@ function Signup() {
           <h1 className={styles.heading}>Welcome</h1>
           <p className={styles.subHeading}>Sign Up For a Free Account</p>
         </div>
-        <div className={styles.name}>
-          <div className={styles.inputLabels}>
-            <label htmlFor="fisrtname">First Name : </label>
-            <input className={styles.inputs} type='text' placeholder='Enter Your firstname' id={styles.firstname} name='firstname' /> <br />
+        <div className={styles.formBody}>
+          <div className={styles.name}>
+            <div className={styles.inputLabels}>
+              <label htmlFor="fisrtname" className={styles.labels}>First Name - </label>
+              <input className={styles.inputs} type='text' placeholder='Enter Your firstname' id={styles.firstname} name='firstname' /> <br />
+            </div>
+            <div className={styles.inputLabels}>
+              <label htmlFor="lastname" className={styles.labels}>Last Name - </label>
+              <input className={styles.inputs} type='text' placeholder='Enter Your lastname' id={styles.lastname} name='lastname' /> <br />
+            </div>
           </div>
-          <div className={styles.inputLabels}>
-            <label htmlFor="lastname">Last Name : </label>
-            <input className={styles.inputs} type='text' placeholder='Enter Your lastname' id={styles.lastname} name='lastname' /> <br />
+          <div id={styles.phone}>
+            <div className={styles.inputLabels}>
+              <label htmlFor="phone" className={styles.labels}>Phone No - </label>
+              <input className={styles.inputs} type='number' id={styles.number} placeholder='Enter Your Phone no.' name='phone' /> <br />
+            </div>
           </div>
-        </div>
-        <div className={styles.inputLabels}>
-          <label htmlFor="phone">Phone No : </label>
-          <input className={styles.inputs} type='number' id={styles.number} placeholder='Enter Your Phone no.' name='phone' /> <br />
         </div>
         <div>
           <button type='submit' className={styles.btn}>Submit</button>
@@ -62,7 +66,7 @@ function Signup() {
         </div>
       </form>
       <div className={styles.presentation}>
-        <Image src="/pre.jpg" alt="image" height="1006" width="1000" />
+        <Image id={styles.img} src="/pre3.jpg" alt="image" height="1006" width="1000" />
       </div>
     </div>
   )
