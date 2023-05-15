@@ -9,21 +9,10 @@ const { registerCompany } = require('./controllers/companyController');
 const { registerFreelancer, getFreelancerProfile, getFreelancerProfiles, getFreelancerProfessionProfiles } = require('./controllers/freelancerController');
 const jwt = require('jsonwebtoken');
 const secret = process.env.JWT_SECRET;
+const verifyToken = require('./middlewares/verification');
 
 // Creating the app
 const app = express();
-
-function verifyToken(req, res, next) {
-  const bearerHeader = req.headers['authorization'];
-  if (typeof bearerHeader !== 'undefined') {
-    const bearer = bearerHeader.split(' ');
-    const bearerToken = bearer[1];
-    req.token = bearerToken;
-    next();
-  } else {
-    res.sendStatus(403);
-  }
-}
 
 // Setting up the middleware
 app.use(bodyParser.urlencoded({ extended: true }));
