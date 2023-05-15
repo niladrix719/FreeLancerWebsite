@@ -9,11 +9,36 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function Navbar(props) {
-  const {user} = props;
+  const [user, setUser] = useState(null);
   const [freelancer, setFreelancer] = useState(null);
   const [company, setCompany] = useState(null);
   const [background, setBackground] = useState('transparent');
   const [color, setColor] = useState(props.color);
+
+  useEffect(() => {
+    const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
+    if (token) {
+      fetch('http://localhost:3000/navbar', {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      })
+        .then(res => res.json())
+        .then(data => {
+          console.log(data.authData.postData);
+          setUser(data.authData.postData);
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    }
+  }, []);
+
+  const handelLogout = () => {
+    localStorage.removeItem('user');
+    setUser(null);
+  }
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
@@ -76,7 +101,7 @@ export default function Navbar(props) {
               </Link>
             </div>
           </li>
-          {user === null && freelancer === null && company === null && <li><Link href='/login' className={styles.login}>Login</Link></li>}
+          {user === null && <li><Link href='/login' className={styles.login}>Login</Link></li>}
           {user && <li className={styles.navElement} id={styles.user}>
             <span>{user ? `${user.firstname} ${user.lastname}` : ''}&nbsp;&nbsp;</span>
             <FontAwesomeIcon
@@ -88,7 +113,7 @@ export default function Navbar(props) {
               <h1 className={styles.name}>{user ? `${user.firstname} ${user.lastname}` : ''}</h1>
               <p className={styles.number}>{user ? user.phone : ''}</p>
               <Link className={styles.btn} href='/profile'>My Profile</Link>
-              <button className={styles.btn} type='button' onClick={props.handelLogout}>Log Out</button>
+              <button className={styles.btn} type='button' onClick={handelLogout}>Log Out</button>
             </div>
           </li>}
           {freelancer && <li className={styles.navElement} id={styles.user}>
@@ -102,7 +127,7 @@ export default function Navbar(props) {
               <h1 className={styles.name}>{freelancer ? `${freelancer.firstname} ${freelancer.lastname}` : ''}</h1>
               <p className={styles.number}>{freelancer ? freelancer.phone : ''}</p>
               <Link className={styles.btn} href='/profile'>My Profile</Link>
-              <button className={styles.btn} type='button' onClick={props.handelLogout}>Log Out</button>
+              <button className={styles.btn} type='button' onClick={handelLogout}>Log Out</button>
             </div>
           </li>}
           {company && <li className={styles.navElement} id={styles.user}>
@@ -116,7 +141,7 @@ export default function Navbar(props) {
               <h1 className={styles.name}>{company ? `${company.companyname}` : ''}</h1>
               <p className={styles.number}>{company ? company.companyphone : ''}</p>
               <Link className={styles.btn} href='/profile'>My Profile</Link>
-              <button className={styles.btn} type='button' onClick={props.handelLogout}>Log Out</button>
+              <button className={styles.btn} type='button' onClick={handelLogout}>Log Out</button>
             </div>
           </li>}
         </ul>

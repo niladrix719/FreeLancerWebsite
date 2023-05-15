@@ -43,7 +43,7 @@ app.post('/register/company', registerCompany);
 app.get('/profile/freelancer/:uid', getFreelancerProfile);
 app.get('/profiles/freelancer', getFreelancerProfiles);
 app.get('/profiles/freelancer/:profession', getFreelancerProfessionProfiles);
-app.get('/', verifyToken, (req, res) => {
+app.get('/navbar', verifyToken, (req, res) => {
   jwt.verify(req.token, secret, (err, authData) => {
     if (err) {
       console.log('not a logged in user');
