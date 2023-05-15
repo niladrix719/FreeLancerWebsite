@@ -6,23 +6,21 @@ const bodyParser = require('body-parser');
 const db = require('./db/db');
 const signupController = require('./controllers/userController');
 const { registerCompany } = require('./controllers/companyController');
-const { registerFreelancer,
-  getFreelancerProfile,
-  getFreelancerProfiles,
-  getFreelancerProfessionProfiles } = require('./controllers/freelancerController');
+const { registerFreelancer, getFreelancerProfile, getFreelancerProfiles, getFreelancerProfessionProfiles } = require('./controllers/freelancerController');
+const jwt = require('jsonwebtoken');
+const secret = process.env.JWT_SECRET;
 
 // Creating the app
 const app = express();
 
 function verifyToken(req, res, next) {
   const bearerHeader = req.headers['authorization'];
-  if(typeof bearerHeader !== 'undefined') {
+  if (typeof bearerHeader !== 'undefined') {
     const bearer = bearerHeader.split(' ');
     const bearerToken = bearer[1];
     req.token = bearerToken;
     next();
-  }
-  else {
+  } else {
     res.sendStatus(403);
   }
 }
@@ -38,7 +36,7 @@ app.use(express.static('public'));
 app.use('/uploads', express.static('uploads'));
 const upload = require('./middlewares/storage');
 
-// Setting up the routes  
+// Setting up the routes
 app.post('/signup', signupController);
 app.post('/register/freelancer', upload, registerFreelancer);
 app.post('/register/company', registerCompany);
@@ -47,10 +45,9 @@ app.get('/profiles/freelancer', getFreelancerProfiles);
 app.get('/profiles/freelancer/:profession', getFreelancerProfessionProfiles);
 app.get('/', verifyToken, (req, res) => {
   jwt.verify(req.token, secret, (err, authData) => {
-    if(err) {
-      return;
-    }
-    else {
+    if (err) {
+      res.sendStatus(403);
+    } else {
       res.json({
         message: 'Home',
         authData
