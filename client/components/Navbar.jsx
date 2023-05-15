@@ -9,7 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function Navbar(props) {
-  const [user, setUser] = useState(null);
+  const {user} = props;
   const [freelancer, setFreelancer] = useState(null);
   const [company, setCompany] = useState(null);
   const [background, setBackground] = useState('transparent');
@@ -27,24 +27,8 @@ export default function Navbar(props) {
     });
   }, [props.color]);
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const userData = localStorage.getItem('user');
-      setUser(userData ? JSON.parse(userData) : null);
-      const freelancerData = localStorage.getItem('freelancer');
-      setFreelancer(freelancerData ? JSON.parse(freelancerData) : null);
-      const companyData = localStorage.getItem('company');
-      setCompany(companyData ? JSON.parse(companyData) : null);
-    }
-  }, []);
-
-  function handelLogout() {
+  const handelLogout = () => {
     localStorage.removeItem('user');
-    localStorage.removeItem('freelancer');
-    localStorage.removeItem('company');
-    setUser(null);
-    setFreelancer(null);
-    setCompany(null);
   }
 
   return (
