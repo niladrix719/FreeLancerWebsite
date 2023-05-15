@@ -1,6 +1,9 @@
 const userCollection = require('../models/userModel');
 const jwt = require('jsonwebtoken');
 const secret = process.env.JWT_SECRET;
+const twilio = require('twilio')(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
+
+// signup
 
 async function signupController (req, res) {
   try {
@@ -24,6 +27,19 @@ async function signupController (req, res) {
   }
 };
 
+//OTP
+
+function sendTextMessage(phoneNumber, message) {
+  phoneNumber = "+91" + phoneNumber.toString();
+  twilio.messages.create({
+    body: message,
+    from: process.env.TWILIO_PHONE_NUMBER,
+    to: phoneNumber
+  }).then((message) => console.log(message.sid));
+}
+
+// login
+
 const loginController = async (req, res) => {
   try {
     const phone = req.body.phone;
@@ -32,6 +48,10 @@ const loginController = async (req, res) => {
     if (!user) {
       return res.sendStatus(403);
     }
+
+    const code = Math.floor(100000 + Math.random() * 900000);
+
+    sendTextMessage(phone, `Hi ${code} is your one time password to login on Fipezo. Do not share this with anyone. -Team Fipezo`);
 
     jwt.sign({ user }, secret, { expiresIn: '30d' }, (err, token) => {
       if (err) {
