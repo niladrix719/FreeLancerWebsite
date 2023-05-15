@@ -4,7 +4,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const db = require('./db/db');
-const { signupController , loginController} = require('./controllers/userController');
+const { signupController , loginController , otpController} = require('./controllers/userController');
 const { registerCompany } = require('./controllers/companyController');
 const { registerFreelancer, getFreelancerProfile, getFreelancerProfiles, getFreelancerProfessionProfiles } = require('./controllers/freelancerController');
 const jwt = require('jsonwebtoken');
@@ -28,6 +28,7 @@ const upload = require('./middlewares/storage');
 // Setting up the routes
 app.post('/signup', signupController);
 app.post('/login', loginController);
+app.post('/otp', otpController);
 app.post('/register/freelancer', upload, registerFreelancer);
 app.post('/register/company', registerCompany);
 app.get('/profile/freelancer/:uid', getFreelancerProfile);
