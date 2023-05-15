@@ -10,10 +10,22 @@ const { registerFreelancer,
   getFreelancerProfile,
   getFreelancerProfiles,
   getFreelancerProfessionProfiles } = require('./controllers/freelancerController');
-const freelancerCollection = require('./models/freelancerModel');
 
 // Creating the app
 const app = express();
+
+function verifyToken(req, res, next) {
+  const bearerHeader = req.headers['authorization'];
+  if(typeof bearerHeader !== 'undefined') {
+    const bearer = bearerHeader.split(' ');
+    const bearerToken = bearer[1];
+    req.token = bearerToken;
+    next();
+  }
+  else {
+    res.sendStatus(403);
+  }
+}
 
 // Setting up the middleware
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -33,6 +45,19 @@ app.post('/register/company', registerCompany);
 app.get('/profile/freelancer/:uid', getFreelancerProfile);
 app.get('/profiles/freelancer', getFreelancerProfiles);
 app.get('/profiles/freelancer/:profession', getFreelancerProfessionProfiles);
+app.get('/', verifyToken, (req, res) => {
+  jwt.verify(req.token, secret, (err, authData) => {
+    if(err) {
+      return;
+    }
+    else {
+      res.json({
+        message: 'Home',
+        authData
+      });
+    }
+  });
+});
 
 // Starting the server
 const port = process.env.PORT || 3000;

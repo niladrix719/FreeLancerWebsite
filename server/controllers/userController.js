@@ -1,4 +1,6 @@
 const userCollection = require('../models/userModel');
+const jwt = require('jsonwebtoken');
+const secret = process.env.SECRET;
 
 module.exports = async function (req, res) {
   try {
@@ -9,7 +11,12 @@ module.exports = async function (req, res) {
     });
 
     const postData = await userData.save();
-    res.send(postData);
+    jwt.sign({ postData }, secret, { expiresIn: '30d' }, (err, token) => {
+      if (err) {
+        return res.sendStatus(403);
+      }
+      res.json({ token });
+    });
   } catch (error) {
     console.error(error);
     res.status(500).send('Internal server error');
