@@ -85,12 +85,12 @@ const loginController = async (req, res) => {
 //OTP
 
 function sendTextMessage(phoneNumber, message) {
-  // phoneNumber = "+91" + phoneNumber.toString();
-  // twilio.messages.create({
-  //   body: message,
-  //   from: process.env.TWILIO_PHONE_NUMBER,
-  //   to: phoneNumber
-  // }).then((message) => console.log(message.sid));
+  phoneNumber = "+91" + phoneNumber.toString();
+  twilio.messages.create({
+    body: message,
+    from: process.env.TWILIO_PHONE_NUMBER,
+    to: phoneNumber
+  });
 }
 
 const otpController = async (req, res) => {
@@ -108,8 +108,6 @@ const otpController = async (req, res) => {
     if (!user || !otpData) {
       return res.sendStatus(403);
     }
-
-    console.log(otpData.otp, " ", otp);
 
     if (otpData.otp !== otp) {
       jwt.sign({ user }, secret, { expiresIn: '30d' }, (err, token) => {
