@@ -28,17 +28,6 @@ async function signupController(req, res) {
   }
 };
 
-//OTP
-
-function sendTextMessage(phoneNumber, message) {
-  // phoneNumber = "+91" + phoneNumber.toString();
-  // twilio.messages.create({
-  //   body: message,
-  //   from: process.env.TWILIO_PHONE_NUMBER,
-  //   to: phoneNumber
-  // }).then((message) => console.log(message.sid));
-}
-
 // login
 
 const loginController = async (req, res) => {
@@ -82,6 +71,17 @@ const loginController = async (req, res) => {
     res.status(500).send('Internal server error');
   }
 };
+
+//OTP
+
+function sendTextMessage(phoneNumber, message) {
+  // phoneNumber = "+91" + phoneNumber.toString();
+  // twilio.messages.create({
+  //   body: message,
+  //   from: process.env.TWILIO_PHONE_NUMBER,
+  //   to: phoneNumber
+  // }).then((message) => console.log(message.sid));
+}
 
 const otpController = async (req, res) => {
   try {

@@ -3,8 +3,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styles from '@/styles/Login.module.css';
 import Footer from '@/components/Footer';
+import { useRouter } from 'next/router';
 
 export default function login() {
+  const router = useRouter();
   function handleSubmit(event) {
     event.preventDefault();
     const form = event.target;
@@ -23,6 +25,7 @@ export default function login() {
         });
         const data = await response.json();
         localStorage.setItem('phone', data.phone);
+        router.push('/verifyOTP');
       } catch (error) {
         console.error(error);
       }

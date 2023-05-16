@@ -1,8 +1,10 @@
 import styles from '@/styles/VerifyOTP.module.css'
 import Navbar from '@/components/Navbar';
 import Image from 'next/image'
+import { useRouter } from 'next/router';
 
 function verifyOTP() {
+  const router = useRouter();
   const handelSubmit = async (event) => {
     event.preventDefault();
     const form = event.target;
@@ -21,9 +23,12 @@ function verifyOTP() {
             phone: phone
           })
         });
-        localStorage.removeItem('phone');
         const data = await response.json();
+        if(data){
+          localStorage.removeItem('phone');
+        }
         localStorage.setItem('user', JSON.stringify(data));
+        router.push('/');
       } catch (error) {
         console.error(error);
       }
