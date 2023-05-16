@@ -20,7 +20,8 @@ async function registerFreelancer(req, res) {
       panCard: req.files['panCard'][0].filename,
       works: req.files['works[]'].map(file => file.filename),
       links: req.body.links,
-      termsAndConditions: req.body.termsAndConditions
+      termsAndConditions: req.body.termsAndConditions,
+      verified: false
     });
 
     const postData = await freelancerData.save();
