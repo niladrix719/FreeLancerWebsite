@@ -16,6 +16,33 @@ function VerificationCard(props) {
   const addharCard = props.profile.addharCard;
   const panCard = props.profile.panCard;
   const profession = props.profile.profession.charAt(0).toUpperCase() + props.profile.profession.slice(1);
+
+  const handleDelete = async () => {
+    try {
+      const response = await fetch(`http://localhost:3000/delete/freelancer/${props.profile._id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const handelVerify = async () => {
+    try {
+      const response = await fetch(`http://localhost:3000/verify/freelancer/${props.profile._id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   return (
     <div className={styles.verificationCard}>
       <div className={styles.details}>
@@ -97,8 +124,8 @@ function VerificationCard(props) {
         >
         </div>
         <div className={styles.btns}>
-          <button className={styles.btn} id={styles.verify}>Verify</button>
-          <button className={styles.btn} id={styles.delete}>Delete</button>
+          <button className={styles.btn} id={styles.verify} onClick={handelVerify}>Verify</button>
+          <button className={styles.btn} id={styles.delete} onClick={handleDelete}>Delete</button>
         </div>
       </div>
     </div>

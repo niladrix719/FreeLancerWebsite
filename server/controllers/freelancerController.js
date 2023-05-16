@@ -50,7 +50,17 @@ async function getFreelancerProfile(req, res) {
 
 async function getFreelancerProfiles(req, res) {
   try {
-    const freelancers = await freelancerCollection.find();
+    const freelancers = await freelancerCollection.find({verified: true});
+    res.send(freelancers);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal server error');
+  }
+}
+
+async function getUnFreelancerProfiles(req, res) {
+  try {
+    const freelancers = await freelancerCollection.find({verified: false});
     res.send(freelancers);
   } catch (error) {
     console.error(error);
@@ -75,5 +85,6 @@ module.exports = {
   registerFreelancer,
   getFreelancerProfile,
   getFreelancerProfiles,
-  getFreelancerProfessionProfiles
+  getFreelancerProfessionProfiles,
+  getUnFreelancerProfiles
 };

@@ -8,7 +8,7 @@ function VerificationPanel() {
   useEffect(() => {
     async function fetchFreelancer() {
       try {
-        const response = await fetch(`http://localhost:3000/profiles/freelancer`);
+        const response = await fetch(`http://localhost:3000/profiles/unverified/freelancer`);
         const data = await response.json();
         setFreelancers(data);
       } catch (error) {
