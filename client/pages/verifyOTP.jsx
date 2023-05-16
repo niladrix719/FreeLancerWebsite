@@ -3,7 +3,7 @@ import Navbar from '@/components/Navbar';
 import Image from 'next/image'
 import { useRouter } from 'next/router';
 
-function verifyOTP() {
+function VerifyOTP() {
   const router = useRouter();
   const handelSubmit = async (event) => {
     event.preventDefault();
@@ -66,4 +66,4 @@ function verifyOTP() {
   )
 }
 
-export default verifyOTP
+export default VerifyOTP

@@ -6,7 +6,7 @@ import React from 'react'
 import styles from '@/styles/Profile.module.css'
 import Footer from '@/components/Footer';
 
-function profile() {
+function Profile() {
   return (
     <div className={styles.profile}>
       <Navbar color='white' />
@@ -22,4 +22,4 @@ function profile() {
   )
 }
 
-export default profile;
+export default Profile;

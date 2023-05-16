@@ -3,7 +3,7 @@ import styles from '../styles/Mobile.module.css'
 import Image from 'next/image';
 import Footer from '@/components/Footer';
 
-function mobile() {
+function Mobile() {
   return (
     <div className={styles.mobile}>
       <Navbar />
@@ -19,4 +19,4 @@ function mobile() {
   )
 }
 
-export default mobile
+export default Mobile

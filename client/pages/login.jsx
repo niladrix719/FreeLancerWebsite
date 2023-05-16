@@ -5,7 +5,7 @@ import styles from '@/styles/Login.module.css';
 import Footer from '@/components/Footer';
 import { useRouter } from 'next/router';
 
-export default function login() {
+export default function Login() {
   const router = useRouter();
   function handleSubmit(event) {
     event.preventDefault();

@@ -6,7 +6,7 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import Image from 'next/image'
 import Footer from '@/components/Footer'
 
-class Freelancer extends React.Component {
+class Company extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -201,4 +201,4 @@ class Freelancer extends React.Component {
   }
 }
 
-export default Freelancer;
+export default Company;

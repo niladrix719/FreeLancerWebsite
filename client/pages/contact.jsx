@@ -3,7 +3,7 @@ import styles from '../styles/Contact.module.css';
 import Image from 'next/image';
 import Footer from '@/components/Footer';
 
-function contact() {
+function Contact() {
   return (
     <div className={styles.contact}>
       <Navbar />
@@ -57,4 +57,4 @@ function contact() {
   )
 }
 
-export default contact;
+export default Contact;

@@ -6,7 +6,7 @@ import Link from 'next/link';
 import React from 'react';
 import Footer from '@/components/Footer';
 
-class faqs extends React.Component {
+class Faqs extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -193,4 +193,4 @@ class faqs extends React.Component {
   }
 }
 
-export default faqs;
+export default Faqs;
