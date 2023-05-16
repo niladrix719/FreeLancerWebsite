@@ -174,6 +174,7 @@ class Freelancer extends React.Component {
         data.append('works[]', this.state.works[7]);
         data.append('links', this.state.links);
         data.append('termsAndConditions', this.state.termsAndConditions);
+        data.append('verified', false);
         const response = await fetch('http://localhost:3000/register/freelancer', {
           method: 'POST',
           body: data
