@@ -50,11 +50,11 @@ const loginController = async (req, res) => {
       return res.sendStatus(403);
     }
 
-    // const existingOtpData = await otpCollection.findOne({ phone: phone });
+    const existingOtpData = await otpCollection.findOne({ phone: phone });
 
-    // if (existingOtpData && !isExpired(existingOtpData.expiry)) {
-    //   await otpCollection.deleteOne({ phone: phone });
-    // }
+    if (existingOtpData) {
+      await otpCollection.deleteOne({ phone: phone });
+    }
 
     const code = Math.floor(100000 + Math.random() * 900000);
 
@@ -73,7 +73,7 @@ const loginController = async (req, res) => {
       } catch (error) {
         console.error('Error deleting OTP:', error);
       }
-    }, 300000);
+    }, 60);
 
     res.status(200).json({ phone: phone });
 
