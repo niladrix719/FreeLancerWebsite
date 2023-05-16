@@ -129,7 +129,7 @@ function Verification(props) {
     }
   }
 
-  const handelMark = (e) => {
+  const handleMark = (e) => {
     e.preventDefault();
   }
 
@@ -166,7 +166,7 @@ function Verification(props) {
       <div className={styles.formGroup} id={styles.profile_pic} style={{
         backgroundImage: images[4] ? `url(${images[4]})` : `url(/dp.png)`,
       }}>
-        {/* <FontAwesomeIcon onClick={(e) => handelMark(e)} className={styles.exclamation} icon={faExclamation} style={{color: "red"}} /> */}
+        {/* <FontAwesomeIcon onClick={(e) => handleMark(e)} className={styles.exclamation} icon={faExclamation} style={{color: "red"}} /> */}
         {!cameras[1] && <Image className={styles.camera} id={styles.camera} src='/cameraIcon.png' width={40} height={40} alt='camera'
           onClick={handleImageClick}
         />}

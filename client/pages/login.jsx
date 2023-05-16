@@ -11,7 +11,7 @@ export default function Login() {
     event.preventDefault();
     const form = event.target;
     const formData = new FormData(form);
-
+    
     async function postData() {
       try {
         const response = await fetch('http://localhost:3000/login', {
@@ -20,11 +20,13 @@ export default function Login() {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            phone: formData.get('phone')
+            phone: formData.get('phone'),
+            type: formData.get('type')
           })
         });
         const data = await response.json();
         localStorage.setItem('phone', data.phone);
+        localStorage.setItem('type', data.type);
         router.push('/verifyOTP');
       } catch (error) {
         console.error(error);
@@ -45,6 +47,14 @@ export default function Login() {
             <h1 className={styles.heading}>Welcome</h1>
             <p className={styles.subHeading}>Log In To Your Account</p>
           </div>
+          <label htmlFor="accType" className={styles.accLabel}>
+            <p className={styles.label}>Log in As</p>
+            <select className={styles.accType} id='accType' name='type'>
+              <option value="user" className={styles.opts}>User</option>
+              <option value="freelancer" className={styles.opts}>Freelancer</option>
+              <option value="company" className={styles.opts}>Company</option>
+            </select>
+          </label>
           <div id={styles.phone}>
             <div className={styles.countryCode}>
               +91

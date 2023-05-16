@@ -96,3 +96,23 @@
     font-size: 1rem;
     cursor: pointer;
 }
+
+.accType{
+    background-color: var(--primary-color);
+    font-size: 1rem;
+    border: 1px solid rgb(129, 124, 124);
+    padding: 0.5rem;
+    border-radius: 1rem;
+}
+
+.accLabel{
+    display: flex;
+    font-size: 1.1rem;
+    gap: 0.5rem;
+    position: relative;
+    top: 1rem;
+}
+
+.label{
+    padding: 0.5rem;
+}

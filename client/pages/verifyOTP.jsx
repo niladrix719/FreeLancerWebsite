@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 
 function VerifyOTP() {
   const router = useRouter();
-  const handelSubmit = async (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const form = event.target;
     const formData = new FormData(form);
@@ -13,6 +13,7 @@ function VerifyOTP() {
     async function postData() {
       try {
         const phone = JSON.parse(localStorage.getItem('phone'));
+        const type = localStorage.getItem('type');
         const response = await fetch('http://localhost:3000/otp', {
           method: 'POST',
           headers: {
@@ -20,12 +21,14 @@ function VerifyOTP() {
           },
           body: JSON.stringify({
             otp: formData.get('otp'),
-            phone: phone
+            phone: phone,
+            type: type
           })
         });
         const data = await response.json();
         if(data){
           localStorage.removeItem('phone');
+          localStorage.removeItem('type');
         }
         localStorage.setItem('user', JSON.stringify(data));
         router.push('/');
@@ -43,7 +46,7 @@ function VerifyOTP() {
         <Navbar color='black' />
       </div>
       <div className={styles.body}>
-        <form method="post" action='/verify_otp' className={styles.form} onSubmit={handelSubmit}>
+        <form method="post" className={styles.form} onSubmit={handleSubmit}>
           <div>
             <h1 className={styles.heading}>Welcome</h1>
             <p className={styles.subHeading}>Enter a one-time password (OTP) to verify</p>

@@ -34,7 +34,7 @@ export default function Navbar(props) {
     }
   }, []);
 
-  const handelLogout = () => {
+  const handleLogout = () => {
     localStorage.removeItem('user');
     setUser(null);
   }
@@ -112,7 +112,7 @@ export default function Navbar(props) {
               <h1 className={styles.name}>{user ? `${user.firstname} ${user.lastname}` : ''}</h1>
               <p className={styles.number}>{user ? user.phone : ''}</p>
               <Link className={styles.btn} href='/profile'>My Profile</Link>
-              <button className={styles.btn} type='button' onClick={handelLogout}>Log Out</button>
+              <button className={styles.btn} type='button' onClick={handleLogout}>Log Out</button>
             </div>
           </li>}
           {freelancer && <li className={styles.navElement} id={styles.user}>
@@ -126,7 +126,7 @@ export default function Navbar(props) {
               <h1 className={styles.name}>{freelancer ? `${freelancer.firstname} ${freelancer.lastname}` : ''}</h1>
               <p className={styles.number}>{freelancer ? freelancer.phone : ''}</p>
               <Link className={styles.btn} href='/profile'>My Profile</Link>
-              <button className={styles.btn} type='button' onClick={handelLogout}>Log Out</button>
+              <button className={styles.btn} type='button' onClick={handleLogout}>Log Out</button>
             </div>
           </li>}
           {company && <li className={styles.navElement} id={styles.user}>
@@ -140,7 +140,7 @@ export default function Navbar(props) {
               <h1 className={styles.name}>{company ? `${company.companyname}` : ''}</h1>
               <p className={styles.number}>{company ? company.companyphone : ''}</p>
               <Link className={styles.btn} href='/profile'>My Profile</Link>
-              <button className={styles.btn} type='button' onClick={handelLogout}>Log Out</button>
+              <button className={styles.btn} type='button' onClick={handleLogout}>Log Out</button>
             </div>
           </li>}
         </ul>

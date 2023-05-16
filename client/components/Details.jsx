@@ -9,12 +9,12 @@ function Details(props) {
   const [showPortfolio, setShowPortfolio] = useState(false);
   const [works, setWorks] = useState([]);
 
-  const handelReviews = () => {
+  const handleReviews = () => {
     setShowReviews(true);
     setShowPortfolio(false);
   }
 
-  const handelPortfolio = () => {
+  const handlePortfolio = () => {
     setShowReviews(false);
     setShowPortfolio(true);
   }
@@ -25,7 +25,7 @@ function Details(props) {
 
   return (
     <div className={styles.details}>
-      <ProfileNav handelReviews={handelReviews} handelPortfolio={handelPortfolio} />
+      <ProfileNav handleReviews={handleReviews} handlePortfolio={handlePortfolio} />
       {showReviews && <Reviews />}
       {showPortfolio && <div className={styles.portfolio}>
         {works.map((work, index) => {
