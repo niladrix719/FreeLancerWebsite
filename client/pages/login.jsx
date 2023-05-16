@@ -22,7 +22,7 @@ export default function login() {
           })
         });
         const data = await response.json();
-        localStorage.setItem('user', JSON.stringify(data));
+        localStorage.setItem('phone', data.phone);
       } catch (error) {
         console.error(error);
       }

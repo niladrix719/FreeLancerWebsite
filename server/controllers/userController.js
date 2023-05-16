@@ -31,12 +31,12 @@ async function signupController(req, res) {
 //OTP
 
 function sendTextMessage(phoneNumber, message) {
-  phoneNumber = "+91" + phoneNumber.toString();
-  twilio.messages.create({
-    body: message,
-    from: process.env.TWILIO_PHONE_NUMBER,
-    to: phoneNumber
-  }).then((message) => console.log(message.sid));
+  // phoneNumber = "+91" + phoneNumber.toString();
+  // twilio.messages.create({
+  //   body: message,
+  //   from: process.env.TWILIO_PHONE_NUMBER,
+  //   to: phoneNumber
+  // }).then((message) => console.log(message.sid));
 }
 
 // login
@@ -50,6 +50,12 @@ const loginController = async (req, res) => {
       return res.sendStatus(403);
     }
 
+    // const existingOtpData = await otpCollection.findOne({ phone: phone });
+
+    // if (existingOtpData && !isExpired(existingOtpData.expiry)) {
+    //   await otpCollection.deleteOne({ phone: phone });
+    // }
+
     const code = Math.floor(100000 + Math.random() * 900000);
 
     const otpData = new otpCollection({
@@ -60,6 +66,17 @@ const loginController = async (req, res) => {
     await otpData.save();
 
     sendTextMessage(phone, `Hi ${code} is your one time password to login on Fipezo. Do not share this with anyone. -Team Fipezo`);
+
+    setTimeout(async () => {
+      try {
+        await otpCollection.deleteOne({ phone: phone });
+      } catch (error) {
+        console.error('Error deleting OTP:', error);
+      }
+    }, 300000);
+
+    res.status(200).json({ phone: phone });
+
   } catch (error) {
     console.error(error);
     res.status(500).send('Internal server error');
