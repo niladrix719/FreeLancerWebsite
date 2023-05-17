@@ -1,7 +1,7 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import styles from '../styles/VerificationPanel.module.css'
-import Verification from '@/components/VerificationCard';
+import VerificationCard from '@/components/VerificationCard';
 import { useEffect, useState } from 'react';
 function VerificationPanel() {
   const [freelancers, setFreelancers] = useState([]);
@@ -27,7 +27,7 @@ function VerificationPanel() {
         <div className={styles.cards}>
           {freelancers.map((freelancer, index) => {
             return (
-              <Verification key={index} profile={freelancer} />
+              <VerificationCard key={index} profile={freelancer} />
             )
           })}
         </div>

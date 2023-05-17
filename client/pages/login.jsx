@@ -4,8 +4,10 @@ import Link from 'next/link';
 import styles from '@/styles/Login.module.css';
 import Footer from '@/components/Footer';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 
 export default function Login() {
+  const [type, setType] = useState('user');
   const router = useRouter();
   function handleSubmit(event) {
     event.preventDefault();
@@ -49,7 +51,7 @@ export default function Login() {
           </div>
           <label htmlFor="accType" className={styles.accLabel}>
             <p className={styles.label}>Log in As</p>
-            <select className={styles.accType} id='accType' name='type'>
+            <select className={styles.accType} id='accType' name='type' onChange={(e) => setType(e.target.value)}>
               <option value="user" className={styles.opts}>User</option>
               <option value="freelancer" className={styles.opts}>Freelancer</option>
               <option value="company" className={styles.opts}>Company</option>
@@ -65,7 +67,9 @@ export default function Login() {
             <button className={styles.btn} type='submit'>Send OTP</button>
           </div>
           <div className={styles.lower}>
-            <Link href='/signup' className={styles.signup}>Don&apos;t have an Account? Sign up now</Link>
+            {type === 'user' && <Link href='/signup' className={styles.signup}>Don&apos;t have an Account? Sign up now</Link>}
+            {type === 'freelancer' && <Link href='/register/freelancer' className={styles.signup}>Don&apos;t have an Account? Register now As a Freelancer</Link>}
+            {type === 'company' && <Link href='/register/company' className={styles.signup}>Don&apos;t have an Account? Register now As a Company</Link>}
           </div>
         </form>
         <div className={styles.presentation}>

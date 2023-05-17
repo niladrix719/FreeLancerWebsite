@@ -52,7 +52,7 @@ function VerifyOTP() {
             <p className={styles.subHeading}>Enter a one-time password (OTP) to verify</p>
           </div>
           <div id={styles.otp}>
-            <input className={styles.inputs} type="text" name="otp" id="otp" placeholder="Enter OTP" />
+            <input className={styles.inputs} type="number" name="otp" id="otp" placeholder="Enter OTP" />
           </div>
           <div>
             <button className={styles.btn} type='submit'>Submit</button>
@@ -69,4 +69,4 @@ function VerifyOTP() {
   )
 }
 
-export default VerifyOTP
+export default VerifyOTP;
