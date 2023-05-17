@@ -19,6 +19,13 @@ function VerificationPanel() {
     fetchFreelancer();
   }, []);
 
+  const updateFreelancers = (id) => {
+    const newFreelancers = freelancers.filter((freelancer) => {
+      return freelancer._id !== id;
+    });
+    setFreelancers(newFreelancers);
+  }
+
   return (
     <div className={styles.verification}>
       <Navbar />
@@ -27,7 +34,7 @@ function VerificationPanel() {
         <div className={styles.cards}>
           {freelancers.map((freelancer, index) => {
             return (
-              <VerificationCard key={index} profile={freelancer} />
+              <VerificationCard key={index} profile={freelancer} updateFreelancers={updateFreelancers} />
             )
           })}
         </div>

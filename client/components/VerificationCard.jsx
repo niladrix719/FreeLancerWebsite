@@ -25,6 +25,8 @@ function VerificationCard(props) {
           'Content-Type': 'application/json'
         }
       });
+      const data = await response.json();
+      props.updateFreelancers(data.id);
     } catch (error) {
       console.error(error);
     }
@@ -38,6 +40,8 @@ function VerificationCard(props) {
           'Content-Type': 'application/json'
         }
       });
+      const data = await response.json();
+      props.updateFreelancers(data.id);
     } catch (error) {
       console.error(error);
     }

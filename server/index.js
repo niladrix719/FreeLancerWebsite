@@ -52,7 +52,7 @@ app.delete('/delete/freelancer/:id', (req, res) => {
   const id = req.params.id;
   freelancerCollection.deleteOne({ _id: id })
     .then(() => {
-      res.sendStatus(200);
+      res.json({ id: id });
     })
     .catch(error => {
       console.error(error);
@@ -64,7 +64,7 @@ app.put('/verify/freelancer/:id', (req, res) => {
   const id = req.params.id;
   freelancerCollection.updateOne({ _id: id }, { $set: { verified: true } })
     .then(() => {
-      res.sendStatus(200);
+      res.json({ id: id });
     })
     .catch(error => {
       console.error(error);
