@@ -40,7 +40,7 @@ function Footer() {
       <div className={styles.lower}>
         <div className={styles.company}>
           <div className={styles.logo}>
-            <h3>Fipezo</h3>
+            <i style={{fontWeight: '600'}}>Fipezo</i>
           </div>
           <div className={styles.copyri8}>
             <p>Copyright © 2023 Fipezo, All rights reserved.</p>
