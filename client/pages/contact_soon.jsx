@@ -4,10 +4,23 @@ import Footer from '@/components/Footer';
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import ReactConfetti from 'react-confetti';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 function Contact_soon() {
+  const [windowDm, setWindowDm] = useState({ width: window.innerWidth - 100, height: window.innerHeight - 100 });
+  const dectectSize = () => {
+    setWindowDm({ width: window.innerWidth - 100, height: window.innerHeight - 100 });
+  }
+  useEffect(() => {
+    addEventListener('resize', dectectSize);
+    return () => {
+      removeEventListener('resize', dectectSize);
+    }
+  }, [windowDm]); 
   return (
     <div className={styles.contactSoon}>
+      <ReactConfetti height={window.innerHeight - 100} width={window.innerWidth - 100} numberOfPieces={150} />
       <Navbar />
       <div className={styles.body}>
         <div className={styles.box}>
@@ -26,7 +39,7 @@ function Contact_soon() {
               <Image className={styles.social} src='/youtube.png' width='160' height='160' />
             </div>
             <div className={styles.backBox}>
-              
+
             </div>
           </div>
           <div className={styles.flex}>
