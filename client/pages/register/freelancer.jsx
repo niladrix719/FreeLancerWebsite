@@ -298,13 +298,13 @@ class Freelancer extends React.Component {
               <div className={styles.freelancer}>
                 <h1 className={styles.minHeading}>For Freelancers</h1>
                 <div className={styles.feature}>
-                  <FontAwesomeIcon icon={faCheck} style={{ color: "#00aaff", }} /><p>Helps You get more reach</p>
+                  <FontAwesomeIcon icon={faCheck} style={{ color: "white", }} /><p>Helps You get more reach</p>
                 </div>
                 <div className={styles.feature}>
-                  <FontAwesomeIcon icon={faCheck} style={{ color: "#00aaff", }} /><p>All Verified Companies</p>
+                  <FontAwesomeIcon icon={faCheck} style={{ color: "white", }} /><p>All Verified Companies</p>
                 </div>
                 <div className={styles.feature}>
-                  <FontAwesomeIcon icon={faCheck} style={{ color: "#00aaff", }} /><p>Maintains Privacy and Fully Transparent</p>
+                  <FontAwesomeIcon icon={faCheck} style={{ color: "white", }} /><p>Maintains Privacy and Fully Transparent</p>
                 </div>
               </div>
               <Image src='/registration1.png' alt='registration' width='200' height='200' className={styles.img} />
