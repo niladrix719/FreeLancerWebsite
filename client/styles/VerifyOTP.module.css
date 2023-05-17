@@ -41,6 +41,12 @@
     background-color: transparent;
 }
 
+.inputs::-webkit-inner-spin-button,
+.inputs::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 .labels {
     color: white;
     padding: 0.25rem;
