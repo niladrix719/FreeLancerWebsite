@@ -7,6 +7,7 @@ import Image from 'next/image'
 import Footer from '@/components/Footer'
 import Verification from '@/components/Verification'
 import profile from '../profile'
+import Router from 'next/router';
 
 class Freelancer extends React.Component {
   constructor(props) {
@@ -182,6 +183,7 @@ class Freelancer extends React.Component {
 
         const responseData = await response.json();
         localStorage.setItem('freelancer', JSON.stringify(responseData));
+        Router.push('/');
       } catch (error) {
         console.error(error);
       }
