@@ -14,7 +14,7 @@ const upload = multer({
 }).fields([
   { name: 'profilePicture', maxCount: 1 },
   { name: 'coverPicture', maxCount: 1 },
-  { name: 'addharCard', maxCount: 1 },
+  { name: 'aadhaarCard', maxCount: 1 },
   { name: 'panCard', maxCount: 1 },
   { name: 'works[]', maxCount: 8 }
 ]);

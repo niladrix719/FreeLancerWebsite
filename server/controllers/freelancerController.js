@@ -1,4 +1,5 @@
 const freelancerCollection = require('../models/freelancerModel');
+const fs = require('fs');
 
 //Registration
 
@@ -16,7 +17,7 @@ async function registerFreelancer(req, res) {
       equipments: req.body.equipments,
       profilePicture: req.files['profilePicture'][0].filename,
       coverPicture: req.files['coverPicture'][0].filename,
-      addharCard: req.files['addharCard'][0].filename,
+      aadhaarCard: req.files['aadhaarCard'][0].filename,
       panCard: req.files['panCard'][0].filename,
       works: req.files['works[]'].map(file => file.filename),
       links: req.body.links,
@@ -80,10 +81,56 @@ async function getFreelancerProfessionProfiles(req, res) {
   }
 }
 
+// delete profile
+
+async function deleteFreelancerProfile (req, res) {
+  try {
+    const id = req.params.id;
+    const user = await freelancerCollection.findOne({ _id: id });
+    console.log(user);
+
+    if (!user || user.verified === true) {
+      return res.sendStatus(403);
+    }
+
+    user.works.forEach((filename) => {
+      const filePath = `uploads/${filename}`;
+      fs.unlinkSync(filePath);
+    });
+
+    fs.unlinkSync(`uploads/${user.profilePicture}`);
+    fs.unlinkSync(`uploads/${user.coverPicture}`);
+    fs.unlinkSync(`uploads/${user.panCard}`);
+    fs.unlinkSync(`uploads/${user.aadhaarCard}`);
+
+    await freelancerCollection.deleteOne({ _id: id });
+    res.json({ id: id });
+  } catch (error) {
+    console.error(error);
+    res.sendStatus(500);
+  }
+}
+
+// verifying profile
+
+async function verifyFreelancerProfile(req, res) {
+  const id = req.params.id;
+  freelancerCollection.updateOne({ _id: id }, { $set: { verified: true } })
+    .then(() => {
+      res.json({ id: id });
+    })
+    .catch(error => {
+      console.error(error);
+      res.sendStatus(500);
+    });
+}
+
 module.exports = {
   registerFreelancer,
   getFreelancerProfile,
   getFreelancerProfiles,
   getFreelancerProfessionProfiles,
-  getUnFreelancerProfiles
+  getUnFreelancerProfiles,
+  deleteFreelancerProfile,
+  verifyFreelancerProfile
 };

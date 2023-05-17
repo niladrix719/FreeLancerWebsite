@@ -13,7 +13,7 @@ function VerificationCard(props) {
   const work6 = props.profile.works[5];
   const work7 = props.profile.works[6];
   const work8 = props.profile.works[7];
-  const addharCard = props.profile.addharCard;
+  const aadhaarCard = props.profile.aadhaarCard;
   const panCard = props.profile.panCard;
   const profession = props.profile.profession.charAt(0).toUpperCase() + props.profile.profession.slice(1);
 
@@ -88,8 +88,8 @@ function VerificationCard(props) {
           </div>
         </div>
         <div className={styles.cards}>
-          <div className={styles.card} onClick={() => setScreen(addharCard)}>
-            <h1>Addhar Card</h1>
+          <div className={styles.card} onClick={() => setScreen(aadhaarCard)}>
+            <h1>Aadhaar Card</h1>
           </div>
           <div className={styles.card} onClick={() => setScreen(panCard)}>
             <h1>Pan Card</h1>

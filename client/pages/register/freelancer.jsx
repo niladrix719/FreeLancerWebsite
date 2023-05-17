@@ -26,7 +26,7 @@ class Freelancer extends React.Component {
       equipments: '',
       profilePicture: null,
       coverPicture: null,
-      addharCard: null,
+      aadhaarCard: null,
       panCard: null,
       works: [],
       links: { instagram: '', facebook: '', twitter: '', youtube: '' },
@@ -124,7 +124,7 @@ class Freelancer extends React.Component {
     if (index === 5)
       this.setState({ coverPicture: val });
     if (index === 6)
-      this.setState({ addharCard: val });
+      this.setState({ aadhaarCard: val });
     if (index === 7)
       this.setState({ panCard: val });
     if (index === 8 || index === 9 || index === 10 || index === 11 || index === 0 || index === 1 || index === 2 || index === 3) {
@@ -163,7 +163,7 @@ class Freelancer extends React.Component {
         data.append('equipments', this.state.equipments);
         data.append('profilePicture', this.state.profilePicture);
         data.append('coverPicture', this.state.coverPicture);
-        data.append('addharCard', this.state.addharCard);
+        data.append('aadhaarCard', this.state.aadhaarCard);
         data.append('panCard', this.state.panCard);
         data.append('works[]', this.state.works[0]);
         data.append('works[]', this.state.works[1]);

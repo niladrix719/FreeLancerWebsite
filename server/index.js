@@ -6,7 +6,13 @@ const bodyParser = require('body-parser');
 const db = require('./db/db');
 const { signupController , loginController , otpController} = require('./controllers/userController');
 const { registerCompany } = require('./controllers/companyController');
-const { registerFreelancer, getFreelancerProfile, getFreelancerProfiles, getFreelancerProfessionProfiles, getUnFreelancerProfiles } = require('./controllers/freelancerController');
+const { registerFreelancer,
+  getFreelancerProfile,
+  getFreelancerProfiles,
+  getFreelancerProfessionProfiles,
+  getUnFreelancerProfiles,
+  deleteFreelancerProfile,
+  verifyFreelancerProfile } = require('./controllers/freelancerController');
 const jwt = require('jsonwebtoken');
 const secret = process.env.JWT_SECRET;
 const verifyToken = require('./middlewares/verification');
@@ -36,6 +42,8 @@ app.get('/profile/freelancer/:uid', getFreelancerProfile);
 app.get('/profiles/verified/freelancer', getFreelancerProfiles);
 app.get('/profiles/unverified/freelancer', getUnFreelancerProfiles);
 app.get('/profiles/freelancer/:profession', getFreelancerProfessionProfiles);
+app.delete('/delete/freelancer/:id', deleteFreelancerProfile);
+app.put('/verify/freelancer/:id', verifyFreelancerProfile);
 app.get('/navbar', verifyToken, (req, res) => {
   jwt.verify(req.token, secret, (err, authData) => {
     if (err) {
@@ -47,29 +55,6 @@ app.get('/navbar', verifyToken, (req, res) => {
       });
     }
   });
-});
-app.delete('/delete/freelancer/:id', (req, res) => {
-  const id = req.params.id;
-  freelancerCollection.deleteOne({ _id: id })
-    .then(() => {
-      res.json({ id: id });
-    })
-    .catch(error => {
-      console.error(error);
-      res.sendStatus(500);
-    });
-});
-
-app.put('/verify/freelancer/:id', (req, res) => {
-  const id = req.params.id;
-  freelancerCollection.updateOne({ _id: id }, { $set: { verified: true } })
-    .then(() => {
-      res.json({ id: id });
-    })
-    .catch(error => {
-      console.error(error);
-      res.sendStatus(500);
-    });
 });
 
 // Starting the server

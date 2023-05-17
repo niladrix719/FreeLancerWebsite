@@ -9,7 +9,7 @@ function Verification(props) {
   const [warns, setWarns] = useState([false, false, false, false, false, false, false, false, false, false, false, false]);
   const [profilePicture, setProfilePicture] = useState(null);
   const [coverPicture, setCoverPicture] = useState(null);
-  const [addharCard, setAddharCard] = useState(null);
+  const [aadhaarCard, setAadhaarCard] = useState(null);
   const [panCard, setPanCard] = useState(null);
   const [links, setLinks] = useState({ instagram: '', facebook: '', twitter: '', youtube: '' });
   const [works, setWorks] = useState([]);
@@ -53,7 +53,7 @@ function Verification(props) {
 
     if (index === 6) {
       props.getVericationDetails(file, 6);
-      setAddharCard(file);
+      setAadhaarCard(file);
     }
 
     if (file.size > 1048576 && index === 7) {
@@ -179,7 +179,7 @@ function Verification(props) {
       <div className={styles.uploads}>
         <label className={styles.box}>
           <FontAwesomeIcon icon={faPlus} style={{ color: 'white' }} />
-          &nbsp;&nbsp;&nbsp;&nbsp;Addhar Card
+          &nbsp;&nbsp;&nbsp;&nbsp;Aadhaar Card
           <input type="file" className={styles.upload} onChange={(e) => handleImageChange(e, 6)} accept="image/jpeg,image/png" />
           &nbsp;&nbsp;&nbsp;&nbsp;
           {images[6] && <FontAwesomeIcon icon={faFile} style={{ color: "#ffffff", }} />}

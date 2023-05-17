@@ -47,7 +47,7 @@ const freelancerSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  addharCard: {
+  aadhaarCard: {
     type: String,
     required: true
   },
