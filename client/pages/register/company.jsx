@@ -17,7 +17,8 @@ class Company extends React.Component {
       companyphone: '',
       companytype: 'photography',
       bio: '',
-      error: false
+      error: false,
+      phoneError: false
     }
   }
 
@@ -33,6 +34,11 @@ class Company extends React.Component {
 
     if (this.state.companyphone === '' && this.state.currentPage === 2) {
       this.setState({ error: true });
+      return;
+    }
+
+    if(this.state.companyphone.length !== 10 && this.state.currentPage === 2) {
+      this.setState({ phoneError: true });
       return;
     }
 
@@ -54,6 +60,7 @@ class Company extends React.Component {
 
     this.setState({ progress: this.state.progress + val });
     this.setState({ error: false });
+    this.setState({ phoneError: false });
     this.increPage();
   }
 
@@ -62,6 +69,7 @@ class Company extends React.Component {
       return;
 
     this.setState({ error: false });
+    this.setState({ phoneError: false });
 
     this.setState({ progress: this.state.progress - val });
     this.decrePage();
@@ -125,6 +133,7 @@ class Company extends React.Component {
             <p className={styles.subHeading}>We only allow verified Companies on our website.</p>
             <form className={styles.form}>
               {this.state.error && <p className={styles.error}>Please provide all the inputs the fields.</p>}
+              {this.state.phoneError && <p className={styles.error}>Please provide a valid phone number of 10 digits.</p>}
               {this.state.currentPage === 1 && <div className={styles.inputField} id={styles.firstname}>
                 <label htmlFor="companyname" className={styles.label}><span style={{ color: 'white' }}>* </span>Company Name :</label>
                 <input type='text' className={styles.input}

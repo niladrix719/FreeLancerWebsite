@@ -34,6 +34,7 @@ class Freelancer extends React.Component {
       error: false,
       form: false,
       phoneError: false,
+      textareaError: false,
     }
   }
 
@@ -52,7 +53,7 @@ class Freelancer extends React.Component {
       return;
     }
 
-    if((this.state.phone.length !== 10) && this.state.currentPage === 2) {
+    if ((this.state.phone.length !== 10) && this.state.currentPage === 2) {
       this.setState({ phoneError: true });
       return;
     }
@@ -72,8 +73,18 @@ class Freelancer extends React.Component {
       return;
     }
 
+    if (this.state.bio.length > 300 && this.state.currentPage === 6) {
+      this.setState({ textareaError: true });
+      return;
+    }
+
     if (this.state.bio === '' && this.state.currentPage === 6) {
       this.setState({ error: true });
+      return;
+    }
+
+    if (this.state.equipments.length > 300 && this.state.currentPage === 7) {
+      this.setState({ textareaError: true });
       return;
     }
 
@@ -91,6 +102,7 @@ class Freelancer extends React.Component {
     this.setState({ progress: this.state.progress + val });
     this.setState({ error: false });
     this.setState({ phoneError: false });
+    this.setState({ textareaError: false });
     this.increPage();
   }
 
@@ -100,6 +112,7 @@ class Freelancer extends React.Component {
 
     this.setState({ error: false });
     this.setState({ phoneError: false });
+    this.setState({ textareaError: false });
 
     this.setState({ progress: this.state.progress - val });
     this.decrePage();
@@ -154,6 +167,23 @@ class Freelancer extends React.Component {
     }
     if (index === 16) {
       this.setState({ termsAndConditions: val });
+    }
+  }
+
+  handleTextChange = (event, val) => {
+    if (val === 1) {
+      this.setState({ bio: event.target.value });
+      if (this.state.bio.length > 300)
+        this.setState({ textareaError: true });
+      else
+        this.setState({ textareaError: false });
+    }
+    if (val === 2) {
+      this.setState({ equipments: event.target.value });
+      if (this.state.equipments.length > 300)
+        this.setState({ textareaError: true });
+      else
+        this.setState({ textareaError: false });
     }
   }
 
@@ -220,7 +250,7 @@ class Freelancer extends React.Component {
                 <input type='text' className={styles.input}
                   placeholder='Enter Your First name'
                   name='firstname' id='firstname' required
-                  onChange={(event) => this.setState({ firstName: event.target.value })}
+                  onChange={(event) => this.setState({ firstName: event.target.value , error: false })}
                   value={this.state.firstName}
                   maxLength={15}
                 />
@@ -230,7 +260,7 @@ class Freelancer extends React.Component {
                 <input type='text' className={styles.input}
                   placeholder='Enter Your Last name'
                   name='lastname' id='lastname' required
-                  onChange={(event) => this.setState({ lastName: event.target.value })}
+                  onChange={(event) => this.setState({ lastName: event.target.value , error: false })}
                   value={this.state.lastName}
                   maxLength={15}
                 />
@@ -240,7 +270,7 @@ class Freelancer extends React.Component {
                 <input type='number' id={styles.number} className={styles.input}
                   placeholder='Enter Your Phone no.'
                   name='phone' required
-                  onChange={(event) => this.setState({ phone: event.target.value })}
+                  onChange={(event) => this.setState({ phone: event.target.value , error: false })}
                   value={this.state.phone}
                   max={10}
                 />
@@ -251,8 +281,32 @@ class Freelancer extends React.Component {
                   onChange={(event) => this.setState({ location: event.target.value })} id="location"
                   value={this.state.location}
                 >
+                  <option className={styles.option} value="hyderabad">Hyderabad</option>
+                  <option className={styles.option} value="chennai">Chennai</option>
+                  <option className={styles.option} value="pune">Pune</option>
                   <option className={styles.option} value="kolkata">Kolkata</option>
-                  <option className={styles.option} value="outside kolkata">Outside Kolkata</option>
+                  <option className={styles.option} value="lucknow">Lucknow</option>
+                  <option className={styles.option} value="jaipur">Jaipur</option>
+                  <option className={styles.option} value="gurgaon">Gurgaon</option>
+                  <option className={styles.option} value="goa">Goa</option>
+                  <option className={styles.option} value="udaipur">Udaipur</option>
+                  <option className={styles.option} value="chandigarh">Chandigarh</option>
+                  <option className={styles.option} value="ahmedabad">Ahmedabad</option>
+                  <option className={styles.option} value="indore">Indore</option>
+                  <option className={styles.option} value="agra">Agra</option>
+                  <option className={styles.option} value="kanpur">Kanpur</option>
+                  <option className={styles.option} value="bhopal">Bhopal</option>
+                  <option className={styles.option} value="kochi">Kochi</option>
+                  <option className={styles.option} value="nagpur">Nagpur</option>
+                  <option className={styles.option} value="dehradun">Dehradun</option>
+                  <option className={styles.option} value="thane">Thane</option>
+                  <option className={styles.option} value="surat">Surat</option>
+                  <option className={styles.option} value="vadodara">Vadodara</option>
+                  <option className={styles.option} value="visakhapatnam">Visakhapatnam</option>
+                  <option className={styles.option} value="bhubaneswar">Bhubaneswar</option>
+                  <option className={styles.option} value="raipur">Raipur</option>
+                  <option className={styles.option} value="coimbatore">Coimbatore</option>
+                  <option className={styles.option} value="jalandhar">Jalandhar</option>
                 </select>
               </div>}
               {this.state.currentPage === 4 && <div className={styles.inputField} id={styles.profession}>
@@ -274,10 +328,11 @@ class Freelancer extends React.Component {
                   value={this.state.rate}
                 />
               </div>}
+              {this.state.textareaError && <p className={styles.error}>Please provide a bio of less than 100 characters.</p>}
               {this.state.currentPage === 6 && <div className={styles.inputField} id={styles.bio}>
                 <label htmlFor="bio" className={styles.label}><span style={{ color: 'white' }}>* </span>Bio :</label>
                 <textarea required name="bio" id="bio" cols="30" rows="10"
-                  onChange={(event) => this.setState({ bio: event.target.value })}
+                  onChange={(event) => this.handleTextChange(event, 1)}
                   className={styles.textarea} placeholder='Write Your bio here...'
                   value={this.state.bio}>
                 </textarea>
@@ -285,7 +340,7 @@ class Freelancer extends React.Component {
               {!this.state.form && this.state.currentPage === 7 && <div className={styles.inputField} id={styles.equipment}>
                 <label htmlFor="equipments" className={styles.label}><span style={{ color: 'white' }}>* </span>Equipments Available :</label>
                 <textarea required name="equipments" id="equipments" cols="30" rows="10"
-                  onChange={(event) => this.setState({ equipments: event.target.value })}
+                  onChange={(event) => this.handleTextChange(event, 2)}
                   className={styles.textarea} placeholder='Write Your equipments here...'
                   value={this.state.equipments}>
                 </textarea>
