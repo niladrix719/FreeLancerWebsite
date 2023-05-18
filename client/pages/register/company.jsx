@@ -61,6 +61,8 @@ class Company extends React.Component {
     if (this.state.progress - val < 0)
       return;
 
+    this.setState({ error: false });
+
     this.setState({ progress: this.state.progress - val });
     this.decrePage();
   }
@@ -81,7 +83,7 @@ class Company extends React.Component {
     if (this.state.currentPage === 1)
       return;
 
-    if (this.state.currentPage === 5) {
+    if (this.state.currentPage === 4) {
       this.setState({ btn: 'Next' });
     }
 
@@ -176,7 +178,7 @@ class Company extends React.Component {
             </div>
             <div className={styles.features}>
               <div className={styles.freelancer}>
-                <h1 className={styles.minHeading}>For Freelancers</h1>
+                <h1 className={styles.minHeading}>For Companies</h1>
                 <div className={styles.feature}>
                   <FontAwesomeIcon className={styles.check} icon={faCheck} style={{ color: "black", }} /><p>Helps You get The right Talent for your Project</p>
                 </div>

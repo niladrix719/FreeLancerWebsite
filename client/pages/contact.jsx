@@ -14,11 +14,11 @@ function Contact() {
             <div className={styles.form_body}>
               <form className={styles.form}>
                 <div className={styles.inputs}>
-                  <label htmlFor="name" className={styles.label}>Firstname :</label>
+                  <label htmlFor="name" className={styles.label}>First name :</label>
                   <input type='text' id='name' className={styles.input} />
                 </div>
                 <div className={styles.inputs}>
-                  <label htmlFor="name" className={styles.label}>Lastname :</label>
+                  <label htmlFor="name" className={styles.label}>Last name :</label>
                   <input type='text' id='name' className={styles.input} />
                 </div>
                 <div className={styles.inputs}>

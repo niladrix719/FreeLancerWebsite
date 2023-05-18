@@ -21,7 +21,7 @@ class Freelancer extends React.Component {
       phone: '',
       location: 'kolkata',
       profession: 'photographer',
-      rate: 800,
+      rate: 1000,
       bio: '',
       equipments: '',
       profilePicture: null,
@@ -32,7 +32,8 @@ class Freelancer extends React.Component {
       links: { instagram: '', facebook: '', twitter: '', youtube: '' },
       termsAndConditions: false,
       error: false,
-      form: false
+      form: false,
+      phoneError: false,
     }
   }
 
@@ -48,6 +49,11 @@ class Freelancer extends React.Component {
 
     if ((this.state.phone === '') && this.state.currentPage === 2) {
       this.setState({ error: true });
+      return;
+    }
+
+    if((this.state.phone.length !== 10) && this.state.currentPage === 2) {
+      this.setState({ phoneError: true });
       return;
     }
 
@@ -84,12 +90,16 @@ class Freelancer extends React.Component {
 
     this.setState({ progress: this.state.progress + val });
     this.setState({ error: false });
+    this.setState({ phoneError: false });
     this.increPage();
   }
 
   decreProgress = (val) => {
     if (this.state.progress - val < 0)
       return;
+
+    this.setState({ error: false });
+    this.setState({ phoneError: false });
 
     this.setState({ progress: this.state.progress - val });
     this.decrePage();
@@ -204,6 +214,7 @@ class Freelancer extends React.Component {
               onSubmit={(event) => this.handleSubmit(event)} encType="multipart/form-data"
             >
               {this.state.error && <p className={styles.error}>Please provide all the inputs the fields.</p>}
+              {this.state.phoneError && <p className={styles.error}>Please provide a valid phone number of 10 digits.</p>}
               {this.state.currentPage === 1 && <div className={styles.inputField} id={styles.firstname}>
                 <label htmlFor="firstname" className={styles.label}><span style={{ color: 'white' }}>* </span>First name :</label>
                 <input type='text' className={styles.input}
@@ -258,7 +269,7 @@ class Freelancer extends React.Component {
               {this.state.currentPage === 5 && <div className={styles.inputField} id={styles.rate}>
                 <label htmlFor="rate" className={styles.label}><span style={{ color: 'white' }}>* </span>What is your rate per hour?</label>
                 {this.state.rate && <p className={styles.rate}>Rs. {this.state.rate} / Hour</p>}
-                <input required className={styles.options} name="rate" type='range' min='100' max='2000' step='100'
+                <input required className={styles.range} name="rate" type='range' min='1000' max='50000' step='100'
                   onChange={(event) => this.setState({ rate: event.target.value })} id="rate"
                   value={this.state.rate}
                 />

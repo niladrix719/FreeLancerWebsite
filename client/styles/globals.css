@@ -39,6 +39,6 @@ body {
 }
 
 ::selection {
-  background-color: var(--primary-color);
+  background-color: black;
   color: white;
 }
