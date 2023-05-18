@@ -124,7 +124,7 @@ class Company extends React.Component {
             <form className={styles.form}>
               {this.state.error && <p className={styles.error}>Please provide all the inputs the fields.</p>}
               {this.state.currentPage === 1 && <div className={styles.inputField} id={styles.firstname}>
-                <label htmlFor="companyname" className={styles.label}><span style={{ color: 'red' }}>* </span>Company Name :</label>
+                <label htmlFor="companyname" className={styles.label}><span style={{ color: 'white' }}>* </span>Company Name :</label>
                 <input type='text' className={styles.input}
                   placeholder='Enter Your Company name'
                   name='companyname' id='companyname' required
@@ -134,7 +134,7 @@ class Company extends React.Component {
                 />
               </div>}
               {this.state.currentPage === 2 && <div className={styles.inputField} id={styles.phone}>
-                <label htmlFor="companyphone" className={styles.label}><span style={{ color: 'red' }}>* </span>Company Phone :</label>
+                <label htmlFor="companyphone" className={styles.label}><span style={{ color: 'white' }}>* </span>Company Phone :</label>
                 <input type='number' id={styles.number} className={styles.input}
                   placeholder='Enter Company Phone no.'
                   name='companyphone' required
@@ -144,7 +144,7 @@ class Company extends React.Component {
                 />
               </div>}
               {this.state.currentPage === 3 && <div className={styles.inputField} id={styles.profession}>
-                <label htmlFor="companytype" className={styles.label}><span style={{ color: 'red' }}>* </span>What is your company type?</label>
+                <label htmlFor="companytype" className={styles.label}><span style={{ color: 'white' }}>* </span>What is your company type?</label>
                 <select required className={styles.options} name="companytype"
                   onChange={(event) => this.setState({ companytype: event.target.value })} id="companytype"
                   value={this.state.companytype !== '' ? this.state.companytype : ''}
@@ -155,7 +155,7 @@ class Company extends React.Component {
                 </select>
               </div>}
               {this.state.currentPage === 4 && <div className={styles.inputField} id={styles.bio}>
-                <label htmlFor="bio" className={styles.label}><span style={{ color: 'red' }}>* </span>Bio :</label>
+                <label htmlFor="bio" className={styles.label}><span style={{ color: 'white' }}>* </span>Bio :</label>
                 <textarea required name="bio" id="bio" cols="30" rows="10"
                   onChange={(event) => this.setState({ bio: event.target.value })}
                   className={styles.textarea} placeholder='Write Your bio here...'
@@ -178,16 +178,16 @@ class Company extends React.Component {
               <div className={styles.freelancer}>
                 <h1 className={styles.minHeading}>For Freelancers</h1>
                 <div className={styles.feature}>
-                  <FontAwesomeIcon icon={faCheck} style={{ color: "#00aaff", }} /><p>Helps You get The right Talent for your Project</p>
+                  <FontAwesomeIcon className={styles.check} icon={faCheck} style={{ color: "black", }} /><p>Helps You get The right Talent for your Project</p>
                 </div>
                 <div className={styles.feature}>
-                  <FontAwesomeIcon icon={faCheck} style={{ color: "#00aaff", }} /><p>All Verified Freelancers</p>
+                  <FontAwesomeIcon className={styles.check} icon={faCheck} style={{ color: "black", }} /><p>All Verified Freelancers</p>
                 </div>
                 <div className={styles.feature}>
-                  <FontAwesomeIcon icon={faCheck} style={{ color: "#00aaff", }} /><p>Maintains Privacy and Fully Transparent</p>
+                  <FontAwesomeIcon className={styles.check} icon={faCheck} style={{ color: "black", }} /><p>Maintains Privacy and Fully Transparent</p>
                 </div>
               </div>
-              <Image src='/registration01.png' alt='registration' width={250} height={250} />
+              <Image className={styles.img} src='/ani3.png' alt='registration' width={250} height={250} />
             </div>
             <hr className={styles.divider} />
           </div>

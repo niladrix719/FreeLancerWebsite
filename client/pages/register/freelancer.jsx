@@ -205,7 +205,7 @@ class Freelancer extends React.Component {
             >
               {this.state.error && <p className={styles.error}>Please provide all the inputs the fields.</p>}
               {this.state.currentPage === 1 && <div className={styles.inputField} id={styles.firstname}>
-                <label htmlFor="firstname" className={styles.label}><span style={{ color: 'red' }}>* </span>First name :</label>
+                <label htmlFor="firstname" className={styles.label}><span style={{ color: 'white' }}>* </span>First name :</label>
                 <input type='text' className={styles.input}
                   placeholder='Enter Your First name'
                   name='firstname' id='firstname' required
@@ -215,7 +215,7 @@ class Freelancer extends React.Component {
                 />
               </div>}
               {this.state.currentPage === 1 && <div className={styles.inputField} id={styles.lastname}>
-                <label htmlFor="lastname" className={styles.label}><span style={{ color: 'red' }}>* </span>Last name :</label>
+                <label htmlFor="lastname" className={styles.label}><span style={{ color: 'white' }}>* </span>Last name :</label>
                 <input type='text' className={styles.input}
                   placeholder='Enter Your Last name'
                   name='lastname' id='lastname' required
@@ -225,7 +225,7 @@ class Freelancer extends React.Component {
                 />
               </div>}
               {this.state.currentPage === 2 && <div className={styles.inputField} id={styles.phone}>
-                <label htmlFor="phone" className={styles.label}><span style={{ color: 'red' }}>* </span>Phone :</label>
+                <label htmlFor="phone" className={styles.label}><span style={{ color: 'white' }}>* </span>Phone :</label>
                 <input type='number' id={styles.number} className={styles.input}
                   placeholder='Enter Your Phone no.'
                   name='phone' required
@@ -235,7 +235,7 @@ class Freelancer extends React.Component {
                 />
               </div>}
               {this.state.currentPage === 3 && <div className={styles.inputField} id={styles.location}>
-                <label htmlFor="location" className={styles.label}><span style={{ color: 'red' }}>* </span>Where do you live?</label>
+                <label htmlFor="location" className={styles.label}><span style={{ color: 'white' }}>* </span>Where do you live?</label>
                 <select required className={styles.options} name="location"
                   onChange={(event) => this.setState({ location: event.target.value })} id="location"
                   value={this.state.location}
@@ -245,7 +245,7 @@ class Freelancer extends React.Component {
                 </select>
               </div>}
               {this.state.currentPage === 4 && <div className={styles.inputField} id={styles.profession}>
-                <label htmlFor="profession" className={styles.label}><span style={{ color: 'red' }}>* </span>What is your profession?</label>
+                <label htmlFor="profession" className={styles.label}><span style={{ color: 'white' }}>* </span>What is your profession?</label>
                 <select required className={styles.options} name="profession"
                   onChange={(event) => this.setState({ profession: event.target.value })} id="profession"
                   value={this.state.profession}
@@ -256,7 +256,7 @@ class Freelancer extends React.Component {
                 </select>
               </div>}
               {this.state.currentPage === 5 && <div className={styles.inputField} id={styles.rate}>
-                <label htmlFor="rate" className={styles.label}><span style={{ color: 'red' }}>* </span>What is your rate per hour?</label>
+                <label htmlFor="rate" className={styles.label}><span style={{ color: 'white' }}>* </span>What is your rate per hour?</label>
                 {this.state.rate && <p className={styles.rate}>Rs. {this.state.rate} / Hour</p>}
                 <input required className={styles.options} name="rate" type='range' min='100' max='2000' step='100'
                   onChange={(event) => this.setState({ rate: event.target.value })} id="rate"
@@ -264,7 +264,7 @@ class Freelancer extends React.Component {
                 />
               </div>}
               {this.state.currentPage === 6 && <div className={styles.inputField} id={styles.bio}>
-                <label htmlFor="bio" className={styles.label}><span style={{ color: 'red' }}>* </span>Bio :</label>
+                <label htmlFor="bio" className={styles.label}><span style={{ color: 'white' }}>* </span>Bio :</label>
                 <textarea required name="bio" id="bio" cols="30" rows="10"
                   onChange={(event) => this.setState({ bio: event.target.value })}
                   className={styles.textarea} placeholder='Write Your bio here...'
@@ -272,7 +272,7 @@ class Freelancer extends React.Component {
                 </textarea>
               </div>}
               {!this.state.form && this.state.currentPage === 7 && <div className={styles.inputField} id={styles.equipment}>
-                <label htmlFor="equipments" className={styles.label}><span style={{ color: 'red' }}>* </span>Equipments Available :</label>
+                <label htmlFor="equipments" className={styles.label}><span style={{ color: 'white' }}>* </span>Equipments Available :</label>
                 <textarea required name="equipments" id="equipments" cols="30" rows="10"
                   onChange={(event) => this.setState({ equipments: event.target.value })}
                   className={styles.textarea} placeholder='Write Your equipments here...'
@@ -298,16 +298,16 @@ class Freelancer extends React.Component {
               <div className={styles.freelancer}>
                 <h1 className={styles.minHeading}>For Freelancers</h1>
                 <div className={styles.feature}>
-                  <FontAwesomeIcon icon={faCheck} style={{ color: "white", }} /><p>Helps You get more reach</p>
+                  <FontAwesomeIcon icon={faCheck} style={{ color: "black", }} /><p>Helps You get more reach</p>
                 </div>
                 <div className={styles.feature}>
-                  <FontAwesomeIcon icon={faCheck} style={{ color: "white", }} /><p>All Verified Companies</p>
+                  <FontAwesomeIcon icon={faCheck} style={{ color: "black", }} /><p>All Verified Companies</p>
                 </div>
                 <div className={styles.feature}>
-                  <FontAwesomeIcon icon={faCheck} style={{ color: "white", }} /><p>Maintains Privacy and Fully Transparent</p>
+                  <FontAwesomeIcon icon={faCheck} style={{ color: "black", }} /><p>Maintains Privacy and Fully Transparent</p>
                 </div>
               </div>
-              <Image src='/registration1.png' alt='registration' width='200' height='200' className={styles.img} />
+              <Image src='/ani1.png' alt='registration' width='200' height='200' className={styles.img} />
             </div>
             <hr className={styles.divider} />
           </div>}
