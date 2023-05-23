@@ -7,7 +7,7 @@ function Features() {
         <FeatureCard
           heading='Register as a Freelancer'
           subHeading="We believe in quality over quantity."
-          image='/freelancer.jpg'
+          image='/freelancer1.jpg'
           color='white'
           link='/register/freelancer'
           type='freelancer'
@@ -15,7 +15,7 @@ function Features() {
         <FeatureCard
           heading='Register as a Company'
           subHeading="We believe in quality over quantity."
-          image='/company.jpg'
+          image='/company1.jpg'
           color='white'
           link='/register/company'
           type='company'
