@@ -328,4 +328,13 @@
 
 .exclamation:hover{
     color: rgb(0, 213, 255);
-}   
+}
+
+.dialogBox{
+    position: fixed;
+    top: 54%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: inline;
+    background-color: #33db62;
+}

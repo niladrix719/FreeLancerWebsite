@@ -1,9 +1,5 @@
 .body{
-    min-height: 100vh;
-    padding-top: 5rem;
     background-color: white;
-    padding-bottom: 2rem;
-    margin-bottom: 3rem;
     background-image: url(/bg14.jpg);
     background-size: cover;
     background-position: center;
@@ -11,7 +7,7 @@
 }
 
 .termsNConditions_form{
-    height: 77vh;
+    height: 78.3vh;
     width: 60rem;
     background-color: white;
     box-shadow: var(--shadow);
@@ -46,7 +42,6 @@
 }
 
 .btns{
-    height: 5rem;
     width: 60rem;
     background-color: white;
     margin: auto;
@@ -64,4 +59,9 @@
     margin: 1rem;
     color: white;
     background-color: var(--primary-color);
+}
+
+.main{
+    padding-top: 4rem;
+    padding-bottom: 6rem;
 }

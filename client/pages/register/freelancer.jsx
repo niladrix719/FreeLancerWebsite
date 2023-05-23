@@ -35,6 +35,7 @@ class Freelancer extends React.Component {
       form: false,
       phoneError: false,
       textareaError: false,
+      blur: 'none'
     }
   }
 
@@ -187,6 +188,13 @@ class Freelancer extends React.Component {
     }
   }
 
+  handleBlur = (val) => {
+    if(val)
+    this.setState({ blur: 'blur(5px)' });
+    else
+    this.setState({ blur: 'none' });
+  }
+
   handleSubmit = (event) => {
     event.preventDefault();
     const postData = async () => {
@@ -234,7 +242,7 @@ class Freelancer extends React.Component {
 
   render() {
     return (
-      <div className={styles.main}>
+      <div className={styles.main} style={{filter: this.state.blur}}>
         <Navbar />
         <div className={`${this.state.form ? styles.newbody : styles.body}`}>
           <div className={`${this.state.form ? styles.newLeft : styles.left}`}>
@@ -351,6 +359,7 @@ class Freelancer extends React.Component {
               </div>}
               {this.state.form && <Verification
                 getVericationDetails={this.getVericationDetails}
+                handleBlur={this.handleBlur}
               />}
             </form>
           </div>

@@ -4,6 +4,7 @@ import { faPlus, faCheck, faFile, faExclamation } from '@fortawesome/free-solid-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
 import Link from 'next/link';
+import TermsAndConditions from './TermsAndConditions';
 
 function Verification(props) {
   const [images, setImages] = useState([]);
@@ -16,6 +17,7 @@ function Verification(props) {
   const [works, setWorks] = useState([]);
   const [termsAndConditions, setTermsAndConditions] = useState(true);
   const [cameras, setCameras] = useState([false, false]);
+  const [dialogBox, setDialogBox] = useState(false);
 
   const handleImageChange = (e, index) => {
     const file = e.target.files[0];
@@ -130,8 +132,15 @@ function Verification(props) {
     }
   }
 
-  const handleMark = (e) => {
-    e.preventDefault();
+  function handleTermsAndConditions() {
+    setDialogBox(true);
+    // props.handleBlur(true);
+  }
+
+  function handleClick(value) {
+    setDialogBox(false);
+    setTermsAndConditions(value);
+    // props.handleBlur(false);
   }
 
   return (
@@ -294,9 +303,12 @@ function Verification(props) {
           setTermsAndConditions(e.target.checked)
         }}
       />
-        I Agree to the <span className={styles.links} ><Link href="/terms_and_conditions">Terms and Conditions</Link></span>
+        I Agree to the <span className={styles.links} ><span onClick={handleTermsAndConditions}>Terms and Conditions</span></span>
       </div>
       <button className={styles.btn} type='submit'>Verify Now</button>
+      <div className={styles.dialogBox}>
+        {dialogBox && <TermsAndConditions handleClick={handleClick} />}
+      </div>
     </>
   )
 }

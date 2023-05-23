@@ -33,7 +33,7 @@ function VerificationCard(props) {
     }
   }
 
-  const handelVerify = async () => {
+  const handleVerify = async () => {
     try {
       const response = await fetch(`http://localhost:3000/verify/freelancer/${props.profile._id}`, {
         method: 'PUT',
@@ -137,7 +137,7 @@ function VerificationCard(props) {
         >
         </div>
         <div className={styles.btns}>
-          <button className={styles.btn} id={styles.verify} onClick={handelVerify}>Verify</button>
+          <button className={styles.btn} id={styles.verify} onClick={handleVerify}>Verify</button>
           <button className={styles.btn} id={styles.delete} onClick={handleDelete}>Delete</button>
         </div>
       </div>

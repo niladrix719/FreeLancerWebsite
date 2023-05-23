@@ -7,7 +7,6 @@ import { useState, useRef } from 'react';
 
 function Contact() {
   const siteKey = process.env.CAPTCHA_SITE_KEY;
-  const secretKey = process.env.CAPTCHA_SECRET_KEY;
   const [reCaptchaValue, setReCaptchaValue] = useState('');
   const captchaRef = useRef();
 
