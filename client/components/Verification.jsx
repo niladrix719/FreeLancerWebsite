@@ -13,7 +13,7 @@ function Verification(props) {
   const [panCard, setPanCard] = useState(null);
   const [links, setLinks] = useState({ instagram: '', facebook: '', twitter: '', youtube: '' });
   const [works, setWorks] = useState([]);
-  const [termsAndConditions, setTermsAndConditions] = useState(false);
+  const [termsAndConditions, setTermsAndConditions] = useState(true);
   const [cameras, setCameras] = useState([false, false]);
 
   const handleImageChange = (e, index) => {
@@ -287,7 +287,7 @@ function Verification(props) {
           {warns[11] && <p className={styles.warn} id={styles.warn}>File size exceeds maximum limit of 1MB</p>}
         </div>
       </div>
-      <div className={styles.check}><input type="checkbox" className={styles.checkbox}
+      <div className={styles.check}><input type="checkbox" checked={termsAndConditions} className={styles.checkbox}
         onChange={(e) => {
           props.getVericationDetails(e.target.checked, 16)
           setTermsAndConditions(e.target.checked)

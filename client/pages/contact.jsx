@@ -2,8 +2,19 @@ import Navbar from '@/components/Navbar';
 import styles from '../styles/Contact.module.css';
 import Image from 'next/image';
 import Footer from '@/components/Footer';
+import ReCAPTCHA from "react-google-recaptcha";
+import { useState, useRef } from 'react';
 
 function Contact() {
+  const siteKey = process.env.CAPTCHA_SITE_KEY;
+  const secretKey = process.env.CAPTCHA_SECRET_KEY;
+  const [reCaptchaValue, setReCaptchaValue] = useState('');
+  const captchaRef = useRef();
+
+  const handleCaptcha = (value) => {
+    setReCaptchaValue(value);
+  }
+
   return (
     <div className={styles.contact}>
       <Navbar />
@@ -43,6 +54,12 @@ function Contact() {
                   <label htmlFor="message" className={styles.label}>Message :</label>
                   <textarea className={styles.textarea} name="message" id="message" cols="30" rows="10"></textarea>
                 </div>
+                <ReCAPTCHA
+                  sitekey={siteKey}
+                  onChange={handleCaptcha}
+                  ref={captchaRef}
+                  className={styles.captcha}
+                />
                 <button className={styles.btn}>Submit</button>
               </form>
             </div>
