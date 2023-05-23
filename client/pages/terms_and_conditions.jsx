@@ -10,7 +10,7 @@ function Terms_And_Conditions() {
         <div className={styles.termsNConditions_form}>
           <h1 className={styles.heading}>Terms and Conditions</h1>
           <p className={styles.subHeading}>Your Agreement</p>
-          <p className={styles.para}>Welcome to Fipezo, a freelancing platform connecting clients and freelancers. Before using our services, please carefully read the following Terms and Conditions ("Terms") which govern your use of the Fipezo website and any associated services (collectively referred to as the "Platform"). By accessing or using the Platform, you agree to be bound by these Terms. If you do not agree with any part of these Terms, please refrain from using the Platform.
+          <p className={styles.para}>Welcome to Fipezo, a freelancing platform connecting clients and freelancers. Before using our services, please carefully read the following Terms and Conditions (&quot;Terms&quot;) which govern your use of the Fipezo website and any associated services (collectively referred to as the &quot;Platform&quot;). By accessing or using the Platform, you agree to be bound by these Terms. If you do not agree with any part of these Terms, please refrain from using the Platform.
 
             <span className={styles.title}>General</span>
             1.1 Acceptance of Terms: By using the Fipezo Platform, you acknowledge that you have read, understood, and agreed to these Terms, as well as our Privacy Policy. These Terms constitute a legally binding agreement between you and Fipezo.
@@ -26,7 +26,7 @@ function Terms_And_Conditions() {
 
             2.3 Content Accuracy: You are solely responsible for the accuracy and legality of any content you post, submit, or provide through the Fipezo Platform. Fipezo does not guarantee the accuracy, completeness, or reliability of any user-generated content.
 
-            <span className={styles.title}>Fipezo's Role and Limitations</span>
+            <span className={styles.title}>Fipezo&apos;s Role and Limitations</span>
             3.1 Platform Provider: Fipezo acts solely as a platform to facilitate connections between clients and freelancers. Fipezo does not participate in any contractual agreements or assume any responsibility for the services provided by freelancers.
 
             3.2 No Liability for Theft or Others: Fipezo shall not be responsible for any theft, loss, damage, or any other harm resulting from the use of the Platform, including any transactions or interactions between users. Users are solely responsible for their own actions and interactions.
