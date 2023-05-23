@@ -8,23 +8,23 @@ import ReactConfetti from 'react-confetti';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 function Contact_soon() {
-  const [windowDm, setWindowDm] = useState({ width: window.innerWidth - 100, height: window.innerHeight - 100 });
+  const [windowDm, setWindowDm] = useState({ width: 1600, height: 650 });
   const dectectSize = () => {
-    setWindowDm({ width: window.innerWidth - 100, height: window.innerHeight - 100 });
+    setWindowDm({ width: 1600, height: 650 });
   }
   useEffect(() => {
     addEventListener('resize', dectectSize);
     return () => {
       removeEventListener('resize', dectectSize);
     }
-  }, [windowDm]); 
+  }, [windowDm]);
   return (
     <div className={styles.contactSoon}>
-      <ReactConfetti height={window.innerHeight - 100} width={window.innerWidth - 100} numberOfPieces={150} />
+      <ReactConfetti height={windowDm.height} width={windowDm.width} numberOfPieces={150} />
       <Navbar />
       <div className={styles.body}>
         <div className={styles.box}>
-          <Image className={styles.image} src='/soon.png' width='1000' height='1000' />
+          <Image className={styles.image} src='/soon.png' width='1000' height='1000' alt='contacting image' />
           <div className={styles.heading}>
             <i id={styles.fipezo}>Fipezo</i>
             <span className={styles.color}>Congratulations !</span> <br /> Your registration is currently undergoing verification
@@ -33,10 +33,10 @@ function Contact_soon() {
               <FontAwesomeIcon icon={faArrowLeft} id={styles.arrow} />&nbsp;&nbsp;Back to Home
             </button></Link>
             <div className={styles.socials}>
-              <Image className={styles.social} src='/facebook.png' width='160' height='160' />
-              <Image className={styles.social} src='/instagramC.png' width='160' height='160' />
-              <Image className={styles.social} src='/twitterC.png' width='160' height='160' />
-              <Image className={styles.social} src='/youtube.png' width='160' height='160' />
+              <Image className={styles.social} src='/facebook.png' width='160' height='160' alt='facebook' />
+              <Image className={styles.social} src='/instagramC.png' width='160' height='160' alt='instagram' />
+              <Image className={styles.social} src='/twitterC.png' width='160' height='160' alt='twitter' />
+              <Image className={styles.social} src='/youtube.png' width='160' height='160' alt='youtube' />
             </div>
             <div className={styles.backBox}>
 

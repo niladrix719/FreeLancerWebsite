@@ -59,10 +59,10 @@ function VerificationCard(props) {
           />
         </div>
         <div className={styles.socials}>
-          <Image className={styles.social} src='/facebook.png' width='160' height='160' />
-          <Image className={styles.social} src='/instagramC.png' width='160' height='160' />
-          <Image className={styles.social} src='/twitterC.png' width='160' height='160' />
-          <Image className={styles.social} src='/youtube.png' width='160' height='160' />
+          <Image className={styles.social} src='/facebook.png' width='160' height='160' alt='facebook'/>
+          <Image className={styles.social} src='/instagramC.png' width='160' height='160' alt='instagram'/>
+          <Image className={styles.social} src='/twitterC.png' width='160' height='160' alt='twitter'/>
+          <Image className={styles.social} src='/youtube.png' width='160' height='160' alt='youtube'/>
         </div>
         <div className={styles.fields}>
           <div className={styles.field}>
@@ -136,4 +136,4 @@ function VerificationCard(props) {
   )
 }
 
-export default VerificationCard
+export default VerificationCard;
