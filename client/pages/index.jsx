@@ -6,7 +6,7 @@ import Bio from '../components/Bio';
 import Featured from '../components/Featured';
 import Footer from '@/components/Footer';
 import VerifiedExplore from '@/components/VerifiedExplore';
-import Features from '@/components/Features';
+import Register from '@/components/Register';
 import { useEffect } from 'react';
 import { useState } from 'react';
 
@@ -21,7 +21,7 @@ export default function Index() {
       <Categories />
       <Bio />
       <VerifiedExplore />
-      <Features />
+      <Register />
       {/* <Featured /> */}
       <Footer />
     </div>

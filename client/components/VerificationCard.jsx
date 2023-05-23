@@ -16,6 +16,7 @@ function VerificationCard(props) {
   const aadhaarCard = props.profile.aadhaarCard;
   const panCard = props.profile.panCard;
   const profession = props.profile.profession.charAt(0).toUpperCase() + props.profile.profession.slice(1);
+  const links = JSON.parse(props.profile.links);
 
   const handleDelete = async () => {
     try {
@@ -59,10 +60,18 @@ function VerificationCard(props) {
           />
         </div>
         <div className={styles.socials}>
-          <Image className={styles.social} src='/facebook.png' width='160' height='160' alt='facebook'/>
-          <Image className={styles.social} src='/instagramC.png' width='160' height='160' alt='instagram'/>
-          <Image className={styles.social} src='/twitterC.png' width='160' height='160' alt='twitter'/>
-          <Image className={styles.social} src='/youtube.png' width='160' height='160' alt='youtube'/>
+          <Link href={links.facebook} target='_black'>
+            <Image className={styles.social} src='/facebook.png' width='160' height='160' alt='facebook' />
+          </Link>
+          <Link href={links.instagram} target='_black'>
+            <Image className={styles.social} src='/instagramC.png' width='160' height='160' alt='instagram' />
+          </Link>
+          <Link href={links.twitter} target='_black'>
+            <Image className={styles.social} src='/twitterC.png' width='160' height='160' alt='twitter' />
+          </Link>
+          <Link href={links.youtube} target='_black'>
+            <Image className={styles.social} src='/youtube.png' width='160' height='160' alt='youtube' />
+          </Link>
         </div>
         <div className={styles.fields}>
           <div className={styles.field}>

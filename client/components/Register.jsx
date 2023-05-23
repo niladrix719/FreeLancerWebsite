@@ -1,7 +1,7 @@
-import styles from '../styles/Features.module.css'
+import styles from '../styles/Register.module.css'
 import FeatureCard from '@/components/FeatureCard';
 
-function Features() {
+function Register() {
   return (
     <div className={styles.features}>
         <FeatureCard
@@ -28,4 +28,4 @@ function Features() {
   )
 }
 
-export default Features;
+export default Register;

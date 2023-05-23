@@ -73,7 +73,7 @@ async function getUnFreelancerProfiles(req, res) {
 async function getFreelancerProfessionProfiles(req, res) {
   try {
     const profession = req.params.profession.toLowerCase();
-    const freelancers = await freelancerCollection.find({profession: profession});
+    const freelancers = await freelancerCollection.find({profession: profession, verified : true});
     res.send(freelancers);
   } catch (error) {
     console.error(error);
@@ -87,7 +87,6 @@ async function deleteFreelancerProfile (req, res) {
   try {
     const id = req.params.id;
     const user = await freelancerCollection.findOne({ _id: id });
-    console.log(user);
 
     if (!user || user.verified === true) {
       return res.sendStatus(403);
