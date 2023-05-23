@@ -260,7 +260,7 @@ class Freelancer extends React.Component {
                   name='firstname' id='firstname' required
                   onChange={(event) => this.setState({ firstName: event.target.value , error: false })}
                   value={this.state.firstName}
-                  maxLength={15}
+                  maxLength={13}
                 />
               </div>}
               {this.state.currentPage === 1 && <div className={styles.inputField} id={styles.lastname}>
@@ -270,7 +270,7 @@ class Freelancer extends React.Component {
                   name='lastname' id='lastname' required
                   onChange={(event) => this.setState({ lastName: event.target.value , error: false })}
                   value={this.state.lastName}
-                  maxLength={15}
+                  maxLength={13}
                 />
               </div>}
               {this.state.currentPage === 2 && <div className={styles.inputField} id={styles.phone}>

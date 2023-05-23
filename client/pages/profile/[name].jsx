@@ -39,7 +39,7 @@ function Name() {
         <Details works={freelancer.works} />
         <div className={styles.btnBox}>
           <button className={styles.btn} id={styles.hire}>Hire</button>
-          <button className={styles.btn} id={styles.msg}>Message</button>
+          <button className={styles.btn} id={styles.msg}>Review</button>
         </div>
       </div>
       <div className={styles.footer}>

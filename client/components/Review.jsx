@@ -1,5 +1,6 @@
 import styles from '@/styles/Review.module.css';
 import Image from 'next/image';
+import { FaStar } from 'react-icons/fa';
 
 function Review() {
   return (
@@ -10,6 +11,11 @@ function Review() {
           <h3 className={styles.user_name}>John Doe</h3>
           <p className={styles.user_location}>New York, NY</p>
         </div>
+      </div>
+      <div className={styles.stars}>
+        {[...Array(5)].map((star, index) => (
+          <FaStar size={16} key={index} color='#FFDF00' />
+        ))}
       </div>
       <div className={styles.review_details}>
         <h4 className={styles.review_title}>Great experience!</h4>
