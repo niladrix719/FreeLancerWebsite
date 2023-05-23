@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { faPlus, faCheck, faFile, faExclamation } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
+import Link from 'next/link';
 
 function Verification(props) {
   const [images, setImages] = useState([]);
@@ -293,7 +294,7 @@ function Verification(props) {
           setTermsAndConditions(e.target.checked)
         }}
       />
-        I Agree to the <span className={styles.links} >Terms and Conditions</span>
+        I Agree to the <span className={styles.links} ><Link href="/terms_and_conditions">Terms and Conditions</Link></span>
       </div>
       <button className={styles.btn} type='submit'>Verify Now</button>
     </>
