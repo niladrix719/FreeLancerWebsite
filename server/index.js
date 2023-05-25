@@ -3,7 +3,9 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const { signupController , loginController , otpController} = require('./controllers/userController');
+const db = require('./db/db');
+const { signupController , loginController } = require('./controllers/userController');
+const { otpController } = require('./controllers/otpController');
 const { registerCompany } = require('./controllers/companyController');
 const { registerFreelancer,
   getFreelancerProfile,
