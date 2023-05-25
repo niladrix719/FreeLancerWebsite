@@ -1,0 +1,41 @@
+.reviewBox{
+  background-color: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  gap: 1rem;
+  box-shadow: var(--shadow);
+}
+
+.stars {
+  display: flex;
+  flex-direction: row;
+}
+
+.heading{
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.input{
+  padding: 0.5rem;
+}
+
+.label{
+  font-size: 1.2rem;
+}
+
+.cross{
+  cursor: pointer;
+}
+
+.btn{
+  background-color: #3fcc76;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 5px;
+  box-shadow: var(--shadow);
+  font-size: 1rem;
+  font-weight: 500;
+  width: 50%;
+}

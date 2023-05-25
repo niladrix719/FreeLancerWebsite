@@ -2,7 +2,7 @@ import styles from '@/styles/Review.module.css';
 import Image from 'next/image';
 import { FaStar } from 'react-icons/fa';
 
-function Review() {
+function Review(props) {
   return (
     <div className={styles.review}>
       <div className={styles.user_info}>
@@ -18,11 +18,9 @@ function Review() {
         ))}
       </div>
       <div className={styles.review_details}>
-        <h4 className={styles.review_title}>Great experience!</h4>
+        <h4 className={styles.review_title}>{props.review.title}</h4>
         <p className={styles.review_text}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec leo at ex bibendum aliquam ac id enim.
-          Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-          Nullam facilisis risus eros, vel ullamcorper velit consectetur vel. Proin quis ex in tortor suscipit malesuada ac non turpis.
+          {props.review.review}
         </p>
       </div>
     </div>

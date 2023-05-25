@@ -59,3 +59,13 @@
 #msg:hover{
     background-color: rgb(241, 241, 241);
 }
+
+.boxContainer{
+    position: absolute;
+    left: -28rem;
+    top: -5rem;
+    width: 40rem;
+    background-color: rgb(230, 230, 230);
+    border: 1px solid lightgray;
+    box-shadow: var(--shadow);
+}

@@ -15,7 +15,7 @@ const { registerFreelancer,
   deleteFreelancerProfile,
   verifyFreelancerProfile } = require('./controllers/freelancerController');
 const jwt = require('jsonwebtoken');
-const { addReview } = require('./controllers/reviewController');
+const { addReview , getReviews } = require('./controllers/reviewController');
 const secret = process.env.JWT_SECRET;
 const verifyToken = require('./middlewares/verification');
 
@@ -32,6 +32,7 @@ app.use(cors({
 app.use(express.static('public'));
 app.use('/uploads', express.static('uploads'));
 const upload = require('./middlewares/storage');
+const { get } = require('mongoose');
 
 // Setting up the routes
 app.post('/signup', signupController);
@@ -57,7 +58,8 @@ app.get('/navbar', verifyToken, (req, res) => {
     }
   });
 });
-app.post('/add/review', addReview);
+app.post('/add/review', verifyToken, addReview);
+app.get('/reviews/:id', getReviews);
 
 // Starting the server
 const port = process.env.PORT || 3000;

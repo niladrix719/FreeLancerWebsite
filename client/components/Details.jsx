@@ -26,7 +26,7 @@ function Details(props) {
   return (
     <div className={styles.details}>
       <ProfileNav handleReviews={handleReviews} handlePortfolio={handlePortfolio} />
-      {showReviews && <Reviews />}
+      {showReviews && <Reviews reviews={props.reviews} />}
       {showPortfolio && <div className={styles.portfolio}>
         {works.map((work, index) => {
           return (
