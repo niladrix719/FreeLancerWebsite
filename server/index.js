@@ -3,7 +3,6 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const db = require('./db/db');
 const { signupController , loginController , otpController} = require('./controllers/userController');
 const { registerCompany } = require('./controllers/companyController');
 const { registerFreelancer,
@@ -14,9 +13,9 @@ const { registerFreelancer,
   deleteFreelancerProfile,
   verifyFreelancerProfile } = require('./controllers/freelancerController');
 const jwt = require('jsonwebtoken');
+const { addReview } = require('./controllers/reviewController');
 const secret = process.env.JWT_SECRET;
 const verifyToken = require('./middlewares/verification');
-const freelancerCollection = require('./models/freelancerModel');
 
 // Creating the app
 const app = express();
@@ -56,6 +55,7 @@ app.get('/navbar', verifyToken, (req, res) => {
     }
   });
 });
+app.post('/add/review', addReview);
 
 // Starting the server
 const port = process.env.PORT || 3000;

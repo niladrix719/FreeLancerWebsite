@@ -23,6 +23,7 @@ async function registerFreelancer(req, res) {
       panCard: req.files['panCard'][0].filename,
       works: req.files['works[]'].map(file => file.filename),
       links: req.body.links,
+      reviews: [],
       termsAndConditions: req.body.termsAndConditions,
       verified: false
     });
@@ -66,8 +67,6 @@ async function getUnFreelancerProfiles(req, res) {
       if (err) {
         return;
       } else {
-        console.log(authData.user.phone);
-        console.log(process.env.ADMIN_PHONE);
         if (authData.user.phone === parseInt(process.env.ADMIN_PHONE)) {
           const freelancers = await freelancerCollection.find({ verified: false });
           res.send(freelancers);
