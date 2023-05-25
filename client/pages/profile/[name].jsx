@@ -42,7 +42,7 @@ function Name() {
     }
 
     fetchReviews();
-  }, [freelancer, reviews]);
+  }, [freelancer]);
 
   const handleReviewBox = (val) => {
     setReviewBox(val);

@@ -68,4 +68,5 @@
     background-color: rgb(230, 230, 230);
     border: 1px solid lightgray;
     box-shadow: var(--shadow);
+    border-radius: 5px;
 }

@@ -8,8 +8,7 @@ function Review(props) {
       <div className={styles.user_info}>
         <Image className={styles.avatar} src="/dp.png" alt="User avatar" width='90' height='90' />
         <div className={styles.user_details}>
-          <h3 className={styles.user_name}>John Doe</h3>
-          <p className={styles.user_location}>New York, NY</p>
+          <h3 className={styles.user_name}>{props.review.userDetails.firstname} {props.review.userDetails.lastname}</h3>
         </div>
       </div>
       <div className={styles.stars}>

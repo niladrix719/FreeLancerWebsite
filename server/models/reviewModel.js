@@ -9,6 +9,10 @@ const reviewSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'usercollection'
   },
+  userDetails: {
+    type: Object,
+    required: true
+  },
   title: {
     type: String,
     required: true

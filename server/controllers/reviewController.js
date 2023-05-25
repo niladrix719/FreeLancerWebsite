@@ -3,14 +3,12 @@ const jwt = require('jsonwebtoken');
 const secret = process.env.JWT_SECRET;
 
 async function addReview(req, res) {
-  console.log(req.body);
   try {
     jwt.verify(req.token, secret, async (err, authData) => {
-      console.log(authData.user._id);
-      console.log(req.body.freelancer);
       const reviewData = new reviewCollection({
         freelancer: req.body.freelancer,
-        user: authData.user,
+        user: authData.user._id,
+        userDetails: authData.user,
         title: req.body.title,
         review: req.body.review,
         stars: req.body.stars
