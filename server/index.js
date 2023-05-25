@@ -40,7 +40,7 @@ app.post('/register/freelancer', upload, registerFreelancer);
 app.post('/register/company', registerCompany);
 app.get('/profile/freelancer/:uid', getFreelancerProfile);
 app.get('/profiles/verified/freelancer', getFreelancerProfiles);
-app.get('/profiles/unverified/freelancer', getUnFreelancerProfiles);
+app.get('/profiles/unverified/freelancer', verifyToken, getUnFreelancerProfiles);
 app.get('/profiles/freelancer/:profession', getFreelancerProfessionProfiles);
 app.delete('/delete/freelancer/:id', deleteFreelancerProfile);
 app.put('/verify/freelancer/:id', verifyFreelancerProfile);

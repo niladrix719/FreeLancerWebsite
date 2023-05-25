@@ -7,15 +7,24 @@ function VerificationPanel() {
   const [freelancers, setFreelancers] = useState([]);
   useEffect(() => {
     async function fetchFreelancer() {
+      const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
       try {
-        const response = await fetch(`http://localhost:3000/profiles/unverified/freelancer`);
-        const data = await response.json();
-        setFreelancers(data);
+        if (token) {
+          const response = await fetch(`http://localhost:3000/profiles/unverified/freelancer`, {
+            method: 'GET',
+            headers: {
+              'Authorization': `Bearer ${token}`
+            }
+          });
+          const data = await response.json();
+          console.log(data);
+          setFreelancers(data);
+        }
       } catch (error) {
         console.error(error);
       }
     }
-
+  
     fetchFreelancer();
   }, []);
 

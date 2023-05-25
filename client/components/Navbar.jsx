@@ -14,6 +14,7 @@ export default function Navbar(props) {
   const [company, setCompany] = useState(null);
   const [background, setBackground] = useState('transparent');
   const [color, setColor] = useState(props.color);
+  let [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
@@ -26,6 +27,8 @@ export default function Navbar(props) {
       })
         .then(res => res.json())
         .then(data => {
+          if(data.authData.user.phone === 7001599126)
+          setIsAdmin(true);
           setUser(data.authData.user);
         })
         .catch(error => {
@@ -36,6 +39,7 @@ export default function Navbar(props) {
 
   const handleLogout = () => {
     localStorage.removeItem('user');
+    setIsAdmin(false);
     setUser(null);
   }
 
@@ -100,6 +104,7 @@ export default function Navbar(props) {
               </Link>
             </div>
           </li>
+          {isAdmin && <Link href='/verification' className={styles.navElement}>Verify</Link>}
           {user === null && <li><Link href='/login' className={styles.login}>Login</Link></li>}
           {user && <li className={styles.navElement} id={styles.user}>
             <span>{user ? `${user.firstname} ${user.lastname}` : ''}&nbsp;&nbsp;</span>

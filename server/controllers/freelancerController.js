@@ -1,5 +1,7 @@
 const freelancerCollection = require('../models/freelancerModel');
 const fs = require('fs');
+const jwt = require('jsonwebtoken');
+const secret = process.env.JWT_SECRET;
 
 //Registration
 
@@ -60,8 +62,20 @@ async function getFreelancerProfiles(req, res) {
 
 async function getUnFreelancerProfiles(req, res) {
   try {
-    const freelancers = await freelancerCollection.find({verified: false});
-    res.send(freelancers);
+    jwt.verify(req.token, secret, async (err, authData) => {
+      if (err) {
+        return;
+      } else {
+        console.log(authData.user.phone);
+        console.log(process.env.ADMIN_PHONE);
+        if (authData.user.phone === parseInt(process.env.ADMIN_PHONE)) {
+          const freelancers = await freelancerCollection.find({ verified: false });
+          res.send(freelancers);
+        } else {
+          res.sendStatus(403);
+        }
+      }
+    });
   } catch (error) {
     console.error(error);
     res.status(500).send('Internal server error');
