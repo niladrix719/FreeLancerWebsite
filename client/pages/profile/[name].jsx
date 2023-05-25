@@ -59,7 +59,7 @@ function Name() {
       <div className={styles.profile_details}>
         <ProfileBioCard profilePicture={freelancer.profilePicture} firstname={freelancer.firstname}
           lastname={freelancer.lastname} bio={freelancer.bio} equipments={freelancer.equipments}
-          location={freelancer.location}
+          location={freelancer.location} links={freelancer.links}
         />
         <Details works={freelancer.works} reviews={reviews} />
         <div className={styles.btnBox}>

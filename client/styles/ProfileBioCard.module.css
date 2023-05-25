@@ -3,6 +3,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: white;
+    box-shadow: var(--shadow);
 }
 
 .profile_pic{
@@ -22,28 +24,21 @@
     margin-top: 1.5rem;
     background-color: white;
     padding: 1rem;
-    box-shadow: var(--shadow);
     width: 90%;
 }
 
 .bio{
     font-size: 1rem;
-    margin-top: 1rem;
-    text-align: center;
     padding: 0 1rem;
     color: #aea9a9;
-    margin-bottom: 1rem;
     background-color: white;
     padding: 1rem;
-    box-shadow: var(--shadow);
     width: 90%;
-    border: 1px solid #e2e8f0;
 }
 
 .equipment_available{
     background-color: white;
     padding: 2rem;
-    box-shadow: var(--shadow);
     padding-top: 1rem;
     width: 90%;
 }
@@ -59,5 +54,27 @@
 }
 
 .location{
-    font-size: 0.8rem;
+    font-size: 0.9rem;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow);
+}
+
+.socials{
+    display: flex;
+    position: relative;
+    top: -2rem;
+    gap: 0.5rem;
+    margin-top: 2rem;
+}
+
+.social{
+    height: 4rem;
+    width: 4rem;
+    border-radius: 50%;
+    border: 1px solid lightgrey;
+    box-shadow: var(--shadow);
 }
