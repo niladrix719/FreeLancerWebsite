@@ -6,7 +6,6 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import Image from 'next/image'
 import Footer from '@/components/Footer'
 import Verification from '@/components/Verification'
-import profile from '../profile'
 import Router from 'next/router';
 
 class Freelancer extends React.Component {
