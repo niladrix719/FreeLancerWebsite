@@ -18,6 +18,7 @@ class Freelancer extends React.Component {
       firstName: '',
       lastName: '',
       phone: '',
+      otp: '',
       location: 'kolkata',
       profession: 'photographer',
       rate: 1000,
@@ -58,42 +59,55 @@ class Freelancer extends React.Component {
       return;
     }
 
-    if (this.state.location === '' && this.state.currentPage === 3) {
+    if(this.state.currentPage === 2) {
+      this.getOtp();
+    }
+
+    if (this.state.otp === '' && this.state.currentPage === 3) {
       this.setState({ error: true });
       return;
     }
 
-    if (this.state.profession === '' && this.state.currentPage === 4) {
+    if(this.state.currentPage === 3) {
+      this.handelOtp();
+    }
+
+    if (this.state.location === '' && this.state.currentPage === 4) {
       this.setState({ error: true });
       return;
     }
 
-    if (this.state.rate === '' && this.state.currentPage === 5) {
+    if (this.state.profession === '' && this.state.currentPage === 5) {
       this.setState({ error: true });
       return;
     }
 
-    if (this.state.bio.length > 300 && this.state.currentPage === 6) {
+    if (this.state.rate === '' && this.state.currentPage === 6) {
+      this.setState({ error: true });
+      return;
+    }
+
+    if (this.state.bio.length > 300 && this.state.currentPage === 7) {
       this.setState({ textareaError: true });
       return;
     }
 
-    if (this.state.bio === '' && this.state.currentPage === 6) {
+    if (this.state.bio === '' && this.state.currentPage === 7) {
       this.setState({ error: true });
       return;
     }
 
-    if (this.state.equipments.length > 300 && this.state.currentPage === 7) {
+    if (this.state.equipments.length > 300 && this.state.currentPage === 8) {
       this.setState({ textareaError: true });
       return;
     }
 
-    if (this.state.equipments === '' && this.state.currentPage === 7) {
+    if (this.state.equipments === '' && this.state.currentPage === 8) {
       this.setState({ error: true });
       return;
     }
 
-    if (this.state.currentPage === 7) {
+    if (this.state.currentPage === 8) {
       this.setState({ error: false });
       this.setState({ form: true });
       return;
@@ -119,11 +133,11 @@ class Freelancer extends React.Component {
   }
 
   increPage = () => {
-    if (this.state.currentPage === 7) {
+    if (this.state.currentPage === 8) {
       return;
     }
 
-    if (this.state.currentPage === 6) {
+    if (this.state.currentPage === 7) {
       this.setState({ btn: 'Submit' });
     }
 
@@ -134,7 +148,7 @@ class Freelancer extends React.Component {
     if (this.state.currentPage === 1)
       return;
 
-    if (this.state.currentPage === 7) {
+    if (this.state.currentPage === 8) {
       this.setState({ btn: 'Next' });
     }
 
@@ -188,10 +202,10 @@ class Freelancer extends React.Component {
   }
 
   handleBlur = (val) => {
-    if(val)
-    this.setState({ blur: 'blur(5px)' });
+    if (val)
+      this.setState({ blur: 'blur(5px)' });
     else
-    this.setState({ blur: 'none' });
+      this.setState({ blur: 'none' });
   }
 
   handleSubmit = (event) => {
@@ -238,9 +252,56 @@ class Freelancer extends React.Component {
     postData();
   };
 
+  handelOtp = () => {
+    const postData = async () => {
+      try {
+        await fetch('http://localhost:3000/verify/freelancer/phone', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            otp: this.state.otp,
+            phone: this.state.phone,
+            type: 'freelancer'
+          })
+        });
+        localStorage.setItem('user', JSON.stringify(data));
+      }
+      catch (error) {
+        console.error(error);
+      }
+    };
+
+    postData();
+  }
+
+  getOtp = () => {
+    const postData = async () => {
+      try {
+        await fetch('http://localhost:3000/signup', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            phone: this.state.phone,
+            type: 'freelancer'
+          })
+        });
+        localStorage.setItem('user', JSON.stringify(data));
+      }
+      catch (error) {
+        console.error(error);
+      }
+    };
+
+    postData();
+  }
+
   render() {
     return (
-      <div className={styles.main} style={{filter: this.state.blur}}>
+      <div className={styles.main} style={{ filter: this.state.blur }}>
         <Navbar />
         <div className={`${this.state.form ? styles.newbody : styles.body}`}>
           <div className={`${this.state.form ? styles.newLeft : styles.left}`}>
@@ -256,7 +317,7 @@ class Freelancer extends React.Component {
                 <input type='text' className={styles.input}
                   placeholder='Enter Your First name'
                   name='firstname' id='firstname' required
-                  onChange={(event) => this.setState({ firstName: event.target.value , error: false })}
+                  onChange={(event) => this.setState({ firstName: event.target.value, error: false })}
                   value={this.state.firstName}
                   maxLength={13}
                 />
@@ -266,7 +327,7 @@ class Freelancer extends React.Component {
                 <input type='text' className={styles.input}
                   placeholder='Enter Your Last name'
                   name='lastname' id='lastname' required
-                  onChange={(event) => this.setState({ lastName: event.target.value , error: false })}
+                  onChange={(event) => this.setState({ lastName: event.target.value, error: false })}
                   value={this.state.lastName}
                   maxLength={13}
                 />
@@ -276,12 +337,21 @@ class Freelancer extends React.Component {
                 <input type='number' id={styles.number} className={styles.input}
                   placeholder='Enter Your Phone no.'
                   name='phone' required
-                  onChange={(event) => this.setState({ phone: event.target.value , error: false })}
+                  onChange={(event) => this.setState({ phone: event.target.value, error: false })}
                   value={this.state.phone}
                   max={10}
                 />
               </div>}
-              {this.state.currentPage === 3 && <div className={styles.inputField} id={styles.location}>
+              {this.state.currentPage === 3 && <div className={styles.inputField} id={styles.otp}>
+                <label htmlFor="otp" className={styles.label}><span style={{ color: 'white' }}>* </span>OTP :</label>
+                <input type='number' id={styles.number} className={styles.input}
+                  placeholder='Enter Your OTP'
+                  name='otp' required
+                  onChange={(event) => this.setState({ otp: event.target.value, error: false })}
+                  value={this.state.otp}
+                />
+              </div>}
+              {this.state.currentPage === 4 && <div className={styles.inputField} id={styles.location}>
                 <label htmlFor="location" className={styles.label}><span style={{ color: 'white' }}>* </span>Where do you live?</label>
                 <select required className={styles.options} name="location"
                   onChange={(event) => this.setState({ location: event.target.value })} id="location"
@@ -315,7 +385,7 @@ class Freelancer extends React.Component {
                   <option className={styles.option} value="jalandhar">Jalandhar</option>
                 </select>
               </div>}
-              {this.state.currentPage === 4 && <div className={styles.inputField} id={styles.profession}>
+              {this.state.currentPage === 5 && <div className={styles.inputField} id={styles.profession}>
                 <label htmlFor="profession" className={styles.label}><span style={{ color: 'white' }}>* </span>What is your profession?</label>
                 <select required className={styles.options} name="profession"
                   onChange={(event) => this.setState({ profession: event.target.value })} id="profession"
@@ -326,7 +396,7 @@ class Freelancer extends React.Component {
                   <option className={styles.option} value="drone_operator">Drone Operator</option>
                 </select>
               </div>}
-              {this.state.currentPage === 5 && <div className={styles.inputField} id={styles.rate}>
+              {this.state.currentPage === 6 && <div className={styles.inputField} id={styles.rate}>
                 <label htmlFor="rate" className={styles.label}><span style={{ color: 'white' }}>* </span>What is your rate per hour?</label>
                 {this.state.rate && <p className={styles.rate}>Rs. {this.state.rate} / Hour</p>}
                 <input required className={styles.range} name="rate" type='range' min='1000' max='50000' step='100'
@@ -335,7 +405,7 @@ class Freelancer extends React.Component {
                 />
               </div>}
               {this.state.textareaError && <p className={styles.error}>Please provide a bio of less than 100 characters.</p>}
-              {this.state.currentPage === 6 && <div className={styles.inputField} id={styles.bio}>
+              {this.state.currentPage === 7 && <div className={styles.inputField} id={styles.bio}>
                 <label htmlFor="bio" className={styles.label}><span style={{ color: 'white' }}>* </span>Bio :</label>
                 <textarea required name="bio" id="bio" cols="30" rows="10"
                   onChange={(event) => this.handleTextChange(event, 1)}
@@ -343,7 +413,7 @@ class Freelancer extends React.Component {
                   value={this.state.bio}>
                 </textarea>
               </div>}
-              {!this.state.form && this.state.currentPage === 7 && <div className={styles.inputField} id={styles.equipment}>
+              {!this.state.form && this.state.currentPage === 8 && <div className={styles.inputField} id={styles.equipment}>
                 <label htmlFor="equipments" className={styles.label}><span style={{ color: 'white' }}>* </span>Equipments Available :</label>
                 <textarea required name="equipments" id="equipments" cols="30" rows="10"
                   onChange={(event) => this.handleTextChange(event, 2)}
@@ -352,8 +422,8 @@ class Freelancer extends React.Component {
                 </textarea>
               </div>}
               {!this.state.form && <div className={styles.btns}>
-                <button className={styles.NextBtn} type='button' onClick={() => this.increProgress(16.67)}>{this.state.btn}</button>
-                <button className={styles.backBtn} type='button' onClick={() => this.decreProgress(16.67)}>Back</button>
+                <button className={styles.NextBtn} type='button' onClick={() => this.increProgress(14.25)}>{this.state.btn}</button>
+                <button className={styles.backBtn} type='button' onClick={() => this.decreProgress(14.25)}>Back</button>
               </div>}
               {this.state.form && <Verification
                 getVericationDetails={this.getVericationDetails}

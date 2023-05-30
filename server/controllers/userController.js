@@ -30,7 +30,7 @@ async function signupController(req, res) {
     const otpData = new otpCollection({
       phone: phone,
       otp: code,
-      type: 'user'
+      type: req.body.type
     });
 
     await otpData.save();

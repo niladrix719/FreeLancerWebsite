@@ -5,7 +5,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const db = require('./db/db');
 const { signupController , loginController } = require('./controllers/userController');
-const { otpController, otpSignupController } = require('./controllers/otpController');
+const { otpController, otpSignupController , VerifyFreelancerPhone } = require('./controllers/otpController');
 const { registerCompany } = require('./controllers/companyController');
 const { registerFreelancer,
   getFreelancerProfile,
@@ -41,6 +41,7 @@ app.post('/otp', otpController);
 app.post('/otp/signup', otpSignupController);
 app.post('/register/freelancer', upload, registerFreelancer);
 app.post('/register/company', registerCompany);
+app.post('/verify/freelancer/phone', VerifyFreelancerPhone);
 app.get('/profile/freelancer/:uid', getFreelancerProfile);
 app.get('/profiles/verified/freelancer', getFreelancerProfiles);
 app.get('/profiles/unverified/freelancer', verifyToken, getUnFreelancerProfiles);

@@ -61,7 +61,8 @@ function Signup() {
           body: JSON.stringify({
             firstname: formData.get('firstname'),
             lastname: formData.get('lastname'),
-            phone: formData.get('phone')
+            phone: formData.get('phone'),
+            type: 'user'
           })
         });
         const data = await response.json();
