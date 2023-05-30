@@ -7,13 +7,43 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 
 export default function Login() {
+  const [phone, setPhone] = useState('');
   const [type, setType] = useState('user');
+  const [otpForm, setOtpForm] = useState(false);
   const router = useRouter();
-  function handleSubmit(event) {
+
+  const handleSubmitOTP = async (event) => {
     event.preventDefault();
     const form = event.target;
     const formData = new FormData(form);
-    
+
+    async function postData() {
+      try {
+        const storedPhone = phone;
+        const storedType = type;
+        const response = await fetch('http://localhost:3000/otp', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            otp: formData.get('otp'),
+            phone: storedPhone,
+            type: storedType
+          })
+        });
+        const data = await response.json();
+        localStorage.setItem('user', JSON.stringify(data));
+        router.push('/');
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    postData();
+  }
+
+  function handleSubmit() {
     async function postData() {
       try {
         const response = await fetch('http://localhost:3000/login', {
@@ -22,14 +52,12 @@ export default function Login() {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            phone: formData.get('phone'),
-            type: formData.get('type')
+            phone: phone,
+            type: type
           })
         });
         const data = await response.json();
-        localStorage.setItem('phone', data.phone);
-        localStorage.setItem('type', data.type);
-        router.push('/verifyOTP');
+        setOtpForm(true);
       } catch (error) {
         console.error(error);
       }
@@ -43,8 +71,8 @@ export default function Login() {
       <div className={styles.navbar}>
         <Navbar color='black' />
       </div>
-      <div className={styles.body}>
-        <form onSubmit={handleSubmit} className={styles.form}>
+      {!otpForm && <div className={styles.body}>
+        <form className={styles.form}>
           <div>
             <h1 className={styles.heading}>Welcome</h1>
             <p className={styles.subHeading}>Log In To Your Account</p>
@@ -61,10 +89,12 @@ export default function Login() {
             <div className={styles.countryCode}>
               +91
             </div>
-            <input className={styles.inputs} id={styles.number} name='phone' type='number' placeholder='Enter Your Phone no.' /> <br />
+            <input className={styles.inputs} id={styles.number} name='phone'
+              type='number' placeholder='Enter Your Phone no.' onChange={(e) => setPhone(e.target.value)}
+            /> <br/>
           </div>
           <div>
-            <button className={styles.btn} type='submit'>Send OTP</button>
+            <button className={styles.btn} type='button' onClick={handleSubmit}>Send OTP</button>
           </div>
           <div className={styles.lower}>
             {type === 'user' && <Link href='/signup' className={styles.signup}>Don&apos;t have an Account? Sign up now</Link>}
@@ -75,7 +105,27 @@ export default function Login() {
         <div className={styles.presentation}>
           <Image src="/pre.jpg" alt="image" height="1006" width="1000" />
         </div>
-      </div>
+      </div>}
+      {otpForm && <div className={styles.body}>
+        <form method="post" className={styles.form} onSubmit={handleSubmitOTP}>
+          <div>
+            <h1 className={styles.heading}>Welcome</h1>
+            <p className={styles.subHeading}>Enter a one-time password (OTP) to verify</p>
+          </div>
+          <div id={styles.otp}>
+            <input className={styles.inputs} id={styles.otp} type="number" name="otp" placeholder="Enter OTP" />
+          </div>
+          <div>
+            <button className={styles.btn} type='submit'>Submit</button>
+          </div>
+          <div className={styles.lower}>
+            <p className={styles.resendOtp} onClick={handleSubmit}>Resend OTP?</p>
+          </div>
+        </form>
+        <div className={styles.presentation}>
+          <Image src="/pre.jpg" alt="image" height="1006" width="1000" />
+        </div>
+      </div>}
       <Footer />
     </div>
   )

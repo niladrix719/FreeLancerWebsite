@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const secret = process.env.JWT_SECRET;
 const twilio = require('twilio')(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
 const otpCollection = require('../models/otpModel');
+let otpTimer;
 
 // signup
 
@@ -51,6 +52,7 @@ const loginController = async (req, res) => {
     const existingOtpData = await otpCollection.findOne({ phone: phone });
 
     if (existingOtpData) {
+      clearTimeout(otpTimer);
       await otpCollection.deleteOne({ phone: phone });
     }
 
@@ -66,7 +68,7 @@ const loginController = async (req, res) => {
 
     sendTextMessage(phone, `Hi ${code} is your one time password to login on Fipezo. Do not share this with anyone. -Team Fipezo`);
 
-    setTimeout(async () => {
+    otpTimer = setTimeout(async () => {
       try {
         await otpCollection.deleteOne({ phone: phone });
       } catch (error) {

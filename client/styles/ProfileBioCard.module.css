@@ -29,18 +29,17 @@
 
 .bio{
     font-size: 1rem;
-    padding: 0 1rem;
+    padding: 1.5rem;
     color: #aea9a9;
     background-color: white;
-    padding: 1rem;
-    width: 90%;
+    width: 95%;
 }
 
 .equipment_available{
     background-color: white;
-    padding: 2rem;
-    padding-top: 1rem;
-    width: 90%;
+    padding: 1.5rem;
+    padding-bottom: 2rem;
+    width: 95%;
 }
 
 .title{

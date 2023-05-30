@@ -8,6 +8,7 @@ import Footer from '@/components/Footer';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import ReviewBox from '@/components/ReviewBox';
+import Link from 'next/link';
 
 function Name() {
   const router = useRouter();
@@ -15,6 +16,7 @@ function Name() {
   const [freelancer, setFreelancer] = useState({});
   const [reviewBox, setReviewBox] = useState(false);
   const [reviews, setReviews] = useState([]);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
     async function fetchFreelancer() {
@@ -52,16 +54,21 @@ function Name() {
     setReviews([...reviews, review]);
   }
 
+  const checkLoggedIn = (val) => {
+    setLoggedIn(val);
+  }
+
   return (
     <div className={styles.profile}>
-      <Navbar color='white' />
+      <Navbar color='white' checkLoggedIn={checkLoggedIn} />
       <Cover coverPicture={freelancer.coverPicture} />
       <div className={styles.profile_details}>
         {freelancer.links && <ProfileBioCard freelancer={freelancer} />}
         <Details works={freelancer.works} reviews={reviews} />
         <div className={styles.btnBox}>
           <button className={styles.btn} id={styles.hire}>Hire</button>
-          <button className={styles.btn} id={styles.msg} onClick={() => handleReviewBox(true)}>Review</button>
+          {loggedIn && <button className={styles.btn} id={styles.msg} onClick={() => handleReviewBox(true)}>Review</button>}
+          {!loggedIn && <Link href='/login' className={styles.btn} id={styles.msg}>Review</Link>}
           {reviewBox && <div className={styles.boxContainer}>
             <ReviewBox handleReviewBox={handleReviewBox} appendReview={appendReview} freelancer={freelancer} />
           </div>}

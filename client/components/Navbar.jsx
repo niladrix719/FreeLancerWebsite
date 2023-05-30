@@ -30,6 +30,8 @@ export default function Navbar(props) {
           if(data.authData.user.phone === 7001599126)
           setIsAdmin(true);
           setUser(data.authData.user);
+          if(props.checkLoggedIn)
+          props.checkLoggedIn(true);
         })
         .catch(error => {
           console.error(error);
@@ -41,6 +43,8 @@ export default function Navbar(props) {
     localStorage.removeItem('user');
     setIsAdmin(false);
     setUser(null);
+    if(props.checkLoggedIn)
+    props.checkLoggedIn(false);
   }
 
   useEffect(() => {
