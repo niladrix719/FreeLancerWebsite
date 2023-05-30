@@ -2,8 +2,50 @@ import styles from '../styles/Signup.module.css'
 import Navbar from '@/components/Navbar';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useState } from 'react';
+import { useRouter } from 'next/router';
 
 function Signup() {
+  const [phone, setPhone] = useState('');
+  const [otpForm, setOtpForm] = useState(false);
+  const [firstname, setFirstname] = useState('');
+  const [lastname, setLastname] = useState('');
+  const router = useRouter();
+
+  const handleSubmitOTP = async (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const formData = new FormData(form);
+
+    async function postData() {
+      try {
+        const storedPhone = phone;
+        const storedFirstname = firstname;
+        const storedLastname = lastname;
+        const response = await fetch('http://localhost:3000/otp/signup', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            otp: formData.get('otp'),
+            phone: storedPhone,
+            firstname: storedFirstname,
+            lastname: storedLastname,
+            type: 'user'
+          })
+        });
+        const data = await response.json();
+        localStorage.setItem('user', JSON.stringify(data));
+        router.push('/');
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    postData();
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
     const form = event.target;
@@ -23,6 +65,7 @@ function Signup() {
           })
         });
         const data = await response.json();
+        setOtpForm(true);
         localStorage.setItem('user', JSON.stringify(data));
       } catch (error) {
         console.error(error);
@@ -35,7 +78,7 @@ function Signup() {
   return (
     <div className={styles.signup}>
       <Navbar />
-      <form onSubmit={handleSubmit} className={styles.form}>
+      {!otpForm && <form onSubmit={handleSubmit} className={styles.form}>
         <div>
           <h1 className={styles.heading}>Welcome</h1>
           <p className={styles.subHeading}>Sign Up For a Free Account</p>
@@ -44,17 +87,23 @@ function Signup() {
           <div className={styles.name}>
             <div className={styles.inputLabels}>
               <label htmlFor="fisrtname" className={styles.labels}>First Name - </label>
-              <input className={styles.inputs} type='text' placeholder='Enter Your firstname' id={styles.firstname} name='firstname' /> <br />
+              <input className={styles.inputs} type='text' placeholder='Enter Your firstname' onChange={(e) => setFirstname(e.target.value)}
+                id={styles.firstname} name='firstname' 
+              /> <br />
             </div>
             <div className={styles.inputLabels}>
               <label htmlFor="lastname" className={styles.labels}>Last Name - </label>
-              <input className={styles.inputs} type='text' placeholder='Enter Your lastname' id={styles.lastname} name='lastname' /> <br />
+              <input className={styles.inputs} type='text' placeholder='Enter Your lastname'
+                id={styles.lastname} name='lastname' onChange={(e) => setLastname(e.target.value)}
+              /> <br />
             </div>
           </div>
           <div id={styles.phone}>
             <div className={styles.inputLabels}>
               <label htmlFor="phone" className={styles.labels}>Phone No - </label>
-              <input className={styles.inputs} type='number' id={styles.number} placeholder='Enter Your Phone no.' name='phone' /> <br />
+              <input className={styles.inputs} type='number' id={styles.number} 
+                placeholder='Enter Your Phone no.' name='phone' onChange={(e) => setPhone(e.target.value)} 
+              /> <br />
             </div>
           </div>
         </div>
@@ -64,7 +113,24 @@ function Signup() {
         <div className={styles.lower}>
           <Link href='/login' className={styles.login}>Already have an Account? Log in</Link>
         </div>
-      </form>
+      </form>}
+      {otpForm && <div className={styles.body}>
+        <form method="post" className={styles.otpForm} onSubmit={handleSubmitOTP}>
+          <div>
+            <h1 className={styles.heading}>Welcome</h1>
+            <p className={styles.subHeading}>Enter a one-time password (OTP) to verify</p>
+          </div>
+          <div id={styles.otp}>
+            <input className={styles.inputs} id={styles.otp} type="number" name="otp" placeholder="Enter OTP" />
+          </div>
+          <div>
+            <button className={styles.btn} type='submit'>Submit</button>
+          </div>
+          <div className={styles.lower}>
+            <p className={styles.resendOtp} onClick={handleSubmit}>Resend OTP?</p>
+          </div>
+        </form>
+      </div>}
       <div className={styles.presentation}>
         <Image id={styles.img} src="/pre3.jpg" alt="image" height="1006" width="1000" />
       </div>

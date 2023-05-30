@@ -5,6 +5,52 @@ const jwt = require('jsonwebtoken');
 const secret = process.env.JWT_SECRET;
 const otpCollection = require('../models/otpModel');
 
+// signup
+
+async function otpSignupController(req, res) {
+  try {
+    const otp = req.body.otp;
+    const otpData = await otpCollection.findOne({ otp: otp, phone: req.body.phone, type: req.body.type });
+    let existingUser = null;
+    if (req.body.type === 'user')
+      existingUser = await userCollection.findOne({ phone: req.body.phone })
+    else if (req.body.type === 'freelancer')
+      existingUser = await freelancerCollection.findOne({ phone: req.body.phone })
+    else if (req.body.type === 'company')
+      existingUser = await companyCollection.findOne({ phone: req.body.phone })
+
+    if (existingUser || !otpData) {
+      return res.sendStatus(403);
+    }
+
+    const otpCode = otpData.otp;
+
+    if (otpCode === parseInt(otp)) {
+      const userData = new userCollection({
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        phone: req.body.phone
+      });
+
+      const user = await userData.save();
+
+      jwt.sign({ user }, secret, { expiresIn: '30d' }, (err, token) => {
+        if (err) {
+          console.log(err)
+          return res.sendStatus(403);
+        }
+        res.json({ token });
+      });
+    }
+  }
+  catch (error) {
+    console.error(error);
+    res.status(500).send('Internal server error');
+  }
+};
+
+// login
+
 const otpController = async (req, res) => {
   try {
     const otp = req.body.otp;
@@ -42,5 +88,6 @@ const otpController = async (req, res) => {
 };
 
 module.exports = {
-  otpController
+  otpController,
+  otpSignupController
 };

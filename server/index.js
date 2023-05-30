@@ -5,7 +5,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const db = require('./db/db');
 const { signupController , loginController } = require('./controllers/userController');
-const { otpController } = require('./controllers/otpController');
+const { otpController, otpSignupController } = require('./controllers/otpController');
 const { registerCompany } = require('./controllers/companyController');
 const { registerFreelancer,
   getFreelancerProfile,
@@ -38,6 +38,7 @@ const { get } = require('mongoose');
 app.post('/signup', signupController);
 app.post('/login', loginController);
 app.post('/otp', otpController);
+app.post('/otp/signup', otpSignupController);
 app.post('/register/freelancer', upload, registerFreelancer);
 app.post('/register/company', registerCompany);
 app.get('/profile/freelancer/:uid', getFreelancerProfile);

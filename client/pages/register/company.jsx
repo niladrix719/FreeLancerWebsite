@@ -114,7 +114,6 @@ class Company extends React.Component {
           })
         });
         const data = await response.json();
-        localStorage.setItem('company', JSON.stringify(data));
       } catch (error) {
         console.error(error);
       }
