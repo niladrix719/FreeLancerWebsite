@@ -17,7 +17,6 @@ function VerificationPanel() {
             }
           });
           const data = await response.json();
-          console.log(data);
           setFreelancers(data);
         }
       } catch (error) {

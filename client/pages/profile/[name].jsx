@@ -57,10 +57,7 @@ function Name() {
       <Navbar color='white' />
       <Cover coverPicture={freelancer.coverPicture} />
       <div className={styles.profile_details}>
-        <ProfileBioCard profilePicture={freelancer.profilePicture} firstname={freelancer.firstname}
-          lastname={freelancer.lastname} bio={freelancer.bio} equipments={freelancer.equipments}
-          location={freelancer.location} links={freelancer.links}
-        />
+        {freelancer.links && <ProfileBioCard freelancer={freelancer} />}
         <Details works={freelancer.works} reviews={reviews} />
         <div className={styles.btnBox}>
           <button className={styles.btn} id={styles.hire}>Hire</button>
