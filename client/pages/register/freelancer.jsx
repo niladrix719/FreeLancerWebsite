@@ -350,14 +350,17 @@ class Freelancer extends React.Component {
   }
 
   setWarns = (val, i) => {
-    if(i === -1){
-      for(let i = 0; i < 12; i++)
-        this.state.warns[i] = val;
+    if (i === -1) {
+      const temp = Array(12).fill(val);
+      this.setState({ warns: temp });
+    } else {
+      this.setState((prevState) => {
+        const temp = [...prevState.warns];
+        temp[i] = val;
+        return { warns: temp };
+      });
     }
-    let temp = [...this.state.warns];
-    temp[i] = val;
-    this.setState({ warns: temp });
-  }
+  };  
 
   render() {
     return (
