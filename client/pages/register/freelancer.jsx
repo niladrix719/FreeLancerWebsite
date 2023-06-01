@@ -40,6 +40,7 @@ class Freelancer extends React.Component {
       profilePicError: false,
       coverPicError: false,
       textareaError: false,
+      warns: [false, false, false, false, false, false, false, false, false, false, false, false],
       blur: 'none'
     }
   }
@@ -215,23 +216,27 @@ class Freelancer extends React.Component {
     }
     if(this.state.profilePicture === null) {
       this.setState({ profilePicError: true });
-      c++;
+      this.setState({ warns: [false, ...this.state.warns.slice(1)] });
+      return;
     }
     if(this.state.coverPicture === null) {
       this.setState({ coverPicError: true });
-      c++;
+      this.setState({ warns: [...this.state.warns.slice(0, 1), false, ...this.state.warns.slice(2)] });
+      return;
     }
     if(this.state.aadhaarCard === null) {
       this.setState({ addharError: true });
-      c++;
+      this.setState({ warns: [...this.state.warns.slice(0, 2), false, ...this.state.warns.slice(3)] });
+      return;
     }
     if(this.state.panCard === null) {
       this.setState({ panError: true });
-      c++;
+      this.setState({ warns: [...this.state.warns.slice(0, 3), false, ...this.state.warns.slice(4)] });
+      return;
     }
     if(c > 0)
       return;
-      
+
     const postData = async () => {
       try {
         const data = new FormData();
@@ -342,6 +347,16 @@ class Freelancer extends React.Component {
     this.setState({ addharError: val });
     if(i === 4)
     this.setState({ panError: val });
+  }
+
+  setWarns = (val, i) => {
+    if(i === -1){
+      for(let i = 0; i < 12; i++)
+        this.state.warns[i] = val;
+    }
+    let temp = [...this.state.warns];
+    temp[i] = val;
+    this.setState({ warns: temp });
   }
 
   render() {
@@ -479,6 +494,8 @@ class Freelancer extends React.Component {
                 setPicError={this.setPicError}
                 coverPicError={this.state.coverPicError}
                 profilePicError={this.state.profilePicError}
+                warns={this.state.warns}
+                setWarns={this.setWarns}
               />}
             </form>
           </div>

@@ -8,7 +8,6 @@ import TermsAndConditions from './TermsAndConditions';
 
 function Verification(props) {
   const [images, setImages] = useState([]);
-  const [warns, setWarns] = useState([false, false, false, false, false, false, false, false, false, false, false, false]);
   const [profilePicture, setProfilePicture] = useState(null);
   const [coverPicture, setCoverPicture] = useState(null);
   const [aadhaarCard, setAadhaarCard] = useState(null);
@@ -28,7 +27,7 @@ function Verification(props) {
     }
 
     if (file.size > 1048576 && index === 4) {
-      setWarns([true, false, false, false, false, false, false, false, false, false, false, false]);
+      props.setWarns(true,0);
       props.setPicError(false,1);
       return;
     }
@@ -40,7 +39,7 @@ function Verification(props) {
     }
 
     if (file.size > 1048576 && index === 5) {
-      setWarns([false, true, false, false, false, false, false, false, false, false, false, false]);
+      props.setWarns(true,1);
       props.setPicError(false,2);
       return;
     }
@@ -52,7 +51,7 @@ function Verification(props) {
     }
 
     if (file.size > 1048576 && index === 6) {
-      setWarns([false, false, true, false, false, false, false, false, false, false, false, false]);
+      props.setWarns(true,2);
       props.setPicError(false,3);
       return;
     }
@@ -63,7 +62,7 @@ function Verification(props) {
     }
 
     if (file.size > 1048576 && index === 7) {
-      setWarns([false, false, false, true, false, false, false, false, false, false, false, false]);
+      props.setWarns(true,3);
       props.setPicError(false,4);
       return;
     }
@@ -73,43 +72,8 @@ function Verification(props) {
       setPanCard(file);
     }
 
-    if (file.size > 1048576 && index === 0) {
-      setWarns([false, false, false, false, true, false, false, false, false, false, false, false]);
-      return;
-    }
-
-    if (file.size > 1048576 && index === 1) {
-      setWarns([false, false, false, false, false, true, false, false, false, false, false, false]);
-      return;
-    }
-
-    if (file.size > 1048576 && index === 2) {
-      setWarns([false, false, false, false, false, false, true, false, false, false, false, false]);
-      return;
-    }
-
-    if (file.size > 1048576 && index === 3) {
-      setWarns([false, false, false, false, false, false, false, true, false, false, false, false]);
-      return;
-    }
-
-    if (file.size > 1048576 && index === 8) {
-      setWarns([false, false, false, false, false, false, false, false, true, false, false, false]);
-      return;
-    }
-
-    if (file.size > 1048576 && index === 9) {
-      setWarns([false, false, false, false, false, false, false, false, false, true, false, false]);
-      return;
-    }
-
-    if (file.size > 1048576 && index === 10) {
-      setWarns([false, false, false, false, false, false, false, false, false, false, true, false]);
-      return;
-    }
-
-    if (file.size > 1048576 && index === 11) {
-      setWarns([false, false, false, false, false, false, false, false, false, false, false, true]);
+    if (file.size > 1048576) {
+      props.setWarns(true,index);
       return;
     }
 
@@ -118,7 +82,7 @@ function Verification(props) {
       setWorks([...works, file]);
     }
 
-    setWarns([false, false, false, false, false, false, false, false, false, false, false, false]);
+    props.setWarns(false, -1);
 
     reader.onloadend = () => {
       const newImages = [...images];
@@ -194,7 +158,7 @@ function Verification(props) {
           name='coverPicture'
         />
         {props.coverPicError && <p className={styles.warn}>Please Provide Cover Picture</p>}
-        {warns[1] && <p className={styles.warn}>File size exceeds maximum limit of 1MB</p>}
+        {props.warns[1] && <p className={styles.warn}>File size exceeds maximum limit of 1MB</p>}
       </div>
       <div className={styles.imageFields} id={styles.profile_pic} style={{
         backgroundImage: images[4] ? `url(${images[4]})` : `url(/dp.png)`,
@@ -207,7 +171,7 @@ function Verification(props) {
           name='profilePicture'
         />
         {props.profilePicError && <p className={styles.warn}>Please Provide Profile Picture</p>}
-        {warns[0] && <p className={styles.warn}>File size exceeds maximum limit of 1MB</p>}
+        {props.warns[0] && <p className={styles.warn}>File size exceeds maximum limit of 1MB</p>}
       </div>
       <div className={styles.uploads}>
         <label className={styles.box}>
@@ -217,7 +181,7 @@ function Verification(props) {
           &nbsp;&nbsp;&nbsp;&nbsp;
           {images[6] && <FontAwesomeIcon icon={faFile} style={{ color: "#ffffff", }} />}
           {props.addharError && <p className={styles.warn}>Please Provide Addhar Card</p>}
-          {warns[2] && <p className={styles.warn}>File size exceeds maximum limit of 1MB</p>}
+          {props.warns[2] && <p className={styles.warn}>File size exceeds maximum limit of 1MB</p>}
         </label>
         <label className={styles.box}>
           <FontAwesomeIcon icon={faPlus} style={{ color: 'white' }} />
@@ -226,7 +190,7 @@ function Verification(props) {
           &nbsp;&nbsp;&nbsp;&nbsp;
           {images[7] && <FontAwesomeIcon icon={faFile} style={{ color: "#ffffff", }} />}
           {props.panError && <p className={styles.warn}>Please Provide Pan Card</p>}
-          {warns[3] && <p className={styles.warn}>File size exceeds maximum limit of 1MB</p>}
+          {props.warns[3] && <p className={styles.warn}>File size exceeds maximum limit of 1MB</p>}
         </label>
       </div>
       <div className={styles.socials}>
@@ -276,56 +240,56 @@ function Verification(props) {
         }}>
           <input type="file" className={styles.work} onChange={(e) => handleImageChange(e, 0)} accept="image/jpeg,image/png" />
           {!images[0] && <FontAwesomeIcon className={styles.plus} icon={faPlus} style={{ color: '#1f1c1c' }} />}
-          {warns[4] && <p className={styles.warn} id={styles.warn}>File size exceeds maximum limit of 1MB</p>}
+          {props.warns[4] && <p className={styles.warn} id={styles.warn}>File size exceeds maximum limit of 1MB</p>}
         </div>
         <div className={styles.addBox} style={{
           backgroundImage: images[1] ? `url(${images[1]})` : `none`,
         }}>
           <input type="file" className={styles.work} onChange={(e) => handleImageChange(e, 1)} accept="image/jpeg,image/png" />
           {!images[1] && <FontAwesomeIcon className={styles.plus} icon={faPlus} style={{ color: '#1f1c1c' }} />}
-          {warns[5] && <p className={styles.warn} id={styles.warn}>File size exceeds maximum limit of 1MB</p>}
+          {props.warns[5] && <p className={styles.warn} id={styles.warn}>File size exceeds maximum limit of 1MB</p>}
         </div>
         <div className={styles.addBox} style={{
           backgroundImage: images[2] ? `url(${images[2]})` : `none`,
         }}>
           <input type="file" className={styles.work} onChange={(e) => handleImageChange(e, 2)} accept="image/jpeg,image/png" />
           {!images[2] && <FontAwesomeIcon className={styles.plus} icon={faPlus} style={{ color: '#1f1c1c' }} />}
-          {warns[6] && <p className={styles.warn} id={styles.warn}>File size exceeds maximum limit of 1MB</p>}
+          {props.warns[6] && <p className={styles.warn} id={styles.warn}>File size exceeds maximum limit of 1MB</p>}
         </div>
         <div className={styles.addBox} style={{
           backgroundImage: images[3] ? `url(${images[3]})` : `none`,
         }}>
           <input type="file" className={styles.work} onChange={(e) => handleImageChange(e, 3)} accept="image/jpeg,image/png" />
           {!images[3] && <FontAwesomeIcon className={styles.plus} icon={faPlus} style={{ color: '#1f1c1c' }} />}
-          {warns[7] && <p className={styles.warn} id={styles.warn}>File size exceeds maximum limit of 1MB</p>}
+          {props.warns[7] && <p className={styles.warn} id={styles.warn}>File size exceeds maximum limit of 1MB</p>}
         </div>
         <div className={styles.addBox} style={{
           backgroundImage: images[8] ? `url(${images[8]})` : `none`,
         }}>
           <input type="file" className={styles.work} onChange={(e) => handleImageChange(e, 8)} accept="image/jpeg,image/png" />
           {!images[8] && <FontAwesomeIcon className={styles.plus} icon={faPlus} style={{ color: '#1f1c1c' }} />}
-          {warns[8] && <p className={styles.warn} id={styles.warn}>File size exceeds maximum limit of 1MB</p>}
+          {props.warns[8] && <p className={styles.warn} id={styles.warn}>File size exceeds maximum limit of 1MB</p>}
         </div>
         <div className={styles.addBox} style={{
           backgroundImage: images[9] ? `url(${images[9]})` : `none`,
         }}>
           <input type="file" className={styles.work} onChange={(e) => handleImageChange(e, 9)} accept="image/jpeg,image/png" />
           {!images[9] && <FontAwesomeIcon className={styles.plus} icon={faPlus} style={{ color: '#1f1c1c' }} />}
-          {warns[9] && <p className={styles.warn} id={styles.warn}>File size exceeds maximum limit of 1MB</p>}
+          {props.warns[9] && <p className={styles.warn} id={styles.warn}>File size exceeds maximum limit of 1MB</p>}
         </div>
         <div className={styles.addBox} style={{
           backgroundImage: images[10] ? `url(${images[10]})` : `none`,
         }}>
           <input type="file" className={styles.work} onChange={(e) => handleImageChange(e, 10)} accept="image/jpeg,image/png" />
           {!images[10] && <FontAwesomeIcon className={styles.plus} icon={faPlus} style={{ color: '#1f1c1c' }} />}
-          {warns[10] && <p className={styles.warn} id={styles.warn}>File size exceeds maximum limit of 1MB</p>}
+          {props.warns[10] && <p className={styles.warn} id={styles.warn}>File size exceeds maximum limit of 1MB</p>}
         </div>
         <div className={styles.addBox} style={{
           backgroundImage: images[11] ? `url(${images[11]})` : `none`,
         }}>
           <input type="file" className={styles.work} onChange={(e) => handleImageChange(e, 11)} accept="image/jpeg,image/png" />
           {!images[11] && <FontAwesomeIcon className={styles.plus} icon={faPlus} style={{ color: '#1f1c1c' }} />}
-          {warns[11] && <p className={styles.warn} id={styles.warn}>File size exceeds maximum limit of 1MB</p>}
+          {props.warns[11] && <p className={styles.warn} id={styles.warn}>File size exceeds maximum limit of 1MB</p>}
         </div>
       </div>
       <div className={styles.check}><input type="checkbox" required checked={termsAndConditions} className={styles.checkbox}
