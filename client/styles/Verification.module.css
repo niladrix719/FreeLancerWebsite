@@ -261,6 +261,7 @@
 .heading{
     font-size: 2rem;
     margin-bottom: 4rem;
+    position: relative;
 }
 
 .check{
@@ -285,10 +286,12 @@
 
 .warn{
     color: red;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     position: absolute;
-    bottom: -3rem;
+    bottom: -2rem;
+    left: 0;
     font-weight: 500;
+    width: 18rem;
 }
 
 .camera{
@@ -338,4 +341,17 @@
     display: inline;
     background-color: #33db62;
     box-shadow: var(--shadow);
+}
+
+.err{
+    font-size: 0.8rem;
+    position: absolute;
+    top: 3rem;
+    width: 18rem;
+    color: red;
+    font-weight: 500;
+}
+
+.imageFields{
+    position: relative;
 }

@@ -29,6 +29,7 @@ function Verification(props) {
 
     if (file.size > 1048576 && index === 4) {
       setWarns([true, false, false, false, false, false, false, false, false, false, false, false]);
+      props.setPicError(false,1);
       return;
     }
 
@@ -40,6 +41,7 @@ function Verification(props) {
 
     if (file.size > 1048576 && index === 5) {
       setWarns([false, true, false, false, false, false, false, false, false, false, false, false]);
+      props.setPicError(false,2);
       return;
     }
 
@@ -51,6 +53,7 @@ function Verification(props) {
 
     if (file.size > 1048576 && index === 6) {
       setWarns([false, false, true, false, false, false, false, false, false, false, false, false]);
+      props.setPicError(false,3);
       return;
     }
 
@@ -61,6 +64,7 @@ function Verification(props) {
 
     if (file.size > 1048576 && index === 7) {
       setWarns([false, false, false, true, false, false, false, false, false, false, false, false]);
+      props.setPicError(false,4);
       return;
     }
 
@@ -123,6 +127,26 @@ function Verification(props) {
     };
 
     reader.readAsDataURL(file);
+
+    if(works.length >= 7 && (index === 3 || index === 2 || index === 1 || index === 0 || index === 8 || index === 9 || index === 10 || index === 11)) {
+      props.checkWorks(1);
+    }
+
+    if(index === 4){
+      props.checkWorks(4);
+    }
+
+    if(index === 5){
+      props.checkWorks(5);
+    }
+
+    if(index === 6){
+      props.checkWorks(2);
+    }
+
+    if(index === 7){
+      props.checkWorks(3);
+    }
   };
 
   function handleImageClick(event) {
@@ -159,7 +183,7 @@ function Verification(props) {
       </div>
       <h1 className={styles.title}>Verification Form</h1>
       <p className={styles.subTitle}>You&apos;re almost there! Just a final step to complete your profile.</p>
-      <div className={styles.formGroup} id={styles.cover} style={{
+      <div className={styles.imageFields} id={styles.cover} style={{
         backgroundImage: images[5] ? `url(${images[5]})` : `none`,
       }}>
         {!cameras[0] && <Image className={styles.camera} src='/cameraIcon.png' width={40} height={40} alt='camera'
@@ -169,12 +193,12 @@ function Verification(props) {
           onChange={(e) => handleImageChange(e, 5)} accept="image/jpeg,image/png"
           name='coverPicture'
         />
+        {props.coverPicError && <p className={styles.warn}>Please Provide Cover Picture</p>}
         {warns[1] && <p className={styles.warn}>File size exceeds maximum limit of 1MB</p>}
       </div>
-      <div className={styles.formGroup} id={styles.profile_pic} style={{
+      <div className={styles.imageFields} id={styles.profile_pic} style={{
         backgroundImage: images[4] ? `url(${images[4]})` : `url(/dp.png)`,
       }}>
-        {/* <FontAwesomeIcon onClick={(e) => handleMark(e)} className={styles.exclamation} icon={faExclamation} style={{color: "red"}} /> */}
         {!cameras[1] && <Image className={styles.camera} id={styles.camera} src='/cameraIcon.png' width={40} height={40} alt='camera'
           onClick={handleImageClick}
         />}
@@ -182,6 +206,7 @@ function Verification(props) {
           onChange={(e) => handleImageChange(e, 4)} accept="image/jpeg,image/png"
           name='profilePicture'
         />
+        {props.profilePicError && <p className={styles.warn}>Please Provide Profile Picture</p>}
         {warns[0] && <p className={styles.warn}>File size exceeds maximum limit of 1MB</p>}
       </div>
       <div className={styles.uploads}>
@@ -191,6 +216,7 @@ function Verification(props) {
           <input type="file" className={styles.upload} onChange={(e) => handleImageChange(e, 6)} accept="image/jpeg,image/png" />
           &nbsp;&nbsp;&nbsp;&nbsp;
           {images[6] && <FontAwesomeIcon icon={faFile} style={{ color: "#ffffff", }} />}
+          {props.addharError && <p className={styles.warn}>Please Provide Addhar Card</p>}
           {warns[2] && <p className={styles.warn}>File size exceeds maximum limit of 1MB</p>}
         </label>
         <label className={styles.box}>
@@ -199,6 +225,7 @@ function Verification(props) {
           <input type="file" className={styles.upload} onChange={(e) => handleImageChange(e, 7)} accept="image/jpeg,image/png" />
           &nbsp;&nbsp;&nbsp;&nbsp;
           {images[7] && <FontAwesomeIcon icon={faFile} style={{ color: "#ffffff", }} />}
+          {props.panError && <p className={styles.warn}>Please Provide Pan Card</p>}
           {warns[3] && <p className={styles.warn}>File size exceeds maximum limit of 1MB</p>}
         </label>
       </div>
@@ -209,6 +236,7 @@ function Verification(props) {
               props.getVericationDetails(e.target.value, 12)
               setLinks({ ...links, facebook: e.target.value })
             }} value={links.facebook}
+            required
           />
         </label>
         <label className={styles.social}>Instagram : <br />
@@ -217,6 +245,7 @@ function Verification(props) {
               props.getVericationDetails(e.target.value, 13)
               setLinks({ ...links, instagram: e.target.value })
             }} value={links.instagram}
+            required
           />
         </label>
         <label className={styles.social}>Twitter : <br />
@@ -225,6 +254,7 @@ function Verification(props) {
               props.getVericationDetails(e.target.value, 14)
               setLinks({ ...links, twitter: e.target.value })
             }} value={links.twitter}
+            required
           />
         </label>
         <label className={styles.social}>Youtube : <br />
@@ -233,10 +263,13 @@ function Verification(props) {
               props.getVericationDetails(e.target.value, 15)
               setLinks({ ...links, youtube: e.target.value })
             }} value={links.youtube}
+            required
           />
         </label>
       </div>
-      <h1 className={styles.heading}>Add Your Works</h1>
+      <h1 className={styles.heading}>Add Your Works
+      {props.worksError && <p className={styles.err}>Please Provide atleast 8 Works for you</p>}
+      </h1>
       <div className={styles.portfolio}>
         <div className={styles.addBox} style={{
           backgroundImage: images[0] ? `url(${images[0]})` : `none`,
@@ -295,7 +328,7 @@ function Verification(props) {
           {warns[11] && <p className={styles.warn} id={styles.warn}>File size exceeds maximum limit of 1MB</p>}
         </div>
       </div>
-      <div className={styles.check}><input type="checkbox" checked={termsAndConditions} className={styles.checkbox}
+      <div className={styles.check}><input type="checkbox" required checked={termsAndConditions} className={styles.checkbox}
         onChange={(e) => {
           props.getVericationDetails(e.target.checked, 16)
           setTermsAndConditions(e.target.checked)

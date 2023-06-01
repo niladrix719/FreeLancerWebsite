@@ -34,6 +34,11 @@ class Freelancer extends React.Component {
       error: false,
       form: false,
       phoneError: false,
+      worksError: false,
+      addharError: false,
+      panError: false,
+      profilePicError: false,
+      coverPicError: false,
       textareaError: false,
       blur: 'none'
     }
@@ -203,6 +208,30 @@ class Freelancer extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    let c = 0;
+    if(this.state.works.length < 8) {
+      this.setState({ worksError: true });
+      c++;
+    }
+    if(this.state.profilePicture === null) {
+      this.setState({ profilePicError: true });
+      c++;
+    }
+    if(this.state.coverPicture === null) {
+      this.setState({ coverPicError: true });
+      c++;
+    }
+    if(this.state.aadhaarCard === null) {
+      this.setState({ addharError: true });
+      c++;
+    }
+    if(this.state.panCard === null) {
+      this.setState({ panError: true });
+      c++;
+    }
+    if(c > 0)
+      return;
+      
     const postData = async () => {
       try {
         const data = new FormData();
@@ -289,6 +318,30 @@ class Freelancer extends React.Component {
     };
 
     postData();
+  }
+
+  checkWorks = (val) => {
+    if(val === 1)
+    this.setState({ worksError: false });
+    if(val === 2)
+    this.setState({ addharError: false });
+    if(val === 3)
+    this.setState({ panError: false });
+    if(val === 4)
+    this.setState({ profilePicError: false });
+    if(val === 5)
+    this.setState({ coverPicError: false });
+  }
+
+  setPicError = (val,i) => {
+    if(i === 1)
+    this.setState({ profilePicError: val });
+    if(i === 2)
+    this.setState({ coverPicError: val });
+    if(i === 3)
+    this.setState({ addharError: val });
+    if(i === 4)
+    this.setState({ panError: val });
   }
 
   render() {
@@ -419,6 +472,13 @@ class Freelancer extends React.Component {
               </div>}
               {this.state.form && <Verification
                 getVericationDetails={this.getVericationDetails}
+                checkWorks={this.checkWorks}
+                worksError={this.state.worksError}
+                addharError={this.state.addharError}
+                panError={this.state.panError}
+                setPicError={this.setPicError}
+                coverPicError={this.state.coverPicError}
+                profilePicError={this.state.profilePicError}
               />}
             </form>
           </div>

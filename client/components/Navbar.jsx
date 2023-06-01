@@ -117,10 +117,10 @@ export default function Navbar(props) {
               style={{ fontSize: 10, color: props.color }}
             />
             <div className={styles.profile_card}>
-              <Image src='/dp.png' width='90' height='90' className={styles.dp} alt='display picture' />
+              <Image src={`http://localhost:3000/uploads/${user.profilePicture}`} width='90' height='90' className={styles.dp} alt='display picture' />
               <h1 className={styles.name}>{user ? `${user.firstname} ${user.lastname}` : ''}</h1>
               <p className={styles.number}>{user ? user.phone : ''}</p>
-              <Link className={styles.btn} href='/profile'>My Profile</Link>
+              <Link className={styles.btn} href={`/profile/${user.uid}`}>My Profile</Link>
               <button className={styles.btn} type='button' onClick={handleLogout}>Log Out</button>
             </div>
           </li>}
