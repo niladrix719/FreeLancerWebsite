@@ -60,3 +60,11 @@
   font-weight: 500;
   width: 50%;
 }
+
+.inputStars{
+  display: none;
+}
+
+.star{
+  cursor: pointer;
+}

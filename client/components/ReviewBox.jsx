@@ -7,6 +7,8 @@ import { useState } from 'react'
 function ReviewBox(props) {
   const [title, setTitle] = useState('');
   const [review, setReview] = useState('');
+  const [stars, setStars] = useState('');
+  const [hover, setHover] = useState(null);
   const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
 
   const submitReview = () => {
@@ -23,7 +25,7 @@ function ReviewBox(props) {
               freelancer: props.freelancer._id,
               title: title,
               review: review,
-              stars: 5
+              stars: stars
             })
           });
           const data = await response.json();
@@ -45,7 +47,12 @@ function ReviewBox(props) {
       <h1 className={styles.heading}>Give a Feedback</h1>
       <div className={styles.stars}>
         {[...Array(5)].map((star, index) => (
-          <FaStar size={25} key={index} color='#FFDF00' />
+          <label key={index}>
+            <input className={styles.inputStars} type="radio" name="rating" value={index + 1} onClick={(e) => setStars(e.target.value)} />
+            <FaStar size={25} key={index} onMouseEnter={() => setHover(index + 1)} onMouseLeave={() => setHover(null)}
+              className={styles.star} color={index + 1 <= (hover || stars) ? '#fff707' : 'white'}
+            />
+          </label>
         ))}
       </div>
       <label htmlFor='title' className={styles.label}>Title</label>

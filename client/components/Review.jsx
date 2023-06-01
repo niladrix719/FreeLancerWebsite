@@ -13,7 +13,7 @@ function Review(props) {
       </div>
       <div className={styles.stars}>
         {[...Array(5)].map((star, index) => (
-          <FaStar size={16} key={index} color='#FFDF00' />
+          <FaStar size={16} key={index} color={index + 1 <= props.review.stars ? '#fff707' : 'white'}/>
         ))}
       </div>
       <div className={styles.review_details}>
