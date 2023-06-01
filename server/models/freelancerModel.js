@@ -71,7 +71,12 @@ const freelancerSchema = new mongoose.Schema({
     type: Boolean,
     required: true
   }
-});
+}
+  ,
+  {
+    timestamps: true
+  }
+);
 
 const freelancerCollection = new mongoose.model('freelancercollection', freelancerSchema);
 

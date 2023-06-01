@@ -134,13 +134,11 @@ function Verification(props) {
 
   function handleTermsAndConditions() {
     setDialogBox(true);
-    // props.handleBlur(true);
   }
 
   function handleClick(value) {
     setDialogBox(false);
     setTermsAndConditions(value);
-    // props.handleBlur(false);
   }
 
   return (

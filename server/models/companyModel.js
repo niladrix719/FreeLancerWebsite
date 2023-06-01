@@ -17,7 +17,11 @@ const companySchema = new mongoose.Schema({
     type: String,
     required: true
   }
-});
+},
+  {
+    timestamps: true
+  }
+);
 
 const companyCollection = new mongoose.model('companycollection', companySchema);
 

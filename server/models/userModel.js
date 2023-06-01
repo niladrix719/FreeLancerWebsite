@@ -15,7 +15,11 @@ const userSchema = new mongoose.Schema({
     uqique: true,
     required: true
   }
-});
+},
+  {
+    timestamps: true
+  }
+);
 
 const userCollection = new mongoose.model('usercollection', userSchema);
 

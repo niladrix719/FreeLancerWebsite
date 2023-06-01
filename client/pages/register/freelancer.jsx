@@ -201,13 +201,6 @@ class Freelancer extends React.Component {
     }
   }
 
-  handleBlur = (val) => {
-    if (val)
-      this.setState({ blur: 'blur(5px)' });
-    else
-      this.setState({ blur: 'none' });
-  }
-
   handleSubmit = (event) => {
     event.preventDefault();
     const postData = async () => {
@@ -289,7 +282,6 @@ class Freelancer extends React.Component {
             type: 'freelancer'
           })
         });
-        localStorage.setItem('user', JSON.stringify(data));
       }
       catch (error) {
         console.error(error);
@@ -427,7 +419,6 @@ class Freelancer extends React.Component {
               </div>}
               {this.state.form && <Verification
                 getVericationDetails={this.getVericationDetails}
-                handleBlur={this.handleBlur}
               />}
             </form>
           </div>

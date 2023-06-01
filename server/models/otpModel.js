@@ -15,7 +15,11 @@ const otpSchema = new mongoose.Schema({
     type: String,
     required: true
   }
-});
+},
+  {
+    timestamps: true
+  }
+);
 
 const otpCollection = new mongoose.model('otpcollection', otpSchema);
 
