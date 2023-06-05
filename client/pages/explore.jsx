@@ -12,6 +12,7 @@ function Explore() {
   const [showPhotographers, setShowPhotographers] = useState(false);
   const [showCinematographers, setShowCinematographers] = useState(false);
   const [showDroneOperators, setShowDroneOperators] = useState(false);
+  const [rateSort, setRateSort] = useState('1000');
 
   const increPage = () => {
     setCurrentPage(currentPage + 1);
@@ -74,7 +75,14 @@ function Explore() {
       return freelancer.profession === 'drone_operator';
     }
     return true;
-  });  
+  });
+
+  const filtered = filteredFreelancers.filter((freelancer) => {
+    if(freelancer.rate <= rateSort) {
+      return true;
+    }
+    return false;
+  });
 
   return (
     <div className={styles.explore}>
@@ -88,11 +96,13 @@ function Explore() {
             setShowPhotographers={setShowPhotographers}
             setShowCinematographers={setShowCinematographers}
             setShowDroneOperators={setShowDroneOperators}
+            setRateSort={setRateSort}
+            rateSort={rateSort}
           />
         </div>
         <div className={styles.main}>
           <div className={styles.cards}>
-            {filteredFreelancers.map((freelancer, index) => {
+            {filtered.map((freelancer, index) => {
               return (
                 <ProfileCard key={index} profile={freelancer} />
               )
