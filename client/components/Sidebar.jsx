@@ -41,19 +41,19 @@ class Sidebar extends React.Component {
           {this.state.showDropDown && <div className={styles.options}>
             <div className={styles.inputs}>
               <input className={styles.checkbox} type="checkbox" onChange={(e) => {
-                this.props.showProfession(e.target.checked, 'Photographer')
+                this.props.setShowPhotographers(e.target.checked);
               }} />
               <label htmlFor="photographer">Photographer</label>
             </div>
             <div className={styles.inputs}>
               <input className={styles.checkbox} type="checkbox" onChange={(e) => {
-                this.props.showProfession(e.target.checked, 'Cinematographer')
+                this.props.setShowCinematographers(e.target.checked);
               }} />
               <label htmlFor="cinematographer">Cinematographer</label>
             </div>
             <div className={styles.inputs}>
               <input className={styles.checkbox} type="checkbox" onChange={(e) => {
-                this.props.showProfession(e.target.checked, 'Drone_Operator')
+                this.props.setShowDroneOperators(e.target.checked);
               }} />
               <label htmlFor="drone_operator">Drone Operator</label>
             </div>

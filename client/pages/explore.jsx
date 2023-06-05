@@ -9,6 +9,9 @@ import { useEffect, useState } from 'react';
 function Explore() {
   const [currentPage, setCurrentPage] = useState(1);
   const [freelancers, setFreelancers] = useState([]);
+  const [showPhotographers, setShowPhotographers] = useState(false);
+  const [showCinematographers, setShowCinematographers] = useState(false);
+  const [showDroneOperators, setShowDroneOperators] = useState(false);
 
   const increPage = () => {
     setCurrentPage(currentPage + 1);
@@ -32,21 +35,46 @@ function Explore() {
     fetchFreelancer();
   }, []);
 
-  const showProfession = (val, profession) => {
-    if (val === true) {
-      async function fetchFreelancer() {
-        try {
-          const response = await fetch(`http://localhost:3000/profiles/freelancer/${profession}`);
-          const data = await response.json();
-          setFreelancers(data);
-        } catch (error) {
-          console.error(error);
-        }
-      }
-
-      fetchFreelancer();
+  const filteredFreelancers = freelancers.filter((freelancer) => {
+    if (!showPhotographers && !showCinematographers && !showDroneOperators) {
+      return true;
     }
-  }
+    if (showPhotographers && showCinematographers && showDroneOperators) {
+      return (
+        freelancer.profession === 'photographer' ||
+        freelancer.profession === 'cinematographer' ||
+        freelancer.profession === 'drone_operator'
+      );
+    }
+    if (showPhotographers && showCinematographers) {
+      return (
+        freelancer.profession === 'photographer' ||
+        freelancer.profession === 'cinematographer'
+      );
+    }
+    if (showPhotographers && showDroneOperators) {
+      return (
+        freelancer.profession === 'photographer' ||
+        freelancer.profession === 'drone_operator'
+      );
+    }
+    if (showCinematographers && showDroneOperators) {
+      return (
+        freelancer.profession === 'cinematographer' ||
+        freelancer.profession === 'drone_operator'
+      );
+    }
+    if (showPhotographers) {
+      return freelancer.profession === 'photographer';
+    }
+    if (showCinematographers) {
+      return freelancer.profession === 'cinematographer';
+    }
+    if (showDroneOperators) {
+      return freelancer.profession === 'drone_operator';
+    }
+    return true;
+  });  
 
   return (
     <div className={styles.explore}>
@@ -56,11 +84,15 @@ function Explore() {
       </div>
       <div className={styles.body}>
         <div className={styles.sidebar}>
-          <Sidebar showProfession={showProfession} />
+          <Sidebar
+            setShowPhotographers={setShowPhotographers}
+            setShowCinematographers={setShowCinematographers}
+            setShowDroneOperators={setShowDroneOperators}
+          />
         </div>
         <div className={styles.main}>
           <div className={styles.cards}>
-            {freelancers.map((freelancer, index) => {
+            {filteredFreelancers.map((freelancer, index) => {
               return (
                 <ProfileCard key={index} profile={freelancer} />
               )
