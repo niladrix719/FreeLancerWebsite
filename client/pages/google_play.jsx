@@ -10,7 +10,7 @@ function Mobile() {
       <div className={styles.body}>
         <Image className={styles.img} src='/mobile.png' alt='mobile' width={400} height={400}></Image>
         <h1 className={styles.heading}>
-          comming soon on Mobile Devices <br />
+          comming soon on Android Devices <br />
           <button className={styles.btn}>Get Notified</button>
         </h1>
       </div>
@@ -19,4 +19,4 @@ function Mobile() {
   )
 }
 
-export default Mobile
+export default Mobile;
