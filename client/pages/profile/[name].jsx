@@ -2,8 +2,8 @@ import Navbar from '@/components/Navbar';
 import Cover from '@/components/Cover';
 import ProfileBioCard from '@/components/ProfileBioCard';
 import Details from '@/components/Details';
-import React from 'react'
-import styles from '@/styles/Profile.module.css'
+import React from 'react';
+import styles from '@/styles/Profile.module.css';
 import Footer from '@/components/Footer';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
@@ -17,6 +17,7 @@ function Name() {
   const [reviewBox, setReviewBox] = useState(false);
   const [reviews, setReviews] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
+  const [isFreelancerLoaded, setIsFreelancerLoaded] = useState(false); // Track if freelancer is loaded
 
   useEffect(() => {
     async function fetchFreelancer() {
@@ -24,6 +25,7 @@ function Name() {
         const response = await fetch(`http://localhost:3000/profile/freelancer/${uid}`);
         const data = await response.json();
         setFreelancer(data);
+        setIsFreelancerLoaded(true); // Set the flag to true when freelancer is loaded
       } catch (error) {
         console.error(error);
       }
@@ -43,20 +45,23 @@ function Name() {
       }
     }
 
-    fetchReviews();
-  }, [freelancer]);
+    // Fetch reviews only if freelancer is loaded
+    if (isFreelancerLoaded) {
+      fetchReviews();
+    }
+  }, [freelancer, isFreelancerLoaded]);
 
   const handleReviewBox = (val) => {
     setReviewBox(val);
-  }
+  };
 
   const appendReview = (review) => {
     setReviews([...reviews, review]);
-  }
+  };
 
   const checkLoggedIn = (val) => {
     setLoggedIn(val);
-  }
+  };
 
   return (
     <div className={styles.profile}>
@@ -67,18 +72,28 @@ function Name() {
         <Details works={freelancer.works} reviews={reviews} />
         <div className={styles.btnBox}>
           <button className={styles.btn} id={styles.hire}>Hire</button>
-          {loggedIn && <button className={styles.btn} id={styles.msg} onClick={() => handleReviewBox(true)}>Review</button>}
-          {!loggedIn && <Link href='/login' className={styles.btn} id={styles.msg}>Review</Link>}
-          {reviewBox && <div className={styles.boxContainer}>
-            <ReviewBox handleReviewBox={handleReviewBox} appendReview={appendReview} freelancer={freelancer} />
-          </div>}
+          {loggedIn && (
+            <button className={styles.btn} id={styles.msg} onClick={() => handleReviewBox(true)}>
+              Review
+            </button>
+          )}
+          {!loggedIn && (
+            <Link href='/login' className={styles.btn} id={styles.msg}>
+              Review
+            </Link>
+          )}
+          {reviewBox && (
+            <div className={styles.boxContainer}>
+              <ReviewBox handleReviewBox={handleReviewBox} appendReview={appendReview} freelancer={freelancer} />
+            </div>
+          )}
         </div>
       </div>
       <div className={styles.footer}>
         <Footer />
       </div>
     </div>
-  )
+  );
 }
 
 export default Name;

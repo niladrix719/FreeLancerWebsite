@@ -7,7 +7,6 @@ async function addReview(req, res) {
     jwt.verify(req.token, secret, async (err, authData) => {
       const reviewData = new reviewCollection({
         freelancer: req.body.freelancer,
-        user: authData.user._id,
         userDetails: authData.user,
         title: req.body.title,
         review: req.body.review,
@@ -25,6 +24,7 @@ async function addReview(req, res) {
 
 async function getReviews(req, res) {
   try {
+    console.log(req.params.id);
     const reviews = await reviewCollection.find({ freelancer: req.params.id });
     res.send(reviews);
   } catch (error) {
