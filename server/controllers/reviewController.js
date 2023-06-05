@@ -24,7 +24,6 @@ async function addReview(req, res) {
 
 async function getReviews(req, res) {
   try {
-    console.log(req.params.id);
     const reviews = await reviewCollection.find({ freelancer: req.params.id });
     res.send(reviews);
   } catch (error) {

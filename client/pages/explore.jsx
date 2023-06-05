@@ -78,11 +78,16 @@ function Explore() {
   });
 
   const filtered = filteredFreelancers.filter((freelancer) => {
-    if(freelancer.rate <= rateSort) {
+    if (freelancer.rate <= rateSort) {
       return true;
     }
     return false;
   });
+
+  const pages = Math.ceil(filtered.length / 5);
+  const startIndex = (currentPage - 1) * 5;
+  const endIndex = startIndex + 5;
+  const displayedFreelancers = filtered.slice(startIndex, endIndex);
 
   return (
     <div className={styles.explore}>
@@ -102,7 +107,7 @@ function Explore() {
         </div>
         <div className={styles.main}>
           <div className={styles.cards}>
-            {filtered.map((freelancer, index) => {
+            {displayedFreelancers.map((freelancer, index) => {
               return (
                 <ProfileCard key={index} profile={freelancer} />
               )
@@ -111,15 +116,16 @@ function Explore() {
           <nav className={styles.nav}>
             <div className={styles.pages}>
               <button className={styles.btn} onClick={decrePage}>Back</button>
-              <div className={styles.page} id={currentPage === 1 ? `${styles.current}` : ''}
-                onClick={() => setCurrentPage(1)}
-              >1</div>
-              <div className={styles.page} id={currentPage === 2 ? `${styles.current}` : ''}
-                onClick={() => setCurrentPage(2)}
-              >2</div>
-              <div className={styles.page} id={currentPage === 3 ? `${styles.current}` : ''}
-                onClick={() => setCurrentPage(3)}
-              >3</div>
+              {Array.from({ length: pages }, (_, index) => (
+                <div
+                  className={styles.page}
+                  style={currentPage === index + 1 ? { backgroundColor: 'black', color: 'white' } : {}}
+                  onClick={() => setCurrentPage(index + 1)}
+                  key={index}
+                >
+                  <span>{index + 1}</span>
+                </div>
+              ))}
               <button className={styles.btn} onClick={increPage}>Next</button>
             </div>
           </nav>

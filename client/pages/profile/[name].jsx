@@ -17,7 +17,7 @@ function Name() {
   const [reviewBox, setReviewBox] = useState(false);
   const [reviews, setReviews] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
-  const [isFreelancerLoaded, setIsFreelancerLoaded] = useState(false); // Track if freelancer is loaded
+  const [isFreelancerLoaded, setIsFreelancerLoaded] = useState(false);
 
   useEffect(() => {
     async function fetchFreelancer() {
@@ -25,7 +25,7 @@ function Name() {
         const response = await fetch(`http://localhost:3000/profile/freelancer/${uid}`);
         const data = await response.json();
         setFreelancer(data);
-        setIsFreelancerLoaded(true); // Set the flag to true when freelancer is loaded
+        setIsFreelancerLoaded(true);
       } catch (error) {
         console.error(error);
       }
@@ -45,7 +45,6 @@ function Name() {
       }
     }
 
-    // Fetch reviews only if freelancer is loaded
     if (isFreelancerLoaded) {
       fetchReviews();
     }
