@@ -1,5 +1,5 @@
 import ProfileCard from '@/components/ProfileCard';
-import styles from '../styles/Explore.module.css';
+import styles from '../../styles/Explore.module.css';
 import Navbar from '@/components/Navbar';
 import Sidebar from '@/components/Sidebar';
 import SearchBox from '@/components/SearchBox';
@@ -10,7 +10,7 @@ function Explore() {
   const [currentPage, setCurrentPage] = useState(1);
   const [freelancers, setFreelancers] = useState([]);
   const [showPhotographers, setShowPhotographers] = useState(false);
-  const [showCinematographers, setShowCinematographers] = useState(false);
+  const [showCinematographers, setShowCinematographers] = useState(true);
   const [showDroneOperators, setShowDroneOperators] = useState(false);
   const [rateSort, setRateSort] = useState('1000');
 
@@ -101,6 +101,9 @@ function Explore() {
             setShowPhotographers={setShowPhotographers}
             setShowCinematographers={setShowCinematographers}
             setShowDroneOperators={setShowDroneOperators}
+            showPhotographers={showPhotographers}
+            showCinematographers={showCinematographers}
+            showDroneOperators={showDroneOperators}
             setRateSort={setRateSort}
             rateSort={rateSort}
           />

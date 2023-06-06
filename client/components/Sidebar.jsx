@@ -42,19 +42,19 @@ class Sidebar extends React.Component {
             <div className={styles.inputs}>
               <input className={styles.checkbox} type="checkbox" onChange={(e) => {
                 this.props.setShowPhotographers(e.target.checked);
-              }} />
+              }} checked={this.props.showPhotographers} />
               <label htmlFor="photographer">Photographer</label>
             </div>
             <div className={styles.inputs}>
               <input className={styles.checkbox} type="checkbox" onChange={(e) => {
                 this.props.setShowCinematographers(e.target.checked);
-              }} />
+              }} checked={this.props.showCinematographers} />
               <label htmlFor="cinematographer">Cinematographer</label>
             </div>
             <div className={styles.inputs}>
               <input className={styles.checkbox} type="checkbox" onChange={(e) => {
                 this.props.setShowDroneOperators(e.target.checked);
-              }} />
+              }} checked={this.props.showDroneOperators} />
               <label htmlFor="drone_operator">Drone Operator</label>
             </div>
           </div>}

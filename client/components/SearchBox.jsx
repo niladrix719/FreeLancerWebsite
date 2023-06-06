@@ -19,7 +19,8 @@ class SearchBox extends React.Component {
     this.setState({ searchTerm: term });
   };
 
-  handleInputClick = () => {
+  handleInputClick = (event) => {
+    event.stopPropagation();
     this.setState({ isInputFocused: !this.state.isInputFocused });
   };
 
@@ -35,7 +36,11 @@ class SearchBox extends React.Component {
 
     if (event.key === "Enter" && filteredOptions.length > 0) {
       event.preventDefault();
-      Router.push("/explore");
+      let value = filteredOptions[0];
+      if (value === 'Photographer') value = 'photographer';
+      else if (value === 'Cinematographer') value = 'cinematographer';
+      else if (value === 'Drone Operator') value = 'drone_operator';
+      Router.push(`/explore/${value}`);
     }
   };
 
@@ -54,7 +59,7 @@ class SearchBox extends React.Component {
           type="text"
           className={styles.searchInput}
           placeholder="Search for services"
-          onClick={this.handleInputClick}
+          onClick={(event) => this.handleInputClick(event)}
           onChange={this.handleSearch}
           value={searchTerm}
           onKeyDown={this.handleKeyDown}
@@ -63,11 +68,17 @@ class SearchBox extends React.Component {
           <div className={styles.searchNames}>
             <ul className={styles.names}>
               {filteredOptions.length > 0 ? (
-                filteredOptions.map((option, index) => (
-                  <Link href="/explore" className={styles.name} key={index}>
-                    {option}
-                  </Link>
-                ))
+                filteredOptions.map((option, index) => {
+                  let value = option;
+                  if (value === 'Photographer') value = 'photographer';
+                  else if (value === 'Cinematographer') value = 'cinematographer';
+                  else if (value === 'Drone Operator') value = 'drone_operator';
+                  return (
+                    <Link href={`/explore/${value}`} className={styles.name} key={index}>
+                      {option}
+                    </Link>
+                  );
+                })
               ) : (
                 <li className={styles.name}>No results found</li>
               )}
