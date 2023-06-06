@@ -10,7 +10,6 @@ const { registerCompany } = require('./controllers/companyController');
 const { registerFreelancer,
   getFreelancerProfile,
   getFreelancerProfiles,
-  getFreelancerProfessionProfiles,
   getUnFreelancerProfiles,
   deleteFreelancerProfile,
   verifyFreelancerProfile } = require('./controllers/freelancerController');
@@ -45,7 +44,6 @@ app.post('/verify/freelancer/phone', VerifyFreelancerPhone);
 app.get('/profile/freelancer/:uid', getFreelancerProfile);
 app.get('/profiles/verified/freelancer', getFreelancerProfiles);
 app.get('/profiles/unverified/freelancer', verifyToken, getUnFreelancerProfiles);
-app.get('/profiles/freelancer/:profession', getFreelancerProfessionProfiles);
 app.delete('/delete/freelancer/:id', deleteFreelancerProfile);
 app.put('/verify/freelancer/:id', verifyFreelancerProfile);
 app.get('/navbar', verifyToken, (req, res) => {

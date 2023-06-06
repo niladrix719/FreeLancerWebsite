@@ -11,6 +11,8 @@ export default function Login() {
   const [type, setType] = useState('user');
   const [otpForm, setOtpForm] = useState(false);
   const router = useRouter();
+  const [loginFailed, setLoginFailed] = useState(false);
+  const [otpFailed, setOtpFailed] = useState(false);
 
   const handleSubmitOTP = async (event) => {
     event.preventDefault();
@@ -36,6 +38,7 @@ export default function Login() {
         localStorage.setItem('user', JSON.stringify(data));
         router.push('/');
       } catch (error) {
+        setOtpFailed(true);
         console.error(error);
       }
     }
@@ -59,6 +62,7 @@ export default function Login() {
         const data = await response.json();
         setOtpForm(true);
       } catch (error) {
+        setLoginFailed(true);
         console.error(error);
       }
     }
@@ -77,9 +81,12 @@ export default function Login() {
             <h1 className={styles.heading}>Welcome</h1>
             <p className={styles.subHeading}>Log In To Your Account</p>
           </div>
+          {loginFailed && <span className={styles.warn}>Login Failed ! Please try again</span>}
           <label htmlFor="accType" className={styles.accLabel}>
             <p className={styles.label}>Log in As</p>
-            <select className={styles.accType} id='accType' name='type' onChange={(e) => setType(e.target.value)}>
+            <select className={styles.accType} id='accType' name='type'
+              onChange={(e) => { setType(e.target.value); setLoginFailed(false); setOtpFailed(false); }}
+            >
               <option value="user" className={styles.opts}>User</option>
               <option value="freelancer" className={styles.opts}>Freelancer</option>
               <option value="company" className={styles.opts}>Company</option>
@@ -90,7 +97,8 @@ export default function Login() {
               +91
             </div>
             <input className={styles.inputs} id={styles.number} name='phone'
-              type='number' placeholder='Enter Your Phone no.' onChange={(e) => setPhone(e.target.value)}
+              type='number' placeholder='Enter Your Phone no.'
+              onChange={(e) => { setPhone(e.target.value); setLoginFailed(false); setOtpFailed(false); }}
             /> <br/>
           </div>
           <div>
@@ -112,6 +120,7 @@ export default function Login() {
             <h1 className={styles.heading}>Welcome</h1>
             <p className={styles.subHeading}>Enter a one-time password (OTP) to verify</p>
           </div>
+          {otpFailed && <span className={styles.warn}>OTP verification failed ! Please try again</span>}
           <div id={styles.otp}>
             <input className={styles.inputs} id={styles.otp} type="number" name="otp" placeholder="Enter OTP" />
           </div>

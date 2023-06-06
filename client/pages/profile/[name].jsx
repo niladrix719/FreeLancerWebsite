@@ -22,17 +22,21 @@ function Name() {
   useEffect(() => {
     async function fetchFreelancer() {
       try {
+        if (!uid) {
+          return;
+        }
         const response = await fetch(`http://localhost:3000/profile/freelancer/${uid}`);
         const data = await response.json();
         setFreelancer(data);
         setIsFreelancerLoaded(true);
       } catch (error) {
         console.error(error);
+        router.push('/404');
       }
     }
-
+  
     fetchFreelancer();
-  }, [uid]);
+  }, [uid]);  
 
   useEffect(() => {
     async function fetchReviews() {

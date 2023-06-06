@@ -123,6 +123,7 @@ class Freelancer extends React.Component {
     this.setState({ error: false });
     this.setState({ phoneError: false });
     this.setState({ textareaError: false });
+    this.setState({ registerFailed: false });
     this.increPage();
   }
 
@@ -133,6 +134,7 @@ class Freelancer extends React.Component {
     this.setState({ error: false });
     this.setState({ phoneError: false });
     this.setState({ textareaError: false });
+    this.setState({ registerFailed: false });
 
     this.setState({ progress: this.state.progress - val });
     this.decrePage();
@@ -273,6 +275,7 @@ class Freelancer extends React.Component {
         Router.push('/contact_soon');
       } catch (error) {
         console.error(error);
+        this.setState({ registerFailed: true });
       }
     };
 
@@ -375,6 +378,7 @@ class Freelancer extends React.Component {
             >
               {this.state.error && <p className={styles.error}>Please provide all the inputs the fields.</p>}
               {this.state.phoneError && <p className={styles.error}>Please provide a valid phone number of 10 digits.</p>}
+              {this.state.registerFailed && <p className={styles.error}>Registration Failed. Please try again.</p>}
               {this.state.currentPage === 1 && <div className={styles.inputField} id={styles.firstname}>
                 <label htmlFor="firstname" className={styles.label}><span style={{ color: 'white' }}>* </span>First name :</label>
                 <input type='text' className={styles.input}

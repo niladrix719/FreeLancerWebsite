@@ -11,6 +11,8 @@ function Signup() {
   const [firstname, setFirstname] = useState('');
   const [lastname, setLastname] = useState('');
   const router = useRouter();
+  const [signupFailed, setSignupFailed] = useState(false);
+  const [otpFailed, setOtpFailed] = useState(false);
 
   const handleSubmitOTP = async (event) => {
     event.preventDefault();
@@ -39,6 +41,7 @@ function Signup() {
         localStorage.setItem('user', JSON.stringify(data));
         router.push('/');
       } catch (error) {
+        setOtpFailed(true);
         console.error(error);
       }
     }
@@ -69,6 +72,7 @@ function Signup() {
         setOtpForm(true);
         localStorage.setItem('user', JSON.stringify(data));
       } catch (error) {
+        setSignupFailed(true);
         console.error(error);
       }
     }
@@ -84,26 +88,30 @@ function Signup() {
           <h1 className={styles.heading}>Welcome</h1>
           <p className={styles.subHeading}>Sign Up For a Free Account</p>
         </div>
+        {signupFailed && <span className={styles.warn}>Signup failed ! Please try again</span>}
         <div className={styles.formBody}>
           <div className={styles.name}>
             <div className={styles.inputLabels}>
               <label htmlFor="fisrtname" className={styles.labels}>First Name - </label>
-              <input className={styles.inputs} type='text' placeholder='Enter Your firstname' onChange={(e) => setFirstname(e.target.value)}
-                id={styles.firstname} name='firstname' 
+              <input className={styles.inputs} type='text' placeholder='Enter Your firstname'
+                onChange={(e) => { setFirstname(e.target.value); setSignupFailed(false); setOtpFailed(false); }}
+                id={styles.firstname} name='firstname'
               /> <br />
             </div>
             <div className={styles.inputLabels}>
               <label htmlFor="lastname" className={styles.labels}>Last Name - </label>
               <input className={styles.inputs} type='text' placeholder='Enter Your lastname'
-                id={styles.lastname} name='lastname' onChange={(e) => setLastname(e.target.value)}
+                id={styles.lastname} name='lastname'
+                onChange={(e) => { setLastname(e.target.value); setSignupFailed(false); setOtpFailed(false); }}
               /> <br />
             </div>
           </div>
           <div id={styles.phone}>
             <div className={styles.inputLabels}>
               <label htmlFor="phone" className={styles.labels}>Phone No - </label>
-              <input className={styles.inputs} type='number' id={styles.number} 
-                placeholder='Enter Your Phone no.' name='phone' onChange={(e) => setPhone(e.target.value)} 
+              <input className={styles.inputs} type='number' id={styles.number}
+                placeholder='Enter Your Phone no.' name='phone'
+                onChange={(e) => { setPhone(e.target.value); setSignupFailed(false); setOtpFailed(false); }}
               /> <br />
             </div>
           </div>
@@ -121,6 +129,7 @@ function Signup() {
             <h1 className={styles.heading}>Welcome</h1>
             <p className={styles.subHeading}>Enter a one-time password (OTP) to verify</p>
           </div>
+          {otpFailed && <span className={styles.warn}>OTP verification failed ! Please try again</span>}
           <div id={styles.otp}>
             <input className={styles.inputs} id={styles.otp} type="number" name="otp" placeholder="Enter OTP" />
           </div>

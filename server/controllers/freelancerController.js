@@ -81,19 +81,6 @@ async function getUnFreelancerProfiles(req, res) {
   }
 }
 
-// profession profiles Data
-
-async function getFreelancerProfessionProfiles(req, res) {
-  try {
-    const profession = req.params.profession.toLowerCase();
-    const freelancers = await freelancerCollection.find({profession: profession, verified : true});
-    res.send(freelancers);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Internal server error');
-  }
-}
-
 // delete profile
 
 async function deleteFreelancerProfile (req, res) {
@@ -141,7 +128,6 @@ module.exports = {
   registerFreelancer,
   getFreelancerProfile,
   getFreelancerProfiles,
-  getFreelancerProfessionProfiles,
   getUnFreelancerProfiles,
   deleteFreelancerProfile,
   verifyFreelancerProfile
