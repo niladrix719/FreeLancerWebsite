@@ -355,3 +355,13 @@
 .imageFields{
     position: relative;
 }
+
+.instruction{
+    color: #686868;
+    font-size: 0.8rem;
+    position: absolute;
+    bottom: -2rem;
+    right: 0;
+    font-weight: 400;
+    width: 18rem;
+}

@@ -159,6 +159,7 @@ function Verification(props) {
         />
         {props.coverPicError && <p className={styles.warn}>Please Provide Cover Picture</p>}
         {props.warns[1] && <p className={styles.warn}>File size exceeds maximum limit of 1MB</p>}
+        <span className={styles.instruction}>Please upload images of maximum limit 1MB</span>
       </div>
       <div className={styles.imageFields} id={styles.profile_pic} style={{
         backgroundImage: images[4] ? `url(${images[4]})` : `url(/dp.png)`,
