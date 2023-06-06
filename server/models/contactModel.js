@@ -24,10 +24,6 @@ const contactSchema = new mongoose.Schema({
   message: {
     type: String,
     required: true
-  },
-  captcha: {
-    type: String,
-    required: true
   }
 },
   {

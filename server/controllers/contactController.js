@@ -6,7 +6,7 @@ async function contactUs(req, res) {
   console.log(process.env.CAPTCHA_SECRET_KEY);
   try {
     axios({
-      url: `http://www.google.com/recaptcha/api/siteverify?secret=${process.env.CAPTCHA_SECRET_KEY}&response=${req.body.captcha}`,
+      url: `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.CAPTCHA_SECRET_KEY}&response=${req.body.captcha}`,
       method: 'post',
     }).then(async response => {
       console.log(response);

@@ -26,7 +26,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-const whitelist = ['http://localhost:3001', 'http://www.google.com'];
+const whitelist = ['http://localhost:3001', 'https://www.google.com'];
 
 // Configure CORS options
 const corsOptions = {
