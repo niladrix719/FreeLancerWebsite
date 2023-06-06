@@ -5,6 +5,14 @@ const secret = process.env.JWT_SECRET;
 async function addReview(req, res) {
   try {
     jwt.verify(req.token, secret, async (err, authData) => {
+      if (err) {
+        res.sendStatus(403);
+        return;
+      }
+      if(!req.body.freelancer || !req.body.title || !req.body.review || !req.body.stars) {
+        res.status(400).send('Bad request');
+        return;
+      }
       const reviewData = new reviewCollection({
         freelancer: req.body.freelancer,
         userDetails: authData.user,

@@ -9,10 +9,53 @@ function Contact() {
   const siteKey = process.env.CAPTCHA_SITE_KEY;
   const [reCaptchaValue, setReCaptchaValue] = useState('');
   const captchaRef = useRef();
+  const [contactError, setContactError] = useState(false);
 
   const handleCaptcha = (value) => {
     setReCaptchaValue(value);
+    setContactError(false);
   }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (reCaptchaValue === '') {
+      alert('Please verify that you are a human!');
+      captchaRef.current.reset();
+      return;
+    }
+    const data = {
+      firstName: e.target[0].value,
+      lastName: e.target[1].value,
+      phone: e.target[2].value,
+      email: e.target[3].value,
+      issue: e.target[4].value,
+      message: e.target[5].value,
+      captcha: reCaptchaValue
+    };
+    fetch('http://localhost:3000/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data),
+    })
+      .then(res => res.json())
+      .then(response => {
+        if (response.status === 'success') {
+          alert('Your message has been sent successfully!');
+          captchaRef.current.reset();
+        } else {
+          console.log(response);
+          alert('Something went wrong!');
+          captchaRef.current.reset();
+        }
+      })
+      .catch(err => {
+        console.log(err);
+        alert('Something went wrong!');
+        captchaRef.current.reset();
+      });
+  }  
 
   return (
     <div className={styles.contact}>
@@ -22,26 +65,27 @@ function Contact() {
           <div className={styles.left}>
             <h1 className={styles.heading}>Contact Us</h1>
             <div className={styles.form_body}>
-              <form className={styles.form}>
+              {contactError && <p className={styles.error}>Please fill all the fields!</p>}
+              <form className={styles.form} onSubmit={handleSubmit}>
                 <div className={styles.inputs}>
                   <label htmlFor="name" className={styles.label}>First name :</label>
-                  <input type='text' id='name' className={styles.input} />
+                  <input type='text' id='name' className={styles.input} onChange={() => setContactError(false)} />
                 </div>
                 <div className={styles.inputs}>
                   <label htmlFor="name" className={styles.label}>Last name :</label>
-                  <input type='text' id='name' className={styles.input} />
+                  <input type='text' id='name' className={styles.input} onChange={() => setContactError(false)} />
                 </div>
                 <div className={styles.inputs}>
-                  <label htmlFor="email" className={styles.label}>Phone :</label>
-                  <input type='email' id='email' className={styles.input} />
+                  <label htmlFor="phone" className={styles.label}>Phone :</label>
+                  <input type='number' id='phone' className={styles.input} onChange={() => setContactError(false)} />
                 </div>
                 <div className={styles.inputs}>
                   <label htmlFor="email" className={styles.label}>Email :</label>
-                  <input type='email' id='email' className={styles.input} />
+                  <input type='email' id='email' className={styles.input} onChange={() => setContactError(false)} />
                 </div>
                 <div className={styles.inputs}>
                   <label htmlFor="issue" className={styles.label}>Issue :</label>
-                  <select className={styles.options} name="issue">
+                  <select className={styles.options} name="issue" onChange={() => setContactError(false)}>
                     <option className={styles.option} value="issue">Service Related</option>
                     <option className={styles.option} value="issue">Payment Related</option>
                     <option className={styles.option} value="issue">Client Related</option>
@@ -51,7 +95,9 @@ function Contact() {
                 </div>
                 <div className={styles.inputs}>
                   <label htmlFor="message" className={styles.label}>Message :</label>
-                  <textarea className={styles.textarea} name="message" id="message" cols="30" rows="10"></textarea>
+                  <textarea className={styles.textarea} name="message" id="message" cols="30" rows="10"
+                    onChange={() => setContactError(false)}
+                  ></textarea>
                 </div>
                 <ReCAPTCHA
                   sitekey={siteKey}
@@ -59,7 +105,7 @@ function Contact() {
                   ref={captchaRef}
                   className={styles.captcha}
                 />
-                <button className={styles.btn}>Submit</button>
+                <button className={styles.btn} type='submit'>Submit</button>
               </form>
             </div>
           </div>

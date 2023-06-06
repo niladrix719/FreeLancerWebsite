@@ -13,6 +13,7 @@ const { registerFreelancer,
   getUnFreelancerProfiles,
   deleteFreelancerProfile,
   verifyFreelancerProfile } = require('./controllers/freelancerController');
+const {contactUs} = require('./controllers/contactController');
 const jwt = require('jsonwebtoken');
 const { addReview , getReviews } = require('./controllers/reviewController');
 const secret = process.env.JWT_SECRET;
@@ -25,9 +26,20 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cors({
-  origin: 'http://localhost:3001'
-}));
+const whitelist = ['http://localhost:3001', 'http://www.google.com'];
+
+// Configure CORS options
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+};
+// Enable CORS with custom options
+app.use(cors(corsOptions));
 app.use(express.static('public'));
 app.use('/uploads', express.static('uploads'));
 const upload = require('./middlewares/storage');
@@ -46,6 +58,7 @@ app.get('/profiles/verified/freelancer', getFreelancerProfiles);
 app.get('/profiles/unverified/freelancer', verifyToken, getUnFreelancerProfiles);
 app.delete('/delete/freelancer/:id', deleteFreelancerProfile);
 app.put('/verify/freelancer/:id', verifyFreelancerProfile);
+app.post('/contact', contactUs);
 app.get('/navbar', verifyToken, (req, res) => {
   jwt.verify(req.token, secret, (err, authData) => {
     if (err) {
