@@ -26,20 +26,9 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-const whitelist = ['http://localhost:3001', 'https://www.google.com'];
-
-// Configure CORS options
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-};
-// Enable CORS with custom options
-app.use(cors(corsOptions));
+app.use(cors({
+  origin: ['http://localhost:3001', 'https://www.google.com']
+}));
 app.use(express.static('public'));
 app.use('/uploads', express.static('uploads'));
 const upload = require('./middlewares/storage');

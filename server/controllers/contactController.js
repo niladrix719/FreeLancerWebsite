@@ -2,14 +2,11 @@ const contactCollection = require('../models/contactModel');
 const axios = require('axios');
 
 async function contactUs(req, res) {
-  console.log(req.body.captcha);
-  console.log(process.env.CAPTCHA_SECRET_KEY);
   try {
     axios({
       url: `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.CAPTCHA_SECRET_KEY}&response=${req.body.captcha}`,
       method: 'post',
     }).then(async response => {
-      console.log(response);
       if (response.data.success === true) {
         const contactData = new contactCollection({
           firstName: req.body.firstName,

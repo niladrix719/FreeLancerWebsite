@@ -45,7 +45,6 @@ function Contact() {
           alert('Your message has been sent successfully!');
           captchaRef.current.reset();
         } else {
-          console.log(response);
           alert('Something went wrong!');
           captchaRef.current.reset();
         }

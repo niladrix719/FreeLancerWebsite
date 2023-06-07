@@ -21,7 +21,6 @@ async function VerifyFreelancerPhone(req, res) {
     const otpCode = otpData.otp;
 
     if (otpCode === parseInt(otp)) {
-      console.log('verified');
       res.sendStatus(200);
     }
   }
