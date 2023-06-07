@@ -25,6 +25,7 @@ async function registerFreelancer(req, res) {
       links: req.body.links,
       reviews: [],
       termsAndConditions: req.body.termsAndConditions,
+      featured : false,
       verified: false
     });
 
@@ -54,6 +55,18 @@ async function getFreelancerProfile(req, res) {
 async function getFreelancerProfiles(req, res) {
   try {
     const freelancers = await freelancerCollection.find({verified: true});
+    res.send(freelancers);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal server error');
+  }
+}
+
+// featured profiles
+
+async function getFeaturedFreelancerProfiles(req, res) {
+  try {
+    const freelancers = await freelancerCollection.find({featured: true , verified: true});
     res.send(freelancers);
   } catch (error) {
     console.error(error);
@@ -130,5 +143,6 @@ module.exports = {
   getFreelancerProfiles,
   getUnFreelancerProfiles,
   deleteFreelancerProfile,
-  verifyFreelancerProfile
+  verifyFreelancerProfile,
+  getFeaturedFreelancerProfiles
 };

@@ -12,7 +12,8 @@ const { registerFreelancer,
   getFreelancerProfiles,
   getUnFreelancerProfiles,
   deleteFreelancerProfile,
-  verifyFreelancerProfile } = require('./controllers/freelancerController');
+  verifyFreelancerProfile,
+  getFeaturedFreelancerProfiles } = require('./controllers/freelancerController');
 const {contactUs} = require('./controllers/contactController');
 const jwt = require('jsonwebtoken');
 const { addReview , getReviews } = require('./controllers/reviewController');
@@ -44,6 +45,7 @@ app.post('/register/company', registerCompany);
 app.post('/verify/freelancer/phone', VerifyFreelancerPhone);
 app.get('/profile/freelancer/:uid', getFreelancerProfile);
 app.get('/profiles/verified/freelancer', getFreelancerProfiles);
+app.get('/profiles/featured/freelancer', getFeaturedFreelancerProfiles);
 app.get('/profiles/unverified/freelancer', verifyToken, getUnFreelancerProfiles);
 app.delete('/delete/freelancer/:id', deleteFreelancerProfile);
 app.put('/verify/freelancer/:id', verifyFreelancerProfile);

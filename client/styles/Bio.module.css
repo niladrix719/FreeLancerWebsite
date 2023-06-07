@@ -1,8 +1,6 @@
 .bio{
-    /* background-image: url(/bgd3.jpg); */
     background-position: center;
     background-repeat: no-repeat;
-    /* background-size: cover; */
     width: 100vw;
     text-align: center;
     display: flex;
@@ -103,6 +101,10 @@
     display: flex;
     gap: 1rem;
     align-items: center;
+}
+
+.button:hover .location{
+    color: red;
 }
 
 .location{

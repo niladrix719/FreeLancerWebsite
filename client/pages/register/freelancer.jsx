@@ -30,7 +30,7 @@ class Freelancer extends React.Component {
       panCard: null,
       works: [],
       links: { instagram: '', facebook: '', twitter: '', youtube: '' },
-      termsAndConditions: false,
+      termsAndConditions: true,
       error: false,
       form: false,
       phoneError: false,

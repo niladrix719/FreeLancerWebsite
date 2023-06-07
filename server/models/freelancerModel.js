@@ -67,6 +67,10 @@ const freelancerSchema = new mongoose.Schema({
     type: Boolean,
     required: true
   },
+  featured: {
+    type: Boolean,
+    required: true
+  },
   verified: {
     type: Boolean,
     required: true

@@ -22,7 +22,7 @@ export default function Index() {
       <Bio />
       <VerifiedExplore />
       <Register />
-      {/* <Featured /> */}
+      <Featured />
       <Footer />
     </div>
   )

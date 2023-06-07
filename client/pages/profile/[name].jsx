@@ -22,9 +22,6 @@ function Name() {
   useEffect(() => {
     async function fetchFreelancer() {
       try {
-        if (!uid) {
-          return;
-        }
         const response = await fetch(`http://localhost:3000/profile/freelancer/${uid}`);
         const data = await response.json();
         setFreelancer(data);
@@ -72,7 +69,7 @@ function Name() {
       <Cover coverPicture={freelancer.coverPicture} />
       <div className={styles.profile_details}>
         {freelancer.links && <ProfileBioCard freelancer={freelancer} />}
-        <Details works={freelancer.works} reviews={reviews} />
+        {isFreelancerLoaded && <Details works={freelancer.works} reviews={reviews} />}
         <div className={styles.btnBox}>
           <button className={styles.btn} id={styles.hire}>Hire</button>
           {loggedIn && (

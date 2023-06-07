@@ -11,13 +11,18 @@
     background-size: cover;
     padding: 2rem;
     border-radius: 60px;
+    max-width: 1800px;
 }
 
 .texts{
-    color: rgb(0, 0, 0);
+    color: rgb(66, 66, 66);
+    font-weight: 600;
+    letter-spacing: 1px;
 }
 
 .heading{
     font-size: 2.4rem;
     font-weight: 600;
+    letter-spacing: 2px;
+    color: black;
 }

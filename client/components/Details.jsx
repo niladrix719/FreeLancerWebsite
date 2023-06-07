@@ -5,8 +5,8 @@ import PortfolioCard from '@/components/PortfolioCard'
 import { useEffect, useState } from 'react'
 
 function Details(props) {
-  const [showReviews, setShowReviews] = useState(true);
-  const [showPortfolio, setShowPortfolio] = useState(false);
+  const [showReviews, setShowReviews] = useState(false);
+  const [showPortfolio, setShowPortfolio] = useState(true);
   const [works, setWorks] = useState([]);
 
   const handleReviews = () => {
@@ -26,7 +26,6 @@ function Details(props) {
   return (
     <div className={styles.details}>
       <ProfileNav handleReviews={handleReviews} handlePortfolio={handlePortfolio} />
-      {showReviews && <Reviews reviews={props.reviews} />}
       {showPortfolio && <div className={styles.portfolio}>
         {works.map((work, index) => {
           return (
@@ -34,6 +33,7 @@ function Details(props) {
           )
         })}
       </div>}
+      {showReviews && <Reviews reviews={props.reviews} />}
     </div>
   )
 }
