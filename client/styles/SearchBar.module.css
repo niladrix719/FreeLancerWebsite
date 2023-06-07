@@ -29,6 +29,7 @@
     font-size: 0.9rem;
     position: relative;
     box-shadow: var(--shadow);
+    letter-spacing: 1px;
 }
 
 .arrow{
@@ -45,4 +46,8 @@
     border-radius: 0.5rem;
     display: none;
     box-shadow: 0 6px 27px 0 rgba(0,3,2,0.08);
+}
+
+.p{
+    letter-spacing: 0.5px;
 }

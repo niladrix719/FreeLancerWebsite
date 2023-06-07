@@ -9,14 +9,14 @@ function VerifiedExplore() {
     <div className={styles.verified}>
       <div className={styles.text}>
         <h1 className={styles.heading}>
-          Explore all the verified freelancers And Find the best talent for your project needs.
+          Explore All <span className={styles.span}>Verified Freelancers</span> And Find The Best Talent For Your Project Needs.
         </h1>
         <Link className={styles.btn} href='/explore'>Explore Freelancers &nbsp;&nbsp;
           <FontAwesomeIcon icon={faArrowRightLong} id={styles.arrow} />
         </Link>
       </div>
       <div className={styles.image}>
-        <Image src='/verified.png' width='300' height='300' alt='verified tick' />
+        <Image src='/verifiedP.png' width='300' height='300' alt='verified tick' />
       </div>
     </div>
   )

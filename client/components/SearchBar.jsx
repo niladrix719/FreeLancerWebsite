@@ -34,7 +34,7 @@ class SearchBar extends React.Component {
               className={styles.dropDown}
               style={{ display: this.state.showDropDown ? "block" : "none" }}
             >
-              <p>Currently Available in Kolkata Only</p>
+              <p className={styles.p}>Currently Available in Kolkata Only</p>
             </div>
           </div>
           <SearchBox border={this.props.border} />

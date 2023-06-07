@@ -1,8 +1,13 @@
 .signup{
     text-align: center;
     height: 100vh;
+}
+
+.body {
     display: flex;
     justify-content: center;
+    margin-bottom: 6rem;
+    background-image: url(/bgX.jpg);
 }
 
 .form{
