@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['localhost'],
+    domains: ['localhost', 'fipezo-server.vercel.app']
   },
   env: {
     CAPTCHA_SITE_KEY: process.env.CAPTCHA_SITE_KEY
