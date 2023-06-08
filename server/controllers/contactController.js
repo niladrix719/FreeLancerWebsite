@@ -1,3 +1,4 @@
+const { jwt } = require('twilio');
 const contactCollection = require('../models/contactModel');
 const axios = require('axios');
 
@@ -28,8 +29,31 @@ async function contactUs(req, res) {
     console.error(error);
     res.status(500).send('Internal server error');
   }
-};
+}
+
+// fetch all contact us data
+
+async function fetchContactUs(req, res) {
+  try {
+    jwt.verify(req.token, process.env.JWT_SECRET, async (err, authData) => {
+      if (err) {
+        return;
+      } else {
+        if (authData.user.phone === parseInt(process.env.ADMIN_PHONE)) {
+          const contactData = await contactCollection.find();
+          res.status(200).send(contactData);
+        } else {
+          res.status(401).send('Unauthorized');
+        }
+      }
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal server error');
+  }
+}
 
 module.exports = {
-  contactUs
+  contactUs,
+  fetchContactUs
 };

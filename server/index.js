@@ -14,7 +14,7 @@ const { registerFreelancer,
   deleteFreelancerProfile,
   verifyFreelancerProfile,
   getFeaturedFreelancerProfiles } = require('./controllers/freelancerController');
-const {contactUs} = require('./controllers/contactController');
+const {contactUs , fetchContactUs} = require('./controllers/contactController');
 const jwt = require('jsonwebtoken');
 const { addReview , getReviews } = require('./controllers/reviewController');
 const secret = process.env.JWT_SECRET;
@@ -47,6 +47,7 @@ app.get('/profile/freelancer/:uid', getFreelancerProfile);
 app.get('/profiles/verified/freelancer', getFreelancerProfiles);
 app.get('/profiles/featured/freelancer', getFeaturedFreelancerProfiles);
 app.get('/profiles/unverified/freelancer', verifyToken, getUnFreelancerProfiles);
+app.get('/contact/messages', verifyToken, fetchContactUs);
 app.delete('/delete/freelancer/:id', deleteFreelancerProfile);
 app.put('/verify/freelancer/:id', verifyFreelancerProfile);
 app.post('/contact', contactUs);
