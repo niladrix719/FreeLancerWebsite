@@ -49,7 +49,7 @@ export default function Login() {
   function handleSubmit() {
     async function postData() {
       try {
-        const response = await fetch('https://fipezo-server.vercel.app/gin', {
+        const response = await fetch('https://fipezo-server.vercel.app/login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
