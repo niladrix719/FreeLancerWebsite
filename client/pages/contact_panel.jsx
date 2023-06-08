@@ -4,7 +4,7 @@ import Footer from '@/components/Footer'
 import ContactCard from '@/components/ContactCard';
 import { useState, useEffect } from 'react';
 
-function contact_panel() {
+function Contact_panel() {
 
   const [messages, setMessages] = useState([]);
   useEffect(() => {
@@ -47,4 +47,4 @@ function contact_panel() {
   )
 }
 
-export default contact_panel;
+export default Contact_panel;
