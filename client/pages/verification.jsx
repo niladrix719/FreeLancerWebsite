@@ -10,7 +10,7 @@ function VerificationPanel() {
       const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
       try {
         if (token) {
-          const response = await fetch(`https://fipezo-server.vercel.app/rofiles/unverified/freelancer`, {
+          const response = await fetch(`https://fipezo-server.vercel.app/profiles/unverified/freelancer`, {
             method: 'GET',
             headers: {
               'Authorization': `Bearer ${token}`
