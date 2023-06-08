@@ -32,7 +32,7 @@ function Contact() {
       message: e.target[5].value,
       captcha: reCaptchaValue
     };
-    fetch('https://fipezo-server.vercel.app/contact', {
+    fetch('http://localhost:3000/contact', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

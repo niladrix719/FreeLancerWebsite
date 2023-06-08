@@ -8,7 +8,7 @@ function ProfileBioCard(props) {
   const links = JSON.parse(props.freelancer.links);
   return (
     <div className={styles.profile_bio_card}>
-      <Image src={`https://fipezo-server.vercel.app/uploads/${props.freelancer.profilePicture}`} width={220} height={220}
+      <Image src={`http://localhost:3000/uploads/${props.freelancer.profilePicture}`} width={220} height={220}
         className={styles.profile_pic} alt='display picture'>
       </Image>
       <h1 className={styles.name}>{props.freelancer.firstname} {props.freelancer.lastname}

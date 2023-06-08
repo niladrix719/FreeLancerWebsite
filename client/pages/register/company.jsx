@@ -101,7 +101,7 @@ class Company extends React.Component {
   handleSubmit = () => {
     const postData = async () => {
       try {
-        const response = await fetch('https://fipezo-server.vercel.app/register/company', {
+        const response = await fetch('http://localhost:3000/register/company', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

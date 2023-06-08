@@ -20,7 +20,7 @@ function VerificationCard(props) {
 
   const handleDelete = async () => {
     try {
-      const response = await fetch(`https://fipezo-server.vercel.app/delete/freelancer/${props.profile._id}`, {
+      const response = await fetch(`http://localhost:3000/delete/freelancer/${props.profile._id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json'
@@ -35,7 +35,7 @@ function VerificationCard(props) {
 
   const handleVerify = async () => {
     try {
-      const response = await fetch(`https://fipezo-server.vercel.app/verify/freelancer/${props.profile._id}`, {
+      const response = await fetch(`http://localhost:3000/verify/freelancer/${props.profile._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -52,10 +52,10 @@ function VerificationCard(props) {
     <div className={styles.verificationCard}>
       <div className={styles.details}>
         <div className={styles.cover}
-          style={{ backgroundImage: `url(https://fipezo-server.vercel.app/uploads/${props.profile.coverPicture})` }}>
+          style={{ backgroundImage: `url(http://localhost:3000/uploads/${props.profile.coverPicture})` }}>
         </div>
         <div className={styles.profileImg}>
-          <Image className={styles.image} src={`https://fipezo-server.vercel.app/uploads/${props.profile.profilePicture}`}
+          <Image className={styles.image} src={`http://localhost:3000/uploads/${props.profile.profilePicture}`}
             height='600' width='600' alt="profile-image"
           />
         </div>
@@ -133,7 +133,7 @@ function VerificationCard(props) {
       </div>
       <div className={styles.right}>
         <div className={styles.screen}
-          style={{ backgroundImage: `url(https://fipezo-server.vercel.app/uploads/${screen})` }}
+          style={{ backgroundImage: `url(http://localhost:3000/uploads/${screen})` }}
         >
         </div>
         <div className={styles.btns}>
