@@ -22,7 +22,7 @@ function Name() {
   useEffect(() => {
     async function fetchFreelancer() {
       try {
-        const response = await fetch(`http://localhost:3000/profile/freelancer/${uid}`);
+        const response = await fetch(`https://fipezo-server.vercel.app/profile/freelancer/${uid}`);
         const data = await response.json();
         setFreelancer(data);
         setIsFreelancerLoaded(true);
@@ -38,7 +38,7 @@ function Name() {
   useEffect(() => {
     async function fetchReviews() {
       try {
-        const response = await fetch(`http://localhost:3000/reviews/${freelancer._id}`);
+        const response = await fetch(`https://fipezo-server.vercel.app/reviews/${freelancer._id}`);
         const data = await response.json();
         setReviews(data);
       } catch (error) {

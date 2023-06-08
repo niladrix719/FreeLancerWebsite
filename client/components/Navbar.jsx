@@ -19,7 +19,7 @@ export default function Navbar(props) {
   useEffect(() => {
     const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
     if (token) {
-      fetch('http://localhost:3000/navbar', {
+      fetch('https://fipezo-server.vercel.app/navbar', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -117,7 +117,7 @@ export default function Navbar(props) {
               style={{ fontSize: 10, color: props.color }}
             />
             <div className={styles.profile_card}>
-              <Image src={`http://localhost:3000/uploads/${user.profilePicture}`} width='90' height='90' className={styles.dp} alt='display picture' />
+              <Image src={`https://fipezo-server.vercel.app/uploads/${user.profilePicture}`} width='90' height='90' className={styles.dp} alt='display picture' />
               <h1 className={styles.name}>{user ? `${user.firstname} ${user.lastname}` : ''}</h1>
               <p className={styles.number}>{user ? user.phone : ''}</p>
               <Link className={styles.btn} href={`/profile/${user.uid}`}>My Profile</Link>
