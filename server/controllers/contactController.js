@@ -1,4 +1,5 @@
-const { jwt } = require('twilio');
+const jwt = require('jsonwebtoken');
+const secret = process.env.JWT_SECRET;
 const contactCollection = require('../models/contactModel');
 const axios = require('axios');
 

@@ -19,6 +19,7 @@ function Contact_panel() {
             }
           });
           const data = await response.json();
+          console.log(data);
           setMessages(data);
         }
       } catch (error) {
