@@ -65,6 +65,10 @@ app.get('/navbar', verifyToken, (req, res) => {
 app.post('/add/review', verifyToken, addReview);
 app.get('/reviews/:id', getReviews);
 
+app.get('/', (req, res) => {
+  res.send('Hello World');
+});
+
 // Starting the server
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Server started on port ${port}`));
