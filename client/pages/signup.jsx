@@ -57,7 +57,7 @@ function Signup() {
 
     async function postData() {
       try {
-        const response = await fetch('https://fipezo-server.vercel.app/ignup', {
+        const response = await fetch('https://fipezo-server.vercel.app/signup', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

@@ -14,4 +14,4 @@ function contact_panel() {
   )
 }
 
-export default contact_panel
+export default contact_panel;

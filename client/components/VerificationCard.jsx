@@ -55,7 +55,7 @@ function VerificationCard(props) {
           style={{ backgroundImage: `url(https://fipezo-server.vercel.app/uploads/${props.profile.coverPicture})` }}>
         </div>
         <div className={styles.profileImg}>
-          <Image className={styles.image} src={`https://fipezo-server.vercel.app/ploads/${props.profile.profilePicture}`}
+          <Image className={styles.image} src={`https://fipezo-server.vercel.app/uploads/${props.profile.profilePicture}`}
             height='600' width='600' alt="profile-image"
           />
         </div>
@@ -133,7 +133,7 @@ function VerificationCard(props) {
       </div>
       <div className={styles.right}>
         <div className={styles.screen}
-          style={{ backgroundImage: `url(https://fipezo-server.vercel.app/loads/${screen})` }}
+          style={{ backgroundImage: `url(https://fipezo-server.vercel.app/uploads/${screen})` }}
         >
         </div>
         <div className={styles.btns}>
