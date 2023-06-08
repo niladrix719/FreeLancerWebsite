@@ -22,6 +22,7 @@ function User_profile() {
           <div className={style.options}>
             <p className={style.option}>Freelacners I have Contacted</p>
             <p className={style.option}>Freelacners I have Worked With</p>
+            <p className={style.option}>Edit Profile</p>
             <p className={style.option}>Rate our Services</p>
           </div>
           <div>

@@ -12,10 +12,6 @@
     transition: 0.35s ease-in-out;
 }
 
-/* .profileCard:hover{
-    transform: scale(1.05);
-} */
-
 .image{
     box-shadow: 0 6px 27px 0 rgba(0,3,2,0.08);
     border-radius: 50%;
@@ -34,6 +30,7 @@
     margin-top: 2rem;
     display: flex;
     align-items: center;
+    letter-spacing: 1px;
 }
 
 .bio{
@@ -42,7 +39,8 @@
     text-align: left;
     margin-bottom: 2rem;
     height: 2rem;
-    overflow: hidden;
+    /* overflow: hidden; */
+    text-overflow: ellipsis;
 }
 
 .category{
