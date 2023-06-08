@@ -66,7 +66,7 @@ app.post('/add/review', verifyToken, addReview);
 app.get('/reviews/:id', getReviews);
 
 app.get('/', (req, res) => {
-  res.send('Hello World');
+  res.send('Hello From Fipezo Server');
 });
 
 // Starting the server
