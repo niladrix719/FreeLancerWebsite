@@ -1,7 +1,7 @@
 .profileCard{
     border: 1px solid rgb(205, 193, 193);
     width: 22rem;
-    height: 20rem;
+    height: 20.25rem;
     margin-bottom: 1.5rem;
     padding: 1rem;
     box-shadow: 0 6px 27px 0 rgba(0,3,2,0.08);
@@ -38,9 +38,9 @@
     color: rgb(145, 124, 124);
     text-align: left;
     margin-bottom: 2rem;
-    height: 2rem;
-    /* overflow: hidden; */
-    text-overflow: ellipsis;
+    height: 2.65rem;
+    overflow: hidden;
+    /* text-overflow: ellipsis; */
 }
 
 .category{
@@ -77,6 +77,6 @@
 .blueTick{
     display: inline;
     position: relative;
-    left: -1rem;
-    top: 1.5px;
+    left: -1.25rem;
+    top: 0.0px;
 }

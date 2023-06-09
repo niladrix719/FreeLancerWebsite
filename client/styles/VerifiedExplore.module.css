@@ -21,11 +21,11 @@
 }
 
 .heading {
-    font-size: 2.8rem;
+    font-size: 2.4rem;
     font-weight: 600;
     margin: 1rem 0 0 1rem;
-    letter-spacing: 1px;
-    word-spacing: 1px;
+    letter-spacing: 3px;
+    word-spacing: 3px;
 }
 
 .btn {
@@ -34,12 +34,15 @@
     border: none;
     border-radius: 5px;
     padding: 0.75rem 1rem;
-    font-size: 1rem;
+    font-size: 0.85rem;
     font-weight: 600;
     cursor: pointer;
     height: 3rem;
     color: black;
     transition: 0.3s;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
 }
 
 .btn:hover {
@@ -51,10 +54,12 @@
     color: var(--primary-var);
     font-weight: 200;
     font-size: 0.9rem;
+    position: relative;
+    top: 1px;
 }
 
-#arrow:hover {
-    color: white;
+.btn:hover #arrow {
+    font-size: 1.05rem;
 }
 
 .span {

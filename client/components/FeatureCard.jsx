@@ -6,8 +6,9 @@ import { faBuilding , faBriefcase } from '@fortawesome/free-solid-svg-icons';
 
 function FeatureCard(props) {
   return (
-    <Link href={props.link} className={styles.feature_card} style={{backgroundColor: props.color}}>
-      <Image src={props.image} className={styles.image} height='300' width='300' alt='feature'/>
+    <Link href={props.link} className={styles.feature_card}>
+      <div className={styles.image}>
+      </div>
       {props.type === 'company' && <FontAwesomeIcon className={styles.icon} icon={faBuilding} style={{color: "#1f1c1c",}} />}
       {props.type === 'freelancer' && <FontAwesomeIcon className={styles.icon} icon={faBriefcase} style={{color: "#1f1c1c",}} />}
       <h1 className={styles.heading}>{props.heading}</h1>

@@ -84,9 +84,9 @@ function Explore() {
     return false;
   });
 
-  const pages = Math.ceil(filtered.length / 5);
-  const startIndex = (currentPage - 1) * 5;
-  const endIndex = startIndex + 5;
+  const pages = Math.ceil(filtered.length / 6);
+  const startIndex = (currentPage - 1) * 6;
+  const endIndex = startIndex + 6;
   const displayedFreelancers = filtered.slice(startIndex, endIndex);
 
   return (
