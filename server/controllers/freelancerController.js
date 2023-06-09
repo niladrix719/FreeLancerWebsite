@@ -23,6 +23,8 @@ async function registerFreelancer(req, res) {
       panCard: req.files['panCard'][0].filename,
       works: req.files['works[]'].map(file => file.filename),
       links: req.body.links,
+      rating: 0,
+      reviewCount: 0,
       reviews: [],
       termsAndConditions: req.body.termsAndConditions,
       featured : false,

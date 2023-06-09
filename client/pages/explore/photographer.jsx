@@ -84,6 +84,10 @@ function Explore() {
     return false;
   });
 
+  filtered.sort((a, b) => {
+    return (b.rating * b.reviewCount) - (a.rating * a.reviewCount);
+  });
+
   const pages = Math.ceil(filtered.length / 6);
   const startIndex = (currentPage - 1) * 6;
   const endIndex = startIndex + 6;

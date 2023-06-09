@@ -1,6 +1,7 @@
 import styles from '../styles/Register.module.css'
 import FeatureCard from '@/components/FeatureCard';
 import Image from 'next/image';
+import Link from 'next/link';
 
 function Register() {
   return (
@@ -12,8 +13,8 @@ function Register() {
           <span style={{ fontSize: '2.4rem' }}>on </span><i style={{ fontSize: '3.2rem' }}>Fipezo</i>
         </div> */}
         <div className={styles.btns}>
-          <button className={styles.btn}>Register as a Freelancer</button>
-          <button className={styles.btn}>Register as a Company</button>
+          <Link href='/register/freelancer' className={styles.btn}>Register as a Freelancer</Link>
+          <Link href='/register/company' className={styles.btn}>Register as a Company</Link>
         </div>
       </div>
     </div>

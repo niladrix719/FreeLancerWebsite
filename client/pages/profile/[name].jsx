@@ -24,11 +24,13 @@ function Name() {
       try {
         const response = await fetch(`http://localhost:3000/profile/freelancer/${uid}`);
         const data = await response.json();
+        if(data.error) {
+          router.push('/404');
+        }
         setFreelancer(data);
         setIsFreelancerLoaded(true);
       } catch (error) {
         console.error(error);
-        router.push('/404');
       }
     }
   

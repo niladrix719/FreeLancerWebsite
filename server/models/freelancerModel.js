@@ -63,6 +63,14 @@ const freelancerSchema = new mongoose.Schema({
     type: Object,
     required: true
   },
+  rating: {
+    type: Number,
+    required: true
+  },
+  reviewCount: {
+    type: Number,
+    required: true
+  },
   termsAndConditions: {
     type: Boolean,
     required: true

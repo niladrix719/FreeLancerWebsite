@@ -7,15 +7,15 @@ import { faCameraRetro, faVideo, faClapperboard, faStar } from '@fortawesome/fre
 export default function ProfileCard(props) {
   const profession = props.profile.profession.charAt(0).toUpperCase() + props.profile.profession.slice(1);
   return (
-    <Link className={styles.profileCard} href={`/profile/${props.profile.uid}`}>
+    <Link className={styles.profileCard} href={`/profile/${props.profile.uid}`} target='_blank'>
       <div className={styles.cover} style={{ backgroundImage: `url(http://localhost:3000/uploads/${props.profile.coverPicture})` }}></div>
       <Image className={styles.image} src={`http://localhost:3000/uploads/${props.profile.profilePicture}`} height='600' width='600' alt="profile-image" />
       <div className={styles.right}>
         <div className={styles.rating}>
-          <p>5.0</p><FontAwesomeIcon icon={faStar} className={styles.star} />
+          <p>{props.profile.rating.toFixed(1)}</p><FontAwesomeIcon icon={faStar} className={styles.star} />
         </div>
         <div className={styles.noOfReviews}>
-          <p className={styles.num}>(14)</p>
+          <p className={styles.num}>({props.profile.reviewCount})</p>
         </div>
       </div>
       <h3 className={styles.name}>{props.profile.firstname} {props.profile.lastname} &nbsp;&nbsp;<Image className={styles.blueTick} src='/tick.png' height='40' width='40' alt="verified" />  </h3>

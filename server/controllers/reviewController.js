@@ -1,5 +1,7 @@
 const reviewCollection = require('../models/reviewModel');
 const jwt = require('jsonwebtoken');
+const userCollection = require('../models/userModel');
+const freelancerCollection = require('../models/freelancerModel');
 const secret = process.env.JWT_SECRET;
 
 async function addReview(req, res) {
@@ -13,8 +15,16 @@ async function addReview(req, res) {
         res.status(400).send('Bad request');
         return;
       }
+
+      const existingReview = await reviewCollection.findOne({ freelancer: req.body.freelancer, user: authData.user._id });
+      if(existingReview) {
+        res.status(400).send('Review already exists');
+        return;
+      }
+
       const reviewData = new reviewCollection({
         freelancer: req.body.freelancer,
+        user: authData.user._id,
         userDetails: authData.user,
         title: req.body.title,
         review: req.body.review,
@@ -22,6 +32,18 @@ async function addReview(req, res) {
       });
 
       const postData = await reviewData.save();
+
+      const reviews = await reviewCollection.find({ freelancer: req.body.freelancer });
+      let totalStars = 0;
+      reviews.forEach(review => {
+        totalStars += review.stars;
+      });
+      const avgStars = totalStars / reviews.length;
+      const freelancer = await freelancerCollection.findOne({ _id: req.body.freelancer });
+      freelancer.rating = avgStars;
+      freelancer.reviewCount = reviews.length;
+      await freelancer.save();
+
       res.send(postData); 
     });
   } catch (error) {
