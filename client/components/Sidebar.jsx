@@ -43,19 +43,19 @@ class Sidebar extends React.Component {
               <input className={styles.checkbox} type="checkbox" onChange={(e) => {
                 this.props.setShowPhotographers(e.target.checked);
               }} checked={this.props.showPhotographers} />
-              <label htmlFor="photographer">Photographer</label>
+              <label className={styles.label} htmlFor="photographer">Photographer</label>
             </div>
             <div className={styles.inputs}>
               <input className={styles.checkbox} type="checkbox" onChange={(e) => {
                 this.props.setShowCinematographers(e.target.checked);
               }} checked={this.props.showCinematographers} />
-              <label htmlFor="cinematographer">Cinematographer</label>
+              <label className={styles.label} htmlFor="cinematographer">Cinematographer</label>
             </div>
             <div className={styles.inputs}>
               <input className={styles.checkbox} type="checkbox" onChange={(e) => {
                 this.props.setShowDroneOperators(e.target.checked);
               }} checked={this.props.showDroneOperators} />
-              <label htmlFor="drone_operator">Drone Operator</label>
+              <label className={styles.label} htmlFor="drone_operator">Drone Operator</label>
             </div>
           </div>}
         </div>
@@ -84,13 +84,13 @@ class Sidebar extends React.Component {
           {this.state.showDropDownRating && <div className={styles.options}>
             <div className={styles.inputs}>
               <input className={styles.checkbox} type="checkbox" id='star4' />
-              <label htmlFor="star4">
+              <label className={styles.label} htmlFor="star4">
                 4<FontAwesomeIcon icon={faStar} style={{ color: "#1f1c1c", fontSize: '15px' }} /> & Above
               </label>
             </div>
             <div className={styles.inputs}>
               <input className={styles.checkbox} type="checkbox" id='star3' />
-              <label htmlFor="star3">
+              <label className={styles.label} htmlFor="star3">
                 3<FontAwesomeIcon icon={faStar} style={{ color: "#1f1c1c", fontSize: '15px' }} /> & Above
               </label>
             </div>
@@ -106,7 +106,7 @@ class Sidebar extends React.Component {
           {this.state.showDropDownLocation && <div className={styles.options}>
             <div className={styles.inputs}>
               <input className={styles.checkbox} type="checkbox" id='kolkata' />
-              <label htmlFor="kolkata">
+              <label className={styles.label} htmlFor="kolkata">
                 Kolkata
               </label>
             </div>

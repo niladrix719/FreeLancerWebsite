@@ -49,4 +49,5 @@
     transition: all 0.3s ease-in-out;
     background-color: var(--primary-color);
     color: white;
+    box-shadow: var(--shadow);
 }

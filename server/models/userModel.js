@@ -14,6 +14,9 @@ const userSchema = new mongoose.Schema({
     min: 10,
     uqique: true,
     required: true
+  },
+  profilePicture: {
+    type: String,
   }
 },
   {

@@ -11,15 +11,18 @@ async function addHire(req, res) {
         res.sendStatus(403);
         return;
       }
-      
+
       if (!req.body.freelancer || !req.body.title || !req.body.description || !req.body.location || !req.body.date || !req.body.time || !req.body.duration || !req.body.budget) {
         res.status(400).send('Bad request');
         return;
       }
 
+      const freelancerDetails = await freelancerCollection.findById(req.body.freelancer);
+
       const hireData = new hireCollection({
         freelancer: req.body.freelancer,
         user: authData.user._id,
+        freelancerDetails: freelancerDetails,
         userDetails: authData.user,
         title: req.body.title,
         description: req.body.description,

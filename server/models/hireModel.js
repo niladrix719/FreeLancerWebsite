@@ -9,6 +9,10 @@ const hireSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'usercollection'
   },
+  freelancerDetails: {
+    type: Object,
+    required: true
+  },
   userDetails: {
     type: Object,
     required: true
