@@ -1,0 +1,86 @@
+.hireBox {
+    background-color: #f4f4f4;
+    /* background: linear-gradient(45deg, #26c73c 0%, #ffffff 150%); */
+    background-color: white;
+    padding: 2rem;
+    gap: 1rem;
+    box-shadow: var(--shadow);
+    border-radius: 5px;
+    width: 50rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.heading {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.input {
+    padding: 0.75rem;
+    border: 1px solid lightgray;
+    box-shadow: var(--shadow);
+    border-radius: 5px;
+    color: black;
+    width: 100%;
+    letter-spacing: 1px;
+}
+
+.textarea {
+    padding: 0.75rem;
+    resize: none;
+    height: 8rem;
+    border: 1px solid lightgray;
+    box-shadow: var(--shadow);
+    border-radius: 5px;
+    color: black;
+    width: 100%;
+    letter-spacing: 1px;
+}
+
+.input:focus,
+.textarea:focus {
+    outline: none;
+}
+
+.label {
+    font-size: 1.2rem;
+}
+
+.cross {
+    cursor: pointer;
+}
+
+.btn {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.5rem;
+    border-radius: 5px;
+    box-shadow: var(--shadow);
+    font-size: 1rem;
+    font-weight: 500;
+    width: 100%;
+    letter-spacing: 1px;
+}
+
+.fields{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.field{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 48%;
+    letter-spacing: 1px;
+}
+
+#btn{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    top: 2.48rem;
+}

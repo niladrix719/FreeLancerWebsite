@@ -8,6 +8,7 @@ import Footer from '@/components/Footer';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import ReviewBox from '@/components/ReviewBox';
+import HireBox from '@/components/HireBox';
 import Link from 'next/link';
 
 function Name() {
@@ -16,6 +17,7 @@ function Name() {
   const [freelancer, setFreelancer] = useState({});
   const [reviewBox, setReviewBox] = useState(false);
   const [reviews, setReviews] = useState([]);
+  const [hireBox, setHireBox] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const [isFreelancerLoaded, setIsFreelancerLoaded] = useState(false);
 
@@ -24,7 +26,7 @@ function Name() {
       try {
         const response = await fetch(`http://localhost:3000/profile/freelancer/${uid}`);
         const data = await response.json();
-        if(data.error) {
+        if (data.error) {
           router.push('/404');
         }
         setFreelancer(data);
@@ -33,9 +35,9 @@ function Name() {
         console.error(error);
       }
     }
-  
+
     fetchFreelancer();
-  }, [uid]);  
+  }, [uid]);
 
   useEffect(() => {
     async function fetchReviews() {
@@ -57,6 +59,10 @@ function Name() {
     setReviewBox(val);
   };
 
+  const handleHireBox = (val) => {
+    setHireBox(val);
+  };
+
   const appendReview = (review) => {
     setReviews([...reviews, review]);
   };
@@ -73,7 +79,7 @@ function Name() {
         {freelancer.links && <ProfileBioCard freelancer={freelancer} />}
         {isFreelancerLoaded && <Details works={freelancer.works} reviews={reviews} />}
         <div className={styles.btnBox}>
-          <button className={styles.btn} id={styles.hire}>Hire</button>
+          <button className={styles.btn} id={styles.hire} onClick={handleHireBox}>Hire</button>
           {loggedIn && (
             <button className={styles.btn} id={styles.msg} onClick={() => handleReviewBox(true)}>
               Review
@@ -87,6 +93,11 @@ function Name() {
           {reviewBox && (
             <div className={styles.boxContainer}>
               <ReviewBox handleReviewBox={handleReviewBox} appendReview={appendReview} freelancer={freelancer} />
+            </div>
+          )}
+          {hireBox && (
+            <div className={styles.boxContainer2}>
+              <HireBox handleHireBox={handleHireBox} freelancer={freelancer} />
             </div>
           )}
         </div>

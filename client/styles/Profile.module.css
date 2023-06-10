@@ -63,8 +63,19 @@
 
 .boxContainer{
     position: absolute;
-    left: -28rem;
-    top: -5rem;
+    left: -26.5rem;
+    top: -6rem;
+    width: 40rem;
+    background-color: rgb(230, 230, 230);
+    border: 1px solid lightgray;
+    box-shadow: var(--shadow);
+    border-radius: 5px;
+}
+
+.boxContainer2{
+    position: absolute;
+    left: -36.5rem;
+    top: -11.5rem;
     width: 40rem;
     background-color: rgb(230, 230, 230);
     border: 1px solid lightgray;

@@ -54,7 +54,7 @@ function ReviewBox(props) {
           <label key={index}>
             <input className={styles.inputStars} type="radio" name="rating" value={index + 1} onClick={(e) => setStars(e.target.value)} />
             <FaStar size={25} key={index} onMouseEnter={() => setHover(index + 1)} onMouseLeave={() => setHover(null)}
-              className={styles.star} color={index + 1 <= (hover || stars) ? '#fff707' : 'white'}
+              className={styles.star} color={index + 1 <= (hover || stars) ? '#fff707' : '#d0d0d0'}
               onChange={(e) => { setReviewError(false); setStars(e.target.value) }}
             />
           </label>

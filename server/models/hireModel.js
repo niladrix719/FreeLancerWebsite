@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const reviewSchema = new mongoose.Schema({
+const hireSchema = new mongoose.Schema({
   freelancer: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'freelancercollection'
@@ -17,11 +17,27 @@ const reviewSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  review: {
+  description: {
     type: String,
     required: true
   },
-  stars: {
+  location: {
+    type: String,
+    required: true
+  },
+  date: {
+    type: Date,
+    required: true
+  },
+  time: {
+    type: String,
+    required: true
+  },
+  duration: {
+    type: Number,
+    required: true
+  },
+  budget: {
     type: Number,
     required: true
   }
@@ -31,6 +47,6 @@ const reviewSchema = new mongoose.Schema({
   }
 );
 
-const reviewCollection = mongoose.model('reviewcollection', reviewSchema);
+const hireCollection = mongoose.model('hirecollection', hireSchema);
 
-module.exports = reviewCollection;
+module.exports = hireCollection;
