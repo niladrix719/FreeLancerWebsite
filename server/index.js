@@ -4,7 +4,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const db = require('./db/db');
-const { signupController , loginController } = require('./controllers/userController');
+const { signupController , loginController , getUserProfile } = require('./controllers/userController');
 const { otpController, otpSignupController , VerifyFreelancerPhone } = require('./controllers/otpController');
 const { registerCompany } = require('./controllers/companyController');
 const { registerFreelancer,
@@ -52,6 +52,7 @@ app.get('/contact/messages', verifyToken, fetchContactUs);
 app.delete('/delete/freelancer/:id', deleteFreelancerProfile);
 app.put('/verify/freelancer/:id', verifyFreelancerProfile);
 app.post('/contact', contactUs);
+app.get('/profile/user', verifyToken, getUserProfile);
 app.get('/navbar', verifyToken, (req, res) => {
   jwt.verify(req.token, secret, (err, authData) => {
     if (err) {

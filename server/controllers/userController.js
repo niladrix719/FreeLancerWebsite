@@ -14,12 +14,12 @@ async function signupController(req, res) {
     const phone = req.body.phone;
     const user = await userCollection.findOne({ phone: phone });
 
-    if(user){
+    if (user) {
       return res.sendStatus(403);
     }
 
     const existingOtpData = await otpCollection.findOne({ phone: phone });
-    
+
     if (existingOtpData) {
       clearImmediate(otpTimer);
       await otpCollection.deleteOne({ phone: phone });
@@ -43,7 +43,7 @@ async function signupController(req, res) {
       } catch (error) {
         console.error('Error deleting OTP:', error);
       }
-    } , 30000);
+    }, 30000);
 
     res.status(200).json({ phone: phone });
 
@@ -60,12 +60,12 @@ const loginController = async (req, res) => {
     const phone = req.body.phone;
     const type = req.body.type;
     let user;
-    if(type === 'user')
-    user = await userCollection.findOne({ phone: phone });
-    else if(type === 'freelancer')
-    user = await freelancerCollection.findOne({ phone: phone });
-    else if(type === 'company')
-    user = await companyCollection.findOne({phone : phone});
+    if (type === 'user')
+      user = await userCollection.findOne({ phone: phone });
+    else if (type === 'freelancer')
+      user = await freelancerCollection.findOne({ phone: phone });
+    else if (type === 'company')
+      user = await companyCollection.findOne({ phone: phone });
 
     if (!user) {
       return res.sendStatus(403);
@@ -98,13 +98,60 @@ const loginController = async (req, res) => {
       }
     }, 30000);
 
-    res.status(200).json({ phone: phone , type: type });
+    res.status(200).json({ phone: phone, type: type });
 
   } catch (error) {
     console.error(error);
     res.status(500).send('Internal server error');
   }
 };
+
+//profile Data
+
+async function getUserProfile(req, res) {
+  try {
+    jwt.verify(req.token, process.env.JWT_SECRET, async (err, authData) => {
+      if (err) {
+        return;
+      } else {
+        res.send(authData);
+      }
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal server error');
+  }
+}
+
+//edit user profile
+
+async function editUserProfile(req, res) {
+  try {
+    jwt.verify(req.token, process.env.JWT_SECRET, async (err, authData) => {
+      if (err) {
+        return;
+      } else {
+        const user = await userCollection.findOne({ _id: authData.user._id });
+        if (user) {
+          const updatedUser = await userCollection.updateOne({ _id: authData.user._id }, {
+            $set: {
+              firstname: req.body.firstname,
+              lastname: req.body.lastname,
+              profilePicture: req.body.profilePicture
+            }
+          });
+          res.send(updatedUser);
+        } else {
+          res.sendStatus(403);
+        }
+      }
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal server error');
+  }
+}
+
 
 //OTP
 
@@ -119,5 +166,7 @@ function sendTextMessage(phoneNumber, message) {
 
 module.exports = {
   signupController,
-  loginController
+  loginController,
+  getUserProfile,
+  editUserProfile
 };

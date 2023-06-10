@@ -34,8 +34,23 @@ class SearchBox extends React.Component {
       option.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
-    if (event.key === "Enter" && filteredOptions.length > 0) {
+    if (event.key === "Enter" && filteredOptions.length > 0 && searchTerm !== '') {
       event.preventDefault();
+      let value = filteredOptions[0];
+      if (value === 'Photographer') value = 'photographer';
+      else if (value === 'Cinematographer') value = 'cinematographer';
+      else if (value === 'Drone Operator') value = 'drone_operator';
+      Router.push(`/explore/${value}`);
+    }
+  };
+
+  handleSearchBtn = () => {
+    const { options, searchTerm } = this.state;
+    const filteredOptions = options.filter(option =>
+      option.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    if (filteredOptions.length > 0 && searchTerm !== '') {
       let value = filteredOptions[0];
       if (value === 'Photographer') value = 'photographer';
       else if (value === 'Cinematographer') value = 'cinematographer';
@@ -52,7 +67,7 @@ class SearchBox extends React.Component {
 
     return (
       <div className={styles.searchBox} style={{ border: this.props.border ? '1px solid lightgray' : 'none' }}>
-        <button className={styles.searchIcon}>
+        <button className={styles.searchIcon} onClick={this.handleSearchBtn}>
           <FontAwesomeIcon icon={faSearch} style={{ color: 'white' }} />
         </button>
         <input

@@ -27,11 +27,11 @@ export default function Navbar(props) {
       })
         .then(res => res.json())
         .then(data => {
-          if(data.authData.user.phone === 7001599126)
-          setIsAdmin(true);
+          if (data.authData.user.phone === 7001599126)
+            setIsAdmin(true);
           setUser(data.authData.user);
-          if(props.checkLoggedIn)
-          props.checkLoggedIn(true);
+          if (props.checkLoggedIn)
+            props.checkLoggedIn(true);
         })
         .catch(error => {
           console.error(error);
@@ -43,8 +43,8 @@ export default function Navbar(props) {
     localStorage.removeItem('user');
     setIsAdmin(false);
     setUser(null);
-    if(props.checkLoggedIn)
-    props.checkLoggedIn(false);
+    if (props.checkLoggedIn)
+      props.checkLoggedIn(false);
   }
 
   useEffect(() => {
@@ -62,7 +62,11 @@ export default function Navbar(props) {
   return (
     <nav className={styles.navbar} style={{ color: color, backgroundColor: background }}>
       <div className={styles.left}>
-        <Link href='/'><i style={{fontSize: '2rem', fontWeight: '600'}}>Fipezo</i></Link>
+        <Link href='/'>
+          <i style={{ fontSize: '2rem', fontWeight: '600', display: props.icon ? props.icon : undefined }}>
+            Fipezo
+          </i>
+        </Link>
       </div>
       <div className={styles.right}>
         <ul className={styles.navigations}>
@@ -120,7 +124,8 @@ export default function Navbar(props) {
               <Image src={`http://localhost:3000/uploads/${user.profilePicture}`} width='90' height='90' className={styles.dp} alt='display picture' />
               <h1 className={styles.name}>{user ? `${user.firstname} ${user.lastname}` : ''}</h1>
               <p className={styles.number}>{user ? user.phone : ''}</p>
-              <Link className={styles.btn} href={`/profile/${user.uid}`}>My Profile</Link>
+              {user.uid && <Link className={styles.btn} href={`/profile/${user.uid}`}>My Profile</Link>}
+              {!user.uid && <Link className={styles.btn} href='/user_profile'>My Profile</Link>}
               <button className={styles.btn} type='button' onClick={handleLogout}>Log Out</button>
             </div>
           </li>}

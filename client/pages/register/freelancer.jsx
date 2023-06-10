@@ -75,7 +75,7 @@ class Freelancer extends React.Component {
     }
 
     if(this.state.currentPage === 3) {
-      this.handelOtp();
+      this.handleOtp();
     }
 
     if (this.state.location === '' && this.state.currentPage === 4) {
@@ -282,7 +282,7 @@ class Freelancer extends React.Component {
     postData();
   };
 
-  handelOtp = () => {
+  handleOtp = () => {
     const postData = async () => {
       try {
         await fetch('http://localhost:3000/verify/freelancer/phone', {
