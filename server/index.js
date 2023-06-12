@@ -4,7 +4,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const db = require('./db/db');
-const { signupController , loginController , getUserProfile } = require('./controllers/userController');
+const { signupController , loginController , getUserProfile , editUserProfile} = require('./controllers/userController');
 const { otpController, otpSignupController , VerifyFreelancerPhone } = require('./controllers/otpController');
 const { registerCompany } = require('./controllers/companyController');
 const { registerFreelancer,
@@ -34,6 +34,7 @@ app.use(cors({
 app.use(express.static('public'));
 app.use('/uploads', express.static('uploads'));
 const upload = require('./middlewares/storage');
+const userProfilePic = require('./middlewares/userProfilePic');
 const { get } = require('mongoose');
 
 // Setting up the routes
@@ -68,6 +69,7 @@ app.get('/navbar', verifyToken, (req, res) => {
 app.post('/add/review', verifyToken, addReview);
 app.get('/reviews/:id', getReviews);
 app.post('/add/hire', verifyToken, addHire);
+app.put('/profile/user/edit', userProfilePic, verifyToken, editUserProfile);
 
 app.get('/', (req, res) => {
   res.send('Hello From Fipezo Server');

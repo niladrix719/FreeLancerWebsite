@@ -30,6 +30,7 @@ export default function Navbar(props) {
           if (data.authData.user.phone === 7001599126)
             setIsAdmin(true);
           setUser(data.authData.user);
+          console.log(data.authData.user);
           if (props.checkLoggedIn)
             props.checkLoggedIn(true);
         })
@@ -121,7 +122,8 @@ export default function Navbar(props) {
               style={{ fontSize: 10, color: props.color }}
             />
             <div className={styles.profile_card}>
-              <Image src={`http://localhost:3000/uploads/${user.profilePicture}`} width='90' height='90' className={styles.dp} alt='display picture' />
+              {/* <Image src={`http://localhost:3000/uploads/${user.profilePicture}`} width='90' height='90' className={styles.dp} alt='display picture' /> */}
+              <div className={styles.dp} style={{backgroundImage: `url(http://localhost:3000/uploads/${user.profilePicture})`}}></div>
               <h1 className={styles.name}>{user ? `${user.firstname} ${user.lastname}` : ''}</h1>
               <p className={styles.number}>{user ? user.phone : ''}</p>
               {user.uid && <Link className={styles.btn} href={`/profile/${user.uid}`}>My Profile</Link>}

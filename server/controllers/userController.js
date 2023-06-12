@@ -133,14 +133,18 @@ async function editUserProfile(req, res) {
       } else {
         const user = await userCollection.findOne({ _id: authData.user._id });
         if (user) {
-          const updatedUser = await userCollection.updateOne({ _id: authData.user._id }, {
+          await userCollection.updateOne({ _id: authData.user._id }, {
             $set: {
               firstname: req.body.firstname,
               lastname: req.body.lastname,
-              profilePicture: req.body.profilePicture
+              profilePicture: req.file.filename
             }
           });
-          res.send(updatedUser);
+
+          const updatedAuthData = { ...authData, user: { ...authData.user, firstname: req.body.firstname, lastname: req.body.lastname , profilePicture: req.file.filename } };
+          const updatedToken = jwt.sign(updatedAuthData, secret);
+
+          res.send({ user: updatedAuthData, token: updatedToken });
         } else {
           res.sendStatus(403);
         }
@@ -151,7 +155,6 @@ async function editUserProfile(req, res) {
     res.status(500).send('Internal server error');
   }
 }
-
 
 //OTP
 

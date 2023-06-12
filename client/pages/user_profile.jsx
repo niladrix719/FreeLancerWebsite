@@ -12,7 +12,8 @@ function User_profile() {
   const [lastcolor, setLastcolor] = React.useState('#949494');
   const [user, setUser] = React.useState({});
   const [warns, setWarns] = React.useState(false);
-  const [image, setImage] = React.useState('/dp.png');
+  const [image, setImage] = React.useState(null);
+  const [profilePicture, setProfilePicture] = React.useState('');
 
   React.useEffect(() => {
     const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
@@ -25,10 +26,11 @@ function User_profile() {
       })
         .then(res => res.json())
         .then(data => {
-          console.log(data.user);
           setUser(data.user);
           setFirstname(data.user.firstname);
           setLastname(data.user.lastname);
+          setProfilePicture(data.user.profilePicture);
+
         })
         .catch(error => {
           console.error(error);
@@ -36,7 +38,47 @@ function User_profile() {
     }
   }, []);
 
-  const handleImageChange = (e, index) => {
+
+  const handleEditProfile = (e) => {
+    e.preventDefault();
+    const data = new FormData();
+    data.append('firstname', firstname);
+    data.append('lastname', lastname);
+    data.append('profilePicture', profilePicture);
+    const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
+    if (token) {
+      fetch('http://localhost:3000/profile/user/edit', {
+        method: 'PUT',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        },
+        body: data
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.error) {
+          } else {
+            localStorage.setItem('user', JSON.stringify({ token: data.token }));
+            setEditProfile(false);
+            setFirstname(data.user.user.firstname);
+            setLastname(data.user.user.lastname);
+            setProfilePicture(data.user.user.profilePicture);
+          }
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    }
+  }
+
+  function handleImageClick(event) {
+    const sibling = event.currentTarget.previousElementSibling;
+    if (sibling) {
+      sibling.click();
+    }
+  }
+
+  const handleImageChange = (e) => {
     const file = e.target.files[0];
     const reader = new FileReader();
 
@@ -49,6 +91,8 @@ function User_profile() {
       return;
     }
 
+    setProfilePicture(file);
+
     reader.readAsDataURL(file);
 
     reader.onloadend = () => {
@@ -60,20 +104,16 @@ function User_profile() {
     }
   };
 
-  const handleEdit = () => {
-    setEditProfile(false);
-  }
-
   return (
     <div className={style.profile}>
       <Navbar color='black' icon='none' />
       <div className={style.body}>
         <div className={style.profileBox}>
           {!editProfile && <div className={style.profileImage}>
-            <Image className={style.dp} src="/dp.png" alt="profile" height='100' width='100' />
+            <Image className={style.dp} src={profilePicture === '' ? '/dp.png' : `http://localhost:3000/uploads/${profilePicture}`} alt="profile" height='100' width='100' />
           </div>}
           {!editProfile && <div className={style.profileInfo}>
-            <h1 className={style.name}>{user.firstname} {user.lastname}</h1>
+            <h1 className={style.name}>{firstname} {lastname}</h1>
             <p className={style.phone}>
               <span className={style.phoneValue}>{user.phone}</span>
             </p>
@@ -88,29 +128,35 @@ function User_profile() {
             <button className={style.logout}>Logout</button>
           </div>}
           {editProfile && <div className={style.editProfile}>
-            <div className={style.editProfileImage}>
-              <Image className={style.dpEdit} src={image} alt="profile" height='200' width='200' />
-              <Image className={style.camera} id={style.camera} src='/cameraIcon.png' width={35} height={35} alt='camera' />
-            </div>
-            <div className={style.editProfileInfo}>
-              <input className={style.input} type="text" value={firstname}
-                onChange={(e) => {
-                  setFirstname(e.target.value);
-                  setFirstcolor('black');
-                }}
-                style={{ color: firstcolor }}
-              />
-              <input className={style.input} type="text" value={lastname}
-                onChange={(e) => {
-                  setLastname(e.target.value);
-                  setLastcolor('black');
-                }}
-                style={{ color: lastcolor }}
-              />
-            </div>
-            <div className={style.btns}>
-              <button className={style.logout} onClick={handleEdit}>Save</button>
-            </div>
+            <form className={style.form} encType="multipart/form-data" onSubmit={handleEditProfile}>
+              <div className={style.editProfileImage} style={{
+                backgroundImage: `url(${image ? image : (profilePicture ? `http://localhost:3000/uploads/${user.profilePicture}` : '/dp.png')})`,
+              }}>
+                {!image && <Image className={style.camera} id={style.camera} src='/cameraIcon.png'
+                  width={35} height={35} alt='camera' onClick={handleImageClick}
+                />}
+                <input type="file" id="file" accept="image/*" name='profilePicture' onChange={handleImageChange} className={style.fileInput} />
+              </div>
+              <div className={style.editProfileInfo}>
+                <input className={style.input} type="text" value={firstname}
+                  onChange={(e) => {
+                    setFirstname(e.target.value);
+                    setFirstcolor('black');
+                  }}
+                  style={{ color: firstcolor }}
+                />
+                <input className={style.input} type="text" value={lastname}
+                  onChange={(e) => {
+                    setLastname(e.target.value);
+                    setLastcolor('black');
+                  }}
+                  style={{ color: lastcolor }}
+                />
+              </div>
+              <div className={style.btns}>
+                <button className={style.logout} type='submit'>Save</button>
+              </div>
+            </form>
           </div>}
         </div>
       </div>
