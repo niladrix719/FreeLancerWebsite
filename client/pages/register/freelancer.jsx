@@ -40,6 +40,7 @@ class Freelancer extends React.Component {
       profilePicError: false,
       coverPicError: false,
       textareaError: false,
+      invalidOtp: false,
       warns: [false, false, false, false, false, false, false, false, false, false, false, false],
       blur: 'none'
     }
@@ -76,6 +77,9 @@ class Freelancer extends React.Component {
 
     if(this.state.currentPage === 3) {
       this.handleOtp();
+      if(this.state.invalidOtp) {
+        return;
+      }
     }
 
     if (this.state.location === '' && this.state.currentPage === 4) {
@@ -300,11 +304,12 @@ class Freelancer extends React.Component {
             type: 'freelancer'
           })
         });
-        const data = await response.json();
-        if (data.error) {
-          this.setState({ error: true });
+        if(response.status === 403) {
+          this.setState({ invalidOtp: true });
           return;
         }
+        const data = await response.json();
+        this.setState({ invalidOtp: false });
         localStorage.setItem('user', JSON.stringify(data));
       }
       catch (error) {
@@ -388,6 +393,7 @@ class Freelancer extends React.Component {
               {this.state.error && <p className={styles.error}>Please provide all the inputs the fields.</p>}
               {this.state.phoneError && <p className={styles.error}>Please provide a valid phone number of 10 digits.</p>}
               {this.state.registerFailed && <p className={styles.error}>Registration Failed. Please try again.</p>}
+              {this.state.invalidOtp && <p className={styles.error}>Invalid OTP. Please try again.</p>}
               {this.state.currentPage === 1 && <div className={styles.inputField} id={styles.firstname}>
                 <label htmlFor="firstname" className={styles.label}><span style={{ color: 'white' }}>* </span>First name :</label>
                 <input type='text' className={styles.input}

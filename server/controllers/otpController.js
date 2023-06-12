@@ -10,7 +10,6 @@ const otpCollection = require('../models/otpModel');
 
 async function VerifyFreelancerPhone(req, res) {
   try {
-    console.log(req.body);
     const otp = req.body.otp;
     const otpData = await otpCollection.findOne({ otp: otp, phone: req.body.phone, type: req.body.type });
     const existingUser = await freelancerCollection.findOne({ phone: req.body.phone });
@@ -29,6 +28,9 @@ async function VerifyFreelancerPhone(req, res) {
         }
         res.json({ token });
       });
+    }
+    else {
+      return res.sendStatus(403);
     }
   }
   catch (error) {
