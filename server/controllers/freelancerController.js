@@ -7,32 +7,46 @@ const secret = process.env.JWT_SECRET;
 
 async function registerFreelancer(req, res) {
   try {
-    const freelancerData = new freelancerCollection({
-      uid: req.body.uid,
-      firstname: req.body.firstname,
-      lastname: req.body.lastname,
-      phone: req.body.phone,
-      location: req.body.location,
-      profession: req.body.profession,
-      rate: req.body.rate,
-      bio: req.body.bio,
-      equipments: req.body.equipments,
-      profilePicture: req.files['profilePicture'][0].filename,
-      coverPicture: req.files['coverPicture'][0].filename,
-      aadhaarCard: req.files['aadhaarCard'][0].filename,
-      panCard: req.files['panCard'][0].filename,
-      works: req.files['works[]'].map(file => file.filename),
-      links: req.body.links,
-      rating: 0,
-      reviewCount: 0,
-      reviews: [],
-      termsAndConditions: req.body.termsAndConditions,
-      featured : false,
-      verified: false
-    });
+    jwt.verify(req.token, secret, async (err, authData) => {
+      if (err) {
+        console.log(err)
+        res.sendStatus(403);
+        return;
+      }
 
-    const postData = await freelancerData.save();
-    res.send(postData);
+      const freelancerData = new freelancerCollection({
+        uid: req.body.uid,
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        phone: req.body.phone,
+        location: req.body.location,
+        profession: req.body.profession,
+        rate: req.body.rate,
+        bio: req.body.bio,
+        equipments: req.body.equipments,
+        profilePicture: req.files['profilePicture'][0].filename,
+        coverPicture: req.files['coverPicture'][0].filename,
+        aadhaarCard: req.files['aadhaarCard'][0].filename,
+        panCard: req.files['panCard'][0].filename,
+        works: req.files['works[]'].map(file => file.filename),
+        links: req.body.links,
+        rating: 0,
+        reviewCount: 0,
+        reviews: [],
+        termsAndConditions: req.body.termsAndConditions,
+        featured: false,
+        verified: false
+      });
+
+      const postData = await freelancerData.save();
+      jwt.sign({ postData }, secret, { expiresIn: '30d' }, (err, token) => {
+        if (err) {
+          console.log(err)
+          return res.sendStatus(403);
+        }
+        res.json({ token });
+      });
+    });
   } catch (error) {
     console.error(error);
     res.status(500).send('Internal server error');
@@ -56,7 +70,7 @@ async function getFreelancerProfile(req, res) {
 
 async function getFreelancerProfiles(req, res) {
   try {
-    const freelancers = await freelancerCollection.find({verified: true});
+    const freelancers = await freelancerCollection.find({ verified: true });
     res.send(freelancers);
   } catch (error) {
     console.error(error);
@@ -68,7 +82,7 @@ async function getFreelancerProfiles(req, res) {
 
 async function getFeaturedFreelancerProfiles(req, res) {
   try {
-    const freelancers = await freelancerCollection.find({featured: true , verified: true});
+    const freelancers = await freelancerCollection.find({ featured: true, verified: true });
     res.send(freelancers);
   } catch (error) {
     console.error(error);
@@ -98,7 +112,7 @@ async function getUnFreelancerProfiles(req, res) {
 
 // delete profile
 
-async function deleteFreelancerProfile (req, res) {
+async function deleteFreelancerProfile(req, res) {
   try {
     const id = req.params.id;
     const user = await freelancerCollection.findOne({ _id: id });

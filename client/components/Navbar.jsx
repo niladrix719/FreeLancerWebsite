@@ -30,7 +30,6 @@ export default function Navbar(props) {
           if (data.authData.user.phone === 7001599126)
             setIsAdmin(true);
           setUser(data.authData.user);
-          console.log(data.authData.user);
           if (props.checkLoggedIn)
             props.checkLoggedIn(true);
         })
@@ -64,7 +63,7 @@ export default function Navbar(props) {
     <nav className={styles.navbar} style={{ color: color, backgroundColor: background }}>
       <div className={styles.left}>
         <Link href='/'>
-          <i style={{ fontSize: '2rem', fontWeight: '600', display: props.icon ? props.icon : undefined }}>
+          <i style={{ fontSize: '2rem', fontWeight: '600'}}>
             Fipezo
           </i>
         </Link>

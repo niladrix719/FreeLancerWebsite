@@ -12,7 +12,13 @@ let otpTimer;
 async function signupController(req, res) {
   try {
     const phone = req.body.phone;
-    const user = await userCollection.findOne({ phone: phone });
+    let user;
+    if(req.body.type === 'user')
+    user = await userCollection.findOne({ phone: phone });
+    else if(req.body.type === 'freelancer')
+    user = await freelancerCollection.findOne({ phone: phone });
+    else if(req.body.type === 'company')
+    user = await companyCollection.findOne({ phone: phone });
 
     if (user) {
       return res.sendStatus(403);
@@ -142,7 +148,12 @@ async function editUserProfile(req, res) {
           });
 
           const updatedAuthData = { ...authData, user: { ...authData.user, firstname: req.body.firstname, lastname: req.body.lastname , profilePicture: req.file.filename } };
-          const updatedToken = jwt.sign(updatedAuthData, secret);
+          const updatedToken = jwt.sign(updatedAuthData, secret, { expiresIn: '30d' }, (err, token) => {
+            if (err) {
+              console.log(err);
+              return res.sendStatus(403);
+            }
+          });
 
           res.send({ user: updatedAuthData, token: updatedToken });
         } else {

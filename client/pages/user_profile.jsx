@@ -106,7 +106,7 @@ function User_profile() {
 
   return (
     <div className={style.profile}>
-      <Navbar color='black' icon='none' />
+      <Navbar color='black' />
       <div className={style.body}>
         <div className={style.profileBox}>
           {!editProfile && <div className={style.profileImage}>

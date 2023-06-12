@@ -240,6 +240,7 @@ class Freelancer extends React.Component {
       return;
 
     const postData = async () => {
+      const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
       try {
         const data = new FormData();
         data.append('uid', this.state.firstName.toLowerCase() + '_' + parseInt(this.state.phone).toString(16));
@@ -268,6 +269,9 @@ class Freelancer extends React.Component {
         data.append('verified', false);
         const response = await fetch('http://localhost:3000/register/freelancer', {
           method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${token}`
+          },
           body: data
         });
 
@@ -285,7 +289,7 @@ class Freelancer extends React.Component {
   handleOtp = () => {
     const postData = async () => {
       try {
-        await fetch('http://localhost:3000/verify/freelancer/phone', {
+        const response = await fetch('http://localhost:3000/verify/freelancer/phone', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -296,6 +300,11 @@ class Freelancer extends React.Component {
             type: 'freelancer'
           })
         });
+        const data = await response.json();
+        if (data.error) {
+          this.setState({ error: true });
+          return;
+        }
         localStorage.setItem('user', JSON.stringify(data));
       }
       catch (error) {

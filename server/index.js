@@ -42,7 +42,7 @@ app.post('/signup', signupController);
 app.post('/login', loginController);
 app.post('/otp', otpController);
 app.post('/otp/signup', otpSignupController);
-app.post('/register/freelancer', upload, registerFreelancer);
+app.post('/register/freelancer', upload, verifyToken , registerFreelancer);
 app.post('/register/company', registerCompany);
 app.post('/verify/freelancer/phone', VerifyFreelancerPhone);
 app.get('/profile/freelancer/:uid', getFreelancerProfile);
