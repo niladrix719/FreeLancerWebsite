@@ -54,7 +54,7 @@ function Contact() {
         alert('Something went wrong!');
         captchaRef.current.reset();
       });
-  }  
+  }
 
   return (
     <div className={styles.contact}>
@@ -85,11 +85,11 @@ function Contact() {
                 <div className={styles.inputs}>
                   <label htmlFor="issue" className={styles.label}>Issue :</label>
                   <select className={styles.options} name="issue" onChange={() => setContactError(false)}>
-                    <option className={styles.option} value="issue">Service Related</option>
-                    <option className={styles.option} value="issue">Payment Related</option>
-                    <option className={styles.option} value="issue">Client Related</option>
-                    <option className={styles.option} value="issue">Freelancer Related</option>
-                    <option className={styles.option} value="issue">Platform Related</option>
+                    <option className={styles.option} value="Service">Service Related</option>
+                    <option className={styles.option} value="Payment">Payment Related</option>
+                    <option className={styles.option} value="Client">Client Related</option>
+                    <option className={styles.option} value="Freelancer">Freelancer Related</option>
+                    <option className={styles.option} value="Platform">Platform Related</option>
                   </select>
                 </div>
                 <div className={styles.inputs}>

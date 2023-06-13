@@ -12,7 +12,7 @@ async function addHire(req, res) {
         return;
       }
 
-      if (!req.body.freelancer || !req.body.title || !req.body.description || !req.body.location || !req.body.date || !req.body.time || !req.body.duration || !req.body.budget) {
+      if (!req.body.freelancer || !req.body.fullname || !req.body.description || !req.body.phone || !req.body.startTime || !req.body.endTime || !req.body.date || !req.body.address || !req.body.budget) {
         res.status(400).send('Bad request');
         return;
       }
@@ -24,12 +24,13 @@ async function addHire(req, res) {
         user: authData.user._id,
         freelancerDetails: freelancerDetails,
         userDetails: authData.user,
-        title: req.body.title,
+        fullname: req.body.fullname,
         description: req.body.description,
-        location: req.body.location,
-        date: req.body.date,
-        time: req.body.time,
-        duration: req.body.duration,
+        address: req.body.address,
+        phone: req.body.phone,
+        date: req.body.date,  
+        startTime: req.body.startTime,
+        endTime: req.body.endTime,
         budget: req.body.budget
       });
 
@@ -43,6 +44,59 @@ async function addHire(req, res) {
   }
 };
 
+async function getHires(req, res) {
+  try {
+    jwt.verify(req.token, secret, async (err, authData) => {
+      if (err) {
+        res.sendStatus(403);
+        return;
+      }
+
+      const user = await userCollection.findById(authData.user._id);
+
+      if (!user) {
+        res.status(404).send('User not found');
+        return;
+      }
+
+      const hireData = await hireCollection.find({ user: authData.user._id });
+
+      res.send(hireData);
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal server error');
+  }
+}
+
+async function getRequests(req, res) {
+  try {
+    jwt.verify(req.token, secret, async (err, authData) => {
+      if (err) {
+        console.log(err);
+        res.sendStatus(403);
+        return;
+      }
+
+      const user = await freelancerCollection.findById(authData.user._id);
+
+      if (!user) {
+        res.status(404).send('User not found');
+        return;
+      }
+
+      const hireData = await hireCollection.find({ freelancer: authData.user._id });
+
+      res.send(hireData);
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal server error');
+  }
+}
+
 module.exports = {
-  addHire
+  addHire,
+  getHires,
+  getRequests
 };

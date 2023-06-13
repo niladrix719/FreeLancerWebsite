@@ -15,7 +15,7 @@ const { registerFreelancer,
   verifyFreelancerProfile,
   getFeaturedFreelancerProfiles } = require('./controllers/freelancerController');
 const {contactUs , fetchContactUs} = require('./controllers/contactController');
-const {addHire} = require('./controllers/hireController');
+const {addHire , getHires , getRequests} = require('./controllers/hireController');
 const jwt = require('jsonwebtoken');
 const { addReview , getReviews } = require('./controllers/reviewController');
 const secret = process.env.JWT_SECRET;
@@ -71,6 +71,8 @@ app.get('/reviews/:id', getReviews);
 app.post('/add/hire', verifyToken, addHire);
 app.put('/profile/user/edit', userProfilePic, verifyToken, editUserProfile);
 app.get('/profile', verifyToken, getProfile);
+app.get('/hires' , verifyToken, getHires);
+app.get('/requests' , verifyToken, getRequests);
 
 app.get('/', (req, res) => {
   res.send('Hello From Fipezo Server');

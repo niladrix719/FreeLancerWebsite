@@ -7,13 +7,13 @@ function HireBox(props) {
   const [description, setDescription] = useState('');
   const [address, setAddress] = useState('');
   const [date, setDate] = useState('');
-  const [time, setTime] = useState('');
-  const [duration, setDuration] = useState('');
+  const [startTime, setStartTime] = useState('');
+  const [endTime, setEndTime] = useState('');
   const [budget, setBudget] = useState('');
-  const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
   const [hireError, setHireError] = useState(false);
 
   const submitHire = () => {
+    const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
     async function postHire() {
       try {
         if (token) {
@@ -30,8 +30,8 @@ function HireBox(props) {
               description: description,
               address: address,
               date: date,
-              time: time,
-              duration: duration,
+              startTime: startTime,
+              endTime: endTime,
               budget: budget
             })
           });
@@ -88,12 +88,12 @@ function HireBox(props) {
         <div className={styles.field}>
           <label htmlFor='startTime' className={styles.label}>Start Time</label>
           <input className={styles.input} type="time" id='startTime' name='startTime'
-            onChange={(e) => { setHireError(false); setTime(e.target.value) }} />
+            onChange={(e) => { setHireError(false); setStartTime(e.target.value) }} />
         </div>
         <div className={styles.field}>
           <label htmlFor='endTime' className={styles.label}>End Time</label>
           <input className={styles.input} type="time" id='endTime' name='endTime'
-            onChange={(e) => { setHireError(false); setDuration(e.target.value) }} />
+            onChange={(e) => { setHireError(false); setEndTime(e.target.value) }} />
         </div>
         <div className={styles.field}>
           <label htmlFor='budget' className={styles.label}>Total Budget (&#8377;)</label>

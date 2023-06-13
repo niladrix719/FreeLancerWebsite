@@ -41,7 +41,7 @@ const hireSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  EndTime: {
+  endTime: {
     type: String,
     required: true
   },

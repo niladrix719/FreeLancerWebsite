@@ -41,22 +41,28 @@ function Freelancer_Profile() {
         });
     }
   }, []);
-
+  
   useEffect(() => {
     async function fetchReviews() {
       try {
-        const response = await fetch(`http://localhost:3000/reviews/${freelancer._id}`);
+        const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
+        const response = await fetch('http://localhost:3000/requests', {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
         const data = await response.json();
-        setReviews(data);
+        setRequests(data);
       } catch (error) {
         console.error(error);
       }
     }
-
+  
     if (isFreelancerLoaded) {
       fetchReviews();
     }
-  }, [freelancer, isFreelancerLoaded]);
+  }, [freelancer, isFreelancerLoaded]);  
 
   const handleReviewBox = (val) => {
     setReviewBox(val);
@@ -103,7 +109,7 @@ function Freelancer_Profile() {
               <HireBox handleHireBox={handleHireBox} freelancer={freelancer} user={user} />
             </div>
           )} */}
-          <button className={styles.btn} id={styles.hire} onClick={handleHireBox}>Requests</button>
+          <Link className={styles.btn} id={styles.hire} href='/my_requests'>Requests</Link>
           <Link href='/login' className={styles.btn} id={styles.msg}>
             Edit
           </Link>
