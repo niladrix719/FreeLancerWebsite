@@ -12,7 +12,8 @@ function Explore() {
   const [showPhotographers, setShowPhotographers] = useState(true);
   const [showCinematographers, setShowCinematographers] = useState(false);
   const [showDroneOperators, setShowDroneOperators] = useState(false);
-  const [rateSort, setRateSort] = useState('1000');
+  const [rateSort, setRateSort] = useState('10100');
+  const [stars, setStars] = useState(0);
 
   const increPage = () => {
     setCurrentPage(currentPage + 1);
@@ -84,6 +85,14 @@ function Explore() {
     return false;
   });
 
+  filtered.filter((freelancer) => {
+    if (freelancer.rate <= rateSort && freelancer.rating >= stars) {
+      return true;
+    }
+    return false;
+  });
+  
+
   filtered.sort((a, b) => {
     return (b.rating * b.reviewCount) - (a.rating * a.reviewCount);
   });
@@ -110,6 +119,7 @@ function Explore() {
             showDroneOperators={showDroneOperators}
             setRateSort={setRateSort}
             rateSort={rateSort}
+            stars={stars}
           />
         </div>
         <div className={styles.main}>

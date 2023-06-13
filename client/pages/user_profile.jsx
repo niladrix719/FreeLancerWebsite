@@ -3,6 +3,7 @@ import style from '../styles/User_profile.module.css';
 import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import Link from 'next/link';
 
 function User_profile() {
   const [firstname, setFirstname] = React.useState('');
@@ -119,7 +120,7 @@ function User_profile() {
             </p>
           </div>}
           {!editProfile && <div className={style.options}>
-            <p className={style.option}>Hire Requests</p>
+            <Link className={style.option} href='/my_hires'>Hire Requests</Link>
             <p className={style.option} onClick={() => setEditProfile(true)}>Edit Profile</p>
             <p className={style.option}>Delete Account</p>
             <p className={style.option}>Rate our Services</p>
