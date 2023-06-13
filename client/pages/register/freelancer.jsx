@@ -76,7 +76,6 @@ class Freelancer extends React.Component {
     }
 
     if(this.state.currentPage === 3) {
-      this.handleOtp();
       if(this.state.invalidOtp) {
         return;
       }
@@ -308,8 +307,11 @@ class Freelancer extends React.Component {
           this.setState({ invalidOtp: true });
           return;
         }
+        else{
+          this.setState({ invalidOtp: false });
+        }
         const data = await response.json();
-        this.setState({ invalidOtp: false });
+        this.increProgress(14.25);
         localStorage.setItem('user', JSON.stringify(data));
       }
       catch (error) {
@@ -377,7 +379,7 @@ class Freelancer extends React.Component {
         return { warns: temp };
       });
     }
-  };  
+  };
 
   render() {
     return (
@@ -504,7 +506,8 @@ class Freelancer extends React.Component {
                 </textarea>
               </div>}
               {!this.state.form && <div className={styles.btns}>
-                <button className={styles.NextBtn} type='button' onClick={() => this.increProgress(14.25)}>{this.state.btn}</button>
+                {this.state.currentPage !== 3 && <button className={styles.NextBtn} type='button' onClick={() => this.increProgress(14.25)}>{this.state.btn}</button>}
+                {this.state.currentPage === 3 && <button className={styles.NextBtn} type='button' onClick={this.handleOtp}>Verify</button>}
                 <button className={styles.backBtn} type='button' onClick={() => this.decreProgress(14.25)}>Back</button>
               </div>}
               {this.state.form && <Verification

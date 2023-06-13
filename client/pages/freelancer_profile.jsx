@@ -11,7 +11,7 @@ import ReviewBox from '@/components/ReviewBox';
 import HireBox from '@/components/HireBox';
 import Link from 'next/link';
 
-function Name() {
+function Freelancer_Profile() {
   const router = useRouter();
   const uid = router.query.name;
   const [freelancer, setFreelancer] = useState({});
@@ -33,31 +33,14 @@ function Name() {
       })
         .then(res => res.json())
         .then(data => {
-          setUser(data);
+          setFreelancer(data);
+          setIsFreelancerLoaded(true);
         })
         .catch(error => {
           console.error(error);
         });
     }
   }, []);
-
-  useEffect(() => {
-    async function fetchFreelancer() {
-      try {
-        const response = await fetch(`http://localhost:3000/profile/freelancer/${uid}`);
-        const data = await response.json();
-        if (data.error) {
-          router.push('/404');
-        }
-        setFreelancer(data);
-        setIsFreelancerLoaded(true);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-
-    fetchFreelancer();
-  }, [uid]);
 
   useEffect(() => {
     async function fetchReviews() {
@@ -99,8 +82,8 @@ function Name() {
         {freelancer.links && <ProfileBioCard freelancer={freelancer} />}
         {isFreelancerLoaded && <Details works={freelancer.works} reviews={reviews} />}
         <div className={styles.btnBox}>
-          <button className={styles.btn} id={styles.hire} onClick={handleHireBox}>Hire</button>
-          {loggedIn && (
+          {/* <button className={styles.btn} id={styles.hire} onClick={handleHireBox}>Hire</button> */}
+          {/* {loggedIn && (
             <button className={styles.btn} id={styles.msg} onClick={() => handleReviewBox(true)}>
               Review
             </button>
@@ -119,7 +102,11 @@ function Name() {
             <div id={styles.boxContainer2}>
               <HireBox handleHireBox={handleHireBox} freelancer={freelancer} user={user} />
             </div>
-          )}
+          )} */}
+          <button className={styles.btn} id={styles.hire} onClick={handleHireBox}>Requests</button>
+          <Link href='/login' className={styles.btn} id={styles.msg}>
+            Edit
+          </Link>
         </div>
       </div>
       <div className={styles.footer}>
@@ -129,4 +116,4 @@ function Name() {
   );
 }
 
-export default Name;
+export default Freelancer_Profile;

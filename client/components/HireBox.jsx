@@ -4,9 +4,8 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react'
 
 function HireBox(props) {
-  const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [location, setLocation] = useState('');
+  const [address, setAddress] = useState('');
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
   const [duration, setDuration] = useState('');
@@ -26,9 +25,10 @@ function HireBox(props) {
             },
             body: JSON.stringify({
               freelancer: props.freelancer._id,
-              title: title,
+              fullname: `${props.user.firstname} ${props.user.lastname}`,
+              phone: props.user.phone,
               description: description,
-              location: location,
+              address: address,
               date: date,
               time: time,
               duration: duration,
@@ -56,27 +56,29 @@ function HireBox(props) {
       <p className={styles.error}>{hireError ? 'Please fill all the fields' : ''}</p>
       <div className={styles.fields}>
         <div className={styles.field}>
-          <div>
-            <label htmlFor='title' className={styles.label}>Full Name</label>
-            <input className={styles.input} type="text" id='title' name='title'
-              onChange={(e) => { setHireError(false); setTitle(e.target.value) }} />
+          <div className={styles.subField}>
+            <label htmlFor='name' className={styles.label}>Full Name</label>
+            <input className={styles.input} type="text" id='name' name='fullname'
+              value={`${props.user.firstname} ${props.user.lastname}`}
+            />
           </div>
-          <div>
+          <div className={styles.subField}>
             <label htmlFor='phone' className={styles.label}>Phone</label>
             <input className={styles.input} type="number" id='phone' name='phone'
-              onChange={(e) => { setHireError(false); setPhone(e.target.value) }} />
+              value={`${props.user.phone}`}
+            />
           </div>
         </div>
         <div className={styles.field} id={styles.purpose}>
-          <label htmlFor='description' className={styles.label}>Purpose</label>
+          <label htmlFor='description' className={styles.label}>Task Description</label>
           <textarea className={styles.textarea} name="description" id="description" cols="30" rows="10"
             onChange={(e) => { setHireError(false); setDescription(e.target.value) }}>
           </textarea>
         </div>
         <div className={styles.field}>
-          <label htmlFor='location' className={styles.label}>Location</label>
-          <input className={styles.input} type="text" id='location' name='location'
-            onChange={(e) => { setHireError(false); setLocation(e.target.value) }} />
+          <label htmlFor='location' className={styles.label}>Address</label>
+          <input className={styles.input} type="text" id='address' name='address'
+            onChange={(e) => { setHireError(false); setAddress(e.target.value) }} />
         </div>
         <div className={styles.field}>
           <label htmlFor='date' className={styles.label}>Date</label>
@@ -93,11 +95,6 @@ function HireBox(props) {
           <input className={styles.input} type="time" id='endTime' name='endTime'
             onChange={(e) => { setHireError(false); setDuration(e.target.value) }} />
         </div>
-        {/* <div className={styles.field}>
-          <label htmlFor='duration' className={styles.label}>Duration (Hrs.)</label>
-          <input className={styles.input} type="number" id='duration' name='duration'
-            onChange={(e) => { setHireError(false); setDuration(e.target.value) }} />
-        </div> */}
         <div className={styles.field}>
           <label htmlFor='budget' className={styles.label}>Total Budget (&#8377;)</label>
           <input className={styles.input} type="number" id='budget' name='budget'

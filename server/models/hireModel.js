@@ -17,15 +17,19 @@ const hireSchema = new mongoose.Schema({
     type: Object,
     required: true
   },
-  title: {
+  fullname: {
     type: String,
+    required: true
+  },
+  phone: {
+    type: Number,
     required: true
   },
   description: {
     type: String,
     required: true
   },
-  location: {
+  address: {
     type: String,
     required: true
   },
@@ -33,12 +37,12 @@ const hireSchema = new mongoose.Schema({
     type: Date,
     required: true
   },
-  time: {
+  startTime: {
     type: String,
     required: true
   },
-  duration: {
-    type: Number,
+  EndTime: {
+    type: String,
     required: true
   },
   budget: {

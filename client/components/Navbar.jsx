@@ -121,40 +121,11 @@ export default function Navbar(props) {
               style={{ fontSize: 10, color: props.color }}
             />
             <div className={styles.profile_card}>
-              {/* <Image src={`http://localhost:3000/uploads/${user.profilePicture}`} width='90' height='90' className={styles.dp} alt='display picture' /> */}
               <div className={styles.dp} style={{backgroundImage: `url(http://localhost:3000/uploads/${user.profilePicture})`}}></div>
               <h1 className={styles.name}>{user ? `${user.firstname} ${user.lastname}` : ''}</h1>
               <p className={styles.number}>{user ? user.phone : ''}</p>
-              {user.uid && <Link className={styles.btn} href={`/profile/${user.uid}`}>My Profile</Link>}
+              {user.uid && <Link className={styles.btn} href={`/freelancer_profile`}>My Profile</Link>}
               {!user.uid && <Link className={styles.btn} href='/user_profile'>My Profile</Link>}
-              <button className={styles.btn} type='button' onClick={handleLogout}>Log Out</button>
-            </div>
-          </li>}
-          {freelancer && <li className={styles.navElement} id={styles.user}>
-            <span>{freelancer ? `${freelancer.firstname} ${freelancer.lastname}` : ''}&nbsp;&nbsp;</span>
-            <FontAwesomeIcon
-              icon={faSortDown}
-              style={{ fontSize: 10, color: props.color }}
-            />
-            <div className={styles.profile_card}>
-              <Image src='/dp.png' width='90' height='90' className={styles.dp} alt='display picture' />
-              <h1 className={styles.name}>{freelancer ? `${freelancer.firstname} ${freelancer.lastname}` : ''}</h1>
-              <p className={styles.number}>{freelancer ? freelancer.phone : ''}</p>
-              <Link className={styles.btn} href='/profile'>My Profile</Link>
-              <button className={styles.btn} type='button' onClick={handleLogout}>Log Out</button>
-            </div>
-          </li>}
-          {company && <li className={styles.navElement} id={styles.user}>
-            <span>{company ? `${company.companyname}` : ''}&nbsp;&nbsp;</span>
-            <FontAwesomeIcon
-              icon={faSortDown}
-              style={{ fontSize: 10, color: props.color }}
-            />
-            <div className={styles.profile_card}>
-              <Image src='/dp.png' width='90' height='90' className={styles.dp} alt='display picture' />
-              <h1 className={styles.name}>{company ? `${company.companyname}` : ''}</h1>
-              <p className={styles.number}>{company ? company.companyphone : ''}</p>
-              <Link className={styles.btn} href='/profile'>My Profile</Link>
               <button className={styles.btn} type='button' onClick={handleLogout}>Log Out</button>
             </div>
           </li>}

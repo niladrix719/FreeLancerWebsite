@@ -11,6 +11,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 
 export default function Index() {
+
   return (
     <div className='app'>
       <Head>

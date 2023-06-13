@@ -13,12 +13,12 @@ async function signupController(req, res) {
   try {
     const phone = req.body.phone;
     let user;
-    if(req.body.type === 'user')
-    user = await userCollection.findOne({ phone: phone });
-    else if(req.body.type === 'freelancer')
-    user = await freelancerCollection.findOne({ phone: phone });
-    else if(req.body.type === 'company')
-    user = await companyCollection.findOne({ phone: phone });
+    if (req.body.type === 'user')
+      user = await userCollection.findOne({ phone: phone });
+    else if (req.body.type === 'freelancer')
+      user = await freelancerCollection.findOne({ phone: phone });
+    else if (req.body.type === 'company')
+      user = await companyCollection.findOne({ phone: phone });
 
     if (user) {
       return res.sendStatus(403);
@@ -147,7 +147,7 @@ async function editUserProfile(req, res) {
             }
           });
 
-          const updatedAuthData = { ...authData, user: { ...authData.user, firstname: req.body.firstname, lastname: req.body.lastname , profilePicture: req.file.filename } };
+          const updatedAuthData = { ...authData, user: { ...authData.user, firstname: req.body.firstname, lastname: req.body.lastname, profilePicture: req.file.filename } };
           const updatedToken = jwt.sign(updatedAuthData, secret, { expiresIn: '30d' }, (err, token) => {
             if (err) {
               console.log(err);
@@ -156,6 +156,33 @@ async function editUserProfile(req, res) {
           });
 
           res.send({ user: updatedAuthData, token: updatedToken });
+        } else {
+          res.sendStatus(403);
+        }
+      }
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal server error');
+  }
+}
+
+const getProfile = async (req, res) => {
+  try {
+    jwt.verify(req.token, process.env.JWT_SECRET, async (err, authData) => {
+      if (err) {
+        return;
+      } else {
+        let user;
+        if (authData.user.profession)
+          user = await freelancerCollection.findOne({ _id: authData.user._id });
+        else if (authData.user.companyName)
+          user = await companyCollection.findOne({ _id: authData.user._id });
+        else
+          user = await userCollection.findOne({ _id: authData.user._id });
+
+        if (user) {
+          res.send(user);
         } else {
           res.sendStatus(403);
         }
@@ -182,5 +209,6 @@ module.exports = {
   signupController,
   loginController,
   getUserProfile,
-  editUserProfile
+  editUserProfile,
+  getProfile
 };

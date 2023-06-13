@@ -4,7 +4,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const db = require('./db/db');
-const { signupController , loginController , getUserProfile , editUserProfile} = require('./controllers/userController');
+const { signupController , loginController , getUserProfile , editUserProfile , getProfile} = require('./controllers/userController');
 const { otpController, otpSignupController , VerifyFreelancerPhone } = require('./controllers/otpController');
 const { registerCompany } = require('./controllers/companyController');
 const { registerFreelancer,
@@ -70,6 +70,7 @@ app.post('/add/review', verifyToken, addReview);
 app.get('/reviews/:id', getReviews);
 app.post('/add/hire', verifyToken, addHire);
 app.put('/profile/user/edit', userProfilePic, verifyToken, editUserProfile);
+app.get('/profile', verifyToken, getProfile);
 
 app.get('/', (req, res) => {
   res.send('Hello From Fipezo Server');
