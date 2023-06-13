@@ -56,12 +56,19 @@ function HireBox(props) {
       <p className={styles.error}>{hireError ? 'Please fill all the fields' : ''}</p>
       <div className={styles.fields}>
         <div className={styles.field}>
-          <label htmlFor='title' className={styles.label}>Title</label>
-          <input className={styles.input} type="text" id='title' name='title'
-            onChange={(e) => { setHireError(false); setTitle(e.target.value) }} />
+          <div>
+            <label htmlFor='title' className={styles.label}>Full Name</label>
+            <input className={styles.input} type="text" id='title' name='title'
+              onChange={(e) => { setHireError(false); setTitle(e.target.value) }} />
+          </div>
+          <div>
+            <label htmlFor='phone' className={styles.label}>Phone</label>
+            <input className={styles.input} type="number" id='phone' name='phone'
+              onChange={(e) => { setHireError(false); setPhone(e.target.value) }} />
+          </div>
         </div>
-        <div className={styles.field}>
-          <label htmlFor='description' className={styles.label}>Description</label>
+        <div className={styles.field} id={styles.purpose}>
+          <label htmlFor='description' className={styles.label}>Purpose</label>
           <textarea className={styles.textarea} name="description" id="description" cols="30" rows="10"
             onChange={(e) => { setHireError(false); setDescription(e.target.value) }}>
           </textarea>
@@ -77,17 +84,22 @@ function HireBox(props) {
             onChange={(e) => { setHireError(false); setDate(e.target.value) }} />
         </div>
         <div className={styles.field}>
-          <label htmlFor='time' className={styles.label}>Time</label>
-          <input className={styles.input} type="time" id='time' name='time'
+          <label htmlFor='startTime' className={styles.label}>Start Time</label>
+          <input className={styles.input} type="time" id='startTime' name='startTime'
             onChange={(e) => { setHireError(false); setTime(e.target.value) }} />
         </div>
         <div className={styles.field}>
+          <label htmlFor='endTime' className={styles.label}>End Time</label>
+          <input className={styles.input} type="time" id='endTime' name='endTime'
+            onChange={(e) => { setHireError(false); setDuration(e.target.value) }} />
+        </div>
+        {/* <div className={styles.field}>
           <label htmlFor='duration' className={styles.label}>Duration (Hrs.)</label>
           <input className={styles.input} type="number" id='duration' name='duration'
             onChange={(e) => { setHireError(false); setDuration(e.target.value) }} />
-        </div>
+        </div> */}
         <div className={styles.field}>
-          <label htmlFor='budget' className={styles.label}>Total Budget (Rs.)</label>
+          <label htmlFor='budget' className={styles.label}>Total Budget (&#8377;)</label>
           <input className={styles.input} type="number" id='budget' name='budget'
             onChange={(e) => { setHireError(false); setBudget(e.target.value) }} />
         </div>
