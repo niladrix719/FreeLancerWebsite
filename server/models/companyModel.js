@@ -13,6 +13,10 @@ const companySchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  companyaddress: {
+    type: String,
+    required: true
+  },
   firstname: {
     type: String,
     required: true
@@ -27,6 +31,34 @@ const companySchema = new mongoose.Schema({
   },
   bio: {
     type: String,
+    required: true
+  },
+  profilePicture: {
+    type: String,
+    required: true
+  },
+  coverPicture: {
+    type: String,
+    required: true
+  },
+  panCard: {
+    type: String,
+    required: true
+  },
+  incorporationCertificate: {
+    type: String,
+    required: true
+  },
+  links: {
+    type: Object,
+    required: true
+  },
+  termsAndConditions: {
+    type: Boolean,
+    required: true
+  },
+  verified: {
+    type: Boolean,
     required: true
   }
 },

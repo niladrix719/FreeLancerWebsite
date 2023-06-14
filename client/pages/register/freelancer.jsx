@@ -41,8 +41,8 @@ class Freelancer extends React.Component {
       coverPicError: false,
       textareaError: false,
       invalidOtp: false,
+      registerFailed: false,
       warns: [false, false, false, false, false, false, false, false, false, false, false, false],
-      blur: 'none'
     }
   }
 
@@ -383,7 +383,7 @@ class Freelancer extends React.Component {
 
   render() {
     return (
-      <div className={styles.main} style={{ filter: this.state.blur }}>
+      <div className={styles.main}>
         <Navbar />
         <div className={`${this.state.form ? styles.newbody : styles.body}`}>
           <div className={`${this.state.form ? styles.newLeft : styles.left}`}>

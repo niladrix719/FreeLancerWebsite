@@ -33,7 +33,7 @@ we believe in quality over quantity. That's why we carefully verify each freelan
      ```plaintext
      CAPTCHA_SITE_KEY=your-captcha-site-key
      ```
-   - please contact me to get other keys  
+   - Please contact me to get other keys  
 
 4. Run the application:
 
