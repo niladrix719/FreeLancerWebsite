@@ -13,7 +13,8 @@ function Explore() {
   const [showCinematographers, setShowCinematographers] = useState(false);
   const [showDroneOperators, setShowDroneOperators] = useState(true);
   const [rateSort, setRateSort] = useState('10100');
-  const [stars, setStars] = useState(0);
+  const [fourStars, setFourStars] = useState(false);
+  const [threeStars, setThreeStars] = useState(false);
 
   const increPage = () => {
     setCurrentPage(currentPage + 1);
@@ -85,21 +86,30 @@ function Explore() {
     return false;
   });
 
-  filtered.filter((freelancer) => {
-    if (freelancer.rate <= rateSort && freelancer.rating >= stars) {
+  const finalFiltered = filtered.filter((freelancer) => {
+    console.log(fourStars, threeStars, freelancer.rating);
+    if (!fourStars && !threeStars) {
       return true;
     }
-    return false;
+    else if (fourStars && threeStars) {
+      return freelancer.rating >= 3;
+    }
+    else if (fourStars) {
+      return freelancer.rating >= 4;
+    }
+    else if (threeStars) {
+      return freelancer.rating >= 3;
+    }
   });
 
-  filtered.sort((a, b) => {
+  finalFiltered.sort((a, b) => {
     return (b.rating * b.reviewCount) - (a.rating * a.reviewCount);
   });
 
-  const pages = Math.ceil(filtered.length / 6);
+  const pages = Math.ceil(finalFiltered.length / 6);
   const startIndex = (currentPage - 1) * 6;
   const endIndex = startIndex + 6;
-  const displayedFreelancers = filtered.slice(startIndex, endIndex);
+  const displayedFreelancers = finalFiltered.slice(startIndex, endIndex);
 
   return (
     <div className={styles.explore}>
@@ -118,7 +128,8 @@ function Explore() {
             showDroneOperators={showDroneOperators}
             setRateSort={setRateSort}
             rateSort={rateSort}
-            stars={stars}
+            setFourStars={setFourStars}
+            setThreeStars={setThreeStars}
           />
         </div>
         <div className={styles.main}>
