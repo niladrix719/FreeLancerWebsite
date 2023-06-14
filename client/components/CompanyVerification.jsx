@@ -56,7 +56,18 @@ function Verification(props) {
 
     if (index === 6) {
       props.getVericationDetails(file, 6);
-      setAadhaarCard(file);
+      setPanCard(file);
+    }
+
+    if (file.size > 1048576 && index === 7) {
+      props.setWarns(true,3);
+      props.setPicError(false,4);
+      return;
+    }
+
+    if (index === 7) {
+      props.getVericationDetails(file, 7);
+      setIncorporationCertificate(file);
     }
 
     if (file.size > 1048576) {
@@ -137,7 +148,7 @@ function Verification(props) {
         {props.warns[0] && <p className={styles.warn}>File size exceeds maximum limit of 1MB</p>}
       </div>
       <div className={styles.uploads}>
-        <label className={styles.box}>
+        <label className={styles.boxC}>
           <FontAwesomeIcon icon={faPlus} style={{ color: 'white' }} />
           &nbsp;&nbsp;&nbsp;&nbsp;Pan Card
           <input type="file" className={styles.upload} onChange={(e) => handleImageChange(e, 6)} accept="image/jpeg,image/png" />
@@ -146,7 +157,7 @@ function Verification(props) {
           {props.panError && <p className={styles.warn}>Please Provide Pan Card</p>}
           {props.warns[2] && <p className={styles.warn}>File size exceeds maximum limit of 1MB</p>}
         </label>
-        <label className={styles.box}>
+        <label className={styles.boxC}>
           <FontAwesomeIcon icon={faPlus} style={{ color: 'white' }} />
           &nbsp;&nbsp;&nbsp;&nbsp;Incorporation Certificate
           <input type="file" className={styles.upload} onChange={(e) => handleImageChange(e, 7)} accept="image/jpeg,image/png" />
@@ -160,7 +171,7 @@ function Verification(props) {
         <label className={styles.social}>Facebook : <br />
           <input type="url" className={styles.input} placeholder="https://www.facebook.com/example"
             onChange={(e) => {
-              props.getVericationDetails(e.target.value, 12)
+              props.getVericationDetails(e.target.value, 8)
               setLinks({ ...links, facebook: e.target.value })
             }} value={links.facebook}
             required
@@ -169,7 +180,7 @@ function Verification(props) {
         <label className={styles.social}>Instagram : <br />
           <input type="url" className={styles.input} placeholder="https://www.instagram.com/example"
             onChange={(e) => {
-              props.getVericationDetails(e.target.value, 13)
+              props.getVericationDetails(e.target.value, 9)
               setLinks({ ...links, instagram: e.target.value })
             }} value={links.instagram}
             required
@@ -178,7 +189,7 @@ function Verification(props) {
         <label className={styles.social}>Twitter : <br />
           <input type="url" className={styles.input} placeholder="https://www.twitter.com/example"
             onChange={(e) => {
-              props.getVericationDetails(e.target.value, 14)
+              props.getVericationDetails(e.target.value, 10)
               setLinks({ ...links, twitter: e.target.value })
             }} value={links.twitter}
             required
@@ -187,7 +198,7 @@ function Verification(props) {
         <label className={styles.social}>Youtube : <br />
           <input type="url" className={styles.input} placeholder="https://www.youtube.com/example"
             onChange={(e) => {
-              props.getVericationDetails(e.target.value, 15)
+              props.getVericationDetails(e.target.value, 11)
               setLinks({ ...links, youtube: e.target.value })
             }} value={links.youtube}
             required

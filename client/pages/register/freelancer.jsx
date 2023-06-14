@@ -279,6 +279,7 @@ class Freelancer extends React.Component {
         });
 
         const responseData = await response.json();
+        localStorage.setItem('user', JSON.stringify({ token : responseData.token }));
         Router.push('/contact_soon');
       } catch (error) {
         console.error(error);

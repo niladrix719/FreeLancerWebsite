@@ -5,7 +5,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const db = require('./db/db');
 const { signupController , loginController , getUserProfile , editUserProfile , getProfile} = require('./controllers/userController');
-const { otpController, otpSignupController , VerifyFreelancerPhone } = require('./controllers/otpController');
+const { otpController, otpSignupController , VerifyFreelancerPhone , VerifyCompanyPhone } = require('./controllers/otpController');
 const { registerCompany } = require('./controllers/companyController');
 const { registerFreelancer,
   getFreelancerProfile,
@@ -35,6 +35,7 @@ app.use(express.static('public'));
 app.use('/uploads', express.static('uploads'));
 const upload = require('./middlewares/storage');
 const userProfilePic = require('./middlewares/userProfilePic');
+const companyUpload = require('./middlewares/companyUpload');
 const { get } = require('mongoose');
 
 // Setting up the routes
@@ -43,8 +44,9 @@ app.post('/login', loginController);
 app.post('/otp', otpController);
 app.post('/otp/signup', otpSignupController);
 app.post('/register/freelancer', upload, verifyToken , registerFreelancer);
-app.post('/register/company', registerCompany);
+app.post('/register/company', companyUpload , verifyToken , registerCompany);
 app.post('/verify/freelancer/phone', VerifyFreelancerPhone);
+app.post('/verify/company/phone', VerifyCompanyPhone);
 app.get('/profile/freelancer/:uid', getFreelancerProfile);
 app.get('/profiles/verified/freelancer', getFreelancerProfiles);
 app.get('/profiles/featured/freelancer', getFeaturedFreelancerProfiles);

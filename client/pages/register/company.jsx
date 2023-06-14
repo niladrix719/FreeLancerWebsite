@@ -213,7 +213,7 @@ class Company extends React.Component {
     }
 
     const postData = async () => {
-      const token = localStorage.getItem('token') ? JSON.parse(localStorage.getItem('token')).token : null;
+      const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
       try {
         const data = new FormData();
         data.append('firstname', this.state.firstname);
@@ -240,6 +240,8 @@ class Company extends React.Component {
         });
 
         const responseData = await response.json();
+        console.log(responseData);
+        localStorage.setItem('user', JSON.stringify({ token : responseData.token }));
         Router.push('/contact_soon');
       } catch (error) {
         console.error(error);
@@ -292,7 +294,7 @@ class Company extends React.Component {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            phone: this.state.phone,
+            phone: this.state.companyphone,
             type: 'company'
           })
         });
@@ -431,7 +433,8 @@ class Company extends React.Component {
                 </textarea>
               </div>}
               {!this.state.form && <div className={styles.btns}>
-                <button className={styles.NextBtn} type='button' onClick={() => this.increProgress(14.25)}>{this.state.btn}</button>
+              {this.state.currentPage !== 3 && <button className={styles.NextBtn} type='button' onClick={() => this.increProgress(14.25)}>{this.state.btn}</button>}
+                {this.state.currentPage === 3 && <button className={styles.NextBtn} type='button' onClick={this.handleOtp}>Verify</button>}
                 <button className={styles.backBtn} type='button' onClick={() => this.decreProgress(14.25)}>Back</button>
               </div>}
               {this.state.form && <CompanyVerification

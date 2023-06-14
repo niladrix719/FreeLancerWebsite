@@ -164,6 +164,27 @@
     display: none;
 }
 
+.boxC {
+    display: inline-block;
+    padding: 10px 14px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #323131;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 18rem;
+    position: relative;
+}
+
+.boxC:hover{
+    background-color: var(--primary-color);
+}
+
+.boxC input[type="file"] {
+    display: none;
+}
+
 .socials{
     margin-top: 2rem;
     padding: 0.5rem;
