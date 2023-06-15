@@ -29,9 +29,11 @@ async function registerCompany(req, res) {
         verified: false
       });
 
-      const postData = await companyData.save();
+      await companyData.save();
 
-      jwt.sign({ postData }, secret, { expiresIn: '30d' }, (err, token) => {
+      const user = await companyCollection.findOne({ companyphone: req.body.companyphone })
+
+      jwt.sign({ user }, secret, { expiresIn: '30d' }, (err, token) => {
         if (err) {
           console.log(err);
           return res.sendStatus(403);

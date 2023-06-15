@@ -1,4 +1,5 @@
 const freelancerCollection = require('../models/freelancerModel');
+const userCollection = require('../models/userModel');
 const fs = require('fs');
 const jwt = require('jsonwebtoken');
 const secret = process.env.JWT_SECRET;
@@ -38,8 +39,11 @@ async function registerFreelancer(req, res) {
         verified: false
       });
 
-      const postData = await freelancerData.save();
-      jwt.sign({ postData }, secret, { expiresIn: '30d' }, (err, token) => {
+      await freelancerData.save();
+
+      const user = await freelancerCollection.findOne({ phone: req.body.phone })
+
+      jwt.sign({ user }, secret, { expiresIn: '30d' }, (err, token) => {
         if (err) {
           console.log(err)
           return res.sendStatus(403);
@@ -96,10 +100,16 @@ async function getUnFreelancerProfiles(req, res) {
       if (err) {
         return;
       } else {
-        if (authData.user.phone === parseInt(process.env.ADMIN_PHONE)) {
-          const freelancers = await freelancerCollection.find({ verified: false });
-          res.send(freelancers);
-        } else {
+        user = await userCollection.findOne({ phone: req.body.phone });
+        if (user) {
+          if (authData.user.phone === parseInt(process.env.ADMIN_PHONE)) {
+            const freelancers = await freelancerCollection.find({ verified: false });
+            res.send(freelancers);
+          } else {
+            res.sendStatus(403);
+          }
+        }
+        else {
           res.sendStatus(403);
         }
       }

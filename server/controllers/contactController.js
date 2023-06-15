@@ -40,11 +40,17 @@ async function fetchContactUs(req, res) {
       if (err) {
         return;
       } else {
-        if (authData.user.phone === parseInt(process.env.ADMIN_PHONE)) {
-          const contactData = await contactCollection.find();
-          res.status(200).send(contactData);
-        } else {
-          res.status(401).send('Unauthorized');
+        user = await userCollection.findOne({ phone: req.body.phone });
+        if (user) {
+          if (authData.user.phone === parseInt(process.env.ADMIN_PHONE)) {
+            const contactData = await contactCollection.find();
+            res.status(200).send(contactData);
+          } else {
+            res.status(401).send('Unauthorized');
+          }
+        }
+        else {
+          res.sendStatus(403);
         }
       }
     });

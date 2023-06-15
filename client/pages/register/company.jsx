@@ -6,7 +6,7 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import Image from 'next/image'
 import Footer from '@/components/Footer'
 import CompanyVerification from '@/components/CompanyVerification'
-import { Router } from 'next/router'
+import Router from 'next/router'
 
 class Company extends React.Component {
   constructor(props) {
@@ -239,8 +239,7 @@ class Company extends React.Component {
           body: data
         });
 
-        const responseData = await response.json();
-        console.log(responseData);
+        const responseData = await response.json(); 
         localStorage.setItem('user', JSON.stringify({ token : responseData.token }));
         Router.push('/contact_soon');
       } catch (error) {

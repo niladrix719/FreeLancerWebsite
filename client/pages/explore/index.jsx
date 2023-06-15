@@ -86,13 +86,6 @@ function Explore() {
     return false;
   });
 
-  filtered.filter((freelancer) => {
-    if (freelancer.rate <= rateSort && freelancer.rating >= stars) {
-      return true;
-    }
-    return false;
-  });
-
   const finalFiltered = filtered.filter((freelancer) => {
     console.log(fourStars, threeStars, freelancer.rating);
     if (!fourStars && !threeStars) {

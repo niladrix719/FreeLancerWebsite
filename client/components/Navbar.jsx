@@ -29,6 +29,8 @@ export default function Navbar(props) {
         .then(data => {
           if (data.authData.user.phone === 7001599126)
             setIsAdmin(true);
+          if (data.authData.user.companyname)  
+            setCompany(data.authData.user)
           setUser(data.authData.user);
           if (props.checkLoggedIn)
             props.checkLoggedIn(true);
@@ -116,6 +118,7 @@ export default function Navbar(props) {
           {user === null && <li><Link href='/login' className={styles.login}>Login</Link></li>}
           {user && <li className={styles.navElement} id={styles.user}>
             <span>{user ? `${user.firstname} ${user.lastname}` : ''}&nbsp;&nbsp;</span>
+            <span>{company ? `${company.companyname}` : ''}&nbsp;&nbsp;</span>
             <FontAwesomeIcon
               icon={faSortDown}
               style={{ fontSize: 10, color: props.color }}
