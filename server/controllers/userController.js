@@ -157,12 +157,7 @@ async function editUserProfile(req, res) {
           });
 
           const updatedAuthData = { ...authData, user: { ...authData.user, firstname: req.body.firstname, lastname: req.body.lastname, profilePicture: req.file.filename } };
-          const updatedToken = jwt.sign(updatedAuthData, secret, { expiresIn: '30d' }, (err, token) => {
-            if (err) {
-              console.log(err);
-              return res.sendStatus(403);
-            }
-          });
+          const updatedToken = jwt.sign(updatedAuthData, secret);
 
           res.send({ user: updatedAuthData, token: updatedToken });
         } else {
