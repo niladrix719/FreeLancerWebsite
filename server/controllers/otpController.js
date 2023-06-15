@@ -128,7 +128,7 @@ const otpController = async (req, res) => {
     else if (req.body.type === 'freelancer')
       user = await freelancerCollection.findOne({ phone: req.body.phone })
     else if (req.body.type === 'company')
-      user = await companyCollection.findOne({ phone: req.body.phone })
+      user = await companyCollection.findOne({ companyphone: req.body.phone })
 
     if (!user || !otpData) {
       return res.sendStatus(403);
