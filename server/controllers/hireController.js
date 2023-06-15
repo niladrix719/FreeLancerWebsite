@@ -7,7 +7,7 @@ const secret = process.env.JWT_SECRET;
 async function addHire(req, res) {
   try {
     jwt.verify(req.token, secret, async (err, authData) => {
-      const user = await userCollection.findOne({ phone: req.body.phone })
+      const user = await userCollection.findOne({ _id: authData.user._id });
       if (err && !user) {
         res.sendStatus(403);
         return;
@@ -53,7 +53,7 @@ async function getHires(req, res) {
         return;
       }
 
-      const user = await userCollection.findById(authData.user._id);
+      const user = await userCollection.findOne({ _id: authData.user._id });
 
       if (!user) {
         res.status(404).send('User not found');
@@ -79,7 +79,7 @@ async function getRequests(req, res) {
         return;
       }
 
-      const user = await freelancerCollection.findById(authData.user._id);
+      const user = await freelancerCollection.findOne({ _id: authData.user._id });
 
       if (!user) {
         res.status(404).send('User not found');

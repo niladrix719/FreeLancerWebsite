@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 const secret = process.env.JWT_SECRET;
 const contactCollection = require('../models/contactModel');
 const axios = require('axios');
+const userCollection = require('../models/userModel');
 
 async function contactUs(req, res) {
   try {
@@ -40,7 +41,7 @@ async function fetchContactUs(req, res) {
       if (err) {
         return;
       } else {
-        user = await userCollection.findOne({ phone: req.body.phone });
+        const user = await userCollection.findOne({ _id: authData.user._id });
         if (user) {
           if (authData.user.phone === parseInt(process.env.ADMIN_PHONE)) {
             const contactData = await contactCollection.find();

@@ -47,6 +47,43 @@ async function registerCompany(req, res) {
   }
 }
 
+async function editCompanyProfile(req, res) {
+  try {
+    jwt.verify(req.token, secret, async (err, authData) => {
+      const user = await companyCollection.findOne({ _id: authData.user._id });
+      if (err && !user) {
+        console.log(err);
+        res.sendStatus(403);
+        return;
+      }
+
+      await companyCollection.updateOne({ _id: authData.user._id }, {
+        $set: {
+          companyname: req.body.companyname,
+          companyaddress: req.body.companyaddress,
+          profilePicture: req.file.filename,
+          coverPicture: req.file.filename,
+          bio: req.body.bio
+        }
+      });
+
+      const updatedAuthData = { ...authData, user: { ...authData.user, companyname: req.body.companyname, companyaddress: req.body.companyaddress, profilePicture: req.file.filename, coverPicture: req.file.filename, bio: req.body.bio } };
+      const updatedToken = jwt.sign(updatedAuthData, secret, { expiresIn: '30d' }, (err, token) => {
+        if (err) {
+          console.log(err);
+          return res.sendStatus(403);
+        }
+      });
+
+      res.send({ user: updatedAuthData, token: updatedToken });
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal server error');
+  }
+}
+
 module.exports = {
-  registerCompany
-};
+  registerCompany,
+  editCompanyProfile
+}

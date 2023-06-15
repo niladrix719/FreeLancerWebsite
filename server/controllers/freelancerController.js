@@ -100,7 +100,7 @@ async function getUnFreelancerProfiles(req, res) {
       if (err) {
         return;
       } else {
-        user = await userCollection.findOne({ phone: req.body.phone });
+        const user = await userCollection.findOne({ _id: authData.user._id });
         if (user) {
           if (authData.user.phone === parseInt(process.env.ADMIN_PHONE)) {
             const freelancers = await freelancerCollection.find({ verified: false });

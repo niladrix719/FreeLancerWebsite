@@ -7,7 +7,7 @@ const secret = process.env.JWT_SECRET;
 async function addReview(req, res) {
   try {
     jwt.verify(req.token, secret, async (err, authData) => {
-      user = await userCollection.findOne({ phone: req.body.phone })
+      const user = await userCollection.findOne({ phone: req.body.phone })
       if (err && !user) {
         res.sendStatus(403);
         return;

@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const db = require('./db/db');
 const { signupController, loginController, getUserProfile, editUserProfile, getProfile , getNavbar } = require('./controllers/userController');
 const { otpController, otpSignupController, VerifyFreelancerPhone, VerifyCompanyPhone } = require('./controllers/otpController');
-const { registerCompany } = require('./controllers/companyController');
+const { registerCompany , editCompanyProfile } = require('./controllers/companyController');
 const { registerFreelancer,
   getFreelancerProfile,
   getFreelancerProfiles,
@@ -36,6 +36,7 @@ app.use('/uploads', express.static('uploads'));
 const upload = require('./middlewares/storage');
 const userProfilePic = require('./middlewares/userProfilePic');
 const companyUpload = require('./middlewares/companyUpload');
+const companyEditUpload = require('./middlewares/companyEditUpload');
 const { get } = require('mongoose');
 const userCollection = require('./models/userModel');
 
@@ -62,6 +63,7 @@ app.post('/add/review', verifyToken, addReview);
 app.get('/reviews/:id', getReviews);
 app.post('/add/hire', verifyToken, addHire);
 app.put('/profile/user/edit', userProfilePic, verifyToken, editUserProfile);
+app.put('/profile/company/edit', companyEditUpload, verifyToken, editCompanyProfile);
 app.get('/profile', verifyToken, getProfile);
 app.get('/hires', verifyToken, getHires);
 app.get('/requests', verifyToken, getRequests);

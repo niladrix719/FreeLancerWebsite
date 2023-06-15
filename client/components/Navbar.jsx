@@ -14,7 +14,7 @@ export default function Navbar(props) {
   const [company, setCompany] = useState(null);
   const [background, setBackground] = useState('transparent');
   const [color, setColor] = useState(props.color);
-  let [isAdmin, setIsAdmin] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
@@ -31,6 +31,7 @@ export default function Navbar(props) {
             setIsAdmin(true);
           if (data.authData.user.companyname)  
             setCompany(data.authData.user)
+          else  
           setUser(data.authData.user);
           if (props.checkLoggedIn)
             props.checkLoggedIn(true);
@@ -115,10 +116,9 @@ export default function Navbar(props) {
             </div>
           </li>
           {isAdmin && <Link href='/verification' className={styles.navElement}>Verify</Link>}
-          {user === null && <li><Link href='/login' className={styles.login}>Login</Link></li>}
+          {user === null && company === null && <li><Link href='/login' className={styles.login}>Login</Link></li>}
           {user && <li className={styles.navElement} id={styles.user}>
-            <span>{user ? `${user.firstname} ${user.lastname}` : ''}&nbsp;&nbsp;</span>
-            <span>{company ? `${company.companyname}` : ''}&nbsp;&nbsp;</span>
+            <span>{user && !company ? `${user.firstname} ${user.lastname}` : ''}&nbsp;&nbsp;</span>
             <FontAwesomeIcon
               icon={faSortDown}
               style={{ fontSize: 10, color: props.color }}
@@ -129,6 +129,20 @@ export default function Navbar(props) {
               <p className={styles.number}>{user ? user.phone : ''}</p>
               {user.uid && <Link className={styles.btn} href={`/freelancer_profile`}>My Profile</Link>}
               {!user.uid && <Link className={styles.btn} href='/user_profile'>My Profile</Link>}
+              <button className={styles.btn} type='button' onClick={handleLogout}>Log Out</button>
+            </div>
+          </li>}
+          {company && <li className={styles.navElement} id={styles.user}>
+            <span>{company && !user ? `${company.companyname}` : ''}&nbsp;&nbsp;</span>
+            <FontAwesomeIcon
+              icon={faSortDown}
+              style={{ fontSize: 10, color: props.color }}
+            />
+            <div className={styles.profile_card}>
+              <div className={styles.dp} style={{backgroundImage: `url(http://localhost:3000/uploads/${company.profilePicture})`}}></div>
+              <h1 className={styles.name}>{company ? `${company.companyname} ` : ''}</h1>
+              <p className={styles.number}>{company ? company.companyphone : ''}</p>
+              <Link className={styles.btn} href='/company_profile'>My Profile</Link>
               <button className={styles.btn} type='button' onClick={handleLogout}>Log Out</button>
             </div>
           </li>}

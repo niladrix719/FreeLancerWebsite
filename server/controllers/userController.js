@@ -12,13 +12,14 @@ let otpTimer;
 async function signupController(req, res) {
   try {
     const phone = req.body.phone;
+    const companyphone = req.body.companyphone;
     let user;
     if (req.body.type === 'user')
       user = await userCollection.findOne({ phone: phone });
     else if (req.body.type === 'freelancer')
       user = await freelancerCollection.findOne({ phone: phone });
     else if (req.body.type === 'company')
-      user = await companyCollection.findOne({ phone: phone });
+      user = await companyCollection.findOne({ companyphone: companyphone });
 
     if (user) {
       return res.sendStatus(403);
@@ -124,7 +125,6 @@ async function getUserProfile(req, res) {
         user = await companyCollection.findOne({ _id: authData.user._id });
       else
         user = await userCollection.findOne({ _id: authData.user._id });
-      user = companyCollection.findOne({ phone: phone });
       if (err && !user) {
         return;
       } else {
