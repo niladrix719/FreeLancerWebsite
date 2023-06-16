@@ -87,7 +87,6 @@ function Explore() {
   });
 
   const finalFiltered = filtered.filter((freelancer) => {
-    console.log(fourStars, threeStars, freelancer.rating);
     if (!fourStars && !threeStars) {
       return true;
     }

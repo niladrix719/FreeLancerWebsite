@@ -76,22 +76,22 @@ async function editCompanyProfile(req, res) {
           $set: {
             companyname: req.body.companyname,
             companyaddress: req.body.companyaddress,
-            coverPicture: req.files.coverPicture[0].filename,
+            profilePicture: req.files.profilePicture[0].filename,
             bio: req.body.bio
           }
         });
-        updatedAuthData = { ...authData, user: { ...authData.user, companyname: req.body.companyname, companyaddress: req.body.companyaddress, coverPicture: req.files.coverPicture[0].filename, bio: req.body.bio } };
+        updatedAuthData = { ...authData, user: { ...authData.user, companyname: req.body.companyname, companyaddress: req.body.companyaddress, profilePicture: req.files.profilePicture[0].filename, bio: req.body.bio } };
       }
       else if (!req.body.coverPicture) {
         await companyCollection.updateOne({ _id: authData.user._id }, {
           $set: {
             companyname: req.body.companyname,
             companyaddress: req.body.companyaddress,
-            profilePicture: req.files.profilePicture[0].filename,
+            coverPicture: req.files.coverPicture[0].filename,
             bio: req.body.bio
           }
         });
-        updatedAuthData = { ...authData, user: { ...authData.user, companyname: req.body.companyname, companyaddress: req.body.companyaddress, profilePicture: req.files.profilePicture[0].filename, bio: req.body.bio } };
+        updatedAuthData = { ...authData, user: { ...authData.user, companyname: req.body.companyname, companyaddress: req.body.companyaddress, coverPicture: req.files.coverPicture[0].filename, bio: req.body.bio } };
       }
       else {
         await companyCollection.updateOne({ _id: authData.user._id }, {
@@ -113,7 +113,28 @@ async function editCompanyProfile(req, res) {
   }
 }
 
+// delete company profile
+
+async function deleteCompanyProfile(req, res) {
+  try {
+    jwt.verify(req.token, process.env.JWT_SECRET, async (err, authData) => {
+      const userData = await companyCollection.findOne({ _id: authData.user._id });
+      if (err && !userData) {
+        res.sendStatus(403);
+        return;
+      } else {
+        await companyCollection.deleteOne({ _id: authData.user._id });
+        res.send('Company Deleted');
+      }
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal server error');
+  }
+}
+
 module.exports = {
   registerCompany,
-  editCompanyProfile
+  editCompanyProfile,
+  deleteCompanyProfile
 }

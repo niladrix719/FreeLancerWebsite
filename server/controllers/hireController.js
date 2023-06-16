@@ -19,8 +19,6 @@ async function addHire(req, res) {
         return;
       }
 
-      console.log('jfj');
-
       let phone;
       if(authData.user.companyname)
       phone = user.companyphone;
@@ -31,8 +29,6 @@ async function addHire(req, res) {
         res.status(400).send('Bad request');
         return;
       }
-
-      console.log('here');
 
       const freelancerDetails = await freelancerCollection.findById(req.body.freelancer);
 
@@ -52,8 +48,6 @@ async function addHire(req, res) {
       });
 
       const postData = await hireData.save();
-
-      console.log(postData);
 
       res.send(postData);
     });

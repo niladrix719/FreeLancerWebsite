@@ -2,8 +2,9 @@ import style from '@/styles/Company_Profile.module.css'
 import React from 'react';
 import Image from 'next/image';
 import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+import DeleteBox from '@/components/DeleteBox';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 function Company_Profile() {
   const [companyname, setCompanyname] = React.useState('');
@@ -19,6 +20,8 @@ function Company_Profile() {
   const [cover, setCover] = React.useState(null);
   const [profilePicture, setProfilePicture] = React.useState('');
   const [coverPicture, setCoverPicture] = React.useState('');
+  const [showDeleteBox, setShowDeleteBox] = React.useState(false);
+  const router = useRouter();
 
   React.useEffect(() => {
     const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
@@ -66,7 +69,6 @@ function Company_Profile() {
         .then(data => {
           if (data.error) {
           } else {
-            console.log(data.user);
             localStorage.setItem('user', JSON.stringify({ token: data.token }));
             setEditProfile(false);
             setCompanyname(data.user.user.companyname);
@@ -123,7 +125,30 @@ function Company_Profile() {
     reader.onerror = () => {
       console.error('Something went wrong!');
     };
-  };  
+  };
+
+  const handleDeleteAccount = () => {
+    const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
+    if (token) {
+      fetch('http://localhost:3000/profile/company/delete', {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      })
+        .then(res => {
+          if (res.ok) {
+            localStorage.removeItem('user');
+            router.push('/');
+          } else {
+            console.log('Error deleting user profile');
+          }
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    }
+  }
 
   return (
     <div className={style.profile}>
@@ -145,7 +170,7 @@ function Company_Profile() {
             {!editProfile && <div className={style.options}>
               <Link className={style.option} href='/my_hires'>Hire Requests</Link>
               <p className={style.option} onClick={() => setEditProfile(true)}>Edit Profile</p>
-              <p className={style.option}>Delete Account</p>
+              <p className={style.option} onClick={() => setShowDeleteBox(true)}>Delete Account</p>
               <p className={style.option}>Rate our Services</p>
             </div>}
             {!editProfile && <div>
@@ -196,6 +221,9 @@ function Company_Profile() {
                 <button className={style.back} type='button' onClick={() => setEditProfile(false)}>Back</button>
               </div>
             </form>
+          </div>}
+          {showDeleteBox && <div className={style.deleteBox}>
+            <DeleteBox setShowDeleteBox={setShowDeleteBox} handleDeleteAccount={handleDeleteAccount} />
           </div>}
         </div>
       </div>
