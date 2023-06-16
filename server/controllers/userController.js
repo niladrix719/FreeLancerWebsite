@@ -147,7 +147,9 @@ async function editUserProfile(req, res) {
         return;
       } else {
         const user = await userCollection.findOne({ _id: authData.user._id });
+        let updatedAuthData;
         if (user) {
+          if(!req.body.profilePicture){
           await userCollection.updateOne({ _id: authData.user._id }, {
             $set: {
               firstname: req.body.firstname,
@@ -156,7 +158,19 @@ async function editUserProfile(req, res) {
             }
           });
 
-          const updatedAuthData = { ...authData, user: { ...authData.user, firstname: req.body.firstname, lastname: req.body.lastname, profilePicture: req.file.filename } };
+          updatedAuthData = { ...authData, user: { ...authData.user, firstname: req.body.firstname, lastname: req.body.lastname, profilePicture: req.file.filename } };
+        }
+        else{
+          await userCollection.updateOne({ _id: authData.user._id }, {
+            $set: {
+              firstname: req.body.firstname,
+              lastname: req.body.lastname
+            }
+          });
+
+          updatedAuthData = { ...authData, user: { ...authData.user, firstname: req.body.firstname, lastname: req.body.lastname } };
+        }
+        
           const updatedToken = jwt.sign(updatedAuthData, secret);
 
           res.send({ user: updatedAuthData, token: updatedToken });
