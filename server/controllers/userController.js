@@ -149,28 +149,28 @@ async function editUserProfile(req, res) {
         const user = await userCollection.findOne({ _id: authData.user._id });
         let updatedAuthData;
         if (user) {
-          if(!req.body.profilePicture){
-          await userCollection.updateOne({ _id: authData.user._id }, {
-            $set: {
-              firstname: req.body.firstname,
-              lastname: req.body.lastname,
-              profilePicture: req.file.filename
-            }
-          });
+          if (!req.body.profilePicture) {
+            await userCollection.updateOne({ _id: authData.user._id }, {
+              $set: {
+                firstname: req.body.firstname,
+                lastname: req.body.lastname,
+                profilePicture: req.file.filename
+              }
+            });
 
-          updatedAuthData = { ...authData, user: { ...authData.user, firstname: req.body.firstname, lastname: req.body.lastname, profilePicture: req.file.filename } };
-        }
-        else{
-          await userCollection.updateOne({ _id: authData.user._id }, {
-            $set: {
-              firstname: req.body.firstname,
-              lastname: req.body.lastname
-            }
-          });
+            updatedAuthData = { ...authData, user: { ...authData.user, firstname: req.body.firstname, lastname: req.body.lastname, profilePicture: req.file.filename } };
+          }
+          else {
+            await userCollection.updateOne({ _id: authData.user._id }, {
+              $set: {
+                firstname: req.body.firstname,
+                lastname: req.body.lastname
+              }
+            });
 
-          updatedAuthData = { ...authData, user: { ...authData.user, firstname: req.body.firstname, lastname: req.body.lastname } };
-        }
-        
+            updatedAuthData = { ...authData, user: { ...authData.user, firstname: req.body.firstname, lastname: req.body.lastname } };
+          }
+
           const updatedToken = jwt.sign(updatedAuthData, secret);
 
           res.send({ user: updatedAuthData, token: updatedToken });
@@ -239,6 +239,26 @@ const getNavbar = async (req, res) => {
   });
 };
 
+// delete user profile
+
+async function deleteUserProfile(req, res) {
+  try {
+    jwt.verify(req.token, process.env.JWT_SECRET, async (err, authData) => {
+      const userData = await userCollection.findOne({ _id: authData.user._id });
+      if (err && !userData) {
+        res.sendStatus(403);
+        return;
+      } else {
+        await userCollection.deleteOne({ _id: authData.user._id });
+        res.send('User Deleted');
+      }
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal server error');
+  }
+}
+
 //OTP
 
 function sendTextMessage(phoneNumber, message) {
@@ -256,5 +276,6 @@ module.exports = {
   getUserProfile,
   editUserProfile,
   getProfile,
-  getNavbar
+  getNavbar,
+  deleteUserProfile
 };

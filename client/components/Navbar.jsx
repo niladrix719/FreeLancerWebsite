@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import {
   faSortDown
 } from "@fortawesome/free-solid-svg-icons";
+import { Router } from 'next/router';
 
 export default function Navbar(props) {
   const [user, setUser] = useState(null);
@@ -48,6 +49,7 @@ export default function Navbar(props) {
     setUser(null);
     if (props.checkLoggedIn)
       props.checkLoggedIn(false);
+    Router.push('/');  
   }
 
   useEffect(() => {

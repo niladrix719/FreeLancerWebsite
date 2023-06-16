@@ -2,8 +2,9 @@ import React from 'react';
 import style from '../styles/User_profile.module.css';
 import Image from 'next/image';
 import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+import DeleteBox from '@/components/DeleteBox';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 function User_profile() {
   const [firstname, setFirstname] = React.useState('');
@@ -15,6 +16,8 @@ function User_profile() {
   const [warns, setWarns] = React.useState(false);
   const [image, setImage] = React.useState(null);
   const [profilePicture, setProfilePicture] = React.useState('');
+  const [showDeleteBox, setShowDeleteBox] = React.useState(false);
+  const router = useRouter();
 
   React.useEffect(() => {
     const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
@@ -104,6 +107,29 @@ function User_profile() {
     }
   };
 
+  const handleDeleteAccount = () => {
+    const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
+    if (token) {
+      fetch('http://localhost:3000/profile/user/delete', {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      })
+        .then(res => {
+          if (res.ok) {
+            localStorage.removeItem('user');
+            router.push('/');
+          } else {
+            console.log('Error deleting user profile');
+          }
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    }
+  }
+
   return (
     <div className={style.profile}>
       <Navbar color='black' />
@@ -121,7 +147,7 @@ function User_profile() {
           {!editProfile && <div className={style.options}>
             <Link className={style.option} href='/my_hires'>Hire Requests</Link>
             <p className={style.option} onClick={() => setEditProfile(true)}>Edit Profile</p>
-            <p className={style.option}>Delete Account</p>
+            <p className={style.option} onClick={() => setShowDeleteBox(true)}>Delete Account</p>
             <p className={style.option}>Rate our Services</p>
           </div>}
           {!editProfile && <div>
@@ -158,9 +184,11 @@ function User_profile() {
               </div>
             </form>
           </div>}
+          {showDeleteBox && <div className={style.deleteBox}>
+            <DeleteBox setShowDeleteBox={setShowDeleteBox} handleDeleteAccount={handleDeleteAccount} />
+          </div>}
         </div>
       </div>
-      {/* <Footer /> */}
     </div>
   );
 }

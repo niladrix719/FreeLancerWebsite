@@ -4,7 +4,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const db = require('./db/db');
-const { signupController, loginController, getUserProfile, editUserProfile, getProfile , getNavbar } = require('./controllers/userController');
+const { signupController, loginController, getUserProfile, editUserProfile, getProfile , getNavbar , deleteUserProfile } = require('./controllers/userController');
 const { otpController, otpSignupController, VerifyFreelancerPhone, VerifyCompanyPhone } = require('./controllers/otpController');
 const { registerCompany , editCompanyProfile } = require('./controllers/companyController');
 const { registerFreelancer,
@@ -55,6 +55,7 @@ app.get('/profiles/featured/freelancer', getFeaturedFreelancerProfiles);
 app.get('/profiles/unverified/freelancer', verifyToken, getUnFreelancerProfiles);
 app.get('/contact/messages', verifyToken, fetchContactUs);
 app.delete('/delete/freelancer/:id', deleteFreelancerProfile);
+app.delete('/profile/user/delete', verifyToken, deleteUserProfile);
 app.put('/verify/freelancer/:id', verifyFreelancerProfile);
 app.post('/contact', contactUs);
 app.get('/profile/user', verifyToken, getUserProfile);

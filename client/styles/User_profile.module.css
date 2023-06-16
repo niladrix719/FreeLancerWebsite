@@ -25,6 +25,7 @@
     background-size: cover;
     background-position: center;
     background-color: white;
+    position: relative;
 }
 
 .profileInfo{
@@ -171,4 +172,13 @@
     border-radius: 5px;
     outline: none;
     font-size: 1.25rem;
+}
+
+/* delete box */
+
+.deleteBox{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
