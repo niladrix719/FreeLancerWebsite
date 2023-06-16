@@ -99,7 +99,8 @@ function Name() {
         {freelancer.links && <ProfileBioCard freelancer={freelancer} />}
         {isFreelancerLoaded && <Details works={freelancer.works} reviews={reviews} />}
         <div className={styles.btnBox}>
-          <button className={styles.btn} id={styles.hire} onClick={handleHireBox}>Hire</button>
+          {!loggedIn && <Link href='/login' className={styles.btn} id={styles.hire}>Hire</Link>}
+          {loggedIn && <button className={styles.btn} id={styles.hire} onClick={handleHireBox}>Hire</button>}
           {loggedIn && (
             <button className={styles.btn} id={styles.msg} onClick={() => handleReviewBox(true)}>
               Review

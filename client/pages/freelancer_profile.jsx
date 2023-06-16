@@ -110,9 +110,9 @@ function Freelancer_Profile() {
             </div>
           )} */}
           <Link className={styles.btn} id={styles.hire} href='/my_requests'>Requests</Link>
-          <Link href='/login' className={styles.btn} id={styles.msg}>
+          <div className={styles.btn} id={styles.msg}>
             Edit
-          </Link>
+          </div>
         </div>
       </div>
       <div className={styles.footer}>

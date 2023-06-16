@@ -51,7 +51,7 @@ async function editCompanyProfile(req, res) {
   try {
     jwt.verify(req.token, secret, async (err, authData) => {
       const user = await companyCollection.findOne({ _id: authData.user._id });
-      if (err && !user) {
+      if (err || !user) {
         console.log(err);
         res.sendStatus(403);
         return;

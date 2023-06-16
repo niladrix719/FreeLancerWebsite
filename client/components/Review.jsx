@@ -3,10 +3,11 @@ import Image from 'next/image';
 import { FaStar } from 'react-icons/fa';
 
 function Review(props) {
+  const {profilePicture} = props.review.userDetails;
   return (
     <div className={styles.review}>
       <div className={styles.user_info}>
-        <Image className={styles.avatar} src="/dp.png" alt="User avatar" width='90' height='90' />
+      <div className={styles.avatar} style={{backgroundImage: `url(${profilePicture === '' ? '/dp.png' : `http://localhost:3000/uploads/${profilePicture}`})`}}></div>
         <div className={styles.user_details}>
           <h3 className={styles.user_name}>{props.review.userDetails.firstname} {props.review.userDetails.lastname}</h3>
         </div>

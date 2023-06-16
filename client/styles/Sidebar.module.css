@@ -15,11 +15,13 @@
     flex-direction: column;
     gap: 0.5rem;
     color: black;
+    letter-spacing: 0.5px;
 }
 
 .title {
     margin-bottom: 0.75rem;
     font-weight: 500;
+    letter-spacing: 1px;
 }
 
 .checkbox {
@@ -66,9 +68,14 @@
     border-radius: 50%;
     border: 0;
     cursor: pointer;
-  }
+}
 
-  .rate{
+.rate {
     font-size: 1.1rem;
     padding: 0.5rem;
-  }
+}
+
+.star{
+    position: relative;
+    bottom: 2px;
+}

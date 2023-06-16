@@ -47,7 +47,10 @@ export default function Navbar(props) {
   const handleLogout = () => {
     localStorage.removeItem('user');
     setIsAdmin(false);
+    if(user)
     setUser(null);
+    if(company)
+    setCompany(null);
     if (props.checkLoggedIn)
       props.checkLoggedIn(false);
     router.push('/');  
@@ -124,7 +127,7 @@ export default function Navbar(props) {
             <span>{user && !company ? `${user.firstname} ${user.lastname}` : ''}&nbsp;&nbsp;</span>
             <FontAwesomeIcon
               icon={faSortDown}
-              style={{ fontSize: 10, color: props.color }}
+              style={{ fontSize: 10, color: color }}
             />
             <div className={styles.profile_card}>
               <div className={styles.dp} style={{backgroundImage: `url(${user.profilePicture ? `http://localhost:3000/uploads/${user.profilePicture}` : '/dp.png'})`}}></div>

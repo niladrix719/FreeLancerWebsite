@@ -14,7 +14,7 @@ async function addHire(req, res) {
       else
       user = await userCollection.findOne({ _id: authData.user._id });
 
-      if (err && !user) {
+      if (err || !user) {
         res.sendStatus(403);
         return;
       }

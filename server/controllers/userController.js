@@ -141,7 +141,7 @@ async function getUserProfile(req, res) {
         user = await companyCollection.findOne({ _id: authData.user._id });
       else
         user = await userCollection.findOne({ _id: authData.user._id });
-      if (err && !user) {
+      if (err || !user) {
         return;
       } else {
         res.send(authData);

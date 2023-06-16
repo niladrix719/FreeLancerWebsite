@@ -85,13 +85,13 @@ class Sidebar extends React.Component {
             <div className={styles.inputs}>
               <input className={styles.checkbox} type="checkbox" id='star4' onChange={(e) => this.props.setFourStars(e.target.checked)}/>
               <label className={styles.label} htmlFor="star4">
-                4<FontAwesomeIcon icon={faStar} style={{ color: "#1f1c1c", fontSize: '15px' }} /> & Above
+                4<FontAwesomeIcon icon={faStar} className={styles.star} style={{ color: "#1f1c1c", fontSize: '12px' }} /> & Above
               </label>
             </div>
             <div className={styles.inputs}>
               <input className={styles.checkbox} type="checkbox" id='star3' onChange={(e) => this.props.setThreeStars(e.target.checked)} />
               <label className={styles.label} htmlFor="star3">
-                3<FontAwesomeIcon icon={faStar} style={{ color: "#1f1c1c", fontSize: '15px' }} /> & Above
+                3<FontAwesomeIcon icon={faStar} className={styles.star} style={{ color: "#1f1c1c", fontSize: '12px' }} /> & Above
               </label>
             </div>
           </div>}

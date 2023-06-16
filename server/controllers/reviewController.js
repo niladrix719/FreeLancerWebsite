@@ -2,13 +2,18 @@ const reviewCollection = require('../models/reviewModel');
 const jwt = require('jsonwebtoken');
 const userCollection = require('../models/userModel');
 const freelancerCollection = require('../models/freelancerModel');
+const companyCollection = require('../models/companyModel');
 const secret = process.env.JWT_SECRET;
 
 async function addReview(req, res) {
   try {
     jwt.verify(req.token, secret, async (err, authData) => {
-      const user = await userCollection.findOne({ phone: req.body.phone })
-      if (err && !user) {
+      let user;
+      if(authData.user.companyname)
+      user = await companyCollection.findOne({ _id: authData.user._id });
+      else
+      user = await userCollection.findOne({ _id: authData.user._id });
+      if (err || !user) {
         res.sendStatus(403);
         return;
       }
