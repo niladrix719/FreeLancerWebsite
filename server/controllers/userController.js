@@ -12,7 +12,6 @@ let otpTimer;
 async function signupController(req, res) {
   try {
     const phone = req.body.phone;
-    const companyphone = req.body.companyphone;
     let user;
     if (req.body.type === 'user')
       user = await userCollection.findOne({ phone: phone });
@@ -22,6 +21,23 @@ async function signupController(req, res) {
       user = await companyCollection.findOne({ companyphone: companyphone });
 
     if (user) {
+      return res.sendStatus(403);
+    }
+
+    if(req.body.type === 'user'){
+      if (!req.body.firstname || !req.body.lastname || !req.body.phone) {
+        res.status(400).send('Bad request');
+        return;
+      }
+    }
+    else{
+      if (!req.body.phone) {
+        res.status(400).send('Bad request');
+        return;
+      }
+    }
+
+    if (phone.length !== 10) {
       return res.sendStatus(403);
     }
 
