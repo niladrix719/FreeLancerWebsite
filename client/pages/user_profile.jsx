@@ -108,6 +108,11 @@ function User_profile() {
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem('user');
+    router.push('/');  
+  }
+
   const handleDeleteAccount = () => {
     const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
     if (token) {
@@ -152,7 +157,7 @@ function User_profile() {
             <p className={style.option}>Rate our Services</p>
           </div>}
           {!editProfile && <div>
-            <button className={style.logout}>Logout</button>
+            <button className={style.logout} onClick={handleLogout}>Logout</button>
           </div>}
           {editProfile && <div className={style.editProfile}>
             <form className={style.form} encType="multipart/form-data" onSubmit={handleEditProfile}>

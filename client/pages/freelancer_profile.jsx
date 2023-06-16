@@ -13,14 +13,10 @@ import Link from 'next/link';
 
 function Freelancer_Profile() {
   const router = useRouter();
-  const uid = router.query.name;
   const [freelancer, setFreelancer] = useState({});
-  const [reviewBox, setReviewBox] = useState(false);
   const [reviews, setReviews] = useState([]);
-  const [hireBox, setHireBox] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const [isFreelancerLoaded, setIsFreelancerLoaded] = useState(false);
-  const [user, setUser] = useState(null);
 
   useEffect(() => {
     const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
@@ -41,44 +37,31 @@ function Freelancer_Profile() {
         });
     }
   }, []);
-  
+
   useEffect(() => {
     async function fetchReviews() {
       try {
-        const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
-        const response = await fetch('http://localhost:3000/requests', {
-          method: 'GET',
-          headers: {
-            'Authorization': `Bearer ${token}`
-          }
-        });
+        const response = await fetch(`http://localhost:3000/reviews/${freelancer._id}`);
         const data = await response.json();
-        setRequests(data);
+        setReviews(data);
       } catch (error) {
         console.error(error);
       }
     }
-  
+
     if (isFreelancerLoaded) {
       fetchReviews();
     }
-  }, [freelancer, isFreelancerLoaded]);  
-
-  const handleReviewBox = (val) => {
-    setReviewBox(val);
-  };
-
-  const handleHireBox = (val) => {
-    setHireBox(val);
-  };
-
-  const appendReview = (review) => {
-    setReviews([...reviews, review]);
-  };
+  }, [freelancer, isFreelancerLoaded]);
 
   const checkLoggedIn = (val) => {
     setLoggedIn(val);
   };
+
+  const handleLogout = () => {
+    localStorage.removeItem('user');
+    router.push('/');  
+  }
 
   return (
     <div className={styles.profile}>
@@ -88,30 +71,9 @@ function Freelancer_Profile() {
         {freelancer.links && <ProfileBioCard freelancer={freelancer} />}
         {isFreelancerLoaded && <Details works={freelancer.works} reviews={reviews} />}
         <div className={styles.btnBox}>
-          {/* <button className={styles.btn} id={styles.hire} onClick={handleHireBox}>Hire</button> */}
-          {/* {loggedIn && (
-            <button className={styles.btn} id={styles.msg} onClick={() => handleReviewBox(true)}>
-              Review
-            </button>
-          )}
-          {!loggedIn && (
-            <Link href='/login' className={styles.btn} id={styles.msg}>
-              Review
-            </Link>
-          )}
-          {reviewBox && (
-            <div id={styles.boxContainer} className=''>
-              <ReviewBox handleReviewBox={handleReviewBox} appendReview={appendReview} freelancer={freelancer} />
-            </div>
-          )}
-          {hireBox && (
-            <div id={styles.boxContainer2}>
-              <HireBox handleHireBox={handleHireBox} freelancer={freelancer} user={user} />
-            </div>
-          )} */}
           <Link className={styles.btn} id={styles.hire} href='/my_requests'>Requests</Link>
-          <div className={styles.btn} id={styles.msg}>
-            Edit
+          <div className={styles.btn} id={styles.logout} onClick={handleLogout}>
+            Log Out
           </div>
         </div>
       </div>

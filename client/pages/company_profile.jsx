@@ -150,6 +150,11 @@ function Company_Profile() {
     }
   }
 
+  const handleLogout = () => {
+    localStorage.removeItem('user');
+    router.push('/');  
+  }
+
   return (
     <div className={style.profile}>
       <Navbar color='black' />
@@ -174,7 +179,7 @@ function Company_Profile() {
               <p className={style.option}>Rate our Services</p>
             </div>}
             {!editProfile && <div>
-              <button className={style.logout}>Logout</button>
+              <button className={style.logout} onClick={handleLogout}>Logout</button>
             </div>}
           </div>}
           {editProfile && <div className={style.editProfile}>
