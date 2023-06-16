@@ -56,18 +56,53 @@ async function editCompanyProfile(req, res) {
         res.sendStatus(403);
         return;
       }
+      
+      let updatedAuthData;
 
-      await companyCollection.updateOne({ _id: authData.user._id }, {
-        $set: {
-          companyname: req.body.companyname,
-          companyaddress: req.body.companyaddress,
-          profilePicture: req.file.filename,
-          coverPicture: req.file.filename,
-          bio: req.body.bio
-        }
-      });
-
-      const updatedAuthData = { ...authData, user: { ...authData.user, companyname: req.body.companyname, companyaddress: req.body.companyaddress, profilePicture: req.file.filename, coverPicture: req.file.filename, bio: req.body.bio } };
+      if (!req.body.profilePicture && !req.body.coverPicture) {
+        await companyCollection.updateOne({ _id: authData.user._id }, {
+          $set: {
+            companyname: req.body.companyname,
+            companyaddress: req.body.companyaddress,
+            profilePicture: req.files.profilePicture[0].filename,
+            coverPicture: req.files.coverPicture[0].filename,
+            bio: req.body.bio
+          }
+        });
+        updatedAuthData = { ...authData, user: { ...authData.user, companyname: req.body.companyname, companyaddress: req.body.companyaddress, profilePicture: req.files.profilePicture[0].filename, coverPicture: req.files.coverPicture[0].filename, bio: req.body.bio } };
+      }
+      else if (!req.body.profilePicture) {
+        await companyCollection.updateOne({ _id: authData.user._id }, {
+          $set: {
+            companyname: req.body.companyname,
+            companyaddress: req.body.companyaddress,
+            coverPicture: req.files.coverPicture[0].filename,
+            bio: req.body.bio
+          }
+        });
+        updatedAuthData = { ...authData, user: { ...authData.user, companyname: req.body.companyname, companyaddress: req.body.companyaddress, coverPicture: req.files.coverPicture[0].filename, bio: req.body.bio } };
+      }
+      else if (!req.body.coverPicture) {
+        await companyCollection.updateOne({ _id: authData.user._id }, {
+          $set: {
+            companyname: req.body.companyname,
+            companyaddress: req.body.companyaddress,
+            profilePicture: req.files.profilePicture[0].filename,
+            bio: req.body.bio
+          }
+        });
+        updatedAuthData = { ...authData, user: { ...authData.user, companyname: req.body.companyname, companyaddress: req.body.companyaddress, profilePicture: req.files.profilePicture[0].filename, bio: req.body.bio } };
+      }
+      else {
+        await companyCollection.updateOne({ _id: authData.user._id }, {
+          $set: {
+            companyname: req.body.companyname,
+            companyaddress: req.body.companyaddress,
+            bio: req.body.bio
+          }
+        });
+        updatedAuthData = { ...authData, user: { ...authData.user, companyname: req.body.companyname, companyaddress: req.body.companyaddress, bio: req.body.bio } };
+      }
       const updatedToken = jwt.sign(updatedAuthData, secret);
 
       res.send({ user: updatedAuthData, token: updatedToken });

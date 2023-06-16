@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import {
   faSortDown
 } from "@fortawesome/free-solid-svg-icons";
-import { Router } from 'next/router';
+import { useRouter } from 'next/router';
 
 export default function Navbar(props) {
   const [user, setUser] = useState(null);
@@ -16,6 +16,7 @@ export default function Navbar(props) {
   const [background, setBackground] = useState('transparent');
   const [color, setColor] = useState(props.color);
   const [isAdmin, setIsAdmin] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
@@ -49,7 +50,7 @@ export default function Navbar(props) {
     setUser(null);
     if (props.checkLoggedIn)
       props.checkLoggedIn(false);
-    Router.push('/');  
+    router.push('/');  
   }
 
   useEffect(() => {
@@ -126,7 +127,7 @@ export default function Navbar(props) {
               style={{ fontSize: 10, color: props.color }}
             />
             <div className={styles.profile_card}>
-              <div className={styles.dp} style={{backgroundImage: `url(http://localhost:3000/uploads/${user.profilePicture})`}}></div>
+              <div className={styles.dp} style={{backgroundImage: `url(${user.profilePicture ? `http://localhost:3000/uploads/${user.profilePicture}` : '/dp.png'})`}}></div>
               <h1 className={styles.name}>{user ? `${user.firstname} ${user.lastname}` : ''}</h1>
               <p className={styles.number}>{user ? user.phone : ''}</p>
               {user.uid && <Link className={styles.btn} href={`/freelancer_profile`}>My Profile</Link>}

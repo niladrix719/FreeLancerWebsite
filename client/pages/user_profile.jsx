@@ -33,7 +33,8 @@ function User_profile() {
           setUser(data.user);
           setFirstname(data.user.firstname);
           setLastname(data.user.lastname);
-          setProfilePicture(data.user.profilePicture);
+          if (data.user.profilePicture)
+            setProfilePicture(data.user.profilePicture);
         })
         .catch(error => {
           console.error(error);
@@ -181,6 +182,7 @@ function User_profile() {
               </div>
               <div className={style.btns}>
                 <button className={style.logout} type='submit'>Save</button>
+                <button className={style.back} type='button' onClick={() => setEditProfile(false)}>Back</button>
               </div>
             </form>
           </div>}

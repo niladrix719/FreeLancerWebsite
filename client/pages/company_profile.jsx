@@ -12,9 +12,11 @@ function Company_Profile() {
   const [editProfile, setEditProfile] = React.useState(false);
   const [firstcolor, setFirstcolor] = React.useState('#949494');
   const [lastcolor, setLastcolor] = React.useState('#949494');
+  const [biocolor, setBiocolor] = React.useState('#949494');
   const [user, setUser] = React.useState({});
   const [warns, setWarns] = React.useState(false);
   const [image, setImage] = React.useState(null);
+  const [cover, setCover] = React.useState(null);
   const [profilePicture, setProfilePicture] = React.useState('');
   const [coverPicture, setCoverPicture] = React.useState('');
 
@@ -64,13 +66,14 @@ function Company_Profile() {
         .then(data => {
           if (data.error) {
           } else {
+            console.log(data.user);
             localStorage.setItem('user', JSON.stringify({ token: data.token }));
             setEditProfile(false);
-            setCompanyname(data.user.companyname);
-            setProfilePicture(data.user.profilePicture);
-            setCoverPicture(data.user.coverPicture);
-            setCompanyaddress(data.user.companyaddress);
-            setBio(data.user.bio);
+            setCompanyname(data.user.user.companyname);
+            setProfilePicture(data.user.user.profilePicture);
+            setCoverPicture(data.user.user.coverPicture);
+            setCompanyaddress(data.user.user.companyaddress);
+            setBio(data.user.user.bio);
           }
         })
         .catch(error => {
@@ -86,31 +89,41 @@ function Company_Profile() {
     }
   }
 
-  const handleImageChange = (e) => {
+  const handleImageChange = (e, val) => {
     const file = e.target.files[0];
     const reader = new FileReader();
-
+  
     if (!file) {
       return;
     }
-
+  
     if (file.size > 1048576) {
-      props.setWarns(true);
+      setWarns(true);
       return;
     }
-
-    setProfilePicture(file);
-
-    reader.readAsDataURL(file);
-
-    reader.onloadend = () => {
-      setImage(reader.result);
+  
+    if (val === 1) {
+      setProfilePicture(file);
+    } else {
+      setCoverPicture(file);
     }
-
+  
+    reader.readAsDataURL(file);
+  
+    if (val === 1) {
+      reader.onloadend = () => {
+        setImage(reader.result);
+      };
+    } else {
+      reader.onloadend = () => {
+        setCover(reader.result);
+      };
+    }
+  
     reader.onerror = () => {
       console.error('Something went wrong!');
-    }
-  };
+    };
+  };  
 
   return (
     <div className={style.profile}>
@@ -121,7 +134,7 @@ function Company_Profile() {
             {!editProfile && <div className={style.coverPicture} style={{ backgroundImage: `url(http://localhost:3000/uploads/${coverPicture})` }}>
             </div>}
             {!editProfile && <div className={style.profileImage}>
-              <Image className={style.dp} src={profilePicture === '' ? '/dp.png' : `http://localhost:3000/uploads/${profilePicture}`} alt="profile" height='200' width='200' />
+              <Image className={style.dp} src={profilePicture === '' ? '/dp.png' : `http://localhost:3000/uploads/${profilePicture}`} alt="profile" height='1000' width='1000' />
             </div>}
             {!editProfile && <div className={style.profileInfo}>
               <h1 className={style.name}>{companyname}</h1>
@@ -141,7 +154,11 @@ function Company_Profile() {
           </div>}
           {editProfile && <div className={style.editProfile}>
             <form className={style.form} encType="multipart/form-data" onSubmit={handleEditProfile}>
-              <div className={style.editCoverPicture} style={{ backgroundImage: `url(http://localhost:3000/uploads/${coverPicture})` }}>
+              <div className={style.editCoverPicture} style={{ backgroundImage: `url(${cover ? cover : (coverPicture ? `http://localhost:3000/uploads/${user.coverPicture}` : '/dp.png')})` }}>
+                {!cover && <Image className={style.camera} id={style.camera} src='/cameraIcon.png'
+                  width={35} height={35} alt='camera' onClick={handleImageClick}
+                />}
+                <input type="file" id="file" accept="image/*" name='coverPicture' onChange={(e) => handleImageChange(e,2)} className={style.fileInput} />
               </div>
               <div className={style.editProfileImage} style={{
                 backgroundImage: `url(${image ? image : (profilePicture ? `http://localhost:3000/uploads/${user.profilePicture}` : '/dp.png')})`,
@@ -149,7 +166,7 @@ function Company_Profile() {
                 {!image && <Image className={style.camera} id={style.camera} src='/cameraIcon.png'
                   width={35} height={35} alt='camera' onClick={handleImageClick}
                 />}
-                <input type="file" id="file" accept="image/*" name='profilePicture' onChange={handleImageChange} className={style.fileInput} />
+                <input type="file" id="file" accept="image/*" name='profilePicture' onChange={(e) => handleImageChange(e,1)} className={style.fileInput} />
               </div>
               <div className={style.editProfileInfo}>
                 <input className={style.input} type="text" value={companyname}
@@ -169,20 +186,19 @@ function Company_Profile() {
                 <textarea className={style.input} type="text" value={bio}
                   onChange={(e) => {
                     setBio(e.target.value);
-                    setLastcolor('black');
+                    setBiocolor('black');
                   }}
-                  style={{ color: lastcolor }}
+                  style={{ color: biocolor }}
                 ></textarea>
               </div>
               <div className={style.btns}>
+              <button className={style.logout} type='submit'>Save</button>
                 <button className={style.back} type='button' onClick={() => setEditProfile(false)}>Back</button>
-                <button className={style.logout} type='submit'>Save</button>
               </div>
             </form>
           </div>}
         </div>
       </div>
-      {/* <Footer /> */}
     </div>
   );
 }

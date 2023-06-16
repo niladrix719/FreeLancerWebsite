@@ -65,7 +65,7 @@ function HireBox(props) {
           <div className={styles.subField}>
             <label htmlFor='phone' className={styles.label}>Phone</label>
             <input className={styles.input} type="number" id='phone' name='phone'
-              value={`${props.user.phone}`}
+              value={props.user.phone ? props.user.phone : props.user.companyphone}
             />
           </div>
         </div>
