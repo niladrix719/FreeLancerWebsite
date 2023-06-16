@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react';
 import ReviewBox from '@/components/ReviewBox';
 import HireBox from '@/components/HireBox';
 import Link from 'next/link';
+import Modal from '@/components/Modal';
 
 function Name() {
   const router = useRouter();
@@ -21,6 +22,48 @@ function Name() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [isFreelancerLoaded, setIsFreelancerLoaded] = useState(false);
   const [user, setUser] = useState(null);
+  const [clickedImg, setClickedImg] = useState(null);
+  const [currentIndex, setCurrentIndex] = useState(null);
+
+  const handleClick = (item, index) => {
+    setCurrentIndex(index);
+    setClickedImg('http://localhost:3000/uploads/'+item);
+  };
+
+  const handelRotationRight = () => {
+    const totalLength = data.data.length;
+    if (currentIndex + 1 >= totalLength) {
+      setCurrentIndex(0);
+      const newUrl = data.data[0].link;
+      setClickedImg(newUrl);
+      return;
+    }
+    const newIndex = currentIndex + 1;
+    const newUrl = data.data.filter((item) => {
+      return data.data.indexOf(item) === newIndex;
+    });
+    const newItem = newUrl[0].link;
+    setClickedImg(newItem);
+    setCurrentIndex(newIndex);
+  };
+
+  const handelRotationLeft = () => {
+    const totalLength = data.data.length;
+    if (currentIndex === 0) {
+      setCurrentIndex(totalLength - 1);
+      const newUrl = data.data[totalLength - 1].link;
+      setClickedImg(newUrl);
+      return;
+    }
+    const newIndex = currentIndex - 1;
+    const newUrl = data.data.filter((item) => {
+      return data.data.indexOf(item) === newIndex;
+    });
+    const newItem = newUrl[0].link;
+    setClickedImg(newItem);
+    setCurrentIndex(newIndex);
+  };
+
 
   useEffect(() => {
     const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
@@ -97,7 +140,7 @@ function Name() {
       <Cover coverPicture={freelancer.coverPicture} />
       <div className={styles.profile_details}>
         {freelancer.links && <ProfileBioCard freelancer={freelancer} />}
-        {isFreelancerLoaded && <Details works={freelancer.works} reviews={reviews} />}
+        {isFreelancerLoaded && <Details works={freelancer.works} reviews={reviews} handleClick={handleClick} />}
         <div className={styles.btnBox}>
           {!loggedIn && <Link href='/login' className={styles.btn} id={styles.hire}>Hire</Link>}
           {loggedIn && <button className={styles.btn} id={styles.hire} onClick={handleHireBox}>Hire</button>}
@@ -125,6 +168,16 @@ function Name() {
       </div>
       <div className={styles.footer}>
         <Footer />
+      </div>
+      <div>
+        {clickedImg && (
+          <Modal
+            clickedImg={clickedImg}
+            handelRotationRight={handelRotationRight}
+            setClickedImg={setClickedImg}
+            handelRotationLeft={handelRotationLeft}
+          />
+        )}
       </div>
     </div>
   );
