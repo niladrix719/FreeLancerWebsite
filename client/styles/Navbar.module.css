@@ -231,4 +231,9 @@
     .subText{
         font-size: 0.65rem;
     }
+
+    .login{
+        position: relative;
+        top: -0.1rem;
+    }
 }

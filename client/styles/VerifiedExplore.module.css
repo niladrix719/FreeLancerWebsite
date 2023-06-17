@@ -66,10 +66,47 @@
     font-size: 1.05rem;
 }
 
-/* .span {
-    background: linear-gradient(41deg, #2966e3 21.94%, #f00683 70.95%, #ffc800 125.6%), linear-gradient(41.68deg, #8920fe 30.85%, #ff0be5 84.57%, #ffc800 113.47%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: 700;
-} */
+@media (max-width: 1170px) {
+    .heading {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .heading {
+        font-size: 1.5rem;
+    }
+
+    .image{
+        position: relative;
+        top: -1.5rem;
+    }
+
+    .text{
+        width: 75%;
+    }
+
+    .verified{
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .heading {
+        font-size: 0.75rem;
+    }
+
+    .btn{
+        font-size: 0.55rem;
+        padding: 0rem 0.75rem;
+    }
+
+    .verified{
+        padding: 1.5rem;
+    }
+
+    .text{
+        width: 90%;
+        gap: 0.5rem;
+    }
+}

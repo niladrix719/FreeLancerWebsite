@@ -1,4 +1,4 @@
-.bio{
+.bio {
     background-position: center;
     background-repeat: no-repeat;
     width: 100vw;
@@ -10,7 +10,7 @@
     padding-bottom: 3rem;
 }
 
-.heading{
+.heading {
     font-size: 1.2rem;
     font-weight: 700;
     padding: 3rem;
@@ -20,24 +20,24 @@
     letter-spacing: 5px;
 }
 
-.subHeading{
+.subHeading {
     font-size: 1.5rem;
     color: rgb(145, 124, 124);
 }
 
-.picturesNText{
+.picturesNText {
     display: flex;
     margin-top: 2rem;
     justify-content: center;
     gap: 13rem;
 }
 
-.fade{
+.fade {
     display: flex;
     justify-content: center;
 }
 
-.pictures{
+.pictures {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -45,40 +45,39 @@
     gap: 3rem;
 }
 
-.Text{
+.Text {
     margin-top: 3rem;
-    width: 60%;
     background-color: #f3eae5;
     height: 35rem;
-    width: 45rem;
+    width: 47%;
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
     position: relative;
 }
 
-.details{
+.details {
     font-size: 0.65rem;
     color: rgb(62, 57, 57);
     width: 70%;
     margin: auto;
 }
 
-#photographer{
+#photographer {
     position: absolute;
     left: -11.5rem;
     top: 10rem;
-    box-shadow: 0 6px 27px 0 rgba(0,3,2,0.2);
+    box-shadow: 0 6px 27px 0 rgba(0, 3, 2, 0.2);
 }
 
-#cinematographer{
+#cinematographer {
     position: absolute;
     left: -6.5rem;
     top: 20rem;
-    box-shadow: 0 6px 27px 0 rgba(0,3,2,0.2);
+    box-shadow: 0 6px 27px 0 rgba(0, 3, 2, 0.2);
 }
 
-.boxtext{
+.boxtext {
     font-size: 1.8rem;
     font-weight: 500;
     letter-spacing: 5px;
@@ -88,7 +87,7 @@
     text-align: left;
 }
 
-.button{
+.button {
     padding: 0.75rem 1.05rem;
     border-radius: 0.5rem;
     border: none;
@@ -103,22 +102,22 @@
     align-items: center;
 }
 
-.button:hover .location{
+.button:hover .location {
     color: red;
 }
 
-.location{
+.location {
     display: inline-block;
     padding: 0.25rem 0.75rem;
     background-color: white;
     border-radius: 5px;
 }
 
-.span{
+.span {
     letter-spacing: 1px;
 }
 
-.boxheading{
+.boxheading {
     font-size: 2rem;
     font-weight: 700;
     padding: 3rem;
@@ -128,9 +127,17 @@
     letter-spacing: 3px;
 }
 
-.boxsubheading{
+.boxsubheading {
     font-size: 0.9rem;
     color: rgb(145, 124, 124);
     width: 45%;
     margin: 1rem auto;
+}
+
+@media (max-width: 1300px){}
+
+@media (max-width: 768px) {
+    .pictures{
+        width: 50%;
+    }
 }
