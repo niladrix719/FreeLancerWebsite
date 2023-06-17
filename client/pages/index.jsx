@@ -8,15 +8,10 @@ import Footer from '@/components/Footer';
 import VerifiedExplore from '@/components/VerifiedExplore';
 import Register from '@/components/Register';
 import { useEffect } from 'react';
-import { useState } from 'react';
-
 export default function Index() {
 
   return (
     <div className='app'>
-      <Head>
-        <title>Fipezo</title>
-      </Head>
       <Navbar color='white' />
       <Header />
       <Categories />
