@@ -72,7 +72,7 @@ export default function Navbar(props) {
     <nav className={styles.navbar} style={{ color: color, backgroundColor: background }}>
       <div className={styles.left}>
         <Link href='/'>
-          <i style={{ fontSize: '2rem', fontWeight: '600'}}>
+          <i className={styles.fipezo}>
             Fipezo
           </i>
         </Link>

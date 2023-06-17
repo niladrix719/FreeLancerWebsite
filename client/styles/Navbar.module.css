@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: row;
     position: fixed;
-    width: 100%;
+    width: 100vw;
     justify-content: space-evenly;
     background-position: center;
     z-index: 105;
@@ -181,4 +181,54 @@
 #home{
     position: relative;
     left: 4px;
+}
+
+.fipezo{
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .navElement {
+        font-size: 0.7rem;
+    }
+
+    .login {
+        padding-top: 0.25rem;
+        padding-bottom: 0.35rem;
+        padding-left: 0.9rem;
+        padding-right: 0.9rem;
+        font-size: 0.7rem;
+    }
+
+    .fipezo{
+        font-size: 1.5rem;
+    }
+
+    .left{
+        width: 35%;
+    }
+
+    .right{
+        width: 60%;
+        padding-right: 1rem;
+    }
+    
+    .navigations{
+        height: 3rem;
+    }
+
+    .dropDown{
+        width: 15rem;
+        left: -9.5rem;
+        padding: 1rem;
+    }
+
+    .mainText{
+        font-size: 0.9rem;
+    }
+
+    .subText{
+        font-size: 0.65rem;
+    }
 }
