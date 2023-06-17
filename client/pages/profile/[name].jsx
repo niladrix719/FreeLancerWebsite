@@ -31,39 +31,38 @@ function Name() {
   };
 
   const handelRotationRight = () => {
-    const totalLength = data.data.length;
+    const totalLength = freelancer.works.length;
     if (currentIndex + 1 >= totalLength) {
       setCurrentIndex(0);
-      const newUrl = data.data[0].link;
+      const newUrl = 'http://localhost:3000/uploads/'+freelancer.works[0];
       setClickedImg(newUrl);
       return;
     }
     const newIndex = currentIndex + 1;
-    const newUrl = data.data.filter((item) => {
-      return data.data.indexOf(item) === newIndex;
+    const newUrl = freelancer.works.filter((item) => {
+      return freelancer.works.indexOf(item) === newIndex;
     });
-    const newItem = newUrl[0].link;
+    const newItem = 'http://localhost:3000/uploads/'+newUrl[0];
     setClickedImg(newItem);
     setCurrentIndex(newIndex);
   };
 
   const handelRotationLeft = () => {
-    const totalLength = data.data.length;
+    const totalLength = freelancer.works.length;
     if (currentIndex === 0) {
       setCurrentIndex(totalLength - 1);
-      const newUrl = data.data[totalLength - 1].link;
+      const newUrl = 'http://localhost:3000/uploads/'+freelancer.works[totalLength - 1];
       setClickedImg(newUrl);
       return;
     }
     const newIndex = currentIndex - 1;
-    const newUrl = data.data.filter((item) => {
-      return data.data.indexOf(item) === newIndex;
+    const newUrl = freelancer.works.filter((item) => {
+      return freelancer.works.indexOf(item) === newIndex;
     });
-    const newItem = newUrl[0].link;
+    const newItem = 'http://localhost:3000/uploads/'+newUrl[0];
     setClickedImg(newItem);
     setCurrentIndex(newIndex);
   };
-
 
   useEffect(() => {
     const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
@@ -71,7 +70,7 @@ function Name() {
       fetch('http://localhost:3000/profile', {
         method: 'GET',
         headers: {
-          'Authorization': `Bearer ${token}`
+          'Authorization': `Bearer ${token}` 
         }
       })
         .then(res => res.json())

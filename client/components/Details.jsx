@@ -29,7 +29,7 @@ function Details(props) {
       {showPortfolio && <div className={styles.portfolio}>
         {works.map((work, index) => {
           return (
-            <PortfolioCard key={index} work={work} handleClick={props.handleClick} />
+            <PortfolioCard key={index} i={index} work={work} handleClick={props.handleClick} />
           )
         })}
       </div>}

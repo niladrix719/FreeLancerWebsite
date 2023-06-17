@@ -11,9 +11,8 @@ const Modal = ({
   };
 
   return (
-    console.log(clickedImg),
     <>
-      <div className="overlay dismiss" onClick={handleClick}>
+      <div className="overlay dismiss">
         <img src={clickedImg} alt="bigger pic" />
         <span className="dismiss" onClick={handleClick}>
           X
