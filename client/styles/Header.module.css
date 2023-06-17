@@ -12,6 +12,7 @@
   padding-top: 12rem;
   box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.2);
   background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 
 .headingText {
@@ -26,7 +27,7 @@
   font-size: 1.5rem;
 }
 
-.colorx{
+.colorx {
   color: var(--primaryx-color);
 }
 
@@ -39,10 +40,25 @@
   0% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.02);
   }
+
   100% {
     transform: scale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    height: 35vh;
+    background-image: url(/img19.jpg);
+    background-attachment: scroll;
+    padding-top: 6rem;
+  }
+
+  .headingText {
+    font-size: 1rem;
   }
 }

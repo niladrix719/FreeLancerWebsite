@@ -1,11 +1,11 @@
-.searchBox{
+.searchBox {
     background-color: white;
     height: 3rem;
     width: 38rem;
     border-radius: 0.5rem;
     border-bottom-left-radius: 1rem;
     border-top-left-radius: 1rem;
-    box-shadow: 0 6px 27px 0 rgba(0,3,2,0.08);
+    box-shadow: 0 6px 27px 0 rgba(0, 3, 2, 0.08);
     display: flex;
     align-items: center;
     padding-right: 0.6rem;
@@ -15,7 +15,7 @@
     border-left: none;
 }
 
-.searchIcon{
+.searchIcon {
     background-color: var(--primary-color);
     width: 10%;
     height: 3rem;
@@ -27,21 +27,21 @@
     justify-content: center;
 }
 
-.searchInput{
+.searchInput {
     color: rgb(169, 148, 148);
     width: 90%;
 }
 
-.searchInput:focus{
+.searchInput:focus {
     outline: none;
     color: var(--primary-color);
 }
 
-.searchInput:focus .searchNames{
+.searchInput:focus .searchNames {
     display: block;
 }
 
-.searchNames{
+.searchNames {
     background-color: #ffffff;
     position: absolute;
     top: 3.2rem;
@@ -50,10 +50,10 @@
     border-radius: 0.5rem;
     z-index: 100;
     overflow: hidden;
-    box-shadow: 0 6px 27px 0 rgba(0,3,2,0.08);
+    box-shadow: 0 6px 27px 0 rgba(0, 3, 2, 0.08);
 }
 
-.names{
+.names {
     text-align: left;
     display: flex;
     flex-direction: column;
@@ -63,12 +63,26 @@
     letter-spacing: 1px;
 }
 
-.name{
+.name {
     cursor: pointer;
     padding: 0.5rem;
     padding-left: 0.85rem;
 }
 
-.name:hover{
+.name:hover {
     background-color: rgb(229, 240, 236);
+}
+
+@media (max-width: 768px) {
+    .searchBox {
+        width: 15rem;
+    }
+
+    .searchIcon {
+        width: 30%;
+    }
+
+    .searchInput {
+        font-size: 0.85rem;
+    }
 }
