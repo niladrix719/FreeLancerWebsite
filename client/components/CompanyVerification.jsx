@@ -32,7 +32,7 @@ function Verification(props) {
 
     if (index === 4) {
       setCameras([cameras[0], true]);
-      props.getVericationDetails(file, 4);
+      props.getVerificationDetails(file, 4);
       setProfilePicture(file);
     }
 
@@ -44,7 +44,7 @@ function Verification(props) {
 
     if (index === 5) {
       setCameras([true, cameras[1]]);
-      props.getVericationDetails(file, 5);
+      props.getVerificationDetails(file, 5);
       setCoverPicture(file);
     }
 
@@ -55,7 +55,7 @@ function Verification(props) {
     }
 
     if (index === 6) {
-      props.getVericationDetails(file, 6);
+      props.getVerificationDetails(file, 6);
       setPanCard(file);
     }
 
@@ -66,7 +66,7 @@ function Verification(props) {
     }
 
     if (index === 7) {
-      props.getVericationDetails(file, 7);
+      props.getVerificationDetails(file, 7);
       setIncorporationCertificate(file);
     }
 
@@ -171,7 +171,7 @@ function Verification(props) {
         <label className={styles.social}>Facebook : <br />
           <input type="url" className={styles.input} placeholder="https://www.facebook.com/example"
             onChange={(e) => {
-              props.getVericationDetails(e.target.value, 8)
+              props.getVerificationDetails(e.target.value, 8)
               setLinks({ ...links, facebook: e.target.value })
             }} value={links.facebook}
             required
@@ -180,7 +180,7 @@ function Verification(props) {
         <label className={styles.social}>Instagram : <br />
           <input type="url" className={styles.input} placeholder="https://www.instagram.com/example"
             onChange={(e) => {
-              props.getVericationDetails(e.target.value, 9)
+              props.getVerificationDetails(e.target.value, 9)
               setLinks({ ...links, instagram: e.target.value })
             }} value={links.instagram}
             required
@@ -189,7 +189,7 @@ function Verification(props) {
         <label className={styles.social}>Twitter : <br />
           <input type="url" className={styles.input} placeholder="https://www.twitter.com/example"
             onChange={(e) => {
-              props.getVericationDetails(e.target.value, 10)
+              props.getVerificationDetails(e.target.value, 10)
               setLinks({ ...links, twitter: e.target.value })
             }} value={links.twitter}
             required
@@ -198,7 +198,7 @@ function Verification(props) {
         <label className={styles.social}>Youtube : <br />
           <input type="url" className={styles.input} placeholder="https://www.youtube.com/example"
             onChange={(e) => {
-              props.getVericationDetails(e.target.value, 11)
+              props.getVerificationDetails(e.target.value, 11)
               setLinks({ ...links, youtube: e.target.value })
             }} value={links.youtube}
             required
@@ -207,7 +207,7 @@ function Verification(props) {
       </div>
       <div className={styles.check}><input type="checkbox" required checked={termsAndConditions} className={styles.checkbox}
         onChange={(e) => {
-          props.getVericationDetails(e.target.checked, 16)
+          props.getVerificationDetails(e.target.checked, 16)
           setTermsAndConditions(e.target.checked)
         }}
       />

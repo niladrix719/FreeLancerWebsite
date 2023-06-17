@@ -66,7 +66,7 @@ class Freelancer extends React.Component {
       return;
     }
 
-    if(this.state.currentPage === 2) {
+    if (this.state.currentPage === 2) {
       this.getOtp();
     }
 
@@ -75,8 +75,8 @@ class Freelancer extends React.Component {
       return;
     }
 
-    if(this.state.currentPage === 3) {
-      if(this.state.invalidOtp) {
+    if (this.state.currentPage === 3) {
+      if (this.state.invalidOtp) {
         return;
       }
     }
@@ -166,7 +166,7 @@ class Freelancer extends React.Component {
     this.setState({ currentPage: this.state.currentPage - 1 });
   }
 
-  getVericationDetails = (val, index) => {
+  getVerificationDetails = (val, index) => {
     if (index === 4)
       this.setState({ profilePicture: val });
     if (index === 5)
@@ -175,8 +175,15 @@ class Freelancer extends React.Component {
       this.setState({ aadhaarCard: val });
     if (index === 7)
       this.setState({ panCard: val });
-    if (index === 8 || index === 9 || index === 10 || index === 11 || index === 0 || index === 1 || index === 2 || index === 3) {
-      this.setState({ works: [...this.state.works, val] });
+    if (index === 8 || index === 9 || index === 10 || index === 11) {
+      const newIndex = index - 4;
+      this.setState((prevState) => ({
+        works: [...prevState.works.slice(0, newIndex), val, ...prevState.works.slice(newIndex)],
+      }));
+    } else if (index === 0 || index === 1 || index === 2 || index === 3) {
+      this.setState((prevState) => ({
+        works: [...prevState.works.slice(0, index), val, ...prevState.works.slice(index)],
+      }));
     }
     if (index === 12) {
       this.setState({ links: { ...this.state.links, instagram: val } });
@@ -215,31 +222,31 @@ class Freelancer extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     let c = 0;
-    if(this.state.works.length < 8) {
+    if (this.state.works.length < 8) {
       this.setState({ worksError: true });
       c++;
     }
-    if(this.state.profilePicture === null) {
+    if (this.state.profilePicture === null) {
       this.setState({ profilePicError: true });
       this.setState({ warns: [false, ...this.state.warns.slice(1)] });
       return;
     }
-    if(this.state.coverPicture === null) {
+    if (this.state.coverPicture === null) {
       this.setState({ coverPicError: true });
       this.setState({ warns: [...this.state.warns.slice(0, 1), false, ...this.state.warns.slice(2)] });
       return;
     }
-    if(this.state.aadhaarCard === null) {
+    if (this.state.aadhaarCard === null) {
       this.setState({ addharError: true });
       this.setState({ warns: [...this.state.warns.slice(0, 2), false, ...this.state.warns.slice(3)] });
       return;
     }
-    if(this.state.panCard === null) {
+    if (this.state.panCard === null) {
       this.setState({ panError: true });
       this.setState({ warns: [...this.state.warns.slice(0, 3), false, ...this.state.warns.slice(4)] });
       return;
     }
-    if(c > 0)
+    if (c > 0)
       return;
 
     const postData = async () => {
@@ -279,7 +286,7 @@ class Freelancer extends React.Component {
         });
 
         const responseData = await response.json();
-        localStorage.setItem('user', JSON.stringify({ token : responseData.token }));
+        localStorage.setItem('user', JSON.stringify({ token: responseData.token }));
         Router.push('/contact_soon');
       } catch (error) {
         console.error(error);
@@ -304,11 +311,11 @@ class Freelancer extends React.Component {
             type: 'freelancer'
           })
         });
-        if(response.status === 403) {
+        if (response.status === 403) {
           this.setState({ invalidOtp: true });
           return;
         }
-        else{
+        else {
           this.setState({ invalidOtp: false });
         }
         const data = await response.json();
@@ -346,27 +353,27 @@ class Freelancer extends React.Component {
   }
 
   checkWorks = (val) => {
-    if(val === 1)
-    this.setState({ worksError: false });
-    if(val === 2)
-    this.setState({ addharError: false });
-    if(val === 3)
-    this.setState({ panError: false });
-    if(val === 4)
-    this.setState({ profilePicError: false });
-    if(val === 5)
-    this.setState({ coverPicError: false });
+    if (val === 1)
+      this.setState({ worksError: false });
+    if (val === 2)
+      this.setState({ addharError: false });
+    if (val === 3)
+      this.setState({ panError: false });
+    if (val === 4)
+      this.setState({ profilePicError: false });
+    if (val === 5)
+      this.setState({ coverPicError: false });
   }
 
-  setPicError = (val,i) => {
-    if(i === 1)
-    this.setState({ profilePicError: val });
-    if(i === 2)
-    this.setState({ coverPicError: val });
-    if(i === 3)
-    this.setState({ addharError: val });
-    if(i === 4)
-    this.setState({ panError: val });
+  setPicError = (val, i) => {
+    if (i === 1)
+      this.setState({ profilePicError: val });
+    if (i === 2)
+      this.setState({ coverPicError: val });
+    if (i === 3)
+      this.setState({ addharError: val });
+    if (i === 4)
+      this.setState({ panError: val });
   }
 
   setWarns = (val, i) => {
@@ -512,7 +519,7 @@ class Freelancer extends React.Component {
                 <button className={styles.backBtn} type='button' onClick={() => this.decreProgress(14.25)}>Back</button>
               </div>}
               {this.state.form && <Verification
-                getVericationDetails={this.getVericationDetails}
+                getVerificationDetails={this.getVerificationDetails}
                 checkWorks={this.checkWorks}
                 worksError={this.state.worksError}
                 addharError={this.state.addharError}

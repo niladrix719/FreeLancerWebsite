@@ -158,7 +158,7 @@ class Company extends React.Component {
     this.setState({ currentPage: this.state.currentPage - 1 });
   }
 
-  getVericationDetails = (val, index) => {
+  getVerificationDetails = (val, index) => {
     if (index === 4)
       this.setState({ profilePicture: val });
     if (index === 5)
@@ -437,7 +437,7 @@ class Company extends React.Component {
                 <button className={styles.backBtn} type='button' onClick={() => this.decreProgress(14.25)}>Back</button>
               </div>}
               {this.state.form && <CompanyVerification
-                getVericationDetails={this.getVericationDetails}
+                getVerificationDetails={this.getVerificationDetails}
                 certificateError={this.state.certificateError}
                 panError={this.state.panError}
                 setPicError={this.setPicError}
