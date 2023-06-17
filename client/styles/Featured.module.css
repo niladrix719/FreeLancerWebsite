@@ -3,7 +3,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* background-image: url(/bg1.jpg); */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -37,5 +36,10 @@
 @media screen and (max-width: 1400px){
     .cards{
         width: 100%;
+    }
+
+    .featured{
+        padding-bottom: 2rem;
+        padding-top: 2rem;
     }
 }

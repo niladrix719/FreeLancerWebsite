@@ -134,10 +134,155 @@
     margin: 1rem auto;
 }
 
-@media (max-width: 1300px){}
+#head{
+    font-size: 2.8rem;
+}
 
-@media (max-width: 768px) {
+@media (max-width: 1300px){
+    .picturesNText{
+        flex-direction: column;
+        gap: 2.5rem;
+        align-items: center;
+    }
+
+    #head{
+        font-size: 2.5rem;
+    }
+
+    .subHeading{
+        font-size: 1.2rem;
+    }
+
     .pictures{
         width: 50%;
+        gap: 2rem;
+    }
+
+    .Text{
+        width: 80%;
+    }
+
+    #photographer{
+        left: -5rem;
+        top: 10rem;
+    }
+
+    #cinematographer{
+        left: -1.5rem;
+        top: 20rem;
+    }
+
+    .heading{
+        padding: 1rem;
+    }
+
+    .boxheading{
+        padding: 1rem;
+        font-size: 1.5rem;
+    }
+
+    .subHeading{
+        width: 50%;
+    }
+}
+
+@media (max-width: 1100px){
+    .picturesNText{
+        gap: 1.5rem;
+    }
+
+    .images{
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+    }
+
+    #head{
+        font-size: 1.5rem;
+    }
+
+    .subHeading{
+        font-size: 1rem;
+    }
+
+    .Text{
+        height: auto;
+        padding-bottom: 2rem;
+        width: 90%;
+    }
+
+    .pictures{
+        width: 60%;
+        gap: 1rem;
+    }
+
+    #photographer{
+        position: static;
+    }
+
+    #cinematographer{
+        position: static;
+    }
+
+    .boxheading{
+        font-size: 1.2rem;
+    }
+
+    .subHeading{
+        font-size: 0.8rem;
+        width: 60%;
+    }
+}
+
+@media (max-width: 768px) {
+    .bio{
+        padding-bottom: 0;
+    }
+
+    .picturesNText{
+        gap: 1rem;
+    }
+
+    .images{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .pictures{
+        width: 80%;
+        gap: 0.75rem;
+    }
+
+    .subHeading{
+        font-size: 0.8rem;
+    }
+
+    #head{
+        font-size: 1.25rem;
+    }
+
+    .boxheading{
+        font-size: 1rem;
+    }
+
+    .subHeading{
+        font-size: 0.75rem;
+        width: 80%;
+    }
+
+    .container{
+        display: flex;
+        justify-content: center;
+    }
+
+    .boxsubheading{
+        width: 75%;
+        margin: 1rem 0;
+    }
+
+    .boxtext{
+        font-size: 1.5rem;
+        padding: 1.5rem;
+        padding-left: 2.5rem;
     }
 }
