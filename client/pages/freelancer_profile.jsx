@@ -7,8 +7,7 @@ import styles from '@/styles/Profile.module.css';
 import Footer from '@/components/Footer';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import ReviewBox from '@/components/ReviewBox';
-import HireBox from '@/components/HireBox';
+import Modal from '@/components/Modal';
 import Link from 'next/link';
 
 function Freelancer_Profile() {
@@ -17,6 +16,47 @@ function Freelancer_Profile() {
   const [reviews, setReviews] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
   const [isFreelancerLoaded, setIsFreelancerLoaded] = useState(false);
+  const [clickedImg, setClickedImg] = useState(null);
+  const [currentIndex, setCurrentIndex] = useState(null);
+
+  const handleClick = (item, index) => {
+    setCurrentIndex(index);
+    setClickedImg('http://localhost:3000/uploads/' + item);
+  };
+
+  const handelRotationRight = () => {
+    const totalLength = freelancer.works.length;
+    if (currentIndex + 1 >= totalLength) {
+      setCurrentIndex(0);
+      const newUrl = 'http://localhost:3000/uploads/' + freelancer.works[0];
+      setClickedImg(newUrl);
+      return;
+    }
+    const newIndex = currentIndex + 1;
+    const newUrl = freelancer.works.filter((item) => {
+      return freelancer.works.indexOf(item) === newIndex;
+    });
+    const newItem = 'http://localhost:3000/uploads/' + newUrl[0];
+    setClickedImg(newItem);
+    setCurrentIndex(newIndex);
+  };
+
+  const handelRotationLeft = () => {
+    const totalLength = freelancer.works.length;
+    if (currentIndex === 0) {
+      setCurrentIndex(totalLength - 1);
+      const newUrl = 'http://localhost:3000/uploads/' + freelancer.works[totalLength - 1];
+      setClickedImg(newUrl);
+      return;
+    }
+    const newIndex = currentIndex - 1;
+    const newUrl = freelancer.works.filter((item) => {
+      return freelancer.works.indexOf(item) === newIndex;
+    });
+    const newItem = 'http://localhost:3000/uploads/' + newUrl[0];
+    setClickedImg(newItem);
+    setCurrentIndex(newIndex);
+  };
 
   useEffect(() => {
     const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
@@ -60,7 +100,7 @@ function Freelancer_Profile() {
 
   const handleLogout = () => {
     localStorage.removeItem('user');
-    router.push('/');  
+    router.push('/');
   }
 
   return (
@@ -69,7 +109,7 @@ function Freelancer_Profile() {
       <Cover coverPicture={freelancer.coverPicture} />
       <div className={styles.profile_details}>
         {freelancer.links && <ProfileBioCard freelancer={freelancer} />}
-        {isFreelancerLoaded && <Details works={freelancer.works} reviews={reviews} />}
+        {isFreelancerLoaded && <Details works={freelancer.works} reviews={reviews} handleClick={handleClick} />}
         <div className={styles.btnBox}>
           <Link className={styles.btn} id={styles.hire} href='/my_requests'>Requests</Link>
           <div className={styles.btn} id={styles.logout} onClick={handleLogout}>
@@ -79,6 +119,16 @@ function Freelancer_Profile() {
       </div>
       <div className={styles.footer}>
         <Footer />
+      </div>
+      <div>
+        {clickedImg && (
+          <Modal
+            clickedImg={clickedImg}
+            handelRotationRight={handelRotationRight}
+            setClickedImg={setClickedImg}
+            handelRotationLeft={handelRotationLeft}
+          />
+        )}
       </div>
     </div>
   );

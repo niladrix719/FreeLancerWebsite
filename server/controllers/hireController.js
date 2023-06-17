@@ -4,6 +4,7 @@ const userCollection = require('../models/userModel');
 const freelancerCollection = require('../models/freelancerModel');
 const companyCollection = require('../models/companyModel');
 const secret = process.env.JWT_SECRET;
+const twilio = require('twilio')(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
 
 async function addHire(req, res) {
   try {
@@ -24,6 +25,12 @@ async function addHire(req, res) {
       phone = user.companyphone;
       else
       phone = user.phone;
+
+      let name;
+      if(authData.user.companyname)
+      name = user.companyname;
+      else
+      name = user.firstname + " " + user.lastname;
 
       if (!req.body.freelancer || !req.body.fullname || !req.body.description || !phone || !req.body.startTime || !req.body.endTime || !req.body.date || !req.body.address || !req.body.budget) {
         res.status(400).send('Bad request');
@@ -48,6 +55,8 @@ async function addHire(req, res) {
       });
 
       const postData = await hireData.save();
+
+      sendTextMessage(freelancerDetails.phone, `You have a new hire request from ${name}. Click here to view details: http://localhost:3001/my_requests`);
 
       res.send(postData);
     });
@@ -110,6 +119,15 @@ async function getRequests(req, res) {
     console.error(error);
     res.status(500).send('Internal server error');
   }
+}
+
+function sendTextMessage(phoneNumber, message) {
+  phoneNumber = "+91" + phoneNumber.toString();
+  twilio.messages.create({
+    body: message,
+    from: process.env.TWILIO_PHONE_NUMBER,
+    to: phoneNumber
+  });
 }
 
 module.exports = {
