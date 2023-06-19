@@ -73,6 +73,13 @@ app.get('/profile', verifyToken, getProfile);
 app.get('/hires', verifyToken, getHires);
 app.get('/requests', verifyToken, getRequests);
 
+app.get('/images/:key', (req, res) => {
+  const key = req.params.key;
+  const readStream = getFileStream(key);
+
+  readStream.pipe(res);
+});
+
 app.get('/', (req, res) => {
   res.send('Hello From Fipezo Server');
 });
