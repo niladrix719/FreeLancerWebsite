@@ -23,7 +23,7 @@ export default function Login() {
       try {
         const storedPhone = phone;
         const storedType = type;
-        const response = await fetch('http://localhost:3000/otp', {
+        const response = await fetch('https://fipezo-server.vercel.app/otp', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -49,7 +49,7 @@ export default function Login() {
   function handleSubmit() {
     async function postData() {
       try {
-        const response = await fetch('http://localhost:3000/login', {
+        const response = await fetch('https://fipezo-server.vercel.app/login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

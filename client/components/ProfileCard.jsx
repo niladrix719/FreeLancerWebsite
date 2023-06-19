@@ -8,8 +8,8 @@ export default function ProfileCard(props) {
   const profession = props.profile.profession.charAt(0).toUpperCase() + props.profile.profession.slice(1);
   return (
     <Link className={styles.profileCard} href={`/profile/${props.profile.uid}`} target='_blank'>
-      <div className={styles.cover} style={{ backgroundImage: `url(http://localhost:3000/uploads/${props.profile.coverPicture})` }}></div>
-      <Image className={styles.image} src={`http://localhost:3000/uploads/${props.profile.profilePicture}`} height='600' width='600' alt="profile-image" />
+      <div className={styles.cover} style={{ backgroundImage: `url(https://fipezo-server.vercel.app/uploads/${props.profile.coverPicture})` }}></div>
+      <Image className={styles.image} src={`https://fipezo-server.vercel.app/uploads/${props.profile.profilePicture}`} height='600' width='600' alt="profile-image" />
       <div className={styles.right}>
         <div className={styles.rating}>
           <p>{props.profile.rating.toFixed(1)}</p><FontAwesomeIcon icon={faStar} className={styles.star} />

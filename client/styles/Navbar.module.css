@@ -131,7 +131,7 @@
     border-radius: 15px;
     position: absolute;
     top: 3rem;
-    left: -4rem;
+    left: -7rem;
     display: none;
     flex-direction: column;
     align-items: center;
@@ -168,6 +168,11 @@
     text-align: center;
 }
 
+#user{
+    width: auto;
+    word-break: normal;
+}
+
 #user:hover .profile_card{
     display: flex;
 }
@@ -188,6 +193,20 @@
     font-weight: 600;
 }
 
+@media (max-width: 1100px) {
+    .left {
+        width: 35%;
+    }
+
+    .navElement {
+        font-size: 0.9rem;
+    }
+
+    .right {
+        width: 40%;
+    }
+}
+
 @media (max-width: 768px) {
     .navElement {
         font-size: 0.7rem;
@@ -201,16 +220,38 @@
         font-size: 0.7rem;
     }
 
+    .dp{
+        height: 75px;
+        width: 75px;
+    }
+
+    .name{
+        font-size: 1rem;
+    }
+
+    .number{
+        font-size: 0.7rem;
+    }
+
+    .profile_card{
+        width: 15rem;
+        left: -10rem;
+    }
+
     .fipezo{
         font-size: 1.5rem;
     }
 
+    .navigations{
+        justify-content: space-between;
+    }
+
     .left{
-        width: 35%;
+        width: 25%;
     }
 
     .right{
-        width: 60%;
+        width: 75%;
         padding-right: 1rem;
     }
     
