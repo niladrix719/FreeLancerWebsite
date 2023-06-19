@@ -112,18 +112,18 @@
     font-size: 0.8rem;
 }
 
-@media (max-width: 738px) {
+/* @media (max-width: 738px) {
     .profileCard {
         width: 10rem;
         height: auto;
     }
 
     .name{
-        font-size: 0.9rem;
+        font-size: 0.65rem;
     }
 
     .logo{
-        font-size: 1rem;
+        font-size: 0.5rem;
     }
 
     .bio{
@@ -132,24 +132,26 @@
     }
 
     .category{
-        font-size: 0.65rem;
+        font-size: 0.45rem;
+        padding: 0;
+        gap: 0.5rem;
     }
 
     .rate {
-        font-size: 0.6rem;
+        font-size: 0.45rem;
         padding: 0.15rem;
         padding-left: 0.2rem;
         padding-right: 0.2rem;
     }
 
     .cover{
-        height: 4rem;
+        height: 2.5rem;
     }
 
     .image{
-        height: 3rem;
-        width: 3rem;
-        top: 55px;
+        height: 2.5rem;
+        width: 2.5rem;
+        top: 35px;
     }
 
     .rating{
@@ -160,4 +162,9 @@
     .right{
         top: 118px;
     }
-}
+
+    .blueTick{
+        height: 0.75rem;
+        width: 1.25rem;
+    }
+} */

@@ -5,6 +5,7 @@
     margin: auto;
     margin-bottom: 1rem;
     color: black;
+    letter-spacing: 0.5px;
 }
 
 .upper , .lower{
@@ -92,13 +93,13 @@
 
 @media (max-width: 730px) {
     .footer{
-        width: 85vw;
+        width: 90vw;
     }
 
     .upper{
-        gap: 1rem;
+        gap: 2rem;
         font-size: 0.75rem;
-        justify-content: center;
+        justify-content: flex-start;
     }
 
     .heading{
@@ -115,11 +116,6 @@
     }
 
     .company{
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    .app{
         flex-direction: column;
         gap: 1rem;
     }

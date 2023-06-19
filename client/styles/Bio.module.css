@@ -221,7 +221,7 @@
     }
 
     #cinematographer{
-        position: static;
+        display: none;
     }
 
     .boxheading{

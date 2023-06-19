@@ -17,12 +17,14 @@
     padding: 2rem;
     padding-bottom: 0.55rem;
     color: var(--primary-color);
+    letter-spacing: 0.5px;
 }
 
 .subHeading{
     font-size: 1.1rem;
     color: rgb(145, 124, 124);
     margin-bottom: 3rem;
+    letter-spacing: 0.5px;
 }
 
 .cards{
