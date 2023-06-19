@@ -1,4 +1,4 @@
-const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3");
+const { S3Client, PutObjectCommand, GetObjectCommand } = require("@aws-sdk/client-s3");
 const fs = require('fs');
 
 const s3Client = new S3Client({
@@ -28,13 +28,20 @@ async function uploadFile(file) {
 
 exports.uploadFile = uploadFile;
 
-function getFileStream(fileKey) {
+async function getFileStream(fileKey) {
+  console.log(process.env.AWS_BUCKET_NAME);
   const downloadParams = {
     Key: fileKey,
     Bucket: process.env.AWS_BUCKET_NAME
   };
 
-  return s3Client.getObject(downloadParams).createReadStream();
+  try {
+    const data = await s3Client.send(new GetObjectCommand(downloadParams));
+    return data.Body;
+  } catch (error) {
+    console.log('Error:', error);
+    throw error;
+  }
 }
 
 exports.getFileStream = getFileStream;

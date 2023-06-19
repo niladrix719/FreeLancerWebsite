@@ -39,6 +39,7 @@ const companyUpload = require('./middlewares/companyUpload');
 const companyEditUpload = require('./middlewares/companyEditUpload');
 const { get } = require('mongoose');
 const userCollection = require('./models/userModel');
+const { getFileStream } = require('./middlewares/s3');
 
 // Setting up the routes
 app.post('/signup', signupController);
@@ -73,11 +74,15 @@ app.get('/profile', verifyToken, getProfile);
 app.get('/hires', verifyToken, getHires);
 app.get('/requests', verifyToken, getRequests);
 
-app.get('/images/:key', (req, res) => {
+app.get('/images/:key', async (req, res) => {
   const key = req.params.key;
-  const readStream = getFileStream(key);
-
-  readStream.pipe(res);
+  try {
+    const readStream = await getFileStream(key);
+    readStream.pipe(res);
+  } catch (error) {
+    console.log('Error:', error);
+    res.status(500).send('Internal Server Error');
+  }
 });
 
 app.get('/', (req, res) => {

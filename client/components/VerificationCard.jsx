@@ -40,7 +40,10 @@ function VerificationCard(props) {
         }
       });
       const data = await response.json();
+      if(props.updateFreelancers)
       props.updateFreelancers(data.id);
+      if(props.updateCompanies)
+      props.updateCompanies(data.id);
     } catch (error) {
       console.error(error);
     }
@@ -55,7 +58,10 @@ function VerificationCard(props) {
         }
       });
       const data = await response.json();
+      if(props.updateFreelancers)
       props.updateFreelancers(data.id);
+      if(props.updateCompanies)
+      props.updateCompanies(data.id);
     } catch (error) {
       console.error(error);
     }
@@ -165,7 +171,7 @@ function VerificationCard(props) {
             <h1>Pan Card</h1>
           </div>
         </div>
-        {props.profile.work && <div className={styles.works}>
+        {props.profile.works && <div className={styles.works}>
           <div className={styles.work} onClick={() => setScreen(work1)}>
             <h1>Work 1</h1>
           </div>

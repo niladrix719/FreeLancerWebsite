@@ -57,6 +57,13 @@ function VerificationPanel() {
     setFreelancers(newFreelancers);
   }
 
+  const updateCompanies = (id) => {
+    const newCompanies = companies.filter((company) => {
+      return company._id !== id;
+    });
+    setCompanies(newCompanies);
+  }
+
   return (
     <div className={styles.verification}>
       <Navbar />
@@ -70,7 +77,7 @@ function VerificationPanel() {
           })}
           {companies.map((company, index) => {
             return (
-              <VerificationCard key={index} profile={company} updateFreelancers={updateFreelancers} />
+              <VerificationCard key={index} profile={company} updateCompanies={updateCompanies} />
             )
           })}
         </div>

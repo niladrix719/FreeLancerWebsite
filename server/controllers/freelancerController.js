@@ -6,7 +6,6 @@ const unlinkFile = util.promisify(fs.unlink);
 const jwt = require('jsonwebtoken');
 const secret = process.env.JWT_SECRET;
 const { uploadFile } = require('../middlewares/s3');
-const { getFileStream } = require('../middlewares/s3');
 
 //Registration
 
