@@ -27,14 +27,14 @@ function Name() {
 
   const handleClick = (item, index) => {
     setCurrentIndex(index);
-    setClickedImg('https://fipezo-server.vercel.app/uploads/'+item);
+    setClickedImg('http://localhost:3000/uploads/'+item);
   };
 
   const handelRotationRight = () => {
     const totalLength = freelancer.works.length;
     if (currentIndex + 1 >= totalLength) {
       setCurrentIndex(0);
-      const newUrl = 'https://fipezo-server.vercel.app/uploads/'+freelancer.works[0];
+      const newUrl = 'http://localhost:3000/uploads/'+freelancer.works[0];
       setClickedImg(newUrl);
       return;
     }
@@ -42,7 +42,7 @@ function Name() {
     const newUrl = freelancer.works.filter((item) => {
       return freelancer.works.indexOf(item) === newIndex;
     });
-    const newItem = 'https://fipezo-server.vercel.app/uploads/'+newUrl[0];
+    const newItem = 'http://localhost:3000/uploads/'+newUrl[0];
     setClickedImg(newItem);
     setCurrentIndex(newIndex);
   };
@@ -51,7 +51,7 @@ function Name() {
     const totalLength = freelancer.works.length;
     if (currentIndex === 0) {
       setCurrentIndex(totalLength - 1);
-      const newUrl = 'https://fipezo-server.vercel.app/uploads/'+freelancer.works[totalLength - 1];
+      const newUrl = 'http://localhost:3000/uploads/'+freelancer.works[totalLength - 1];
       setClickedImg(newUrl);
       return;
     }
@@ -59,7 +59,7 @@ function Name() {
     const newUrl = freelancer.works.filter((item) => {
       return freelancer.works.indexOf(item) === newIndex;
     });
-    const newItem = 'https://fipezo-server.vercel.app/uploads/'+newUrl[0];
+    const newItem = 'http://localhost:3000/uploads/'+newUrl[0];
     setClickedImg(newItem);
     setCurrentIndex(newIndex);
   };
@@ -67,7 +67,7 @@ function Name() {
   useEffect(() => {
     const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
     if (token) {
-      fetch('https://fipezo-server.vercel.app/profile', {
+      fetch('http://localhost:3000/profile', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}` 
@@ -86,7 +86,7 @@ function Name() {
   useEffect(() => {
     async function fetchFreelancer() {
       try {
-        const response = await fetch(`https://fipezo-server.vercel.app/profile/freelancer/${uid}`);
+        const response = await fetch(`http://localhost:3000/profile/freelancer/${uid}`);
         const data = await response.json();
         if (data.error) {
           router.push('/404');
@@ -104,7 +104,7 @@ function Name() {
   useEffect(() => {
     async function fetchReviews() {
       try {
-        const response = await fetch(`https://fipezo-server.vercel.app/reviews/${freelancer._id}`);
+        const response = await fetch(`http://localhost:3000/reviews/${freelancer._id}`);
         const data = await response.json();
         setReviews(data);
       } catch (error) {

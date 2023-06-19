@@ -27,7 +27,7 @@ function Explore() {
   useEffect(() => {
     async function fetchFreelancer() {
       try {
-        const response = await fetch(`https://fipezo-server.vercel.app/profiles/verified/freelancer`);
+        const response = await fetch(`http://localhost:3000/profiles/verified/freelancer`);
         const data = await response.json();
         setFreelancers(data);
       } catch (error) {
