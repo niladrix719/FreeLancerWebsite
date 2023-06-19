@@ -1,4 +1,5 @@
 const companyCollection = require('../models/companyModel');
+const userCollection = require('../models/userModel');
 const secret = process.env.JWT_SECRET;
 const jwt = require('jsonwebtoken');
 
@@ -133,8 +134,82 @@ async function deleteCompanyProfile(req, res) {
   }
 }
 
+// get unverified company profiles
+
+async function getUnCompanyProfiles(req, res) {
+  try {
+    jwt.verify(req.token, secret, async (err, authData) => {
+      if (err) {
+        return;
+      } else {
+        const user = await userCollection.findOne({ _id: authData.user._id });
+        if (user) {
+          if (authData.user.phone === parseInt(process.env.ADMIN_PHONE)) {
+            const companies = await companyCollection.find({ verified: false });
+            res.send(companies);
+          } else {
+            res.sendStatus(403);
+          }
+        }
+        else {
+          res.sendStatus(403);
+        }
+      }
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal server error');
+  }
+}
+
+// delete profile
+
+async function deleteCompanyProfileV(req, res) {
+  try {
+    const id = req.params.id;
+    const user = await companyCollection.findOne({ _id: id });
+
+    if (!user || user.verified === true) {
+      return res.sendStatus(403);
+    }
+
+    user.works.forEach((filename) => {
+      const filePath = `uploads/${filename}`;
+      fs.unlinkSync(filePath);
+    });
+
+    fs.unlinkSync(`uploads/${user.profilePicture}`);
+    fs.unlinkSync(`uploads/${user.coverPicture}`);
+    fs.unlinkSync(`uploads/${user.panCard}`);
+    fs.unlinkSync(`uploads/${user.incorporationCertificate}`);
+
+    await companyCollection.deleteOne({ _id: id });
+    res.json({ id: id });
+  } catch (error) {
+    console.error(error);
+    res.sendStatus(500);
+  }
+}
+
+// verifying profile
+
+async function verifyCompanyProfile(req, res) {
+  const id = req.params.id;
+  freelancerCollection.updateOne({ _id: id }, { $set: { verified: true } })
+    .then(() => {
+      res.json({ id: id });
+    })
+    .catch(error => {
+      console.error(error);
+      res.sendStatus(500);
+    });
+}
+
 module.exports = {
   registerCompany,
   editCompanyProfile,
-  deleteCompanyProfile
+  deleteCompanyProfile,
+  getUnCompanyProfiles,
+  deleteCompanyProfileV,
+  verifyCompanyProfile
 }

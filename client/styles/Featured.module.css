@@ -42,4 +42,12 @@
         padding-bottom: 2rem;
         padding-top: 2rem;
     }
+
+    .heading{
+        font-size: 1.5rem;
+    }
+
+    .subHeading{
+        font-size: 0.9rem;
+    }
 }

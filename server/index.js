@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const db = require('./db/db');
 const { signupController, loginController, getUserProfile, editUserProfile, getProfile , getNavbar , deleteUserProfile } = require('./controllers/userController');
 const { otpController, otpSignupController, VerifyFreelancerPhone, VerifyCompanyPhone } = require('./controllers/otpController');
-const { registerCompany , editCompanyProfile , deleteCompanyProfile } = require('./controllers/companyController');
+const { registerCompany , editCompanyProfile , deleteCompanyProfile , getUnCompanyProfiles , deleteCompanyProfileV , verifyCompanyProfile} = require('./controllers/companyController');
 const { registerFreelancer,
   getFreelancerProfile,
   getFreelancerProfiles,
@@ -53,11 +53,14 @@ app.get('/profile/freelancer/:uid', getFreelancerProfile);
 app.get('/profiles/verified/freelancer', getFreelancerProfiles);
 app.get('/profiles/featured/freelancer', getFeaturedFreelancerProfiles);
 app.get('/profiles/unverified/freelancer', verifyToken, getUnFreelancerProfiles);
+app.get('/profiles/unverified/company', verifyToken, getUnCompanyProfiles);
 app.get('/contact/messages', verifyToken, fetchContactUs);
 app.delete('/delete/freelancer/:id', deleteFreelancerProfile);
+app.delete('/delete/company/:id', deleteCompanyProfileV);
 app.delete('/profile/user/delete', verifyToken, deleteUserProfile);
 app.delete('/profile/company/delete', verifyToken, deleteCompanyProfile);
 app.put('/verify/freelancer/:id', verifyFreelancerProfile);
+app.put('/verify/company/:id' , verifyCompanyProfile);
 app.post('/contact', contactUs);
 app.get('/profile/user', verifyToken, getUserProfile);
 app.get('/navbar', verifyToken, getNavbar);

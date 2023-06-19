@@ -89,3 +89,38 @@
     flex-direction: column;
     gap: 1rem;
 }
+
+@media (max-width: 730px) {
+    .footer{
+        width: 85vw;
+    }
+
+    .upper{
+        gap: 1rem;
+        font-size: 0.75rem;
+        justify-content: center;
+    }
+
+    .heading{
+        font-size: 0.9rem;
+    }
+
+    .about , .help , .law , .socials{
+        gap: 1.5rem;
+    }
+
+    .lower{
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .company{
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .app{
+        flex-direction: column;
+        gap: 1rem;
+    }
+}

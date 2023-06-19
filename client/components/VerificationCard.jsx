@@ -5,17 +5,30 @@ import { useState } from 'react';
 
 function VerificationCard(props) {
   const [screen, setScreen] = useState('');
-  const work1 = props.profile.works[0];
-  const work2 = props.profile.works[1];
-  const work3 = props.profile.works[2];
-  const work4 = props.profile.works[3];
-  const work5 = props.profile.works[4];
-  const work6 = props.profile.works[5];
-  const work7 = props.profile.works[6];
-  const work8 = props.profile.works[7];
-  const aadhaarCard = props.profile.aadhaarCard;
+  let work1, work2, work3, work4, work5, work6, work7, work8;
+  if (props.profile.work) {
+    work1 = props.profile.works[0];
+    work2 = props.profile.works[1];
+    work3 = props.profile.works[2];
+    work4 = props.profile.works[3];
+    work5 = props.profile.works[4];
+    work6 = props.profile.works[5];
+    work7 = props.profile.works[6];
+    work8 = props.profile.works[7];
+  }
+  let aadhaarCard;
+  if (props.profile.aadhaarCard) {
+    aadhaarCard = props.profile.aadhaarCard;
+  }
+  let incorporationCertificate;
+  if (props.profile.incorporationCertificate) {
+    incorporationCertificate = props.profile.incorporationCertificate;
+  }
   const panCard = props.profile.panCard;
-  const profession = props.profile.profession.charAt(0).toUpperCase() + props.profile.profession.slice(1);
+  let profession;
+  if (props.profile.profession) {
+    profession = props.profile.profession.charAt(0).toUpperCase() + props.profile.profession.slice(1);
+  }
   const links = JSON.parse(props.profile.links);
 
   const handleDelete = async () => {
@@ -48,6 +61,36 @@ function VerificationCard(props) {
     }
   }
 
+  const handleCompanyDelete = async () => {
+    try {
+      const response = await fetch(`http://localhost:3000/delete/company/${props.profile._id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      const data = await response.json();
+      props.updateCompanies(data.id);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const handleCompanyVerify = async () => {
+    try {
+      const response = await fetch(`http://localhost:3000/verify/company/${props.profile._id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      const data = await response.json();
+      props.updateCompanies(data.id);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   return (
     <div className={styles.verificationCard}>
       <div className={styles.details}>
@@ -74,37 +117,55 @@ function VerificationCard(props) {
           </Link>
         </div>
         <div className={styles.fields}>
-          <div className={styles.field}>
+          {props.profile.firstname && <div className={styles.field}>
             <h1>Name : {props.profile.firstname} {props.profile.lastname}</h1>
-          </div>
-          <div className={styles.field}>
+          </div>}
+          {props.profile.companyname && <div className={styles.field}>
+            <h1>Company Name : {props.profile.companyname}</h1>
+          </div>}
+          {props.profile.phone && <div className={styles.field}>
             <h1>Phone : {props.profile.phone}</h1>
-          </div>
-          <div className={styles.field}>
+          </div>}
+          {props.profile.companyphone && <div className={styles.field}>
+            <h1>Company Phone : {props.profile.companyphone}</h1>
+          </div>}
+          {props.profile.location && <div className={styles.field}>
             <h1>Location : {props.profile.location}</h1>
-          </div>
-          <div className={styles.field}>
+          </div>}
+          {props.profile.companyaddress && <div className={styles.field}>
+            <h1>Company Location : {props.profile.companyaddress}</h1>
+          </div>}
+          {props.profile.profession && <div className={styles.field}>
             <h1>Profession : {profession}</h1>
-          </div>
-          <div className={styles.field}>
+          </div>}
+          {props.profile.position && <div className={styles.field}>
+            <h1>Company Profession : {props.profile.position}</h1>
+          </div>}
+          {props.profile.companytype && <div className={styles.field}>
+            <h1>Company Type : {props.profile.companytype}</h1>
+          </div>}
+          {props.profile.rate && <div className={styles.field}>
             <h1>Rate/hr : Rs.{props.profile.rate}</h1>
-          </div>
+          </div>}
           <div className={styles.field}>
             <h1>Bio : {props.profile.bio}</h1>
           </div>
-          <div className={styles.field}>
+          {props.profile.equipments && <div className={styles.field}>
             <h1>Equipments : {props.profile.equipments}</h1>
-          </div>
+          </div>}
         </div>
         <div className={styles.cards}>
-          <div className={styles.card} onClick={() => setScreen(aadhaarCard)}>
+          {props.profile.aadhaarCard && <div className={styles.card} onClick={() => setScreen(aadhaarCard)}>
             <h1>Aadhaar Card</h1>
-          </div>
+          </div>}
+          {props.profile.incorporationCertificate && <div className={styles.card} onClick={() => setScreen(incorporationCertificate)}>
+            <h1>Incorporation Certificate</h1>
+          </div>}
           <div className={styles.card} onClick={() => setScreen(panCard)}>
             <h1>Pan Card</h1>
           </div>
         </div>
-        <div className={styles.works}>
+        {props.profile.work && <div className={styles.works}>
           <div className={styles.work} onClick={() => setScreen(work1)}>
             <h1>Work 1</h1>
           </div>
@@ -129,7 +190,7 @@ function VerificationCard(props) {
           <div className={styles.work} onClick={() => setScreen(work8)}>
             <h1>Work 8</h1>
           </div>
-        </div>
+        </div>}
       </div>
       <div className={styles.right}>
         <div className={styles.screen}
@@ -137,8 +198,10 @@ function VerificationCard(props) {
         >
         </div>
         <div className={styles.btns}>
-          <button className={styles.btn} id={styles.verify} onClick={handleVerify}>Verify</button>
-          <button className={styles.btn} id={styles.delete} onClick={handleDelete}>Delete</button>
+          {props.profile.profession && <button className={styles.btn} id={styles.verify} onClick={handleVerify}>Verify</button>}
+          {props.profile.profession && <button className={styles.btn} id={styles.delete} onClick={handleDelete}>Delete</button>}
+          {props.profile.companyname && <button className={styles.btn} id={styles.verify} onClick={handleCompanyVerify}>Verify</button>}
+          {props.profile.companyname && <button className={styles.btn} id={styles.delete} onClick={handleCompanyDelete}>Delete</button>}
         </div>
       </div>
     </div>

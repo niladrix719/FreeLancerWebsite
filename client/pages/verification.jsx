@@ -5,6 +5,7 @@ import VerificationCard from '@/components/VerificationCard';
 import { useEffect, useState } from 'react';
 function VerificationPanel() {
   const [freelancers, setFreelancers] = useState([]);
+  const [companies, setCompanies] = useState([]);
   useEffect(() => {
     async function fetchFreelancer() {
       const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
@@ -27,6 +28,28 @@ function VerificationPanel() {
     fetchFreelancer();
   }, []);
 
+  useEffect(() => {
+    async function fetchCompany() {
+      const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
+      try {
+        if (token) {
+          const response = await fetch(`http://localhost:3000/profiles/unverified/company`, {
+            method: 'GET',
+            headers: {
+              'Authorization': `Bearer ${token}`
+            }
+          });
+          const data = await response.json();
+          setCompanies(data);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  
+    fetchCompany();
+  }, []);
+
   const updateFreelancers = (id) => {
     const newFreelancers = freelancers.filter((freelancer) => {
       return freelancer._id !== id;
@@ -43,6 +66,11 @@ function VerificationPanel() {
           {freelancers.map((freelancer, index) => {
             return (
               <VerificationCard key={index} profile={freelancer} updateFreelancers={updateFreelancers} />
+            )
+          })}
+          {companies.map((company, index) => {
+            return (
+              <VerificationCard key={index} profile={company} updateFreelancers={updateFreelancers} />
             )
           })}
         </div>

@@ -84,6 +84,7 @@
 
     .text{
         width: 75%;
+        justify-content: center;
     }
 
     .verified{
@@ -96,12 +97,13 @@
 
 @media (max-width: 600px) {
     .heading {
-        font-size: 0.75rem;
+        font-size: 0.85rem;
     }
 
     .btn{
-        font-size: 0.55rem;
+        font-size: 0.6rem;
         padding: 0rem 0.75rem;
+        height: 2.5rem;
     }
 
     .verified{
