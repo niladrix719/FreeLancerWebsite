@@ -124,7 +124,7 @@ export default function Navbar(props) {
           {isAdmin && <Link href='/verification' className={styles.navElement}>Verify</Link>}
           {user === null && company === null && <li><Link href='/login' className={styles.login}>Login</Link></li>}
           {user && <li className={styles.navElement} id={styles.user}>
-            <span>{user && !company ? `${user.firstname} ${user.lastname}` : ''}&nbsp;&nbsp;</span>
+            <span>{user && !company ? `${user.firstname}` : ''}&nbsp;&nbsp;</span>
             <FontAwesomeIcon
               icon={faSortDown}
               style={{ fontSize: 10, color: color }}

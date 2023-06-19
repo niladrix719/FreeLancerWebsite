@@ -3,14 +3,18 @@ const userCollection = require('../models/userModel');
 const fs = require('fs');
 const jwt = require('jsonwebtoken');
 const secret = process.env.JWT_SECRET;
+const { uploadFile } = require('../middlewares/s3');
 
 //Registration
 
 async function registerFreelancer(req, res) {
+  console.log(req.body);
+  console.log(req.files);
+  console.log(req.token);
   try {
     jwt.verify(req.token, secret, async (err, authData) => {
       if (err) {
-        console.log(err)
+        console.log(err);
         res.sendStatus(403);
         return;
       }
@@ -41,11 +45,23 @@ async function registerFreelancer(req, res) {
 
       await freelancerData.save();
 
-      const user = await freelancerCollection.findOne({ phone: req.body.phone })
+      const filePromises = [];
+      filePromises.push(uploadFile(req.files['profilePicture'][0]));
+      filePromises.push(uploadFile(req.files['coverPicture'][0]));
+      filePromises.push(uploadFile(req.files['aadhaarCard'][0]));
+      filePromises.push(uploadFile(req.files['panCard'][0]));
+
+      req.files['works[]'].forEach(file => {
+        filePromises.push(uploadFile(file));
+      });
+
+      await Promise.all(filePromises);
+
+      const user = await freelancerCollection.findOne({ phone: req.body.phone });
 
       jwt.sign({ user }, secret, { expiresIn: '30d' }, (err, token) => {
         if (err) {
-          console.log(err)
+          console.log(err);
           return res.sendStatus(403);
         }
         res.json({ token });
