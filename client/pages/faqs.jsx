@@ -64,8 +64,8 @@ class Faqs extends React.Component {
             {this.state.currentTab === 'general' && <ul className={styles.qnas} id={styles.general}>
               <li onClick={() => this.showAnswer('first')} style={{ cursor: 'pointer' }}>
                 {this.state.currentAnswer === 'first' ?
-                  <FontAwesomeIcon icon={faMinus} style={{ color: "#00aaff" }} /> :
-                  <FontAwesomeIcon icon={faPlus} style={{ color: "#00aaff" }} />
+                  <FontAwesomeIcon className={styles.icon} icon={faMinus} style={{ color: "#00aaff" }} /> :
+                  <FontAwesomeIcon className={styles.icon} icon={faPlus} style={{ color: "#00aaff" }} />
                 }
                 &nbsp; &nbsp; <h1 className={styles.summary}>What is Fipezo?</h1>
                 {this.state.currentAnswer === 'first' && <p className={styles.details}>
@@ -75,8 +75,8 @@ class Faqs extends React.Component {
               <hr className={styles.divider} />
               <li onClick={() => this.showAnswer('second')} style={{ cursor: 'pointer' }}>
                 {this.state.currentAnswer === 'second' ?
-                  <FontAwesomeIcon icon={faMinus} style={{ color: "#00aaff" }} /> :
-                  <FontAwesomeIcon icon={faPlus} style={{ color: "#00aaff" }} />
+                  <FontAwesomeIcon className={styles.icon} icon={faMinus} style={{ color: "#00aaff" }} /> :
+                  <FontAwesomeIcon className={styles.icon} icon={faPlus} style={{ color: "#00aaff" }} />
                 }
                 &nbsp; &nbsp; <h1 className={styles.summary}>What is Freelancing?</h1>
                 {this.state.currentAnswer === 'second' && <p className={styles.details}>
@@ -86,8 +86,8 @@ class Faqs extends React.Component {
               <hr className={styles.divider} />
               <li onClick={() => this.showAnswer('third')} style={{ cursor: 'pointer' }}>
                 {this.state.currentAnswer === 'third' ?
-                  <FontAwesomeIcon icon={faMinus} style={{ color: "#00aaff" }} /> :
-                  <FontAwesomeIcon icon={faPlus} style={{ color: "#00aaff" }} />
+                  <FontAwesomeIcon className={styles.icon} icon={faMinus} style={{ color: "#00aaff" }} /> :
+                  <FontAwesomeIcon className={styles.icon} icon={faPlus} style={{ color: "#00aaff" }} />
                 }
                 &nbsp; &nbsp; <h1 className={styles.summary}>How to Register as an Freelancer?</h1>
                 {this.state.currentAnswer === 'third' && <p className={styles.details}>
@@ -97,8 +97,8 @@ class Faqs extends React.Component {
               <hr className={styles.divider} />
               <li onClick={() => this.showAnswer('fourth')} style={{ cursor: 'pointer' }}>
                 {this.state.currentAnswer === 'fourth' ?
-                  <FontAwesomeIcon icon={faMinus} style={{ color: "#00aaff" }} /> :
-                  <FontAwesomeIcon icon={faPlus} style={{ color: "#00aaff" }} />
+                  <FontAwesomeIcon className={styles.icon} icon={faMinus} style={{ color: "#00aaff" }} /> :
+                  <FontAwesomeIcon className={styles.icon} icon={faPlus} style={{ color: "#00aaff" }} />
                 }
                 &nbsp; &nbsp; <h1 className={styles.summary}>How to Register as an Company?</h1>
                 {this.state.currentAnswer === 'fourth' && <p className={styles.details}>
@@ -109,8 +109,8 @@ class Faqs extends React.Component {
             {this.state.currentTab === 'privacy' && <ul className={styles.qnas} id={styles.privacy}>
               <li onClick={() => this.showAnswer('fifth')} style={{ cursor: 'pointer' }}>
                 {this.state.currentAnswer === 'fifth' ?
-                  <FontAwesomeIcon icon={faMinus} style={{ color: "#00aaff" }} /> :
-                  <FontAwesomeIcon icon={faPlus} style={{ color: "#00aaff" }} />
+                  <FontAwesomeIcon className={styles.icon} icon={faMinus} style={{ color: "#00aaff" }} /> :
+                  <FontAwesomeIcon className={styles.icon} icon={faPlus} style={{ color: "#00aaff" }} />
                 }
                 &nbsp; &nbsp; <h1 className={styles.summary}>How is my Privacy of my data safe?</h1>
                 {this.state.currentAnswer === 'fifth' && <p className={styles.details}>
@@ -120,8 +120,8 @@ class Faqs extends React.Component {
               <hr className={styles.divider} />
               <li onClick={() => this.showAnswer('sixth')} style={{ cursor: 'pointer' }}>
                 {this.state.currentAnswer === 'sixth' ?
-                  <FontAwesomeIcon icon={faMinus} style={{ color: "#00aaff" }} /> :
-                  <FontAwesomeIcon icon={faPlus} style={{ color: "#00aaff" }} />
+                  <FontAwesomeIcon className={styles.icon} icon={faMinus} style={{ color: "#00aaff" }} /> :
+                  <FontAwesomeIcon className={styles.icon} icon={faPlus} style={{ color: "#00aaff" }} />
                 }
                 &nbsp; &nbsp; <h1 className={styles.summary}>What sensitive information does Fipezo collect?</h1>
                 {this.state.currentAnswer === 'sixth' && <p className={styles.details}>
@@ -131,8 +131,8 @@ class Faqs extends React.Component {
               <hr className={styles.divider} />
               <li onClick={() => this.showAnswer('seventh')} style={{ cursor: 'pointer' }}>
                 {this.state.currentAnswer === 'seventh' ?
-                  <FontAwesomeIcon icon={faMinus} style={{ color: "#00aaff" }} /> :
-                  <FontAwesomeIcon icon={faPlus} style={{ color: "#00aaff" }} />
+                  <FontAwesomeIcon className={styles.icon} icon={faMinus} style={{ color: "#00aaff" }} /> :
+                  <FontAwesomeIcon className={styles.icon} icon={faPlus} style={{ color: "#00aaff" }} />
                 }
                 &nbsp; &nbsp; <h1 className={styles.summary}>what information does Fipezo discloses?</h1>
                 {this.state.currentAnswer === 'seventh' && <p className={styles.details}>
@@ -142,8 +142,8 @@ class Faqs extends React.Component {
               <hr className={styles.divider} />
               <li onClick={() => this.showAnswer('eighth')} style={{ cursor: 'pointer' }}>
                 {this.state.currentAnswer === 'eighth' ?
-                  <FontAwesomeIcon icon={faMinus} style={{ color: "#00aaff" }} /> :
-                  <FontAwesomeIcon icon={faPlus} style={{ color: "#00aaff" }} />
+                  <FontAwesomeIcon className={styles.icon} icon={faMinus} style={{ color: "#00aaff" }} /> :
+                  <FontAwesomeIcon className={styles.icon} icon={faPlus} style={{ color: "#00aaff" }} />
                 }
                 &nbsp; &nbsp; <h1 className={styles.summary}>Whom is the data disclosed to?</h1>
                 {this.state.currentAnswer === 'eighth' && <p className={styles.details}>
@@ -154,8 +154,8 @@ class Faqs extends React.Component {
             {this.state.currentTab === 'services' && <ul className={styles.qnas} id={styles.services}>
               <li onClick={() => this.showAnswer('ninth')} style={{ cursor: 'pointer' }}>
                 {this.state.currentAnswer === 'ninth' ?
-                  <FontAwesomeIcon icon={faMinus} style={{ color: "#00aaff" }} /> :
-                  <FontAwesomeIcon icon={faPlus} style={{ color: "#00aaff" }} />
+                  <FontAwesomeIcon className={styles.icon} icon={faMinus} style={{ color: "#00aaff" }} /> :
+                  <FontAwesomeIcon className={styles.icon} icon={faPlus} style={{ color: "#00aaff" }} />
                 }
                 &nbsp; &nbsp; <h1 className={styles.summary}>What Service does Fipezo provide?</h1>
                 {this.state.currentAnswer === 'ninth' && <p className={styles.details}>
@@ -165,8 +165,8 @@ class Faqs extends React.Component {
               <hr className={styles.divider} />
               <li onClick={() => this.showAnswer('tenth')} style={{ cursor: 'pointer' }}>
                 {this.state.currentAnswer === 'tenth' ?
-                  <FontAwesomeIcon icon={faMinus} style={{ color: "#00aaff" }} /> :
-                  <FontAwesomeIcon icon={faPlus} style={{ color: "#00aaff" }} />
+                  <FontAwesomeIcon className={styles.icon} icon={faMinus} style={{ color: "#00aaff" }} /> :
+                  <FontAwesomeIcon className={styles.icon} icon={faPlus} style={{ color: "#00aaff" }} />
                 }
                 &nbsp; &nbsp; <h1 className={styles.summary}>What are the fees associated with your services?</h1>
                 {this.state.currentAnswer === 'tenth' && <p className={styles.details}>
@@ -176,8 +176,8 @@ class Faqs extends React.Component {
               <hr className={styles.divider} />
               <li onClick={() => this.showAnswer('eleventh')} style={{ cursor: 'pointer' }}>
                 {this.state.currentAnswer === 'eleventh' ?
-                  <FontAwesomeIcon icon={faMinus} style={{ color: "#00aaff" }} /> :
-                  <FontAwesomeIcon icon={faPlus} style={{ color: "#00aaff" }} />
+                  <FontAwesomeIcon className={styles.icon} icon={faMinus} style={{ color: "#00aaff" }} /> :
+                  <FontAwesomeIcon className={styles.icon} icon={faPlus} style={{ color: "#00aaff" }} />
                 }
                 &nbsp; &nbsp; <h1 className={styles.summary}>What are the accepted payment methods?</h1>
                 {this.state.currentAnswer === 'eleventh' && <p className={styles.details}>

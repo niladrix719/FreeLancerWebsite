@@ -86,3 +86,51 @@
     display: block;
     color: #00aaff;
 }
+
+@media (max-width: 800px){
+    .heading{
+        font-size: 1.4rem;
+    }
+
+    .subHeading{
+        font-size: 0.8rem;
+    }
+
+    .top {
+        font-size: 0.75rem;
+    }
+
+    .details{
+        font-size: 0.75rem;
+    }
+
+    .summary{
+        font-size: 0.75rem;
+    }
+
+    .lists{
+        font-size: 0.65rem;
+    }
+
+    .icon{
+        font-size: 0.75rem;
+    }
+
+    .categories{
+        width: 25%;
+        padding-left: 2rem;
+    }
+
+    .qnas{
+        width: 70%;
+    }
+
+    .divider{
+        margin-top: 0.75rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .content{
+        width: 100vw;
+    }
+}

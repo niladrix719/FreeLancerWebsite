@@ -382,3 +382,13 @@
     position: relative;
     bottom: 0.65rem;
 }
+
+@media (max-width: 1100px){
+    .right{
+        display: none;
+    }
+
+    .left{
+        width: 90%;
+    }
+}
