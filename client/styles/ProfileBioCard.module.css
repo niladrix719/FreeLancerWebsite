@@ -78,3 +78,10 @@
     border: 1px solid lightgrey;
     box-shadow: var(--shadow);
 }
+
+.blueTick {
+    display: inline;
+    position: relative;
+    left: -0.25rem;
+    top: -1.5px;
+}

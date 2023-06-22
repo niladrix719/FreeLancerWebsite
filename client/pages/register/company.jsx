@@ -380,9 +380,11 @@ class Company extends React.Component {
                   onChange={(event) => this.setState({ companytype: event.target.value })} id="companytype"
                   value={this.state.companytype !== '' ? this.state.companytype : ''}
                 >
-                  <option className={styles.option} value="photography">Photography</option>
-                  <option className={styles.option} value="eCommerce">eCommerce</option>
-                  <option className={styles.option} value="business">Business</option>
+                  <option className={styles.option} value="photography">Photography Company</option>
+                  <option className={styles.option} value="eCommerce">eCommerce Company</option>
+                  <option className={styles.option} value="production_house">Production House</option>
+                  <option className={styles.option} value="advertising_agency">Advertising agency</option>
+                  <option className={styles.option} value="other">Other</option>
                 </select>
               </div>}
               {this.state.currentPage === 5 && <div className={styles.inputField} id={styles.address}>

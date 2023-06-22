@@ -150,11 +150,11 @@ function Verification(props) {
       <div className={styles.uploads}>
         <label className={styles.boxC}>
           <FontAwesomeIcon icon={faPlus} style={{ color: 'white' }} />
-          &nbsp;&nbsp;&nbsp;&nbsp;Pan Card
+          &nbsp;&nbsp;&nbsp;&nbsp;Company Pan Card
           <input type="file" className={styles.upload} onChange={(e) => handleImageChange(e, 6)} accept="image/jpeg,image/png" />
           &nbsp;&nbsp;&nbsp;&nbsp;
           {images[6] && <FontAwesomeIcon icon={faFile} style={{ color: "#ffffff", }} />}
-          {props.panError && <p className={styles.warn}>Please Provide Pan Card</p>}
+          {props.panError && <p className={styles.warn}>Please Provide Company Pan Card</p>}
           {props.warns[2] && <p className={styles.warn}>File size exceeds maximum limit of 1MB</p>}
         </label>
         <label className={styles.boxC}>
@@ -163,7 +163,7 @@ function Verification(props) {
           <input type="file" className={styles.upload} onChange={(e) => handleImageChange(e, 7)} accept="image/jpeg,image/png" />
           &nbsp;&nbsp;&nbsp;&nbsp;
           {images[7] && <FontAwesomeIcon icon={faFile} style={{ color: "#ffffff", }} />}
-          {props.addharError && <p className={styles.warn}>Please Provide Incorporation Certificate</p>}
+          {props.addharError && <p className={styles.warn}>Please Provide Company Incorporation Certificate</p>}
           {props.warns[3] && <p className={styles.warn}>File size exceeds maximum limit of 1MB</p>}
         </label>
       </div>

@@ -11,7 +11,7 @@ function ProfileBioCard(props) {
       <Image src={`http://localhost:3000/uploads/${props.freelancer.profilePicture}`} width={220} height={220}
         className={styles.profile_pic} alt='display picture'>
       </Image>
-      <h1 className={styles.name}>{props.freelancer.firstname} {props.freelancer.lastname}
+      <h1 className={styles.name}>{props.freelancer.firstname} {props.freelancer.lastname} <Image className={styles.blueTick} src='/tick.png' height='40' width='40' alt="verified" />
         &nbsp;<FontAwesomeIcon icon={faLocationDot} style={{ fontSize: 12, color: 'red' }} />&nbsp;
         <span className={styles.location}>{props.freelancer.location}</span>
       </h1>
