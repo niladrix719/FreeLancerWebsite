@@ -45,7 +45,6 @@
     border-bottom: 1px solid #878787;
     background-color: transparent;
     padding-bottom: 0.5rem;
-    width: 12rem;
     padding-left: 0.25rem;
 }
 
@@ -277,4 +276,23 @@
 
 .warn{
     font-size: 0.9rem;
+}
+
+@media (max-width: 1100px){
+    .presentation{
+        display: none;
+    }
+
+    .form{
+        width: 90%;
+        font-size: 0.85rem;
+    }
+
+    .labels{
+        font-size: 0.85rem;
+    }
+
+    .inputLabels{
+        width: 60%;
+    }
 }
