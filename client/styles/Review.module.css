@@ -53,3 +53,19 @@
   display: flex;
   flex-direction: row;
 }
+
+@media (max-width: 738px) {
+  .review {
+    width: 100%;
+  }
+
+  .user_info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .avatar {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+}

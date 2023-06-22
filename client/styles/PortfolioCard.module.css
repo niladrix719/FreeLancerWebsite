@@ -6,3 +6,10 @@
     background-position: center;
     box-shadow: var(--shadow);
 }
+
+@media (max-width: 768px){
+    .portfolio_card{
+        height: 6rem;
+        width: 7rem;
+    }
+}

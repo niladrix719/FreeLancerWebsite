@@ -79,3 +79,23 @@
     padding-left: 0.45rem;
     padding-right: 0.45rem;
 }
+
+@media (max-width: 1400px){
+    .main{
+        width: 70%;
+    }
+
+    .sidebar{
+        width: 30%;
+    }
+}
+
+@media (max-width: 1200px){
+    .main{
+        width: 60%;
+    }
+
+    .sidebar{
+        width: 60%;
+    }
+}

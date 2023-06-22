@@ -82,3 +82,13 @@
 .captcha{
     width: 45%;
 }
+
+@media (max-width: 1300px){
+    .right{
+        display: none;
+    }
+
+    .left{
+        width: 100%;
+    }
+}

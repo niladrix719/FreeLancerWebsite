@@ -1,4 +1,4 @@
-.profile_bio_card{
+.profile_bio_card {
     width: 25%;
     display: flex;
     flex-direction: column;
@@ -8,18 +8,20 @@
     position: relative;
 }
 
-.profile_pic{
+.profile_pic {
     border-radius: 50%;
     position: relative;
     margin-top: -7rem;
     box-shadow: var(--shadow);
     height: 14rem;
     width: 14rem;
-    object-fit: cover;
     border: 1px solid #ffffff;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
-.name{
+.name {
     font-size: 1.6rem;
     font-weight: 500;
     margin-top: 1.5rem;
@@ -28,7 +30,7 @@
     width: 90%;
 }
 
-.bio{
+.bio {
     font-size: 1rem;
     padding: 1.5rem;
     color: #aea9a9;
@@ -36,7 +38,7 @@
     width: 95%;
 }
 
-.equipment_available{
+.equipment_available {
     background-color: white;
     padding: 1.5rem;
     padding-bottom: 2rem;
@@ -44,27 +46,27 @@
     letter-spacing: 1px;
 }
 
-.title{
+.title {
     font-size: 1.3rem;
     margin-bottom: 1rem;
     display: inline-block;
 }
 
-.equipment{
+.equipment {
     color: #aea9a9;
 }
 
-.location{
+.location {
     font-size: 0.9rem;
 }
 
-.container{
+.container {
     display: flex;
     flex-direction: column;
     box-shadow: var(--shadow);
 }
 
-.socials{
+.socials {
     display: flex;
     position: relative;
     top: -2rem;
@@ -72,7 +74,7 @@
     margin-top: 2rem;
 }
 
-.social{
+.social {
     height: 4rem;
     width: 4rem;
     border-radius: 50%;
@@ -87,7 +89,7 @@
     top: -1.5px;
 }
 
-.share{
+.share {
     position: relative;
     top: -2rem;
     margin-top: 2rem;
@@ -103,7 +105,7 @@
     gap: 1rem;
 }
 
-.copy{
+.copy {
     position: absolute;
     top: 20%;
     left: 10%;
@@ -112,4 +114,26 @@
     padding: 10px;
     border-radius: 5px;
     z-index: 1;
+}
+
+@media (max-width: 1080px) {
+    .profile_pic {
+        height: 10rem;
+        width: 10rem;
+    }
+
+    .name {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 738px) {
+    .profile_pic {
+        height: 7.5rem;
+        width: 7.5rem;
+    }
+
+    .name {
+        font-size: 0.9rem;
+    }
 }

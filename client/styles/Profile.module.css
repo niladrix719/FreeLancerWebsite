@@ -105,3 +105,9 @@
     box-shadow: var(--shadow);
     border-radius: 5px;
 }
+
+@media (max-width: 1080px){
+    .btnBox{
+        display: none;
+    }
+}

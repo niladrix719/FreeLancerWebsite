@@ -12,3 +12,9 @@
     position: absolute;
     top: 7rem;
 }
+
+@media (max-width: 1080px){
+    .cover{
+        height: 30vh;
+    }
+}

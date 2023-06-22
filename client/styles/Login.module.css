@@ -19,10 +19,11 @@
     width: 38rem;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    /* gap: 2rem; */
+    justify-content: space-evenly;
     margin-top: 5rem;
     padding: 2rem;
-    padding-top: 7rem;
+    padding-top: 4rem;
     font-size: 1.5rem;
     box-shadow: 0 6px 27px 0 rgba(0, 3, 2, 0.08);
     color: white;
