@@ -18,7 +18,7 @@ async function signupController(req, res) {
     else if (req.body.type === 'freelancer')
       user = await freelancerCollection.findOne({ phone: phone });
     else if (req.body.type === 'company')
-      user = await companyCollection.findOne({ companyphone: companyphone });
+      user = await companyCollection.findOne({ companyphone: req.body.companyphone });
 
     if (user) {
       return res.sendStatus(403);

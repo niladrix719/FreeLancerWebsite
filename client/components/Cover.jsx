@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 function Cover(props) {
   return (
-    <div className={styles.cover} style={{backgroundImage: `url(http://localhost:3000/images/${props.coverPicture})`}}>
+    <div className={styles.cover} style={{backgroundImage: `url(http://localhost:3000/uploads/${props.coverPicture})`}}>
       
     </div>
   )
