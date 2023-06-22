@@ -2,7 +2,6 @@ import Image from 'next/image';
 import styles from '../styles/ProfileBioCard.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot , faShareFromSquare } from '@fortawesome/free-solid-svg-icons';
-import Link from 'next/link';
 
 function ProfileBioCard(props) {
   const links = JSON.parse(props.freelancer.links);
