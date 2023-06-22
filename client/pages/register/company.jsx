@@ -88,12 +88,12 @@ class Company extends React.Component {
       return;
     }
 
-    if ((this.state.firstname === '' || this.state.lastname === '') && this.state.currentPage === 6) {
+    if ((this.state.firstname === '' || this.state.lastname === '') && this.state.currentPage === 7) {
       this.setState({ error: true });
       return;
     }
 
-    if (this.state.position === '' && this.state.currentPage === 7) {
+    if (this.state.position === '' && this.state.currentPage === 6) {
       this.setState({ error: true });
       return;
     }
@@ -396,7 +396,7 @@ class Company extends React.Component {
                   value={this.state.companyaddress}
                 />
               </div>}
-              {this.state.currentPage === 6 && <div className={styles.inputField} id={styles.otp}>
+              {this.state.currentPage === 7 && <div className={styles.inputField} id={styles.otp}>
                 <label htmlFor="firstname" className={styles.label}><span style={{ color: 'white' }}>* </span>First Name:</label>
                 <input type='text' className={styles.input}
                   placeholder='Enter Your First name'
@@ -406,7 +406,7 @@ class Company extends React.Component {
                   maxLength={13}
                 />
               </div>}
-              {this.state.currentPage === 6 && <div className={styles.inputField} id={styles.otp}>
+              {this.state.currentPage === 7 && <div className={styles.inputField} id={styles.otp}>
                 <label htmlFor="lastname" className={styles.label}><span style={{ color: 'white' }}>* </span>Last Name:</label>
                 <input type='text' className={styles.input}
                   placeholder='Enter Your Last name'
@@ -416,10 +416,10 @@ class Company extends React.Component {
                   maxLength={13}
                 />
               </div>}
-              {this.state.currentPage === 7 && <div className={styles.inputField} id={styles.otp}>
-                <label htmlFor="position" className={styles.label}><span style={{ color: 'white' }}>* </span>Position :</label>
+              {this.state.currentPage === 6 && <div className={styles.inputField} id={styles.otp}>
+                <label htmlFor="position" className={styles.label}><span style={{ color: 'white' }}>* </span>Designation :</label>
                 <input type='text' className={styles.input}
-                  placeholder='Enter Your Position in the Company'
+                  placeholder='Enter Your Designation in the Company'
                   name='position' required
                   onChange={(event) => this.setState({ position: event.target.value, error: false })}
                   value={this.state.position}
@@ -429,7 +429,7 @@ class Company extends React.Component {
                 <label htmlFor="bio" className={styles.label}><span style={{ color: 'white' }}>* </span>Bio :</label>
                 <textarea required name="bio" id="bio" cols="30" rows="10"
                   onChange={(event) => this.setState({ bio: event.target.value })}
-                  className={styles.textarea} placeholder='Write Your bio here...'
+                  className={styles.textarea} placeholder='Write Your Company here...'
                   value={this.state.bio !== '' ? this.state.bio : ''}>
                 </textarea>
               </div>}

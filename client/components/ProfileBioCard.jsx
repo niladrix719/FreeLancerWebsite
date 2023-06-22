@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import styles from '../styles/ProfileBioCard.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { faLocationDot , faShareFromSquare } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 
 function ProfileBioCard(props) {
@@ -15,6 +15,12 @@ function ProfileBioCard(props) {
         &nbsp;<FontAwesomeIcon icon={faLocationDot} style={{ fontSize: 12, color: 'red' }} />&nbsp;
         <span className={styles.location}>{props.freelancer.location}</span>
       </h1>
+      {props.copied && (
+        <div className={styles.copy}>
+          URL copied to clipboard!
+        </div>
+      )}
+      <button className={styles.share} onClick={props.copyURL}><FontAwesomeIcon icon={faShareFromSquare} style={{color: "white",}} />Share Profile</button>
       <p className={styles.bio}>{props.freelancer.bio}</p>
       <div className={styles.equipment_available}>
         <h1 className={styles.title}>Equipments Available</h1>

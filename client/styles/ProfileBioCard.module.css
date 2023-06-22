@@ -5,6 +5,7 @@
     align-items: center;
     background-color: white;
     box-shadow: var(--shadow);
+    position: relative;
 }
 
 .profile_pic{
@@ -84,4 +85,31 @@
     position: relative;
     left: -0.25rem;
     top: -1.5px;
+}
+
+.share{
+    position: relative;
+    top: -2rem;
+    margin-top: 2rem;
+    margin-bottom: 0rem;
+    width: 90%;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.5rem;
+    box-shadow: var(--shadow);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.copy{
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1;
 }

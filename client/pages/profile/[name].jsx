@@ -24,6 +24,7 @@ function Name() {
   const [user, setUser] = useState(null);
   const [clickedImg, setClickedImg] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(null);
+  const [copied, setCopied] = useState(false);
 
   const handleClick = (item, index) => {
     setCurrentIndex(index);
@@ -133,12 +134,25 @@ function Name() {
     setLoggedIn(val);
   };
 
+  const copyURL = () => {
+    const currentURL = window.location.origin + router.asPath;
+    navigator.clipboard.writeText(currentURL).then(() => {
+      setCopied(true);
+      setTimeout(() => {
+        setCopied(false);
+      }, 3000);
+    })
+    .catch((error) => {
+      console.error('Failed to copy URL:', error);
+    });
+  };
+
   return (
     <div className={styles.profile}>
       <Navbar color='white' checkLoggedIn={checkLoggedIn} />
       <Cover coverPicture={freelancer.coverPicture} />
       <div className={styles.profile_details}>
-        {freelancer.links && <ProfileBioCard freelancer={freelancer} />}
+        {freelancer.links && <ProfileBioCard freelancer={freelancer} copyURL={copyURL} copied={copied} />}
         {isFreelancerLoaded && <Details works={freelancer.works} reviews={reviews} handleClick={handleClick} />}
         <div className={styles.btnBox}>
           {!loggedIn && <Link href='/login' className={styles.btn} id={styles.hire}>Hire</Link>}

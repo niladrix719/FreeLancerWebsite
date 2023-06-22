@@ -501,7 +501,7 @@ class Freelancer extends React.Component {
                 <label htmlFor="bio" className={styles.label}><span style={{ color: 'white' }}>* </span>Bio :</label>
                 <textarea required name="bio" id="bio" cols="30" rows="10"
                   onChange={(event) => this.handleTextChange(event, 1)}
-                  className={styles.textarea} placeholder='Write Your bio here...'
+                  className={styles.textarea} placeholder='Write Your Yourself here...'
                   value={this.state.bio}>
                 </textarea>
               </div>}
