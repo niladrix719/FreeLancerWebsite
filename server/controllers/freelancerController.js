@@ -10,12 +10,7 @@ const { uploadFile } = require('../middlewares/s3');
 //Registration
 
 async function registerFreelancer(req, res) {
-  console.log('x');
   try {
-    console.log('y');
-    console.log(req.body);
-    console.log(req.files);
-    console.log(req.token);
     jwt.verify(req.token, secret, async (err, authData) => {
       if (err) {
         console.log(err);
@@ -61,14 +56,14 @@ async function registerFreelancer(req, res) {
 
       await Promise.all(filePromises);
 
-      // await unlinkFile('uploads/'+req.files['profilePicture'][0].filename);
-      // await unlinkFile('uploads/'+req.files['coverPicture'][0].filename);
-      // await unlinkFile('uploads/'+req.files['aadhaarCard'][0].filename);
-      // await unlinkFile('uploads/'+req.files['panCard'][0].filename);
+      await unlinkFile('uploads/'+req.files['profilePicture'][0].filename);
+      await unlinkFile('uploads/'+req.files['coverPicture'][0].filename);
+      await unlinkFile('uploads/'+req.files['aadhaarCard'][0].filename);
+      await unlinkFile('uploads/'+req.files['panCard'][0].filename);
 
-      // req.files['works[]'].forEach(file => {
-      //   unlinkFile('uploads/'+file.filename);
-      // });
+      req.files['works[]'].forEach(file => {
+        unlinkFile('uploads/'+file.filename);
+      });
 
       const user = await freelancerCollection.findOne({ phone: req.body.phone });
 
@@ -78,13 +73,12 @@ async function registerFreelancer(req, res) {
           return res.sendStatus(403);
         }
 
-        // res.setHeader('Access-Control-Allow-Origin', 'https://fipezo.vercel.app, http://localhost:3001');
         res.json({ token });
       });
     });
   } catch (error) {
     console.error(error);
-    res.status(500).send('Internal server error');
+    res.status(500).send('Internal serve error');
   }
 }
 

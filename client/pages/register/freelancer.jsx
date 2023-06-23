@@ -282,9 +282,7 @@ class Freelancer extends React.Component {
           headers: {
             'Authorization': `Bearer ${token}`
           },
-          body: data,
-          // credentials: 'include',
-          // mode: 'cors'
+          body: data
         });
 
         const responseData = await response.json();
