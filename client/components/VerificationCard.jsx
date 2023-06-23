@@ -104,9 +104,7 @@ function VerificationCard(props) {
           style={{ backgroundImage: `url(https://fipezo-server.vercel.app/images/${props.profile.coverPicture})` }}>
         </div>
         <div className={styles.profileImg}>
-          <Image className={styles.image} src={`https://fipezo-server.vercel.app/images/${props.profile.profilePicture}`}
-            height='600' width='600' alt="profile-image"
-          />
+          <div className={styles.image} style={{ backgroundImage: `url(https://fipezo-server.vercel.app/images/${props.profile.profilePicture})` }}></div>
         </div>
         <div className={styles.socials}>
           <Link href={links.facebook} target='_black'>

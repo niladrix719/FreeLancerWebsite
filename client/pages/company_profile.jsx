@@ -164,7 +164,7 @@ function Company_Profile() {
             {!editProfile && <div className={style.coverPicture} style={{ backgroundImage: `url(https://fipezo-server.vercel.app/images/${coverPicture})` }}>
             </div>}
             {!editProfile && <div className={style.profileImage}>
-              <Image className={style.dp} src={profilePicture === '' ? '/dp.png' : `https://fipezo-server.vercel.app/images/${profilePicture}`} alt="profile" height='1000' width='1000' />
+              <div className={style.dp} style={{ backgroundImage: `url(https://fipezo-server.vercel.app/images/${profilePicture})` }}></div>
             </div>}
             {!editProfile && <div className={style.profileInfo}>
               <h1 className={style.name}>{companyname}</h1>

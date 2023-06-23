@@ -38,6 +38,9 @@
     width: 100px;
     height: 100px;
     border: 2px solid #f1f1f1;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 .name {
