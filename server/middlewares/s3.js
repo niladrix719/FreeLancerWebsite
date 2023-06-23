@@ -20,7 +20,6 @@ async function uploadFile(file) {
 
   try {
     const data = await s3Client.send(new PutObjectCommand(uploadParams));
-    console.log('Upload successful:', data);
   } catch (error) {
     console.log('Error:', error);
   }

@@ -3,8 +3,12 @@ const freelancerCollection = require('../models/freelancerModel');
 const companyCollection = require('../models/companyModel');
 const jwt = require('jsonwebtoken');
 const secret = process.env.JWT_SECRET;
+const fs = require('fs');
+const util = require('util');
+const unlinkFile = util.promisify(fs.unlink);
 const twilio = require('twilio')(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
 const otpCollection = require('../models/otpModel');
+const { uploadFile } = require('../middlewares/s3');
 let otpTimer;
 
 // signup
@@ -24,13 +28,13 @@ async function signupController(req, res) {
       return res.sendStatus(403);
     }
 
-    if(req.body.type === 'user'){
+    if (req.body.type === 'user') {
       if (!req.body.firstname || !req.body.lastname || !req.body.phone) {
         res.status(400).send('Bad request');
         return;
       }
     }
-    else{
+    else {
       if (!req.body.phone) {
         res.status(400).send('Bad request');
         return;
@@ -174,6 +178,13 @@ async function editUserProfile(req, res) {
               }
             });
 
+            const filePromises = [];
+            filePromises.push(uploadFile(req.file));
+
+            await Promise.all(filePromises);
+
+            await unlinkFile('uploads/' + req.file.filename);
+
             updatedAuthData = { ...authData, user: { ...authData.user, firstname: req.body.firstname, lastname: req.body.lastname, profilePicture: req.file.filename } };
           }
           else {
@@ -236,13 +247,13 @@ const getNavbar = async (req, res) => {
       return;
     } else {
       let user;
-      if(authData.user){
-      if (authData.user.profession)
-        user = await freelancerCollection.findOne({ _id: authData.user._id });
-      else if (authData.user.companyname)
-        user = await companyCollection.findOne({ _id: authData.user._id });
-      else
-        user = await userCollection.findOne({ _id: authData.user._id });
+      if (authData.user) {
+        if (authData.user.profession)
+          user = await freelancerCollection.findOne({ _id: authData.user._id });
+        else if (authData.user.companyname)
+          user = await companyCollection.findOne({ _id: authData.user._id });
+        else
+          user = await userCollection.findOne({ _id: authData.user._id });
       }
       if (user) {
         res.json({

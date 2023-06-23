@@ -21,14 +21,14 @@ function Freelancer_Profile() {
 
   const handleClick = (item, index) => {
     setCurrentIndex(index);
-    setClickedImg('http://localhost:3000/images/' + item);
+    setClickedImg('https://fipezo-server.vercel.app/images/' + item);
   };
 
   const handelRotationRight = () => {
     const totalLength = freelancer.works.length;
     if (currentIndex + 1 >= totalLength) {
       setCurrentIndex(0);
-      const newUrl = 'http://localhost:3000/images/' + freelancer.works[0];
+      const newUrl = 'https://fipezo-server.vercel.app/images/' + freelancer.works[0];
       setClickedImg(newUrl);
       return;
     }
@@ -36,7 +36,7 @@ function Freelancer_Profile() {
     const newUrl = freelancer.works.filter((item) => {
       return freelancer.works.indexOf(item) === newIndex;
     });
-    const newItem = 'http://localhost:3000/images/' + newUrl[0];
+    const newItem = 'https://fipezo-server.vercel.app/images/' + newUrl[0];
     setClickedImg(newItem);
     setCurrentIndex(newIndex);
   };
@@ -45,7 +45,7 @@ function Freelancer_Profile() {
     const totalLength = freelancer.works.length;
     if (currentIndex === 0) {
       setCurrentIndex(totalLength - 1);
-      const newUrl = 'http://localhost:3000/images/' + freelancer.works[totalLength - 1];
+      const newUrl = 'https://fipezo-server.vercel.app/images/' + freelancer.works[totalLength - 1];
       setClickedImg(newUrl);
       return;
     }
@@ -53,7 +53,7 @@ function Freelancer_Profile() {
     const newUrl = freelancer.works.filter((item) => {
       return freelancer.works.indexOf(item) === newIndex;
     });
-    const newItem = 'http://localhost:3000/images/' + newUrl[0];
+    const newItem = 'https://fipezo-server.vercel.app/images/' + newUrl[0];
     setClickedImg(newItem);
     setCurrentIndex(newIndex);
   };
@@ -61,7 +61,7 @@ function Freelancer_Profile() {
   useEffect(() => {
     const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
     if (token) {
-      fetch('http://localhost:3000/profile', {
+      fetch('https://fipezo-server.vercel.app/profile', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -81,7 +81,7 @@ function Freelancer_Profile() {
   useEffect(() => {
     async function fetchReviews() {
       try {
-        const response = await fetch(`http://localhost:3000/reviews/${freelancer._id}`);
+        const response = await fetch(`https://fipezo-server.vercel.app/reviews/${freelancer._id}`);
         const data = await response.json();
         setReviews(data);
       } catch (error) {

@@ -22,7 +22,7 @@ function User_profile() {
   React.useEffect(() => {
     const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
     if (token) {
-      fetch('http://localhost:3000/profile/user', {
+      fetch('https://fipezo-server.vercel.app/profile/user', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -51,7 +51,7 @@ function User_profile() {
     data.append('profilePicture', profilePicture);
     const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
     if (token) {
-      fetch('http://localhost:3000/profile/user/edit', {
+      fetch('https://fipezo-server.vercel.app/profile/user/edit', {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -116,7 +116,7 @@ function User_profile() {
   const handleDeleteAccount = () => {
     const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
     if (token) {
-      fetch('http://localhost:3000/profile/user/delete', {
+      fetch('https://fipezo-server.vercel.app/profile/user/delete', {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -142,7 +142,7 @@ function User_profile() {
       <div className={style.body}>
         <div className={style.profileBox}>
           {!editProfile && <div className={style.profileImage}>
-            <Image className={style.dp} src={profilePicture === '' ? '/dp.png' : `http://localhost:3000/images/${profilePicture}`} alt="profile" height='100' width='100' />
+            <Image className={style.dp} src={profilePicture === '' ? '/dp.png' : `https://fipezo-server.vercel.app/images/${profilePicture}`} alt="profile" height='100' width='100' />
           </div>}
           {!editProfile && <div className={style.profileInfo}>
             <h1 className={style.name}>{firstname} {lastname}</h1>
@@ -162,7 +162,7 @@ function User_profile() {
           {editProfile && <div className={style.editProfile}>
             <form className={style.form} encType="multipart/form-data" onSubmit={handleEditProfile}>
               <div className={style.editProfileImage} style={{
-                backgroundImage: `url(${image ? image : (profilePicture ? `http://localhost:3000/images/${user.profilePicture}` : '/dp.png')})`,
+                backgroundImage: `url(${image ? image : (profilePicture ? `https://fipezo-server.vercel.app/images/${user.profilePicture}` : '/dp.png')})`,
               }}>
                 {!image && <Image className={style.camera} id={style.camera} src='/cameraIcon.png'
                   width={35} height={35} alt='camera' onClick={handleImageClick}

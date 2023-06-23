@@ -17,7 +17,7 @@ function HireBox(props) {
     async function postHire() {
       try {
         if (token) {
-          const response = await fetch('http://localhost:3000/add/hire', {
+          const response = await fetch('https://fipezo-server.vercel.app/add/hire', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

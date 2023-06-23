@@ -11,7 +11,7 @@ export default function My_requests() {
   useEffect(() => {
     const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
     if (token) {
-      fetch('http://localhost:3000/profile', {
+      fetch('https://fipezo-server.vercel.app/profile', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -31,7 +31,7 @@ export default function My_requests() {
   useEffect(() => {
     const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
     if (token) {
-      fetch('http://localhost:3000/requests', {
+      fetch('https://fipezo-server.vercel.app/requests', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`

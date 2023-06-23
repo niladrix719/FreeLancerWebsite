@@ -7,10 +7,10 @@ function ProfileBioCard(props) {
   const links = JSON.parse(props.freelancer.links);
   return (
     <div className={styles.profile_bio_card}>
-      {/* <Image src={`http://localhost:3000/images/${props.freelancer.profilePicture}`} width={220} height={220}
+      {/* <Image src={`https://fipezo-server.vercel.app/images/${props.freelancer.profilePicture}`} width={220} height={220}
         className={styles.profile_pic} alt='display picture'>
       </Image> */}
-      <div className={styles.profile_pic} style={{backgroundImage: `url(http://localhost:3000/images/${props.freelancer.profilePicture})`}}>
+      <div className={styles.profile_pic} style={{backgroundImage: `url(https://fipezo-server.vercel.app/images/${props.freelancer.profilePicture})`}}>
       </div>
       <h1 className={styles.name}>{props.freelancer.firstname} {props.freelancer.lastname} <Image className={styles.blueTick} src='/tick.png' height='40' width='40' alt="verified" />
         &nbsp;<FontAwesomeIcon icon={faLocationDot} style={{ fontSize: 12, color: 'red' }} />&nbsp;

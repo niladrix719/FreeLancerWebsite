@@ -2,6 +2,10 @@ const companyCollection = require('../models/companyModel');
 const userCollection = require('../models/userModel');
 const secret = process.env.JWT_SECRET;
 const jwt = require('jsonwebtoken');
+const fs = require('fs');
+const util = require('util');
+const unlinkFile = util.promisify(fs.unlink);
+const { uploadFile } = require('../middlewares/s3');
 
 async function registerCompany(req, res) {
   try {
@@ -32,6 +36,19 @@ async function registerCompany(req, res) {
 
       await companyData.save();
 
+      const filePromises = [];
+      filePromises.push(uploadFile(req.files['profilePicture'][0]));
+      filePromises.push(uploadFile(req.files['coverPicture'][0]));
+      filePromises.push(uploadFile(req.files['panCard'][0]));
+      filePromises.push(uploadFile(req.files['incorporationCertificate'][0]));
+
+      await Promise.all(filePromises);
+
+      await unlinkFile('uploads/' + req.files['profilePicture'][0].filename);
+      await unlinkFile('uploads/' + req.files['coverPicture'][0].filename);
+      await unlinkFile('uploads/' + req.files['panCard'][0].filename);
+      await unlinkFile('uploads/' + req.files['incorporationCertificate'][0].filename);
+
       const user = await companyCollection.findOne({ companyphone: req.body.companyphone })
 
       jwt.sign({ user }, secret, { expiresIn: '30d' }, (err, token) => {
@@ -57,7 +74,7 @@ async function editCompanyProfile(req, res) {
         res.sendStatus(403);
         return;
       }
-      
+
       let updatedAuthData;
 
       if (!req.body.profilePicture && !req.body.coverPicture) {
@@ -70,6 +87,16 @@ async function editCompanyProfile(req, res) {
             bio: req.body.bio
           }
         });
+
+        const filePromises = [];
+        filePromises.push(uploadFile(req.files['profilePicture'][0]));
+        filePromises.push(uploadFile(req.files['coverPicture'][0]));
+
+        await Promise.all(filePromises);
+
+        await unlinkFile('uploads/' + req.files['profilePicture'][0].filename);
+        await unlinkFile('uploads/' + req.files['coverPicture'][0].filename);
+
         updatedAuthData = { ...authData, user: { ...authData.user, companyname: req.body.companyname, companyaddress: req.body.companyaddress, profilePicture: req.files.profilePicture[0].filename, coverPicture: req.files.coverPicture[0].filename, bio: req.body.bio } };
       }
       else if (!req.body.profilePicture) {
@@ -81,6 +108,14 @@ async function editCompanyProfile(req, res) {
             bio: req.body.bio
           }
         });
+
+        const filePromises = [];
+        filePromises.push(uploadFile(req.files['profilePicture'][0]));
+
+        await Promise.all(filePromises);
+
+        await unlinkFile('uploads/' + req.files['profilePicture'][0].filename);
+
         updatedAuthData = { ...authData, user: { ...authData.user, companyname: req.body.companyname, companyaddress: req.body.companyaddress, profilePicture: req.files.profilePicture[0].filename, bio: req.body.bio } };
       }
       else if (!req.body.coverPicture) {
@@ -92,6 +127,14 @@ async function editCompanyProfile(req, res) {
             bio: req.body.bio
           }
         });
+
+        const filePromises = [];
+        filePromises.push(uploadFile(req.files['coverPicture'][0]));
+
+        await Promise.all(filePromises);
+
+        await unlinkFile('uploads/' + req.files['coverPicture'][0].filename);
+
         updatedAuthData = { ...authData, user: { ...authData.user, companyname: req.body.companyname, companyaddress: req.body.companyaddress, coverPicture: req.files.coverPicture[0].filename, bio: req.body.bio } };
       }
       else {
@@ -165,30 +208,30 @@ async function getUnCompanyProfiles(req, res) {
 // delete profile
 
 async function deleteCompanyProfileV(req, res) {
-  try {
-    const id = req.params.id;
-    const user = await companyCollection.findOne({ _id: id });
+  // try {
+  //   const id = req.params.id;
+  //   const user = await companyCollection.findOne({ _id: id });
 
-    if (!user || user.verified === true) {
-      return res.sendStatus(403);
-    }
+  //   if (!user || user.verified === true) {
+  //     return res.sendStatus(403);
+  //   }
 
-    user.works.forEach((filename) => {
-      const filePath = `uploads/${filename}`;
-      fs.unlinkSync(filePath);
-    });
+  //   user.works.forEach((filename) => {
+  //     const filePath = `uploads/${filename}`;
+  //     fs.unlinkSync(filePath);
+  //   });
 
-    fs.unlinkSync(`uploads/${user.profilePicture}`);
-    fs.unlinkSync(`uploads/${user.coverPicture}`);
-    fs.unlinkSync(`uploads/${user.panCard}`);
-    fs.unlinkSync(`uploads/${user.incorporationCertificate}`);
+  //   fs.unlinkSync(`uploads/${user.profilePicture}`);
+  //   fs.unlinkSync(`uploads/${user.coverPicture}`);
+  //   fs.unlinkSync(`uploads/${user.panCard}`);
+  //   fs.unlinkSync(`uploads/${user.incorporationCertificate}`);
 
-    await companyCollection.deleteOne({ _id: id });
-    res.json({ id: id });
-  } catch (error) {
-    console.error(error);
-    res.sendStatus(500);
-  }
+  //   await companyCollection.deleteOne({ _id: id });
+  //   res.json({ id: id });
+  // } catch (error) {
+  //   console.error(error);
+  //   res.sendStatus(500);
+  // }
 }
 
 // verifying profile

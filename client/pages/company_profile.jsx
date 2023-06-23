@@ -26,7 +26,7 @@ function Company_Profile() {
   React.useEffect(() => {
     const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
     if (token) {
-      fetch('http://localhost:3000/profile/user', {
+      fetch('https://fipezo-server.vercel.app/profile/user', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -58,7 +58,7 @@ function Company_Profile() {
     data.append('bio', bio);
     const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
     if (token) {
-      fetch('http://localhost:3000/profile/company/edit', {
+      fetch('https://fipezo-server.vercel.app/profile/company/edit', {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -130,7 +130,7 @@ function Company_Profile() {
   const handleDeleteAccount = () => {
     const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
     if (token) {
-      fetch('http://localhost:3000/profile/company/delete', {
+      fetch('https://fipezo-server.vercel.app/profile/company/delete', {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -161,10 +161,10 @@ function Company_Profile() {
       <div className={style.body}>
         <div className={style.profileBox}>
           {!editProfile && <div className={style.form}>
-            {!editProfile && <div className={style.coverPicture} style={{ backgroundImage: `url(http://localhost:3000/images/${coverPicture})` }}>
+            {!editProfile && <div className={style.coverPicture} style={{ backgroundImage: `url(https://fipezo-server.vercel.app/images/${coverPicture})` }}>
             </div>}
             {!editProfile && <div className={style.profileImage}>
-              <Image className={style.dp} src={profilePicture === '' ? '/dp.png' : `http://localhost:3000/images/${profilePicture}`} alt="profile" height='1000' width='1000' />
+              <Image className={style.dp} src={profilePicture === '' ? '/dp.png' : `https://fipezo-server.vercel.app/images/${profilePicture}`} alt="profile" height='1000' width='1000' />
             </div>}
             {!editProfile && <div className={style.profileInfo}>
               <h1 className={style.name}>{companyname}</h1>
@@ -184,14 +184,14 @@ function Company_Profile() {
           </div>}
           {editProfile && <div className={style.editProfile}>
             <form className={style.form} encType="multipart/form-data" onSubmit={handleEditProfile}>
-              <div className={style.editCoverPicture} style={{ backgroundImage: `url(${cover ? cover : (coverPicture ? `http://localhost:3000/images/${user.coverPicture}` : '/dp.png')})` }}>
+              <div className={style.editCoverPicture} style={{ backgroundImage: `url(${cover ? cover : (coverPicture ? `https://fipezo-server.vercel.app/images/${user.coverPicture}` : '/dp.png')})` }}>
                 {!cover && <Image className={style.camera} id={style.camera} src='/cameraIcon.png'
                   width={35} height={35} alt='camera' onClick={handleImageClick}
                 />}
                 <input type="file" id="file" accept="image/*" name='coverPicture' onChange={(e) => handleImageChange(e,2)} className={style.fileInput} />
               </div>
               <div className={style.editProfileImage} style={{
-                backgroundImage: `url(${image ? image : (profilePicture ? `http://localhost:3000/images/${user.profilePicture}` : '/dp.png')})`,
+                backgroundImage: `url(${image ? image : (profilePicture ? `https://fipezo-server.vercel.app/images/${user.profilePicture}` : '/dp.png')})`,
               }}>
                 {!image && <Image className={style.camera} id={style.camera} src='/cameraIcon.png'
                   width={35} height={35} alt='camera' onClick={handleImageClick}
