@@ -13,9 +13,7 @@ const Modal = ({
   return (
     <>
       <div className="overlay dismiss">
-        {/* <img src={clickedImg} alt="bigger pic" /> */}
-        {clickedImg} {/* ${process.env.SERVER_URL}/images/works[]-1687497125122-485718735-Screenshot2023-06-09130349.png */}
-        <div className='image' style={{ backgroundImage: `url(${process.env.SERVER_URL}/+${clickedImg})` }}></div>
+        <div className='image' style={{ backgroundImage: `url(${clickedImg})` }}></div>
         <span className="dismiss" onClick={handleClick}>
           x
         </span>
