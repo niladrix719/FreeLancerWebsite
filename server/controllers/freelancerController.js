@@ -61,14 +61,14 @@ async function registerFreelancer(req, res) {
 
       await Promise.all(filePromises);
 
-      await unlinkFile('uploads/'+req.files['profilePicture'][0].filename);
-      await unlinkFile('uploads/'+req.files['coverPicture'][0].filename);
-      await unlinkFile('uploads/'+req.files['aadhaarCard'][0].filename);
-      await unlinkFile('uploads/'+req.files['panCard'][0].filename);
+      // await unlinkFile('uploads/'+req.files['profilePicture'][0].filename);
+      // await unlinkFile('uploads/'+req.files['coverPicture'][0].filename);
+      // await unlinkFile('uploads/'+req.files['aadhaarCard'][0].filename);
+      // await unlinkFile('uploads/'+req.files['panCard'][0].filename);
 
-      req.files['works[]'].forEach(file => {
-        unlinkFile('uploads/'+file.filename);
-      });
+      // req.files['works[]'].forEach(file => {
+      //   unlinkFile('uploads/'+file.filename);
+      // });
 
       const user = await freelancerCollection.findOne({ phone: req.body.phone });
 
