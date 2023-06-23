@@ -26,7 +26,7 @@ function Company_Profile() {
   React.useEffect(() => {
     const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
     if (token) {
-      fetch('${process.env.SERVER_URL}/profile/user', {
+      fetch(`${process.env.SERVER_URL}/profile/user`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -58,7 +58,7 @@ function Company_Profile() {
     data.append('bio', bio);
     const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
     if (token) {
-      fetch('${process.env.SERVER_URL}/profile/company/edit', {
+      fetch(`${process.env.SERVER_URL}/profile/company/edit`, {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -130,7 +130,7 @@ function Company_Profile() {
   const handleDeleteAccount = () => {
     const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
     if (token) {
-      fetch('${process.env.SERVER_URL}/profile/company/delete', {
+      fetch(`${process.env.SERVER_URL}/profile/company/delete`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`

@@ -22,7 +22,7 @@ function User_profile() {
   React.useEffect(() => {
     const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
     if (token) {
-      fetch('${process.env.SERVER_URL}/profile/user', {
+      fetch(`${process.env.SERVER_URL}/profile/user`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -51,7 +51,7 @@ function User_profile() {
     data.append('profilePicture', profilePicture);
     const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
     if (token) {
-      fetch('${process.env.SERVER_URL}/profile/user/edit', {
+      fetch(`${process.env.SERVER_URL}/profile/user/edit`, {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -116,7 +116,7 @@ function User_profile() {
   const handleDeleteAccount = () => {
     const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
     if (token) {
-      fetch('${process.env.SERVER_URL}/profile/user/delete', {
+      fetch(`${process.env.SERVER_URL}/profile/user/delete`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`

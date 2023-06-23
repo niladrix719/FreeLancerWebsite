@@ -21,7 +21,7 @@ export default function Navbar(props) {
   useEffect(() => {
     const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
     if (token) {
-      fetch('${process.env.SERVER_URL}/navbar', {
+      fetch(`${process.env.SERVER_URL}/navbar`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`

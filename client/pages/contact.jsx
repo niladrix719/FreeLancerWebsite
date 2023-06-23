@@ -32,7 +32,7 @@ function Contact() {
       message: e.target[5].value,
       captcha: reCaptchaValue
     };
-    fetch('${process.env.SERVER_URL}/contact', {
+    fetch(`${process.env.SERVER_URL}/contact`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

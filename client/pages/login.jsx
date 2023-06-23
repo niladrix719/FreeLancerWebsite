@@ -23,7 +23,7 @@ export default function Login() {
       try {
         const storedPhone = phone;
         const storedType = type;
-        const response = await fetch('${process.env.SERVER_URL}/otp', {
+        const response = await fetch(`${process.env.SERVER_URL}/otp`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -49,7 +49,7 @@ export default function Login() {
   function handleSubmit() {
     async function postData() {
       try {
-        const response = await fetch('${process.env.SERVER_URL}/login', {
+        const response = await fetch(`${process.env.SERVER_URL}/login`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

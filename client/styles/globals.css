@@ -56,7 +56,7 @@ body {
   display: flex;
   align-items: center;
 }
-.overlay img {
+.overlay .image{
   display: block;
   max-width: 60%;
   max-height: 80%;
@@ -108,4 +108,11 @@ body {
 
 .dismiss{
   padding: 2rem;
+}
+
+.image{
+  display: inline;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

@@ -11,7 +11,7 @@ export default function My_requests() {
   useEffect(() => {
     const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
     if (token) {
-      fetch('${process.env.SERVER_URL}/profile', {
+      fetch(`${process.env.SERVER_URL}/profile`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -31,7 +31,7 @@ export default function My_requests() {
   useEffect(() => {
     const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
     if (token) {
-      fetch('${process.env.SERVER_URL}/requests', {
+      fetch(`${process.env.SERVER_URL}/requests`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`

@@ -17,7 +17,7 @@ function HireBox(props) {
     async function postHire() {
       try {
         if (token) {
-          const response = await fetch('${process.env.SERVER_URL}/add/hire', {
+          const response = await fetch(`${process.env.SERVER_URL}/add/hire`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
