@@ -56,7 +56,7 @@ async function addHire(req, res) {
 
       const postData = await hireData.save();
 
-      sendTextMessage(freelancerDetails.phone, `You have a new hire request from ${name}. Click here to view details: http://localhost:3001/my_requests`);
+      sendTextMessage(freelancerDetails.phone, `You have a new hire request from ${name}. Click here to view details: https://fipezo.vercel.app/my_requests`);
 
       res.send(postData);
     });

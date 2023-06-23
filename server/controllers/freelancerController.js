@@ -78,7 +78,7 @@ async function registerFreelancer(req, res) {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).send('Internal serve error');
+    res.status(500).send('Internal server error');
   }
 }
 
