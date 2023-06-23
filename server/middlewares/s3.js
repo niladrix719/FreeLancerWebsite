@@ -4,8 +4,8 @@ const fs = require('fs');
 const s3Client = new S3Client({
   region: process.env.AWS_BUCKET_REGION,
   credentials: {
-    accessKeyId: process.env.AWS_ACCESS_KEY,
-    secretAccessKey: process.env.AWS_SECRET_KEY
+    accessKeyId: process.env.AWS_ACCESS_API_KEY,
+    secretAccessKey: process.env.AWS_SECRET_API_KEY
   }
 });
 
