@@ -29,7 +29,6 @@ async function uploadFile(file) {
 exports.uploadFile = uploadFile;
 
 async function getFileStream(fileKey) {
-  console.log(process.env.AWS_BUCKET_NAME);
   const downloadParams = {
     Key: fileKey,
     Bucket: process.env.AWS_BUCKET_NAME

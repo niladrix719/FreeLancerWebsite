@@ -142,7 +142,7 @@ function User_profile() {
       <div className={style.body}>
         <div className={style.profileBox}>
           {!editProfile && <div className={style.profileImage}>
-            <Image className={style.dp} src={profilePicture === '' ? '/dp.png' : `http://localhost:3000/uploads/${profilePicture}`} alt="profile" height='100' width='100' />
+            <Image className={style.dp} src={profilePicture === '' ? '/dp.png' : `http://localhost:3000/images/${profilePicture}`} alt="profile" height='100' width='100' />
           </div>}
           {!editProfile && <div className={style.profileInfo}>
             <h1 className={style.name}>{firstname} {lastname}</h1>
@@ -162,7 +162,7 @@ function User_profile() {
           {editProfile && <div className={style.editProfile}>
             <form className={style.form} encType="multipart/form-data" onSubmit={handleEditProfile}>
               <div className={style.editProfileImage} style={{
-                backgroundImage: `url(${image ? image : (profilePicture ? `http://localhost:3000/uploads/${user.profilePicture}` : '/dp.png')})`,
+                backgroundImage: `url(${image ? image : (profilePicture ? `http://localhost:3000/images/${user.profilePicture}` : '/dp.png')})`,
               }}>
                 {!image && <Image className={style.camera} id={style.camera} src='/cameraIcon.png'
                   width={35} height={35} alt='camera' onClick={handleImageClick}

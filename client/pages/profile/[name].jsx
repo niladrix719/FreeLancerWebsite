@@ -28,14 +28,14 @@ function Name() {
 
   const handleClick = (item, index) => {
     setCurrentIndex(index);
-    setClickedImg('http://localhost:3000/uploads/'+item);
+    setClickedImg('http://localhost:3000/images/'+item);
   };
 
   const handelRotationRight = () => {
     const totalLength = freelancer.works.length;
     if (currentIndex + 1 >= totalLength) {
       setCurrentIndex(0);
-      const newUrl = 'http://localhost:3000/uploads/'+freelancer.works[0];
+      const newUrl = 'http://localhost:3000/images/'+freelancer.works[0];
       setClickedImg(newUrl);
       return;
     }
@@ -43,7 +43,7 @@ function Name() {
     const newUrl = freelancer.works.filter((item) => {
       return freelancer.works.indexOf(item) === newIndex;
     });
-    const newItem = 'http://localhost:3000/uploads/'+newUrl[0];
+    const newItem = 'http://localhost:3000/images/'+newUrl[0];
     setClickedImg(newItem);
     setCurrentIndex(newIndex);
   };
@@ -52,7 +52,7 @@ function Name() {
     const totalLength = freelancer.works.length;
     if (currentIndex === 0) {
       setCurrentIndex(totalLength - 1);
-      const newUrl = 'http://localhost:3000/uploads/'+freelancer.works[totalLength - 1];
+      const newUrl = 'http://localhost:3000/images/'+freelancer.works[totalLength - 1];
       setClickedImg(newUrl);
       return;
     }
@@ -60,7 +60,7 @@ function Name() {
     const newUrl = freelancer.works.filter((item) => {
       return freelancer.works.indexOf(item) === newIndex;
     });
-    const newItem = 'http://localhost:3000/uploads/'+newUrl[0];
+    const newItem = 'http://localhost:3000/images/'+newUrl[0];
     setClickedImg(newItem);
     setCurrentIndex(newIndex);
   };

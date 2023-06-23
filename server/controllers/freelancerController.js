@@ -147,30 +147,30 @@ async function getUnFreelancerProfiles(req, res) {
 // delete profile
 
 async function deleteFreelancerProfile(req, res) {
-  try {
-    const id = req.params.id;
-    const user = await freelancerCollection.findOne({ _id: id });
+  // try {
+  //   const id = req.params.id;
+  //   const user = await freelancerCollection.findOne({ _id: id });
 
-    if (!user || user.verified === true) {
-      return res.sendStatus(403);
-    }
+  //   if (!user || user.verified === true) {
+  //     return res.sendStatus(403);
+  //   }
 
-    user.works.forEach((filename) => {
-      const filePath = `uploads/${filename}`;
-      fs.unlinkSync(filePath);
-    });
+  //   user.works.forEach((filename) => {
+  //     const filePath = `uploads/${filename}`;
+  //     fs.unlinkSync(filePath);
+  //   });
 
-    fs.unlinkSync(`uploads/${user.profilePicture}`);
-    fs.unlinkSync(`uploads/${user.coverPicture}`);
-    fs.unlinkSync(`uploads/${user.panCard}`);
-    fs.unlinkSync(`uploads/${user.aadhaarCard}`);
+  //   fs.unlinkSync(`uploads/${user.profilePicture}`);
+  //   fs.unlinkSync(`uploads/${user.coverPicture}`);
+  //   fs.unlinkSync(`uploads/${user.panCard}`);
+  //   fs.unlinkSync(`uploads/${user.aadhaarCard}`);
 
-    await freelancerCollection.deleteOne({ _id: id });
-    res.json({ id: id });
-  } catch (error) {
-    console.error(error);
-    res.sendStatus(500);
-  }
+  //   await freelancerCollection.deleteOne({ _id: id });
+  //   res.json({ id: id });
+  // } catch (error) {
+  //   console.error(error);
+  //   res.sendStatus(500);
+  // }
 }
 
 // verifying profile

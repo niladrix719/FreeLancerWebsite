@@ -6,7 +6,7 @@ import { useState } from 'react';
 function VerificationCard(props) {
   const [screen, setScreen] = useState('');
   let work1, work2, work3, work4, work5, work6, work7, work8;
-  if (props.profile.work) {
+  if (props.profile.works) {
     work1 = props.profile.works[0];
     work2 = props.profile.works[1];
     work3 = props.profile.works[2];
@@ -101,10 +101,10 @@ function VerificationCard(props) {
     <div className={styles.verificationCard}>
       <div className={styles.details}>
         <div className={styles.cover}
-          style={{ backgroundImage: `url(http://localhost:3000/uploads/${props.profile.coverPicture})` }}>
+          style={{ backgroundImage: `url(http://localhost:3000/images/${props.profile.coverPicture})` }}>
         </div>
         <div className={styles.profileImg}>
-          <Image className={styles.image} src={`http://localhost:3000/uploads/${props.profile.profilePicture}`}
+          <Image className={styles.image} src={`http://localhost:3000/images/${props.profile.profilePicture}`}
             height='600' width='600' alt="profile-image"
           />
         </div>
@@ -200,7 +200,7 @@ function VerificationCard(props) {
       </div>
       <div className={styles.right}>
         <div className={styles.screen}
-          style={{ backgroundImage: `url(http://localhost:3000/uploads/${screen})` }}
+          style={{ backgroundImage: `url(http://localhost:3000/images/${screen})` }}
         >
         </div>
         <div className={styles.btns}>
