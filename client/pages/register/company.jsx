@@ -231,7 +231,7 @@ class Company extends React.Component {
         data.append('links', JSON.stringify(this.state.links));
         data.append('termsAndConditions', this.state.termsAndConditions);
         data.append('verified', false);
-        const response = await fetch('https://fipezo-server.vercel.app/register/company', {
+        const response = await fetch('${process.env.SERVER_URL}/register/company', {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${token}`
@@ -254,7 +254,7 @@ class Company extends React.Component {
   handleOtp = () => {
     const postData = async () => {
       try {
-        const response = await fetch('https://fipezo-server.vercel.app/verify/company/phone', {
+        const response = await fetch('${process.env.SERVER_URL}/verify/company/phone', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -287,7 +287,7 @@ class Company extends React.Component {
   getOtp = () => {
     const postData = async () => {
       try {
-        await fetch('https://fipezo-server.vercel.app/signup', {
+        await fetch('${process.env.SERVER_URL}/signup', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

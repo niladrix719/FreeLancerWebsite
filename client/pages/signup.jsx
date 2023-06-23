@@ -25,7 +25,7 @@ function Signup() {
         const storedPhone = phone;
         const storedFirstname = firstname;
         const storedLastname = lastname;
-        const response = await fetch('https://fipezo-server.vercel.app/otp/signup', {
+        const response = await fetch('${process.env.SERVER_URL}/otp/signup', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -57,7 +57,7 @@ function Signup() {
 
     async function postData() {
       try {
-        const response = await fetch('https://fipezo-server.vercel.app/signup', {
+        const response = await fetch('${process.env.SERVER_URL}/signup', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

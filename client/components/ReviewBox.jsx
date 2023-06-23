@@ -16,7 +16,7 @@ function ReviewBox(props) {
     async function postReview() {
       try {
         if (token) {
-          const response = await fetch('https://fipezo-server.vercel.app/add/review', {
+          const response = await fetch('${process.env.SERVER_URL}/add/review', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

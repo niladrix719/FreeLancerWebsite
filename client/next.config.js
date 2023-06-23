@@ -5,7 +5,8 @@ const nextConfig = {
     domains: ['localhost', 'fipezo-server.vercel.app']
   },
   env: {
-    CAPTCHA_SITE_KEY: process.env.CAPTCHA_SITE_KEY
+    CAPTCHA_SITE_KEY: process.env.CAPTCHA_SITE_KEY,
+    SERVER_URL: process.env.SERVER_URL
   },
 }
 

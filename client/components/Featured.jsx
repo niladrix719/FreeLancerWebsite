@@ -9,7 +9,7 @@ export default function Featured() {
   useEffect(() => {
     async function fetchFreelancer() {
       try {
-        const response = await fetch(`https://fipezo-server.vercel.app/profiles/featured/freelancer`);
+        const response = await fetch(`${process.env.SERVER_URL}/profiles/featured/freelancer`);
         const data = await response.json();
         setFreelancers(data);
       } catch (error) {

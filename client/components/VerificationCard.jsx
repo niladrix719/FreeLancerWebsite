@@ -33,7 +33,7 @@ function VerificationCard(props) {
 
   const handleDelete = async () => {
     try {
-      const response = await fetch(`https://fipezo-server.vercel.app/delete/freelancer/${props.profile._id}`, {
+      const response = await fetch(`${process.env.SERVER_URL}/delete/freelancer/${props.profile._id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json'
@@ -51,7 +51,7 @@ function VerificationCard(props) {
 
   const handleVerify = async () => {
     try {
-      const response = await fetch(`https://fipezo-server.vercel.app/verify/freelancer/${props.profile._id}`, {
+      const response = await fetch(`${process.env.SERVER_URL}/verify/freelancer/${props.profile._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -69,7 +69,7 @@ function VerificationCard(props) {
 
   const handleCompanyDelete = async () => {
     try {
-      const response = await fetch(`https://fipezo-server.vercel.app/delete/company/${props.profile._id}`, {
+      const response = await fetch(`${process.env.SERVER_URL}/delete/company/${props.profile._id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json'
@@ -84,7 +84,7 @@ function VerificationCard(props) {
 
   const handleCompanyVerify = async () => {
     try {
-      const response = await fetch(`https://fipezo-server.vercel.app/verify/company/${props.profile._id}`, {
+      const response = await fetch(`${process.env.SERVER_URL}/verify/company/${props.profile._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -101,10 +101,10 @@ function VerificationCard(props) {
     <div className={styles.verificationCard}>
       <div className={styles.details}>
         <div className={styles.cover}
-          style={{ backgroundImage: `url(https://fipezo-server.vercel.app/images/${props.profile.coverPicture})` }}>
+          style={{ backgroundImage: `url(${process.env.SERVER_URL}/images/${props.profile.coverPicture})` }}>
         </div>
         <div className={styles.profileImg}>
-          <div className={styles.image} style={{ backgroundImage: `url(https://fipezo-server.vercel.app/images/${props.profile.profilePicture})` }}></div>
+          <div className={styles.image} style={{ backgroundImage: `url(${process.env.SERVER_URL}/images/${props.profile.profilePicture})` }}></div>
         </div>
         <div className={styles.socials}>
           <Link href={links.facebook} target='_black'>
@@ -198,7 +198,7 @@ function VerificationCard(props) {
       </div>
       <div className={styles.right}>
         <div className={styles.screen}
-          style={{ backgroundImage: `url(https://fipezo-server.vercel.app/images/${screen})` }}
+          style={{ backgroundImage: `url(${process.env.SERVER_URL}/images/${screen})` }}
         >
         </div>
         <div className={styles.btns}>

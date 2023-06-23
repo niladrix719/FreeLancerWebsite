@@ -12,7 +12,7 @@ function Contact_panel() {
       const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
       try {
         if (token) {
-          const response = await fetch(`https://fipezo-server.vercel.app/contact/messages`, {
+          const response = await fetch(`${process.env.SERVER_URL}/contact/messages`, {
             method: 'GET',
             headers: {
               'Authorization': `Bearer ${token}`

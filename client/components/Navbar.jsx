@@ -21,7 +21,7 @@ export default function Navbar(props) {
   useEffect(() => {
     const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
     if (token) {
-      fetch('https://fipezo-server.vercel.app/navbar', {
+      fetch('${process.env.SERVER_URL}/navbar', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -130,7 +130,7 @@ export default function Navbar(props) {
               style={{ fontSize: 10, color: color }}
             />
             <div className={styles.profile_card}>
-              <div className={styles.dp} style={{backgroundImage: `url(${user.profilePicture ? `https://fipezo-server.vercel.app/images/${user.profilePicture}` : '/dp.png'})`}}></div>
+              <div className={styles.dp} style={{backgroundImage: `url(${user.profilePicture ? `${process.env.SERVER_URL}/images/${user.profilePicture}` : '/dp.png'})`}}></div>
               <h1 className={styles.name}>{user ? `${user.firstname} ${user.lastname}` : ''}</h1>
               <p className={styles.number}>{user ? user.phone : ''}</p>
               {user.uid && <Link className={styles.btn} href={`/freelancer_profile`}>My Profile</Link>}
@@ -145,7 +145,7 @@ export default function Navbar(props) {
               style={{ fontSize: 10, color: props.color }}
             />
             <div className={styles.profile_card}>
-              <div className={styles.dp} style={{backgroundImage: `url(https://fipezo-server.vercel.app/images/${company.profilePicture})`}}></div>
+              <div className={styles.dp} style={{backgroundImage: `url(${process.env.SERVER_URL}/images/${company.profilePicture})`}}></div>
               <h1 className={styles.name}>{company ? `${company.companyname} ` : ''}</h1>
               <p className={styles.number}>{company ? company.companyphone : ''}</p>
               <Link className={styles.btn} href='/company_profile'>My Profile</Link>
