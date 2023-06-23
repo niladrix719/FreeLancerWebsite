@@ -10,7 +10,12 @@ const { uploadFile } = require('../middlewares/s3');
 //Registration
 
 async function registerFreelancer(req, res) {
+  console.log('x');
   try {
+    console.log('y');
+    console.log(req.body);
+    console.log(req.files);
+    console.log(req.token);
     jwt.verify(req.token, secret, async (err, authData) => {
       if (err) {
         console.log(err);
