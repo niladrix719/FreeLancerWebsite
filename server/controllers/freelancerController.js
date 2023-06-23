@@ -73,7 +73,7 @@ async function registerFreelancer(req, res) {
           return res.sendStatus(403);
         }
 
-        res.setHeader('Access-Control-Allow-Origin', 'https://fipezo.vercel.app');
+        // res.setHeader('Access-Control-Allow-Origin', 'https://fipezo.vercel.app, http://localhost:3001');
         res.json({ token });
       });
     });
