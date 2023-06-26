@@ -117,6 +117,9 @@
 
     .lists{
         font-size: 0.65rem;
+        flex-direction: row;
+        width: 80vw;
+        margin-bottom: 1rem;
     }
 
     .icon{
@@ -124,16 +127,16 @@
     }
 
     .categories{
-        width: 35%;
+        width: 100%;
         padding-left: 2rem;
     }
 
     .qnas{
-        width: 60%;
+        width: 80vw;
     }
 
     .qnas li{
-        font-size: 0.75rem;
+        font-size: 1rem;
     }
 
     .divider{
@@ -142,7 +145,9 @@
     }
 
     .content{
-        width: 100vw;
-        justify-content: space-between;
+        /* width: 100vw;
+        justify-content: space-between; */
+        flex-direction: column;
+        align-items: center;
     }
 }
