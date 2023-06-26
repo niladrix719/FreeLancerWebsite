@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const fs = require('fs');
 const util = require('util');
 const unlinkFile = util.promisify(fs.unlink);
-const { uploadFile } = require('../middlewares/s3');
+const { uploadFile , deleteFile } = require('../middlewares/s3');
 
 async function registerCompany(req, res) {
   try {
@@ -208,37 +208,35 @@ async function getUnCompanyProfiles(req, res) {
 // delete profile
 
 async function deleteCompanyProfileV(req, res) {
-  // try {
-  //   const id = req.params.id;
-  //   const user = await companyCollection.findOne({ _id: id });
+  try {
+    const id = req.params.id;
+    const user = await companyCollection.findOne({ _id: id });
 
-  //   if (!user || user.verified === true) {
-  //     return res.sendStatus(403);
-  //   }
+    if (!user || user.verified === true) {
+      return res.sendStatus(403);
+    }
 
-  //   user.works.forEach((filename) => {
-  //     const filePath = `uploads/${filename}`;
-  //     fs.unlinkSync(filePath);
-  //   });
+    const filePromises = [];
+    filePromises.push(deleteFile(user.profilePicture));
+    filePromises.push(deleteFile(user.coverPicture));
+    filePromises.push(deleteFile(user.panCard));
+    filePromises.push(deleteFile(user.incorporationCertificate));
 
-  //   fs.unlinkSync(`uploads/${user.profilePicture}`);
-  //   fs.unlinkSync(`uploads/${user.coverPicture}`);
-  //   fs.unlinkSync(`uploads/${user.panCard}`);
-  //   fs.unlinkSync(`uploads/${user.incorporationCertificate}`);
+    await Promise.all(filePromises);
 
-  //   await companyCollection.deleteOne({ _id: id });
-  //   res.json({ id: id });
-  // } catch (error) {
-  //   console.error(error);
-  //   res.sendStatus(500);
-  // }
+    await companyCollection.deleteOne({ _id: id });
+    res.json({ id: id });
+  } catch (error) {
+    console.error(error);
+    res.sendStatus(500);
+  }
 }
 
 // verifying profile
 
 async function verifyCompanyProfile(req, res) {
   const id = req.params.id;
-  freelancerCollection.updateOne({ _id: id }, { $set: { verified: true } })
+  companyCollection.updateOne({ _id: id }, { $set: { verified: true } })
     .then(() => {
       res.json({ id: id });
     })

@@ -1,4 +1,4 @@
-const { S3Client, PutObjectCommand, GetObjectCommand } = require("@aws-sdk/client-s3");
+const { S3Client, PutObjectCommand, GetObjectCommand , DeleteObjectCommand } = require("@aws-sdk/client-s3");
 const fs = require('fs');
 
 const s3Client = new S3Client({
@@ -43,3 +43,19 @@ async function getFileStream(fileKey) {
 }
 
 exports.getFileStream = getFileStream;
+
+async function deleteFile(fileKey) {
+  const deleteParams = {
+    Key: fileKey,
+    Bucket: process.env.AWS_BUCKET_NAME
+  };
+
+  try {
+    const data = await s3Client.send(new DeleteObjectCommand(deleteParams));
+  } catch (error) {
+    console.log('Error:', error);
+    throw error;
+  }
+}
+
+exports.deleteFile = deleteFile;

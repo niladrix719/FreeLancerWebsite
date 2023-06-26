@@ -5,7 +5,7 @@ const util = require('util');
 const unlinkFile = util.promisify(fs.unlink);
 const jwt = require('jsonwebtoken');
 const secret = process.env.JWT_SECRET;
-const { uploadFile } = require('../middlewares/s3');
+const { uploadFile , deleteFile} = require('../middlewares/s3');
 
 //Registration
 
@@ -147,30 +147,32 @@ async function getUnFreelancerProfiles(req, res) {
 // delete profile
 
 async function deleteFreelancerProfile(req, res) {
-  // try {
-  //   const id = req.params.id;
-  //   const user = await freelancerCollection.findOne({ _id: id });
+  try {
+    const id = req.params.id;
+    const user = await freelancerCollection.findOne({ _id: id });
 
-  //   if (!user || user.verified === true) {
-  //     return res.sendStatus(403);
-  //   }
+    if (!user || user.verified === true) {
+      return res.sendStatus(403);
+    }
 
-  //   user.works.forEach((filename) => {
-  //     const filePath = `uploads/${filename}`;
-  //     fs.unlinkSync(filePath);
-  //   });
+    const filePromises = [];
+    filePromises.push(deleteFile(user.profilePicture));
+    filePromises.push(deleteFile(user.coverPicture));
+    filePromises.push(deleteFile(user.aadhaarCard));
+    filePromises.push(deleteFile(user.panCard));
 
-  //   fs.unlinkSync(`uploads/${user.profilePicture}`);
-  //   fs.unlinkSync(`uploads/${user.coverPicture}`);
-  //   fs.unlinkSync(`uploads/${user.panCard}`);
-  //   fs.unlinkSync(`uploads/${user.aadhaarCard}`);
+    user.works.forEach(file => {
+      filePromises.push(deleteFile(file));
+    });
 
-  //   await freelancerCollection.deleteOne({ _id: id });
-  //   res.json({ id: id });
-  // } catch (error) {
-  //   console.error(error);
-  //   res.sendStatus(500);
-  // }
+    await Promise.all(filePromises);
+
+    await freelancerCollection.deleteOne({ _id: id });
+    res.json({ id: id });
+  } catch (error) {
+    console.error(error);
+    res.sendStatus(500);
+  }
 }
 
 // verifying profile
