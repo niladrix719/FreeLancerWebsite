@@ -78,8 +78,7 @@
     }
 
     .image{
-        position: relative;
-        top: -1.5rem;
+        display: none;
     }
 
     .text{

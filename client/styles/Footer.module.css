@@ -17,18 +17,20 @@
 .about , .help , .law , #socials {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: 12rem;
+    /* justify-content: space-between; */
+    /* height: 12rem; */
     /* gap: 1rem; */
 }
 
 .heading{
     font-size: 1.1rem;
+    margin-bottom: 1rem;
 }
 
 .subHeading{
     cursor: pointer;
     color: rgb(116, 107, 107);
+    margin-bottom: 1rem;
 }
 
 .divider{
@@ -151,7 +153,11 @@
         width: 100%;
     }
 
-    .about , .help , .law , #socials {
-        height: 10rem;
+    /* .about , .help , .law , #socials {
+        height: 7rem;
+    } */
+
+    .about{
+        margin-bottom: 2.5rem;
     }
 }

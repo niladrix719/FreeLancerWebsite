@@ -15,12 +15,15 @@ function Explore() {
   const [rateSort, setRateSort] = useState('10100');
   const [fourStars, setFourStars] = useState(false);
   const [threeStars, setThreeStars] = useState(false);
+  const [noOfPages, setNoOfPages] = useState(0);
 
   const increPage = () => {
+    if(currentPage === noOfPages) return;
     setCurrentPage(currentPage + 1);
   }
 
   const decrePage = () => {
+    if(currentPage === 1) return;
     setCurrentPage(currentPage - 1);
   }
 
@@ -30,6 +33,7 @@ function Explore() {
         const response = await fetch(`${process.env.SERVER_URL}/profiles/verified/freelancer`);
         const data = await response.json();
         setFreelancers(data);
+        setNoOfPages(Math.ceil(data.length / 6));
       } catch (error) {
         console.error(error);
       }

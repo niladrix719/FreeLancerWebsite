@@ -213,7 +213,7 @@
     }
 
     .login {
-        padding-top: 0.25rem;
+        padding-top: 0.35rem;
         padding-bottom: 0.35rem;
         padding-left: 0.9rem;
         padding-right: 0.9rem;
@@ -275,6 +275,5 @@
 
     .login{
         position: relative;
-        top: -0.115rem;
     }
 }

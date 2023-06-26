@@ -34,6 +34,7 @@
     justify-content: center;
     width: 100%;
     max-width: 1300px;
+    min-height: 105vh;
 }
 
 .search{
