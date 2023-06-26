@@ -17,9 +17,6 @@
 .about , .help , .law , #socials {
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
-    /* height: 12rem; */
-    /* gap: 1rem; */
 }
 
 .heading{
@@ -71,14 +68,12 @@
 .company{
     display: flex;
     align-items: center;
-    /* gap: 1rem; */
     justify-content: space-evenly;
     width: 32%;
 }
 
 .app{
     display: flex;
-    /* gap: 2rem; */
     align-items: center;
     justify-content: space-evenly;
     width: 24%;
@@ -97,7 +92,6 @@
     justify-content: flex-start;
     justify-content: space-evenly;
     width: 24%;
-    /* gap: 1rem; */
 }
 
 @media (max-width: 1200px){
@@ -120,7 +114,6 @@
     }
 
     .upper{
-        /* gap: 2rem; */
         font-size: 0.75rem;
     }
 
@@ -128,20 +121,14 @@
         font-size: 0.9rem;
     }
 
-    /* .about , .help , .law , #socials{
-        gap: 1.5rem;
-    } */
-
     .lower{
         flex-direction: column;
-        /* gap: 2rem; */
         height: 16rem;
         justify-content: space-between;
     }
 
     .company{
         flex-direction: column;
-        /* gap: 1rem; */
         width: 100%;
     }
 

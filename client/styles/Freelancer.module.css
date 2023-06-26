@@ -416,4 +416,8 @@
     .label{
         font-size: 1rem;
     }
+
+    .body{
+        padding-top: 3rem;
+    }
 }

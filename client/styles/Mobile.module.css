@@ -43,12 +43,24 @@
 
 @media (max-width: 1000px){
     .img{
-        display: none;
+        height: 10rem;
+        width: auto;
+    }
+
+    .body{
+        align-items: center;
+        padding-top: 3rem;
     }
 
     .heading{
-        font-size: 3rem;
+        font-size: 1.5rem;
         display: flex;
         align-items: center;
+        margin-top: 0;
+    }
+
+    .btn{
+        font-size: 0.75rem;
+        padding: 0.75rem;
     }
 }

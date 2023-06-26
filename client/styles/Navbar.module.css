@@ -136,8 +136,9 @@
     flex-direction: column;
     align-items: center;
     padding: 1.75rem;
-    gap: 1rem;
     box-shadow: var(--shadow);
+    height: 23rem;
+    justify-content: space-evenly;
 }
 
 .dp{
@@ -275,5 +276,10 @@
 
     .login{
         position: relative;
+    }
+
+    .profile_card{
+        height: 18rem;
+        padding: 0.45rem;
     }
 }

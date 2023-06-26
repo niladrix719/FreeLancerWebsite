@@ -200,3 +200,95 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+@media (max-width: 738px){
+    .profileBox{
+        width: 90%;
+    }
+
+    .editProfile{
+        width: 90%;
+    }
+
+    .editProfileImage{
+        width: 100px;
+        height: 100px;
+    }
+
+    .dpEdit{
+        width: 100px;
+        height: 100px;
+    }
+
+    .camera{
+        bottom: 0.5rem;
+        left: 1.5rem;
+    }
+
+    .editProfileInfo input{
+        font-size: 1rem;
+    }
+
+    .btns{
+        font-size: 1rem;
+    }
+
+    .logout{
+        font-size: 1rem;
+    }
+
+    .back{
+        font-size: 1rem;
+    }
+
+    .name{
+        font-size: 1.2rem;
+    }
+
+    .phone{
+        font-size: 0.9rem;
+    }
+
+    .option{
+        font-size: 1rem;
+    }
+
+    .body{
+        padding: 3rem 0 0 0;
+    }
+
+    .profileBox{
+        padding: 1rem;
+    }
+
+    .editProfile{
+        padding: 1rem;
+    }
+
+    .editProfileInfo{
+        padding: 1rem;
+    }
+
+    .btns{
+        gap: 0.5rem;
+    }
+
+    .options{
+        gap: 1rem;
+    }
+
+    .editProfileImage{
+        width: 100px;
+        height: 100px;
+    }
+
+    .dpEdit{
+        width: 100px;
+        height: 100px;
+    }
+
+    .camera{
+        bottom: 0.5rem;
+        left: 1.5rem;
+    }
+}
