@@ -7,7 +7,7 @@ import Featured from '../components/Featured';
 import Footer from '@/components/Footer';
 import VerifiedExplore from '@/components/VerifiedExplore';
 import Register from '@/components/Register';
-import { useEffect } from 'react';
+import FreelancerPoints from '@/components/FreelancerPoints';
 export default function Index() {
 
   return (
@@ -17,6 +17,7 @@ export default function Index() {
       <Categories />
       <Bio />
       <VerifiedExplore />
+      <FreelancerPoints />
       <Register />
       <Featured />
       <Footer />

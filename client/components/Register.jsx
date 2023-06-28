@@ -9,8 +9,14 @@ function Register() {
       <Image src='/mac4.png' width={700} className={styles.image} height={700} />
       <div className={styles.container}>
         <div className={styles.btns}>
-          <Link href='/register/freelancer' className={styles.btn}>Register as a Freelancer</Link>
-          <Link href='/register/company' className={styles.btn}>Register as a Company</Link>
+          <Link href='/register/freelancer' className={styles.btn}>
+            <h1>Register as a Freelancer</h1>
+            <p className={styles.p}>Fill up the form -&gt;</p>
+          </Link>
+          <Link href='/register/company' className={styles.btn}>
+            <h1>Register as a Company</h1>
+            <p className={styles.p}>Fill up the form -&gt;</p>
+          </Link>
         </div>
       </div>
     </div>
