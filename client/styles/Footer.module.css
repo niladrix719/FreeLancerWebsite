@@ -1,11 +1,11 @@
 .footer{
     background-color: rgb(255, 255, 255);
-    width: 95vw;
+    width: 100vw;
     max-width: 1640px;
     margin: auto;
-    margin-bottom: 1rem;
     color: black;
     letter-spacing: 0.5px;
+    padding: 2.5rem;
 }
 
 .upper , .lower{

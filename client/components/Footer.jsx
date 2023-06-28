@@ -13,8 +13,8 @@ function Footer() {
           <li className={styles.subHeading}>Guides and Reviews</li>
         </ul>
         <ul className={styles.help}>
-          <li className={styles.heading}>Help</li>
-          <Link href='/contact' className={styles.subHeading}>Contact Us</Link>
+          <li className={styles.heading}>Help and Support</li>
+          <Link href='/contact' className={styles.subHeading}>Support</Link>
           <Link href='/faqs' className={styles.subHeading}>FAQs</Link>
         </ul>
         <ul className={styles.law}>
@@ -23,6 +23,12 @@ function Footer() {
           <li className={styles.subHeading}>Data Protection</li>
           <li className={styles.subHeading}>Cookies</li>
           <li className={styles.subHeading}>Legal notices</li>
+        </ul>
+        <ul className={styles.law}>
+          <li className={styles.heading}>Freelancing Services</li>
+          <Link href='/explore/photographer' className={styles.subHeading}>Photographer</Link>
+          <Link href='/explore/cinematographer' className={styles.subHeading}>Cinematographer</Link>
+          <Link href='/explore/drone_operator' className={styles.subHeading}>Drone Operator</Link>
         </ul>
         <ul className={styles.law}>
           <li className={styles.heading}>Register as a</li>

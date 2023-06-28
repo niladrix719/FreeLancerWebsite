@@ -239,8 +239,8 @@ class Company extends React.Component {
           body: data
         });
 
-        const responseData = await response.json(); 
-        localStorage.setItem('user', JSON.stringify({ token : responseData.token }));
+        const responseData = await response.json();
+        localStorage.setItem('user', JSON.stringify({ token: responseData.token }));
         Router.push('/contact_soon');
       } catch (error) {
         console.error(error);
@@ -434,9 +434,9 @@ class Company extends React.Component {
                 </textarea>
               </div>}
               {!this.state.form && <div className={styles.btns}>
-              {this.state.currentPage !== 3 && <button className={styles.NextBtn} type='button' onClick={() => this.increProgress(14.25)}>{this.state.btn}</button>}
-                {this.state.currentPage === 3 && <button className={styles.NextBtn} type='button' onClick={this.handleOtp}>Verify</button>}
                 <button className={styles.backBtn} type='button' onClick={() => this.decreProgress(14.25)}>Back</button>
+                {this.state.currentPage !== 3 && <button className={styles.NextBtn} type='button' onClick={() => this.increProgress(14.25)}>{this.state.btn}</button>}
+                {this.state.currentPage === 3 && <button className={styles.NextBtn} type='button' onClick={this.handleOtp}>Verify</button>}
               </div>}
               {this.state.form && <CompanyVerification
                 getVerificationDetails={this.getVerificationDetails}

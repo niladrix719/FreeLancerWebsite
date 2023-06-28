@@ -73,7 +73,7 @@ class SearchBox extends React.Component {
         <input
           type="text"
           className={styles.searchInput}
-          placeholder="Search for services"
+          placeholder="Search for freelancers"
           onClick={(event) => this.handleInputClick(event)}
           onChange={this.handleSearch}
           value={searchTerm}

@@ -514,9 +514,9 @@ class Freelancer extends React.Component {
                 </textarea>
               </div>}
               {!this.state.form && <div className={styles.btns}>
+                <button className={styles.backBtn} type='button' onClick={() => this.decreProgress(14.25)}>Back</button>
                 {this.state.currentPage !== 3 && <button className={styles.NextBtn} type='button' onClick={() => this.increProgress(14.25)}>{this.state.btn}</button>}
                 {this.state.currentPage === 3 && <button className={styles.NextBtn} type='button' onClick={this.handleOtp}>Verify</button>}
-                <button className={styles.backBtn} type='button' onClick={() => this.decreProgress(14.25)}>Back</button>
               </div>}
               {this.state.form && <Verification
                 getVerificationDetails={this.getVerificationDetails}
