@@ -19,8 +19,8 @@ export default function Index() {
       <Bio />
       <VerifiedExplore />
       <FreelancerPoints />
-      <BoxSection />
       <Register />
+      <BoxSection />
       <Featured />
       <Footer />
     </div>

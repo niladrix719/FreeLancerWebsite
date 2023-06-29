@@ -2,14 +2,11 @@
     width: 100vw;
     display: flex;
     justify-content: flex-start;
-    background-color: #f2f7f2;
-    box-shadow: var(--shadow);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     padding: 5rem 2rem;
     max-width: 1800px;
-    background-image: url('/bgd4.jpg');
 }
 
 .texts{

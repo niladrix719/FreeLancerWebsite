@@ -28,4 +28,4 @@ function FreelancerPoints() {
   )
 }
 
-export default FreelancerPoints
+export default FreelancerPoints;
