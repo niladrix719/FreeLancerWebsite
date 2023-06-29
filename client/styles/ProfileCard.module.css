@@ -66,6 +66,10 @@
     height: 6rem;
     background-size: cover;
     background-position: center;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 0.5rem;
 }
 
 .rate {
@@ -113,6 +117,22 @@
 
 .num {
     font-size: 0.8rem;
+}
+
+.tag{
+    background-color: #ff385b;
+    background-color: #714ffc;
+    color: white;
+    padding: 0.2rem 0.75rem;
+    border-radius: 5px;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    margin-left: 0.5rem;
+    width: 60%;
+    font-weight: 350;
+    box-shadow: var(--shadow);
 }
 
 /* @media (max-width: 738px) {
