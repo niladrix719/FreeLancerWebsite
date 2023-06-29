@@ -18,13 +18,12 @@
 }
 
 .right{
-    background-image: url('/imgchar.jpg');
+    background-image: url(/imgchar.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     height: inherit;
     width: 35%;
-    background-color: var(--primary-blue);
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
 }

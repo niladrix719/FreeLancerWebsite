@@ -16,7 +16,7 @@ function VerifiedExplore() {
         </Link>
       </div>
       <div className={styles.image}>
-        <Image src='/verifiedP.png' width='300' height='300' alt='verified tick' />
+        <Image src='/verifiedPX.svg' width='300' height='300' alt='verified tick' />
       </div>
     </div>
   )

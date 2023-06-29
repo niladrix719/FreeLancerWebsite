@@ -367,7 +367,7 @@ class Company extends React.Component {
               </div>}
               {this.state.currentPage === 3 && <div className={styles.inputField} id={styles.otp}>
                 <label htmlFor="otp" className={styles.label}><span style={{ color: 'white' }}>* </span>OTP :</label>
-                <input type='number' className={styles.input}
+                <input type='number' id={styles.number} className={styles.input}
                   placeholder='Enter Your OTP'
                   name='otp' required
                   onChange={(event) => this.setState({ otp: event.target.value, error: false })}

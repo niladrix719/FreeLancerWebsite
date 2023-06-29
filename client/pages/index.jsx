@@ -8,6 +8,7 @@ import Footer from '@/components/Footer';
 import VerifiedExplore from '@/components/VerifiedExplore';
 import Register from '@/components/Register';
 import FreelancerPoints from '@/components/FreelancerPoints';
+import BoxSection from '@/components/BoxSection';
 export default function Index() {
 
   return (
@@ -18,6 +19,7 @@ export default function Index() {
       <Bio />
       <VerifiedExplore />
       <FreelancerPoints />
+      <BoxSection />
       <Register />
       <Featured />
       <Footer />
