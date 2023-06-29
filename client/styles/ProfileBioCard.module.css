@@ -33,6 +33,7 @@
 .bio {
     font-size: 1rem;
     padding: 1.5rem;
+    padding-top: 0rem;
     color: #aea9a9;
     background-color: white;
     width: 95%;
@@ -42,6 +43,7 @@
     background-color: white;
     padding: 1.5rem;
     padding-bottom: 2rem;
+    padding-top: 0rem;
     width: 95%;
     letter-spacing: 1px;
 }

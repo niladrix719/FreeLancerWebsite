@@ -36,7 +36,7 @@ function BoxSection() {
           </Link>
           <div className={styles.right2}>
             <div className={styles.plus}>
-              <BsFillPlusCircleFill style={{ color : '#f71a42' }} />
+            <BsFillPlusCircleFill style={{ color : 'white' }} />
             </div>
             <p className={styles.p5}>Privacy &amp; Policy Guidelines </p>
           </div>
@@ -64,7 +64,7 @@ function BoxSection() {
           </div>
           <div className={styles.right4}>
             <div className={styles.plus}>
-              <BsFillPlusCircleFill style={{ color : '#ff7112' }} />
+              <BsFillPlusCircleFill style={{ color : '#f71a42' }} />
             </div>
             <p className={styles.p6} id={styles.carrers}>Careers &amp; works</p>
           </div>
