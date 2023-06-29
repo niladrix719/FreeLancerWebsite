@@ -4,6 +4,7 @@
     display: flex;
     justify-content: space-between;
     color: white;
+    max-width: 1500px;
 }
 
 .left{
@@ -18,7 +19,7 @@
 }
 
 .right{
-    background-image: url(/imgchar.jpg);
+    background-image: url('/imgchar.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

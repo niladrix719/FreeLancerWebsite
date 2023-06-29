@@ -9,7 +9,7 @@ function Footer() {
         <ul className={styles.about}>
           <li className={styles.heading}>About</li>
           <Link href='/faqs' className={styles.subHeading}>Who are we?</Link>
-          <li className={styles.subHeading}>Carrers</li>
+          <li className={styles.subHeading}>careers</li>
           <li className={styles.subHeading}>Guides and Reviews</li>
         </ul>
         <ul className={styles.help}>
