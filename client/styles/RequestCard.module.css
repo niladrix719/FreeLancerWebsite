@@ -70,6 +70,34 @@
     letter-spacing: 0.5px;
 }
 
+.tag{
+    display: flex;
+}
+
+.status{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    color: white;
+    padding: 0.5rem 4rem;
+    border-radius: 2rem 1rem;
+    letter-spacing: 1px;
+    font-style: italic;
+}
+
+#pending{
+    background-color: orangered;
+}
+
+#accepted{
+    background-color: rgb(51, 199, 51);
+}
+
+#declined{
+    background-color: rgb(209, 205, 205);
+}
+
 @media screen and (max-width: 1200px){
     .requestCard{
         width: 80vw;

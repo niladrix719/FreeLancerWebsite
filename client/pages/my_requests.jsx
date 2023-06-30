@@ -53,8 +53,8 @@ export default function My_requests() {
   const handleDeleteAccount = (id) => {
     const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
     if (token) {
-      fetch(`${process.env.SERVER_URL}/delete/request/${id}`, {
-        method: 'DELETE',
+      fetch(`${process.env.SERVER_URL}/cancel/request/${id}`, {
+        method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -74,6 +74,28 @@ export default function My_requests() {
     }
   }
 
+  const acceptRequest = (id) => {
+    const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
+    if (token) {
+      fetch(`${process.env.SERVER_URL}/accept/request/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      }).then(res => res.json())
+        .then(data => {
+          if (data.success) {
+            setShowDeleteBox(false);
+          }
+        }
+        )
+        .catch(error => {
+          console.error(error);
+        }
+        );
+    }
+  }
+
   return (
     <div className={styles.myRequests}>
       <Navbar />
@@ -81,7 +103,7 @@ export default function My_requests() {
         <h1 className={styles.heading}>My Requests</h1>
         <div className={styles.requestsContainer}>
           {requests.map((request, i) => {
-            return <RequestCard setReqId={setReqId} setShowDeleteBox={setShowDeleteBox} key={i} request={request} />
+            return <RequestCard acceptRequest={acceptRequest} setReqId={setReqId} setShowDeleteBox={setShowDeleteBox} key={i} request={request} />
           })}
         </div>
         {showDeleteBox && <div className={styles.deleteBox}>

@@ -52,7 +52,7 @@ async function addHire(req, res) {
         startTime: req.body.startTime,
         endTime: req.body.endTime,
         budget: req.body.budget,
-        accepted: false
+        status: 'pending'
       });
 
       const postData = await hireData.save();
@@ -122,7 +122,7 @@ async function getRequests(req, res) {
   }
 }
 
-async function deleteRequest(req, res) {
+async function cancelRequest(req, res) {
   try {
     jwt.verify(req.token, secret, async (err, authData) => {
       if (err) {
@@ -142,7 +142,67 @@ async function deleteRequest(req, res) {
         return;
       }
 
-      const deletedData = await hireCollection.deleteOne({ _id: req.params.id });
+      await hireCollection.updateOne({ _id: req.params.id }, { $set: { status: 'declined' } });
+
+      res.json({ success: true });
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal server error');
+  }
+}
+
+async function deleteRequest(req, res) {
+  try {
+    jwt.verify(req.token, secret, async (err, authData) => {
+      if (err) {
+        res.sendStatus(403);
+        return;
+      }
+
+      const hireData = await hireCollection.findOne({ _id: req.params.id });
+
+      if (!hireData) {
+        res.status(404).send('Hire not found');
+        return;
+      }
+
+      if (hireData.user._id != authData.user._id) {
+        res.status(403).send('Forbidden');
+        return;
+      }
+
+      await hireCollection.deleteOne({ _id: req.params.id });
+
+      res.json({ success: true });
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal server error');
+  }
+}
+
+async function acceptRequest(req, res) {
+  try {
+    jwt.verify(req.token, secret, async (err, authData) => {
+      if (err) {
+        res.sendStatus(403);
+        return;
+      }
+
+      const hireData = await hireCollection.findOne({ _id: req.params.id });
+
+      if (!hireData) {
+        res.status(404).send('Hire not found');
+        return;
+      }
+
+      if (hireData.freelancer._id != authData.user._id) {
+        res.status(403).send('Forbidden');
+        return;
+      }
+
+      await hireCollection.updateOne({ _id: req.params.id }, { $set: { status: 'accepted' } });
 
       res.json({ success: true });
     });
@@ -153,17 +213,19 @@ async function deleteRequest(req, res) {
 }
 
 function sendTextMessage(phoneNumber, message) {
-  phoneNumber = "+91" + phoneNumber.toString();
-  twilio.messages.create({
-    body: message,
-    from: process.env.TWILIO_PHONE_NUMBER,
-    to: phoneNumber
-  });
+  // phoneNumber = "+91" + phoneNumber.toString();
+  // twilio.messages.create({
+  //   body: message,
+  //   from: process.env.TWILIO_PHONE_NUMBER,
+  //   to: phoneNumber
+  // });
 }
 
 module.exports = {
   addHire,
   getHires,
   getRequests,
-  deleteRequest
+  cancelRequest,
+  deleteRequest,
+  acceptRequest
 };

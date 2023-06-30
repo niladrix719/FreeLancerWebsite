@@ -49,8 +49,8 @@ const hireSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
-  accepted: {
-    type: Boolean,
+  status: {
+    type: String,
     required: true
   }
 },

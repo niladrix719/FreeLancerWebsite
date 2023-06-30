@@ -15,7 +15,7 @@ const { registerFreelancer,
   verifyFreelancerProfile,
   getFeaturedFreelancerProfiles } = require('./controllers/freelancerController');
 const { contactUs, fetchContactUs } = require('./controllers/contactController');
-const { addHire, getHires, getRequests , deleteRequest } = require('./controllers/hireController');
+const { addHire, getHires, getRequests , cancelRequest , deleteRequest , acceptRequest } = require('./controllers/hireController');
 const jwt = require('jsonwebtoken');
 const { addReview, getReviews } = require('./controllers/reviewController');
 const secret = process.env.JWT_SECRET;
@@ -61,6 +61,8 @@ app.delete('/delete/company/:id', deleteCompanyProfileV);
 app.delete('/profile/user/delete', verifyToken, deleteUserProfile);
 app.delete('/profile/company/delete', verifyToken, deleteCompanyProfile);
 app.delete('/delete/request/:id', verifyToken, deleteRequest);
+app.put('/accept/request/:id', verifyToken, acceptRequest);
+app.put('/cancel/request/:id', verifyToken, cancelRequest);
 app.put('/verify/freelancer/:id', verifyFreelancerProfile);
 app.put('/verify/company/:id' , verifyCompanyProfile);
 app.post('/contact', contactUs);
