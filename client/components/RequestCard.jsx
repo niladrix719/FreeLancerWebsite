@@ -11,7 +11,8 @@ function RequestCard(props) {
       <p className={styles.cardInfo}>Time : {props.request.startTime} - {props.request.endTime}</p>
       <p className={styles.cardInfo}>Budget : {props.request.budget}</p>
       <div className={styles.btns}>
-        <button className={styles.btn} type='button' id={styles.accept} onClick={() => props.acceptRequest(props.request._id)}>Accept</button>
+        <button className={styles.btn} type='button' id={styles.accept} onClick={() => { props.
+          acceptRequest(props.request._id); props.setShowAcceptBox(true)}}>Accept</button>
         <button
           className={styles.btn}
           type="button"

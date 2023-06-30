@@ -4,6 +4,8 @@ import Footer from '@/components/Footer';
 import RequestCard from '@/components/RequestCard';
 import { useEffect, useState } from 'react';
 import DeleteBox from '@/components/DeleteBox';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 
 export default function My_requests() {
   const [freelancer, setFreelancer] = useState(null);
@@ -11,6 +13,7 @@ export default function My_requests() {
   const [requests, setRequests] = useState([]);
   const [showDeleteBox, setShowDeleteBox] = useState(false);
   const [reqId, setReqId] = useState(null);
+  const [showAcceptBox, setShowAcceptBox] = useState(true);
   useEffect(() => {
     const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
     if (token) {
@@ -103,11 +106,18 @@ export default function My_requests() {
         <h1 className={styles.heading}>My Requests</h1>
         <div className={styles.requestsContainer}>
           {requests.map((request, i) => {
-            return <RequestCard acceptRequest={acceptRequest} setReqId={setReqId} setShowDeleteBox={setShowDeleteBox} key={i} request={request} />
+            return <RequestCard setShowAcceptBox={setShowAcceptBox} acceptRequest={acceptRequest} setReqId={setReqId} setShowDeleteBox={setShowDeleteBox} key={i} request={request} />
           })}
         </div>
         {showDeleteBox && <div className={styles.deleteBox}>
           <DeleteBox reqId={reqId} setShowDeleteBox={setShowDeleteBox} handleDeleteAccount={handleDeleteAccount} delete='Request' />
+        </div>}
+        {showAcceptBox && <div className={styles.acceptBox}>
+          <div className={styles.box}>
+            <h1 className={styles.headingReq}>Request Accepted <FontAwesomeIcon icon={faCircleCheck} style={{color: "#1bd03f",}} /></h1>
+            <p className={styles.textReq}>Please contact the client to discuss the details. Ensure that you are punctual and perform the job diligently. Remember to collect the payment from the client. Failing to arrive on time may result in a negative review or even a suspension.</p>
+            <button className={styles.btnReq} onClick={() => setShowAcceptBox(false)}>Close</button>
+          </div>
         </div>}
       </div>
       <Footer />
