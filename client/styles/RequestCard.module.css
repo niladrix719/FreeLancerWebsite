@@ -88,14 +88,21 @@
 
 #pending{
     background-color: orangered;
+    color: white;
 }
 
 #accepted{
     background-color: rgb(51, 199, 51);
+    color: white;
 }
 
 #declined{
     background-color: rgb(209, 205, 205);
+    color: white;
+}
+
+.accepted{
+    width: 100%;
 }
 
 @media screen and (max-width: 1200px){

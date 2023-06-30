@@ -13,7 +13,7 @@ export default function My_requests() {
   const [requests, setRequests] = useState([]);
   const [showDeleteBox, setShowDeleteBox] = useState(false);
   const [reqId, setReqId] = useState(null);
-  const [showAcceptBox, setShowAcceptBox] = useState(true);
+  const [showAcceptBox, setShowAcceptBox] = useState(false);
   useEffect(() => {
     const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
     if (token) {
