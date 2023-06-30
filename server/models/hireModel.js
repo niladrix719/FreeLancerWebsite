@@ -48,6 +48,10 @@ const hireSchema = new mongoose.Schema({
   budget: {
     type: Number,
     required: true
+  },
+  accepted: {
+    type: Boolean,
+    required: true
   }
 },
   {

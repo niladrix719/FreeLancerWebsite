@@ -8,22 +8,29 @@ const secret = process.env.JWT_SECRET;
 async function addReview(req, res) {
   try {
     jwt.verify(req.token, secret, async (err, authData) => {
-      let user;
-      if(authData.user.companyname)
-      user = await companyCollection.findOne({ _id: authData.user._id });
-      else
-      user = await userCollection.findOne({ _id: authData.user._id });
-      if (err || !user) {
-        res.sendStatus(403);
+      if (err) {
+        res.status(403).send('Forbidden');
         return;
       }
-      if(!req.body.freelancer || !req.body.title || !req.body.review || !req.body.stars) {
+
+      let user;
+      if (authData.user.companyname)
+        user = await companyCollection.findOne({ _id: authData.user._id });
+      else
+        user = await userCollection.findOne({ _id: authData.user._id });
+
+      if (!user) {
+        res.status(403).send('User not found');
+        return;
+      }
+
+      if (!req.body.freelancer || !req.body.title || !req.body.review || !req.body.stars) {
         res.status(400).send('Bad request');
         return;
       }
 
       const existingReview = await reviewCollection.findOne({ freelancer: req.body.freelancer, user: authData.user._id });
-      if(existingReview) {
+      if (existingReview) {
         res.status(400).send('Review already exists');
         return;
       }
@@ -50,13 +57,14 @@ async function addReview(req, res) {
       freelancer.reviewCount = reviews.length;
       await freelancer.save();
 
-      res.send(postData); 
+      res.send(postData);
     });
   } catch (error) {
     console.error(error);
     res.status(500).send('Internal server error');
   }
-};
+}
+
 
 async function getReviews(req, res) {
   try {

@@ -51,7 +51,8 @@ async function addHire(req, res) {
         date: req.body.date,  
         startTime: req.body.startTime,
         endTime: req.body.endTime,
-        budget: req.body.budget
+        budget: req.body.budget,
+        accepted: false
       });
 
       const postData = await hireData.save();

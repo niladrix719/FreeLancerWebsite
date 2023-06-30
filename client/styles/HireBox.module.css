@@ -54,6 +54,8 @@
 
 .cross {
     cursor: pointer;
+    display: inline;
+    width: 10px;
 }
 
 .btn {

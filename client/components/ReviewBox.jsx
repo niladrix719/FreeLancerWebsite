@@ -34,8 +34,8 @@ function ReviewBox(props) {
         }
         props.handleReviewBox(false);
       } catch (error) {
+        console.log(error.response);
         setReviewError(true);
-        console.error(error);
       }
     }
 

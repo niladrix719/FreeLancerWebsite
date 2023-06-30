@@ -267,4 +267,16 @@
         width: 3rem;
         top: 0rem;
     }
+
+    .p3{
+        padding: 0;
+    }
+
+    #carrers{
+        margin-bottom: 0rem;
+    }
+
+    #box2{
+        margin-bottom: 1.5rem;
+    }
 }
