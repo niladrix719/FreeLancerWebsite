@@ -90,6 +90,16 @@
         width: 50%;
         height: 50%;
     }
+
+    .btn > h1{
+        font-size: 0.7rem;
+        width: 100%;
+        margin-bottom: 0;
+    }
+
+    .p{
+        display: none;
+    }
 }
 
 @media (max-width: 600px) {

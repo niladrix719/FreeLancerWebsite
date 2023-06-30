@@ -17,6 +17,7 @@
 .about , .help , .law , #socials {
     display: flex;
     flex-direction: column;
+    letter-spacing: 1px;
 }
 
 .heading{

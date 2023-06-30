@@ -3,11 +3,14 @@ import styles from '../styles/My_requests.module.css';
 import Footer from '@/components/Footer';
 import RequestCard from '@/components/RequestCard';
 import { useEffect, useState } from 'react';
+import DeleteBox from '@/components/DeleteBox';
 
 export default function My_requests() {
   const [freelancer, setFreelancer] = useState(null);
   const [isFreelancerLoaded, setIsFreelancerLoaded] = useState(false);
   const [requests, setRequests] = useState([]);
+  const [showDeleteBox, setShowDeleteBox] = useState(false);
+  const [reqId, setReqId] = useState(null);
   useEffect(() => {
     const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
     if (token) {
@@ -45,7 +48,31 @@ export default function My_requests() {
           console.error(error);
         });
     }
-  }, [freelancer,isFreelancerLoaded]);
+  }, [freelancer, isFreelancerLoaded]);
+
+  const handleDeleteAccount = (id) => {
+    const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
+    if (token) {
+      fetch(`${process.env.SERVER_URL}/delete/request/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      }).then(res => res.json())
+        .then(data => {
+          if (data.success) {
+            setShowDeleteBox(false);
+            setReqId(null);
+            setRequests(requests.filter(request => request._id !== id));
+          }
+        }
+        )
+        .catch(error => {
+          console.error(error);
+        }
+        );
+    }
+  }
 
   return (
     <div className={styles.myRequests}>
@@ -53,10 +80,13 @@ export default function My_requests() {
       <div className={styles.requests}>
         <h1 className={styles.heading}>My Requests</h1>
         <div className={styles.requestsContainer}>
-          {requests.map(request => {
-            return <RequestCard key={request.id} request={request} />
+          {requests.map((request, i) => {
+            return <RequestCard setReqId={setReqId} setShowDeleteBox={setShowDeleteBox} key={i} request={request} />
           })}
         </div>
+        {showDeleteBox && <div className={styles.deleteBox}>
+          <DeleteBox reqId={reqId} setShowDeleteBox={setShowDeleteBox} handleDeleteAccount={handleDeleteAccount} delete='Request' />
+        </div>}
       </div>
       <Footer />
     </div>

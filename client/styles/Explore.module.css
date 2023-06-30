@@ -90,13 +90,3 @@
         width: 30%;
     }
 }
-
-@media (max-width: 1200px){
-    .main{
-        width: 60%;
-    }
-
-    .sidebar{
-        width: 60%;
-    }
-}

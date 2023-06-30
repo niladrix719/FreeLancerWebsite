@@ -122,6 +122,36 @@ async function getRequests(req, res) {
   }
 }
 
+async function deleteRequest(req, res) {
+  try {
+    jwt.verify(req.token, secret, async (err, authData) => {
+      if (err) {
+        res.sendStatus(403);
+        return;
+      }
+
+      const hireData = await hireCollection.findOne({ _id: req.params.id });
+
+      if (!hireData) {
+        res.status(404).send('Hire not found');
+        return;
+      }
+
+      if (hireData.freelancer._id != authData.user._id) {
+        res.status(403).send('Forbidden');
+        return;
+      }
+
+      const deletedData = await hireCollection.deleteOne({ _id: req.params.id });
+
+      res.json({ success: true });
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal server error');
+  }
+}
+
 function sendTextMessage(phoneNumber, message) {
   phoneNumber = "+91" + phoneNumber.toString();
   twilio.messages.create({
@@ -134,5 +164,6 @@ function sendTextMessage(phoneNumber, message) {
 module.exports = {
   addHire,
   getHires,
-  getRequests
+  getRequests,
+  deleteRequest
 };

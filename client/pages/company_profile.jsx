@@ -228,7 +228,7 @@ function Company_Profile() {
             </form>
           </div>}
           {showDeleteBox && <div className={style.deleteBox}>
-            <DeleteBox setShowDeleteBox={setShowDeleteBox} handleDeleteAccount={handleDeleteAccount} />
+            <DeleteBox setShowDeleteBox={setShowDeleteBox} handleDeleteAccount={handleDeleteAccount} delete='Account' />
           </div>}
         </div>
       </div>
