@@ -11,12 +11,7 @@
     justify-content: space-between;
     width: 90vw;
     max-width: 1500px;
-}
-
-.boxes2{
-    display: flex;
-    justify-content: space-between;
-    width: 90vw;
+    flex-wrap: wrap;
 }
 
 .box{
@@ -226,4 +221,50 @@
 #carrers{
     color: white;
     margin-bottom: 3rem;
+}
+
+@media (max-width: 738px) {
+    .box{
+        width: 47%;
+        height: 30rem;
+    }
+
+    .p1{
+        font-size: 0.9rem;
+        margin-top: 1.5rem
+    }
+
+    .p2{
+        font-size: 0.8rem;
+    }
+
+    .p3{
+        font-size: 1.2rem;
+    }
+
+    .p4{
+        font-size: 1.2rem;
+    }
+
+    .p5{
+        font-size: 1rem;
+    }
+
+    .p6{
+        font-size: 1rem;
+    }
+
+    .arrow{
+        font-size: 2rem;
+    }
+
+    .left1 , .left2 , .left3 , .left4 , .right1 , .right2 , .right3 , .right4{
+        padding: 1rem;
+    }
+
+    .icon{
+        height: 3rem;
+        width: 3rem;
+        top: 0rem;
+    }
 }

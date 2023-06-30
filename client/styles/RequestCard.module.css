@@ -2,10 +2,9 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: var(--primary-blue);
-    color: white;
+    color: black;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
     padding: 20px;
     margin: 10px;
     cursor: pointer;
@@ -21,10 +20,10 @@
 
 .cardInfo {
     margin-bottom: 8px;
-    background-color: #2cb7ea;
     padding: 0.5rem;
-    border: 1px dashed #dfdede;
+    border: 1px solid lightgray;
     letter-spacing: 0.5px;
+    box-shadow: 0px 0px 10px 0px rgba(150, 147, 147, 0.2);
 }
 
 .btns{
@@ -44,11 +43,12 @@
     cursor: pointer;
     transition: all 0.2s ease-in-out;
     background-color: white;
+    border: 1px solid lightgray;
     color: var(--primary-color);
 }
 
 #accept:hover{
-    background-color: rgb(230, 230, 230);
+    background-color: rgb(242, 242, 242);
 }
 
 #decline{

@@ -85,3 +85,35 @@
 .icon{
     font-size: 0.95rem;
 }
+
+@media (max-width: 768px) {
+    .heading{
+        font-size: 1rem;
+    }
+
+    .head{
+        font-size: 0.8rem;
+    }
+
+    .para{
+        font-size: 0.8rem;
+    }
+
+    .left{
+        width: 100%;
+    }
+
+    .text{
+        width: 100%;
+    }
+
+    .right{
+        display: none;
+    }
+
+    .btn{
+        width: 100%;
+        font-size: 0.8rem;
+        padding: 0.8rem 0;
+    }
+}

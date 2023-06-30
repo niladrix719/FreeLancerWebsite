@@ -80,7 +80,6 @@ app.get('/images/:key', async (req, res) => {
     const readStream = await getFileStream(key);
     readStream.pipe(res);
   } catch (error) {
-    console.log('Error:', error);
     res.status(500).send('Internal Server Error');
   }
 });

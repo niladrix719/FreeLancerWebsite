@@ -110,6 +110,7 @@
 @media (max-width: 730px) {
     .footer{
         width: 90vw;
+        padding: 1rem;
     }
 
     .upper{
@@ -139,11 +140,11 @@
         width: 100%;
     }
 
-    /* .about , .help , .law , #socials {
-        height: 7rem;
-    } */
-
     .about{
+        margin-bottom: 2.5rem;
+    }
+
+    .law{
         margin-bottom: 2.5rem;
     }
 }
