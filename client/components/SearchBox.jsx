@@ -25,6 +25,7 @@ class SearchBox extends React.Component {
   };
 
   handleSearch = (event) => {
+    this.setState({ isInputFocused: true });
     this.setSearchTerm(event.target.value);
   };
 
