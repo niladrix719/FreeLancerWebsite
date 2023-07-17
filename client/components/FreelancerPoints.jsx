@@ -23,7 +23,7 @@ function FreelancerPoints() {
           <button className={styles.btn}>Learn More</button>
         </div>
       </div>
-      <div class={styles.right}></div>
+      <div className={styles.right}></div>
     </div>
   )
 }

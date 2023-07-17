@@ -44,26 +44,26 @@ async function registerFreelancer(req, res) {
 
       await freelancerData.save();
 
-      const filePromises = [];
-      filePromises.push(uploadFile(req.files['profilePicture'][0]));
-      filePromises.push(uploadFile(req.files['coverPicture'][0]));
-      filePromises.push(uploadFile(req.files['aadhaarCard'][0]));
-      filePromises.push(uploadFile(req.files['panCard'][0]));
+      // const filePromises = [];
+      // filePromises.push(uploadFile(req.files['profilePicture'][0]));
+      // filePromises.push(uploadFile(req.files['coverPicture'][0]));
+      // filePromises.push(uploadFile(req.files['aadhaarCard'][0]));
+      // filePromises.push(uploadFile(req.files['panCard'][0]));
 
-      req.files['works[]'].forEach(file => {
-        filePromises.push(uploadFile(file));
-      });
+      // req.files['works[]'].forEach(file => {
+      //   filePromises.push(uploadFile(file));
+      // });
 
-      await Promise.all(filePromises);
+      // await Promise.all(filePromises);
 
-      await unlinkFile('uploads/'+req.files['profilePicture'][0].filename);
-      await unlinkFile('uploads/'+req.files['coverPicture'][0].filename);
-      await unlinkFile('uploads/'+req.files['aadhaarCard'][0].filename);
-      await unlinkFile('uploads/'+req.files['panCard'][0].filename);
+      // await unlinkFile('uploads/'+req.files['profilePicture'][0].filename);
+      // await unlinkFile('uploads/'+req.files['coverPicture'][0].filename);
+      // await unlinkFile('uploads/'+req.files['aadhaarCard'][0].filename);
+      // await unlinkFile('uploads/'+req.files['panCard'][0].filename);
 
-      req.files['works[]'].forEach(file => {
-        unlinkFile('uploads/'+file.filename);
-      });
+      // req.files['works[]'].forEach(file => {
+      //   unlinkFile('uploads/'+file.filename);
+      // });
 
       const user = await freelancerCollection.findOne({ phone: req.body.phone });
 
