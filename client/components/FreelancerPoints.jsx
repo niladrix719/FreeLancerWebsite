@@ -1,6 +1,7 @@
 import styles from '../styles/FreelancerPoints.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenRuler , faSuitcase , faHeadphonesSimple} from '@fortawesome/free-solid-svg-icons';
+import Link from 'next/link';
 
 function FreelancerPoints() {
   return (
@@ -20,7 +21,7 @@ function FreelancerPoints() {
               <p className={styles.para}><FontAwesomeIcon className={styles.icon} icon={faHeadphonesSimple} style={{color: "#9fd9e0",}} /> &nbsp; Get inspired that use Fipezo to build a better future.</p>
             </li>
           </ul>
-          <button className={styles.btn}>Learn More</button>
+          <Link href='/faqs' className={styles.btn}>Learn More</Link>
         </div>
       </div>
       <div className={styles.right}></div>
