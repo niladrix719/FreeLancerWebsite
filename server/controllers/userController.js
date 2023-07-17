@@ -183,7 +183,7 @@ async function editUserProfile(req, res) {
 
             await Promise.all(filePromises);
 
-            await unlinkFile('uploads/' + req.file.filename);
+            await unlinkFile('uploadFolder/' + req.file.filename);
 
             updatedAuthData = { ...authData, user: { ...authData.user, firstname: req.body.firstname, lastname: req.body.lastname, profilePicture: req.file.filename } };
           }

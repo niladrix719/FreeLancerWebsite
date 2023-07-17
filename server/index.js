@@ -33,6 +33,7 @@ app.use(cors({
 }));
 app.use(express.static('public'));
 app.use('/uploads', express.static('uploads'));
+app.use('/uploadFolder', express.static('uploadFolder'));
 const upload = require('./middlewares/storage');
 const userProfilePic = require('./middlewares/userProfilePic');
 const companyUpload = require('./middlewares/companyUpload');
