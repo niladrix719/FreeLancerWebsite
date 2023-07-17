@@ -46,7 +46,7 @@ app.post('/signup', signupController);
 app.post('/login', loginController);
 app.post('/otp', otpController);
 app.post('/otp/signup', otpSignupController);
-app.post('/register/freelancer', verifyToken, registerFreelancer);
+app.post('/register/freelancer', upload, verifyToken, registerFreelancer);
 app.post('/register/company', companyUpload, verifyToken, registerCompany);
 app.post('/verify/freelancer/phone', VerifyFreelancerPhone);
 app.post('/verify/company/phone', VerifyCompanyPhone);
