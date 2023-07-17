@@ -10,11 +10,11 @@ function Register() {
       <div className={styles.container}>
         <div className={styles.btns}>
           <Link href='/register/freelancer' className={styles.btn}>
-            <h1>Register as a Freelancer</h1>
+            <h1 className={styles.h1}>Register as a Freelancer</h1>
             <p className={styles.p}>Fill up the form -&gt;</p>
           </Link>
           <Link href='/register/company' className={styles.btn}>
-            <h1>Register as a Company</h1>
+            <h1 className={styles.h1}>Register as a Company</h1>
             <p className={styles.p}>Fill up the form -&gt;</p>
           </Link>
         </div>

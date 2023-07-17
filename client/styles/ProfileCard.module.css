@@ -154,6 +154,8 @@
     .tag{
         font-size: 0.45rem;
         width: 65%;
+        letter-spacing: 0;
+        padding: 0 0.25rem;
     }
 
     .name{
@@ -176,6 +178,7 @@
         font-size: 0.4rem;
         padding: 0.25rem 0;
         gap: 0.25rem;
+        letter-spacing: 0.5px;
     }
 
     .logo{
@@ -196,6 +199,7 @@
 
     .right{
         top: 60px;
+        right: 15px;
     }
 
     .rate {
@@ -205,50 +209,7 @@
         padding-right: 0.2rem;
     }
 
-    /* 
-    .logo{
+    .num{
         font-size: 0.5rem;
     }
-
-    .bio{
-        font-size: 0.55rem;
-        margin-bottom: 0.25rem;
-    }
-
-    .category{
-        font-size: 0.45rem;
-        padding: 0;
-        gap: 0.5rem;
-    }
-
-    .rate {
-        font-size: 0.45rem;
-        padding: 0.15rem;
-        padding-left: 0.2rem;
-        padding-right: 0.2rem;
-    }
-
-    .cover{
-        height: 2.5rem;
-    }
-
-    .image{
-        height: 2.5rem;
-        width: 2.5rem;
-        top: 35px;
-    }
-
-    .rating{
-        padding: 0.2rem 0.6rem;
-        font-size: 0.6rem;
-    }
-
-    .right{
-        top: 118px;
-    }
-
-    .blueTick{
-        height: 0.75rem;
-        width: 1.25rem;
-    } */
 }
