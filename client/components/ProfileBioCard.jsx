@@ -9,7 +9,7 @@ function ProfileBioCard(props) {
     <div className={styles.profile_bio_card}>
       <div className={styles.profile_pic} style={{backgroundImage: `url(${process.env.SERVER_URL}/images/${props.freelancer.profilePicture})`}}>
       </div>
-      <h1 className={styles.name}>{props.freelancer.firstname} {props.freelancer.lastname} <Image className={styles.blueTick} src='/tick.png' height='40' width='40' alt="verified" />
+      <h1 className={styles.name}>{props.freelancer.firstname} {props.freelancer.lastname} <Image className={styles.blueTick} src={props.freelancer.verified ? '/tick.png' : '/tickG.png'} height='40' width='40' alt="verified" />
         &nbsp;<FontAwesomeIcon icon={faLocationDot} style={{ fontSize: 12, color: 'red' }} />&nbsp;
         <span className={styles.location}>{props.freelancer.location}</span>
       </h1>

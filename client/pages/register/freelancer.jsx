@@ -96,7 +96,7 @@ class Freelancer extends React.Component {
       return;
     }
 
-    if (this.state.bio.length > 300 && this.state.currentPage === 7) {
+    if (this.state.bio.length > 300 && this.state.bio.length < 50 && this.state.currentPage === 7) {
       this.setState({ textareaError: true });
       return;
     }
@@ -496,7 +496,7 @@ class Freelancer extends React.Component {
                   value={this.state.rate}
                 />
               </div>}
-              {this.state.textareaError && <p className={styles.error}>Please provide a bio of less than 100 characters.</p>}
+              {this.state.textareaError && <p className={styles.error}>Please provide less than 300 characters and atleast 50 characters.</p>}
               {this.state.currentPage === 7 && <div className={styles.inputField} id={styles.bio}>
                 <label htmlFor="bio" className={styles.label}><span style={{ color: 'white' }}>* </span>Bio :</label>
                 <textarea required name="bio" id="bio" cols="30" rows="10"
