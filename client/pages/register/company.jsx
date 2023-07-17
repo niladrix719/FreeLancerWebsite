@@ -6,6 +6,7 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import Image from 'next/image'
 import Footer from '@/components/Footer'
 import CompanyVerification from '@/components/CompanyVerification'
+import { faRotateRight } from '@fortawesome/free-solid-svg-icons'
 import Router from 'next/router'
 
 class Company extends React.Component {
@@ -98,7 +99,7 @@ class Company extends React.Component {
       return;
     }
 
-    if (this.state.bio.length > 300 && this.state.currentPage === 8) {
+    if ((this.state.bio.length > 300 || this.state.bio.length) < 50 && this.state.currentPage === 8) {
       this.setState({ textareaError: true });
       return;
     }
@@ -425,6 +426,7 @@ class Company extends React.Component {
                   value={this.state.position}
                 />
               </div>}
+              {this.state.textareaError && <p className={styles.error}>Please provide less than 300 characters and atleast 50 characters.</p>}
               {!this.state.form && this.state.currentPage === 8 && <div className={styles.inputField} id={styles.bio}>
                 <label htmlFor="bio" className={styles.label}><span style={{ color: 'white' }}>* </span>Bio :</label>
                 <textarea required name="bio" id="bio" cols="30" rows="10"
@@ -437,6 +439,7 @@ class Company extends React.Component {
                 <button className={styles.backBtn} type='button' onClick={() => this.decreProgress(14.25)}>Back</button>
                 {this.state.currentPage !== 3 && <button className={styles.NextBtn} type='button' onClick={() => this.increProgress(14.25)}>{this.state.btn}</button>}
                 {this.state.currentPage === 3 && <button className={styles.NextBtn} type='button' onClick={this.handleOtp}>Verify</button>}
+                {this.state.currentPage === 3 && <button className={styles.NextBtn} type='button' onClick={this.getOtp}><FontAwesomeIcon icon={faRotateRight} /> Resend</button>}
               </div>}
               {this.state.form && <CompanyVerification
                 getVerificationDetails={this.getVerificationDetails}

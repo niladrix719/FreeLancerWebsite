@@ -6,6 +6,7 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import Image from 'next/image'
 import Footer from '@/components/Footer'
 import Verification from '@/components/Verification'
+import { faRotateRight } from '@fortawesome/free-solid-svg-icons';
 import Router from 'next/router';
 
 class Freelancer extends React.Component {
@@ -517,6 +518,7 @@ class Freelancer extends React.Component {
                 <button className={styles.backBtn} type='button' onClick={() => this.decreProgress(14.25)}>Back</button>
                 {this.state.currentPage !== 3 && <button className={styles.NextBtn} type='button' onClick={() => this.increProgress(14.25)}>{this.state.btn}</button>}
                 {this.state.currentPage === 3 && <button className={styles.NextBtn} type='button' onClick={this.handleOtp}>Verify</button>}
+                {this.state.currentPage === 3 && <button className={styles.NextBtn} type='button' onClick={this.getOtp}><FontAwesomeIcon icon={faRotateRight} /> Resend</button>}
               </div>}
               {this.state.form && <Verification
                 getVerificationDetails={this.getVerificationDetails}
