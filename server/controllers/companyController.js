@@ -44,10 +44,10 @@ async function registerCompany(req, res) {
 
       await Promise.all(filePromises);
 
-      await unlinkFile('uploadFolder/' + req.files['profilePicture'][0].filename);
-      await unlinkFile('uploadFolder/' + req.files['coverPicture'][0].filename);
-      await unlinkFile('uploadFolder/' + req.files['panCard'][0].filename);
-      await unlinkFile('uploadFolder/' + req.files['incorporationCertificate'][0].filename);
+      await unlinkFile('uploads/' + req.files['profilePicture'][0].filename);
+      await unlinkFile('uploads/' + req.files['coverPicture'][0].filename);
+      await unlinkFile('uploads/' + req.files['panCard'][0].filename);
+      await unlinkFile('uploads/' + req.files['incorporationCertificate'][0].filename);
 
       const user = await companyCollection.findOne({ companyphone: req.body.companyphone })
 
@@ -94,8 +94,8 @@ async function editCompanyProfile(req, res) {
 
         await Promise.all(filePromises);
 
-        await unlinkFile('uploadFolder/' + req.files['profilePicture'][0].filename);
-        await unlinkFile('uploadFolder/' + req.files['coverPicture'][0].filename);
+        await unlinkFile('uploads/' + req.files['profilePicture'][0].filename);
+        await unlinkFile('uploads/' + req.files['coverPicture'][0].filename);
 
         updatedAuthData = { ...authData, user: { ...authData.user, companyname: req.body.companyname, companyaddress: req.body.companyaddress, profilePicture: req.files.profilePicture[0].filename, coverPicture: req.files.coverPicture[0].filename, bio: req.body.bio } };
       }
@@ -114,7 +114,7 @@ async function editCompanyProfile(req, res) {
 
         await Promise.all(filePromises);
 
-        await unlinkFile('uploadFolder/' + req.files['profilePicture'][0].filename);
+        await unlinkFile('uploads/' + req.files['profilePicture'][0].filename);
 
         updatedAuthData = { ...authData, user: { ...authData.user, companyname: req.body.companyname, companyaddress: req.body.companyaddress, profilePicture: req.files.profilePicture[0].filename, bio: req.body.bio } };
       }
@@ -133,7 +133,7 @@ async function editCompanyProfile(req, res) {
 
         await Promise.all(filePromises);
 
-        await unlinkFile('uploadFolder/' + req.files['coverPicture'][0].filename);
+        await unlinkFile('uploads/' + req.files['coverPicture'][0].filename);
 
         updatedAuthData = { ...authData, user: { ...authData.user, companyname: req.body.companyname, companyaddress: req.body.companyaddress, coverPicture: req.files.coverPicture[0].filename, bio: req.body.bio } };
       }
