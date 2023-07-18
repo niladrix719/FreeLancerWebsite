@@ -27,7 +27,7 @@ function Contact_soon() {
           <Image className={styles.image} src='/soon.png' width='1000' height='1000' alt='contacting image' />
           <div className={styles.heading}>
             <i id={styles.fipezo}>Fipezo</i>
-            <span className={styles.color}>Congratulations !</span> <br /> Your registration is currently undergoing verification
+            <span className={styles.color}>Congratulations !</span> <br /> <span className={styles.span}>Your registration is currently undergoing verification</span>
             <p className={styles.subHeading}>Our Team will contact you soon .&nbsp;.&nbsp;.</p>
             <Link href='/'><button className={styles.btn}>
               <FontAwesomeIcon icon={faArrowLeft} id={styles.arrow} />&nbsp;&nbsp;Back to Home
