@@ -20,3 +20,9 @@
         width: 80%;
     }
 }
+
+@media (max-width: 738px) {
+    .details{
+        width: 100%;
+    }
+}
