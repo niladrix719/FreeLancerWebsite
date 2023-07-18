@@ -3,6 +3,7 @@ import styles from '../styles/Contact.module.css';
 import Image from 'next/image';
 import Footer from '@/components/Footer';
 import ReCAPTCHA from "react-google-recaptcha";
+import ReactWhatsapp from 'react-whatsapp';
 import { useState, useRef } from 'react';
 
 function Contact() {
@@ -112,6 +113,7 @@ function Contact() {
             <Image src='/contactus.jpg' width='700' height='700' alt='contact_us' />
           </div>
         </div>
+        <ReactWhatsapp number="+917001599126" message="Hello Fipezo" className={styles.whatsapp}><Image src='/whatsapp.png' height={50} width={50} /></ReactWhatsapp>
       </div>
       <Footer />
     </div>

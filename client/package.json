@@ -26,6 +26,7 @@
     "react-google-recaptcha": "^2.1.0",
     "react-icons": "^4.8.0",
     "react-web-share": "^2.0.2",
+    "react-whatsapp": "^0.3.0",
     "react-youtube": "^10.1.0",
     "redux": "^4.2.1",
     "sharp": "^0.32.0",

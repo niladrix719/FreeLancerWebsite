@@ -85,6 +85,12 @@
     width: 45%;
 }
 
+.whatsapp{
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+}
+
 @media (max-width: 1300px){
     .right{
         display: none;
