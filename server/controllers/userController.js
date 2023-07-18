@@ -219,12 +219,14 @@ const getProfile = async (req, res) => {
         return;
       } else {
         let user;
-        if (authData.user.profession)
+        if (authData.user && (authData.user.profession || authData.user.companyname))
           user = await freelancerCollection.findOne({ _id: authData.user._id });
-        else if (authData.user.companyname)
+        else if (authData.user && authData.user.companyname)
           user = await companyCollection.findOne({ _id: authData.user._id });
-        else
+        else{
+          if(authData.user)
           user = await userCollection.findOne({ _id: authData.user._id });
+        }
 
         if (user) {
           res.send(user);
@@ -247,7 +249,7 @@ const getNavbar = async (req, res) => {
       return;
     } else {
       let user;
-      if (authData.user.profession || authData.user.companyname) {
+      if (authData.user && (authData.user.profession || authData.user.companyname)) {
         if (authData.user.profession)
           user = await freelancerCollection.findOne({ _id: authData.user._id });
         else if (authData.user.companyname)
