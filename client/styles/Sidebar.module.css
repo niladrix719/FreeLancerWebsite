@@ -1,7 +1,8 @@
 .sidebar {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    justify-content: space-evenly;
+    height: 80vh;
 }
 
 .filter {
@@ -78,4 +79,32 @@
 .star{
     position: relative;
     bottom: 2px;
+}
+
+@media (max-width: 738px){
+    .sidebar{
+        flex-direction: row;
+        height: auto;
+    }
+
+    .label{
+        font-size: 0.6rem;
+    }
+
+    .checkbox{
+        width: auto;
+        height: auto;
+    }
+
+    .title{
+        font-size: 0.6rem;
+    }
+
+    .rate{
+        font-size: 0.6rem;
+    }
+
+    .slider{
+        font-size: 0.6rem;
+    }
 }
