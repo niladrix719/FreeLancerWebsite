@@ -4,7 +4,7 @@ import Link from 'next/link';
 import styles from '@/styles/Login.module.css';
 import Footer from '@/components/Footer';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useState , useEffect } from 'react';
 
 export default function Login() {
   const [phone, setPhone] = useState('');
@@ -13,6 +13,23 @@ export default function Login() {
   const router = useRouter();
   const [loginFailed, setLoginFailed] = useState(false);
   const [otpFailed, setOtpFailed] = useState(false);
+  const [count, setCount] = useState(60);
+  const [timerId, setTimerId] = useState(null);
+
+  useEffect(() => {
+    if (count === 0) {
+      clearInterval(timerId);
+    }
+  }, [count]);
+
+  const startCountdown = () => {
+    setCount(60);
+    setTimerId(
+      setInterval(() => {
+        setCount((prevCount) => prevCount - 1);
+      }, 1000)
+    );
+  };
 
   const handleSubmitOTP = async (event) => {
     event.preventDefault();
@@ -68,6 +85,7 @@ export default function Login() {
     }
 
     postData();
+    startCountdown();
   }
 
   return (
@@ -128,7 +146,8 @@ export default function Login() {
             <button className={styles.btn} type='submit'>Submit</button>
           </div>
           <div className={styles.lower}>
-            <p className={styles.resendOtp} onClick={handleSubmit}>Resend OTP?</p>
+            {count > 0 && <p className={styles.resendOtp}>Resend OTP in {count}s?</p>}
+            {count === 0 && <p className={styles.resendOtp} onClick={handleSubmit}>Resend OTP</p>}
           </div>
         </form>
         <div className={styles.presentation}>

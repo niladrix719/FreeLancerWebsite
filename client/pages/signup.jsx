@@ -3,7 +3,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { useRouter } from 'next/router';
 
 function Signup() {
@@ -14,6 +14,23 @@ function Signup() {
   const router = useRouter();
   const [signupFailed, setSignupFailed] = useState(false);
   const [otpFailed, setOtpFailed] = useState(false);
+  const [count, setCount] = useState(60);
+  const [timerId, setTimerId] = useState(null);
+
+  useEffect(() => {
+    if (count === 0) {
+      clearInterval(timerId);
+    }
+  }, [count]);
+
+  const startCountdown = () => {
+    setCount(60);
+    setTimerId(
+      setInterval(() => {
+        setCount((prevCount) => prevCount - 1);
+      }, 1000)
+    );
+  };
 
   const handleSubmitOTP = async (event) => {
     event.preventDefault();
@@ -52,8 +69,6 @@ function Signup() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    const form = event.target;
-    const formData = new FormData(form);
 
     async function postData() {
       try {
@@ -63,9 +78,9 @@ function Signup() {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            firstname: formData.get('firstname'),
-            lastname: formData.get('lastname'),
-            phone: formData.get('phone'),
+            firstname: firstname,
+            lastname: lastname,
+            phone: phone,
             type: 'user'
           })
         });
@@ -79,6 +94,7 @@ function Signup() {
     }
 
     postData();
+    startCountdown();
   }
 
   return (
@@ -139,7 +155,8 @@ function Signup() {
               <button className={styles.btn} type='submit'>Submit</button>
             </div>
             <div className={styles.lower}>
-              <p className={styles.resendOtp} onClick={handleSubmit}>Resend OTP?</p>
+              {count > 0 && <p className={styles.resendOtp}>Resend OTP in {count}s?</p>}
+              {count === 0 && <p className={styles.resendOtp} onClick={handleSubmit}>Resend OTP</p>}
             </div>
           </form>
         </div>}

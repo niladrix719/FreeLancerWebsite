@@ -41,8 +41,30 @@ class Company extends React.Component {
       invalidOtp: false,
       registerFailed: false,
       warns: [false],
+      count: 60,
+      resendOtp: false,
+      timerId: null
     }
   }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.count === 0) {
+      clearInterval(this.state.timerId);
+      this.setState({ resendOtp: true });
+    }
+  }
+
+  startCountdown = () => {
+    this.setState({ resendOtp: false });
+    this.setState({
+      count: 60,
+      timerId: setInterval(() => {
+        this.setState((prevState) => ({
+          count: prevState.count - 1
+        }));
+      }, 1000)
+    });
+  };
 
   increProgress = (val) => {
     if (this.state.progress + val > 125) {
@@ -119,6 +141,11 @@ class Company extends React.Component {
     this.setState({ error: false });
     this.setState({ phoneError: false });
     this.setState({ textareaError: false });
+    this.setState({ invalidOtp: false });
+    if (this.state.currentPage === 3) {
+      this.setState({ resendOtp: false });
+      this.setState({ count: 60 });
+    }
     this.setState({ registerFailed: false });
     this.increPage();
   }
@@ -305,6 +332,8 @@ class Company extends React.Component {
     };
 
     postData();
+    this.startCountdown();
+    this.setState({ invalidOtp: false });
   }
 
   setPicError = (val, i) => {
@@ -439,8 +468,9 @@ class Company extends React.Component {
                 <button className={styles.backBtn} type='button' onClick={() => this.decreProgress(14.25)}>Back</button>
                 {this.state.currentPage !== 3 && <button className={styles.NextBtn} type='button' onClick={() => this.increProgress(14.25)}>{this.state.btn}</button>}
                 {this.state.currentPage === 3 && <button className={styles.NextBtn} type='button' onClick={this.handleOtp}>Verify</button>}
-                {this.state.currentPage === 3 && <button className={styles.NextBtn} type='button' onClick={this.getOtp}><FontAwesomeIcon icon={faRotateRight} /> Resend</button>}
+                {this.state.resendOtp && this.state.currentPage === 3 && <button className={styles.NextBtn} type='button' onClick={this.getOtp}><FontAwesomeIcon icon={faRotateRight} /> Resend</button>}
               </div>}
+              {this.state.currentPage === 3 && this.state.count > 0 && <p className={styles.resendOtp}>Resend OTP in {this.state.count}s?</p>}
               {this.state.form && <CompanyVerification
                 getVerificationDetails={this.getVerificationDetails}
                 certificateError={this.state.certificateError}
