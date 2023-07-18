@@ -424,4 +424,8 @@
     .body{
         padding-top: 3rem;
     }
+
+    .newForm {
+        padding: 1rem;
+    }
 }

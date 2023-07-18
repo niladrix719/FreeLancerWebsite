@@ -213,7 +213,7 @@
     color: white;
     margin-top: 2rem;
     padding: 0.5rem;
-    width: 40rem;
+    width: 48%;
     font-weight: 700;
     border-radius: 5px;
 }
@@ -384,4 +384,41 @@
     right: 0;
     font-weight: 400;
     width: 18rem;
+}
+
+@media (max-width: 738px){
+    .navigation{
+        display: none;
+    }
+
+    .title{
+        font-size: 1.5rem;
+    }
+
+    .subTitle{
+        font-size: 0.85rem;
+        text-align: center;
+    }
+
+    #cover{
+        height: 20vh;
+    }
+
+    #profile_pic {
+        height: 106.8px;
+        width: 106.8px;
+        top: -3.5rem;
+    }
+
+    #camera{
+        bottom: 0.5rem;
+        left: 0.85rem;
+        height: 30px;
+        width: 30px;
+    }
+
+    .camera{
+        bottom: 0.5rem;
+        left: 0.85rem;
+    }
 }

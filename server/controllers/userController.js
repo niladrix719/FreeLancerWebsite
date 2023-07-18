@@ -247,7 +247,7 @@ const getNavbar = async (req, res) => {
       return;
     } else {
       let user;
-      if (authData.user) {
+      if (authData.user.profession || authData.user.companyname) {
         if (authData.user.profession)
           user = await freelancerCollection.findOne({ _id: authData.user._id });
         else if (authData.user.companyname)

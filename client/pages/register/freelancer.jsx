@@ -423,7 +423,7 @@ class Freelancer extends React.Component {
     return (
       <div className={styles.main}>
         <Navbar />
-        <div className={`${this.state.form ? styles.newbody : styles.body}`}>
+        <div className={`${this.state.form ? styles.newBody : styles.body}`}>
           <div className={`${this.state.form ? styles.newLeft : styles.left}`}>
             {!this.state.form && <h1 className={styles.heading}>Fill Up The Registration Form.</h1>}
             {!this.state.form && <p className={styles.subHeading}>We only allow verified Freelancers on our website.</p>}
