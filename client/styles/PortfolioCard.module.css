@@ -5,6 +5,7 @@
     background-size: cover;
     background-position: center;
     box-shadow: var(--shadow);
+    margin-bottom: 2rem;
 }
 
 @media (max-width: 768px){

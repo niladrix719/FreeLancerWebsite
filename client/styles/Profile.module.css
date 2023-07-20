@@ -106,9 +106,17 @@
     border-radius: 5px;
 }
 
+.btnBox2{
+    display: none;
+}
+
 @media (max-width: 1080px){
     .btnBox{
         display: none;
+    }
+
+    .btnBox2{
+        display: flex;
     }
 }
 

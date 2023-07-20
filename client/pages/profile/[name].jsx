@@ -151,6 +151,30 @@ function Name() {
     <div className={styles.profile}>
       <Navbar color='white' checkLoggedIn={checkLoggedIn} />
       <Cover coverPicture={freelancer.coverPicture} />
+      <div className={styles.btnBox2}>
+          {!loggedIn && <Link href='/login' className={styles.btn} id={styles.hire}>Hire</Link>}
+          {loggedIn && <button className={styles.btn} id={styles.hire} onClick={handleHireBox}>Hire</button>}
+          {loggedIn && (
+            <button className={styles.btn} id={styles.msg} onClick={() => handleReviewBox(true)}>
+              Review
+            </button>
+          )}
+          {!loggedIn && (
+            <Link href='/login' className={styles.btn} id={styles.msg}>
+              Review
+            </Link>
+          )}
+          {reviewBox && (
+            <div id={styles.boxContainer} className=''>
+              <ReviewBox handleReviewBox={handleReviewBox} appendReview={appendReview} freelancer={freelancer} />
+            </div>
+          )}
+          {hireBox && (
+            <div id={styles.boxContainer2}>
+              <HireBox handleHireBox={handleHireBox} freelancer={freelancer} user={user} />
+            </div>
+          )}
+        </div>
       <div className={styles.profile_details}>
         {freelancer.links && <ProfileBioCard freelancer={freelancer} copyURL={copyURL} copied={copied} />}
         {isFreelancerLoaded && <Details works={freelancer.works} reviews={reviews} handleClick={handleClick} />}
