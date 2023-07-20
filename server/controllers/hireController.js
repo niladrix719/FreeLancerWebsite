@@ -213,12 +213,12 @@ async function acceptRequest(req, res) {
 }
 
 function sendTextMessage(phoneNumber, message) {
-  // phoneNumber = "+91" + phoneNumber.toString();
-  // twilio.messages.create({
-  //   body: message,
-  //   from: process.env.TWILIO_PHONE_NUMBER,
-  //   to: phoneNumber
-  // });
+  phoneNumber = "+91" + phoneNumber.toString();
+  twilio.messages.create({
+    body: message,
+    from: process.env.TWILIO_PHONE_NUMBER,
+    to: phoneNumber
+  });
 }
 
 module.exports = {
