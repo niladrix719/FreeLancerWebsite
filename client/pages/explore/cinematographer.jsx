@@ -120,7 +120,7 @@ function Explore() {
   }, []);
 
   const final = displayedFreelancers.filter((freelancer) => {
-    if (freelancer.city === city) {
+    if (freelancer.location === city) {
       return true;
     }
     return false;
@@ -149,7 +149,7 @@ function Explore() {
         </div>
         <div className={styles.main}>
           <div className={styles.cards}>
-            {final.map((freelancer, index) => {
+            {displayedFreelancers.map((freelancer, index) => {
               return (
                 <ProfileCard key={index} profile={freelancer} />
               )
