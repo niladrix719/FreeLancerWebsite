@@ -219,7 +219,7 @@ const getProfile = async (req, res) => {
         return;
       } else {
         let user;
-        if (authData.user && (authData.user.profession || authData.user.companyname))
+        if (authData.user && (authData.user.profession))
           user = await freelancerCollection.findOne({ _id: authData.user._id });
         else if (authData.user && authData.user.companyname)
           user = await companyCollection.findOne({ _id: authData.user._id });
@@ -249,7 +249,7 @@ const getNavbar = async (req, res) => {
       return;
     } else {
       let user;
-      if (authData.user && (authData.user.profession || authData.user.companyname)) {
+      if (authData.user && (authData.user.profession || authData.user.companyname || authData.user.firstname)) {
         if (authData.user.profession)
           user = await freelancerCollection.findOne({ _id: authData.user._id });
         else if (authData.user.companyname)
