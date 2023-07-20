@@ -113,6 +113,18 @@ function Explore() {
   const startIndex = (currentPage - 1) * 6;
   const endIndex = startIndex + 6;
   const displayedFreelancers = finalFiltered.slice(startIndex, endIndex);
+  let city = 'New Delhi';
+
+  useEffect(() => {
+    city = localStorage.getItem('city') || 'New Delhi';
+  }, []);
+
+  const final = displayedFreelancers.filter((freelancer) => {
+    if (freelancer.city === city) {
+      return true;
+    }
+    return false;
+  });
 
   return (
     <div className={styles.explore}>
@@ -137,7 +149,7 @@ function Explore() {
         </div>
         <div className={styles.main}>
           <div className={styles.cards}>
-            {displayedFreelancers.map((freelancer, index) => {
+            {final.map((freelancer, index) => {
               return (
                 <ProfileCard key={index} profile={freelancer} />
               )

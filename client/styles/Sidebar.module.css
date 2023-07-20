@@ -19,6 +19,15 @@
     letter-spacing: 0.5px;
 }
 
+#optionx{
+    border: 1px solid lightgrey;
+}
+
+.select{
+    width: 100%;
+    padding: 0.25rem;
+}
+
 .title {
     margin-bottom: 0.75rem;
     font-weight: 500;
@@ -79,6 +88,17 @@
 .star{
     position: relative;
     bottom: 2px;
+}
+
+.cont{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.cont > .label{
+    margin-left: 0.5rem;
 }
 
 @media (max-width: 738px){

@@ -479,32 +479,57 @@ class Freelancer extends React.Component {
                   onChange={(event) => this.setState({ location: event.target.value })} id="location"
                   value={this.state.location}
                 >
-                  <option className={styles.option} value="hyderabad">Hyderabad</option>
+                  <option className={styles.option} value="mumbai">Mumbai</option>
+                  <option className={styles.option} value="bengaluru">Bengaluru</option>
                   <option className={styles.option} value="chennai">Chennai</option>
-                  <option className={styles.option} value="pune">Pune</option>
                   <option className={styles.option} value="kolkata">Kolkata</option>
-                  <option className={styles.option} value="lucknow">Lucknow</option>
+                  <option className={styles.option} value="hyderabad">Hyderabad</option>
                   <option className={styles.option} value="jaipur">Jaipur</option>
-                  <option className={styles.option} value="gurgaon">Gurgaon</option>
-                  <option className={styles.option} value="goa">Goa</option>
-                  <option className={styles.option} value="udaipur">Udaipur</option>
-                  <option className={styles.option} value="chandigarh">Chandigarh</option>
+                  <option className={styles.option} value="pune">Pune</option>
                   <option className={styles.option} value="ahmedabad">Ahmedabad</option>
-                  <option className={styles.option} value="indore">Indore</option>
                   <option className={styles.option} value="agra">Agra</option>
-                  <option className={styles.option} value="kanpur">Kanpur</option>
-                  <option className={styles.option} value="bhopal">Bhopal</option>
-                  <option className={styles.option} value="kochi">Kochi</option>
-                  <option className={styles.option} value="nagpur">Nagpur</option>
-                  <option className={styles.option} value="dehradun">Dehradun</option>
-                  <option className={styles.option} value="thane">Thane</option>
                   <option className={styles.option} value="surat">Surat</option>
-                  <option className={styles.option} value="vadodara">Vadodara</option>
+                  <option className={styles.option} value="new-delhi">New Delhi</option>
                   <option className={styles.option} value="visakhapatnam">Visakhapatnam</option>
-                  <option className={styles.option} value="bhubaneswar">Bhubaneswar</option>
-                  <option className={styles.option} value="raipur">Raipur</option>
+                  <option className={styles.option} value="lucknow">Lucknow</option>
+                  <option className={styles.option} value="indore">Indore</option>
+                  <option className={styles.option} value="varanasi">Varanasi</option>
+                  <option className={styles.option} value="bhopal">Bhopal</option>
+                  <option className={styles.option} value="nagpur">Nagpur</option>
+                  <option className={styles.option} value="amritsar">Amritsar</option>
+                  <option className={styles.option} value="kochi">Kochi</option>
+                  <option className={styles.option} value="chandigarh">Chandigarh</option>
+                  <option className={styles.option} value="vadodara">Vadodara</option>
+                  <option className={styles.option} value="mangaluru">Mangaluru</option>
+                  <option className={styles.option} value="kanpur">Kanpur</option>
+                  <option className={styles.option} value="nashik">Nashik</option>
+                  <option className={styles.option} value="madurai">Madurai</option>
+                  <option className={styles.option} value="patna">Patna</option>
+                  <option className={styles.option} value="mysuru">Mysuru</option>
+                  <option className={styles.option} value="jodhpur">Jodhpur</option>
+                  <option className={styles.option} value="meerut">Meerut</option>
+                  <option className={styles.option} value="udaipur">Udaipur</option>
                   <option className={styles.option} value="coimbatore">Coimbatore</option>
-                  <option className={styles.option} value="jalandhar">Jalandhar</option>
+                  <option className={styles.option} value="bhubaneswar">Bhubaneswar</option>
+                  <option className={styles.option} value="prayagraj">Prayagraj</option>
+                  <option className={styles.option} value="dehradun">Dehradun</option>
+                  <option className={styles.option} value="faridabad">Faridabad</option>
+                  <option className={styles.option} value="warangal">Warangal</option>
+                  <option className={styles.option} value="navi-mumbai">Navi Mumbai</option>
+                  <option className={styles.option} value="ludhiana">Ludhiana</option>
+                  <option className={styles.option} value="aurangabad">Aurangabad</option>
+                  <option className={styles.option} value="guwahati">Guwahati</option>
+                  <option className={styles.option} value="vijayawada">Vijayawada</option>
+                  <option className={styles.option} value="rajkot">Rajkot</option>
+                  <option className={styles.option} value="thiruvananthapuram">Thiruvananthapuram</option>
+                  <option className={styles.option} value="puducherry">Puducherry</option>
+                  <option className={styles.option} value="jamshedpur">Jamshedpur</option>
+                  <option className={styles.option} value="ghaziabad">Ghaziabad</option>
+                  <option className={styles.option} value="raipur">Raipur</option>
+                  <option className={styles.option} value="thane">Thane</option>
+                  <option className={styles.option} value="ranchi">Ranchi</option>
+                  <option className={styles.option} value="gwalior">Gwalior</option>
+                  <option className={styles.option} value="dhanbad">Dhanbad</option>
                 </select>
               </div>}
               {this.state.currentPage === 5 && <div className={styles.inputField} id={styles.profession}>
