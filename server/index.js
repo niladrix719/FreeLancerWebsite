@@ -29,7 +29,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors({
-  origin: ['http://localhost:3001', 'https://www.google.com', 'https://fipezo.vercel.app']
+  origin: [`${process.env.CLIENT_URL}`, 'https://www.google.com', 'https://fipezo.vercel.app']
 }));
 app.use(express.static('public'));
 app.use('/uploads', express.static('uploads'));
