@@ -74,3 +74,17 @@
 .star{
   cursor: pointer;
 }
+
+@media (max-width: 1080px){
+  .label{
+    font-size: 0.75rem;
+  }
+
+  .textarea{
+    height: 6.5rem;
+  }
+
+  .heading{
+    font-size: 1.2rem;
+  }
+}
