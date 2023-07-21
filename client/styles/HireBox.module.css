@@ -2,12 +2,13 @@
     background-color: #f4f4f4;
     background-color: white;
     padding: 2rem;
-    gap: 1rem;
     box-shadow: var(--shadow);
     border-radius: 5px;
     width: 50rem;
     display: flex;
     flex-direction: column;
+    height: 43rem;
+    justify-content: space-evenly;
 }
 
 .heading {
@@ -64,13 +65,13 @@
     letter-spacing: 1px;
 }
 
-.fields{
+.fields {
     display: flex;
     flex-wrap: wrap;
     gap: 1.5rem;
 }
 
-.field{
+.field {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -78,7 +79,7 @@
     letter-spacing: 1px;
 }
 
-#btn{
+#btn {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -86,7 +87,7 @@
     top: 2.48rem;
 }
 
-.subField{
+.subField {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -94,39 +95,54 @@
 
 .input[type="number"]::-webkit-inner-spin-button,
 .input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 .input[type="number"] {
-  -moz-appearance: textfield;
-  appearance: none;
+    -moz-appearance: textfield;
+    appearance: none;
 }
 
-@media (max-width: 1080px){
-    .hireBox{
-        width: 25rem;
+@media (max-width: 1080px) {
+    .hireBox {
+        width: 20rem;
         padding: 0.75rem;
+        height: 31rem;
     }
 
-    .heading{
+    .heading {
         font-size: 1.2rem;
     }
 
-    .label{
+    .label {
         font-size: 0.75rem;
     }
 
-    .input{
+    .input {
         font-size: 0.75rem;
         padding: 0.35rem;
     }
 
-    .field{
+    .field {
         width: 45%;
     }
 
-    #btn{
+    #btn {
         top: 1.35rem;
+    }
+
+    .textarea {
+        height: 6rem;
+    }
+
+    .fields {
+        gap: 0;
+
+    }
+
+    .field{
+        margin-bottom: 1rem;
+        margin-left: 0.75rem;
     }
 }
