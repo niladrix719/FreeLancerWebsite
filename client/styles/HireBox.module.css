@@ -1,6 +1,5 @@
 .hireBox {
     background-color: #f4f4f4;
-    /* background: linear-gradient(45deg, #26c73c 0%, #ffffff 150%); */
     background-color: white;
     padding: 2rem;
     gap: 1rem;
@@ -37,11 +36,6 @@
     width: 100%;
     letter-spacing: 1px;
 }
-
-/* #purpose{
-    position: relative;
-    top: -0.5rem;
-} */
 
 .input:focus,
 .textarea:focus {
@@ -107,4 +101,32 @@
 .input[type="number"] {
   -moz-appearance: textfield;
   appearance: none;
+}
+
+@media (max-width: 1080px){
+    .hireBox{
+        width: 25rem;
+        padding: 0.75rem;
+    }
+
+    .heading{
+        font-size: 1.2rem;
+    }
+
+    .label{
+        font-size: 0.75rem;
+    }
+
+    .input{
+        font-size: 0.75rem;
+        padding: 0.35rem;
+    }
+
+    .field{
+        width: 45%;
+    }
+
+    #btn{
+        top: 1.35rem;
+    }
 }

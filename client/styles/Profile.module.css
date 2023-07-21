@@ -1,24 +1,24 @@
-.profile{
+.profile {
     background-color: #f3f3f3;
 }
 
-.name{
+.name {
     color: green;
     font-size: 1rem;
 }
 
-.profile_details{
+.profile_details {
     display: flex;
 }
 
-.footer{
+.footer {
     display: flex;
     justify-content: center;
     background-color: white;
     padding-top: 4rem;
 }
 
-.btnBox{
+.btnBox {
     position: relative;
     top: -2.5rem;
     border: 1px solid lightgray;
@@ -52,28 +52,28 @@
     background-color: #30ab60;
 }
 
-#msg{
+#msg {
     background-color: white;
     color: black;
     border: 1px solid rgb(102, 102, 102);
 }
 
-#msg:hover{
+#msg:hover {
     background-color: rgb(241, 241, 241);
 }
 
-#logout{
+#logout {
     background-color: white;
     color: black;
     border: 1px solid rgb(102, 102, 102);
     cursor: pointer;
 }
 
-#logout:hover{
+#logout:hover {
     background-color: rgb(241, 241, 241);
 }
 
-#boxContainer{
+#boxContainer {
     position: absolute;
     left: -26.5rem;
     top: -6rem;
@@ -84,7 +84,7 @@
     border-radius: 5px;
 }
 
-#boxContainer2{
+#boxContainer2 {
     position: absolute;
     left: -36.5rem;
     top: -11.5rem;
@@ -95,33 +95,39 @@
     border-radius: 5px;
 }
 
-#boxContainer2{
-    position: absolute;
-    left: -36.5rem;
-    top: -11.5rem;
-    width: 40rem;
-    background-color: rgb(230, 230, 230);
-    border: 1px solid lightgray;
-    box-shadow: var(--shadow);
-    border-radius: 5px;
-}
-
-.btnBox2{
+.btnBox2 {
     display: none;
 }
 
-@media (max-width: 1080px){
-    .btnBox{
+@media (max-width: 1080px) {
+    .btnBox {
         display: none;
     }
 
-    .btnBox2{
+    .btnBox2 {
         display: flex;
+    }
+
+    .btn {
+        border-radius: 0;
+    }
+
+    #msg {
+        border: 1px solid lightgray;
+    }
+
+    #boxContainer2 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1000;
+        width: 25rem;
     }
 }
 
-@media (max-width: 738px){
-    .profile_details{
+@media (max-width: 738px) {
+    .profile_details {
         flex-direction: column;
     }
 }
