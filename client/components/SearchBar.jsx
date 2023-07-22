@@ -17,6 +17,8 @@ class SearchBar extends React.Component {
   componentDidMount() {
     const city = localStorage.getItem('city');
     if (city) this.setState({ cityname: city });
+    else
+    localStorage.setItem('city', 'New Delhi');
   }
 
   toggle = () => {

@@ -4,7 +4,7 @@ import Navbar from '@/components/Navbar';
 import Sidebar from '@/components/Sidebar';
 import SearchBox from '@/components/SearchBox';
 import Footer from '@/components/Footer';
-import { useEffect, useState } from 'react';
+import { use, useEffect, useState } from 'react';
 
 function Explore() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -16,11 +16,16 @@ function Explore() {
   const [fourStars, setFourStars] = useState(false);
   const [threeStars, setThreeStars] = useState(false);
   const [noOfPages, setNoOfPages] = useState(0);
+  const [filterCity, setFilterCity] = useState('none');
 
   const increPage = () => {
     if(currentPage === noOfPages) return;
     setCurrentPage(currentPage + 1);
   }
+
+  useEffect(() => {
+    setFilterCity('none');
+  }, []);
 
   const decrePage = () => {
     if(currentPage === 1) return;
@@ -113,16 +118,13 @@ function Explore() {
   const startIndex = (currentPage - 1) * 6;
   const endIndex = startIndex + 6;
   const displayedFreelancers = finalFiltered.slice(startIndex, endIndex);
-  let city = 'New Delhi';
-
-  useEffect(() => {
-    city = localStorage.getItem('city') || 'New Delhi';
-  }, []);
 
   const final = displayedFreelancers.filter((freelancer) => {
-    if (freelancer.location === city) {
+    if (filterCity === 'none' && freelancer.location === localStorage.getItem('city')) {
       return true;
     }
+    else if (filterCity !== 'none' && freelancer.location === filterCity)
+      return true;
     return false;
   });
 
@@ -145,11 +147,12 @@ function Explore() {
             rateSort={rateSort}
             setFourStars={setFourStars}
             setThreeStars={setThreeStars}
+            setFilterCity={setFilterCity}
           />
         </div>
         <div className={styles.main}>
           <div className={styles.cards}>
-            {displayedFreelancers.map((freelancer, index) => {
+            {final.map((freelancer, index) => {
               return (
                 <ProfileCard key={index} profile={freelancer} />
               )

@@ -20,6 +20,11 @@ class Sidebar extends React.Component {
     }));
   };
 
+  componentDidMount() {
+    const city = localStorage.getItem('city');
+    if (city) this.setState({ cityname: city });
+  }
+
   toggleRating = () => {
     this.setState((prevState) => ({
       showDropDownRating: !prevState.showDropDownRating,
@@ -34,7 +39,7 @@ class Sidebar extends React.Component {
 
   changeCity = (city) => {
     this.setState({ cityname: city });
-    localStorage.setItem('city', city);
+    this.props.setFilterCity(city);
   };
 
   render() {
@@ -111,59 +116,59 @@ class Sidebar extends React.Component {
           </div>
           {this.state.showDropDownLocation && (
             <div id={styles.optionx}>
-              <select id="locations" className={styles.select} onChange={() => this.changeCity(document.getElementById('locations').value)}>
-                <option value="city">{this.state.cityname}</option>
-                <option value="new-delhi">New Delhi</option>
-                <option value="mumbai">Mumbai</option>
-                <option value="bengaluru">Bengaluru</option>
-                <option value="chennai">Chennai</option>
-                <option value="kolkata">Kolkata</option>
-                <option value="hyderabad">Hyderabad</option>
-                <option value="jaipur">Jaipur</option>
-                <option value="pune">Pune</option>
-                <option value="ahmedabad">Ahmedabad</option>
-                <option value="agra">Agra</option>
-                <option value="surat">Surat</option>
-                <option value="visakhapatnam">Visakhapatnam</option>
-                <option value="lucknow">Lucknow</option>
-                <option value="indore">Indore</option>
-                <option value="varanasi">Varanasi</option>
-                <option value="bhopal">Bhopal</option>
-                <option value="nagpur">Nagpur</option>
-                <option value="amritsar">Amritsar</option>
-                <option value="kochi">Kochi</option>
-                <option value="chandigarh">Chandigarh</option>
-                <option value="vadodara">Vadodara</option>
-                <option value="mangaluru">Mangaluru</option>
-                <option value="kanpur">Kanpur</option>
-                <option value="nashik">Nashik</option>
-                <option value="madurai">Madurai</option>
-                <option value="patna">Patna</option>
-                <option value="mysuru">Mysuru</option>
-                <option value="jodhpur">Jodhpur</option>
-                <option value="meerut">Meerut</option>
-                <option value="udaipur">Udaipur</option>
-                <option value="coimbatore">Coimbatore</option>
-                <option value="bhubaneswar">Bhubaneswar</option>
-                <option value="prayagraj">Prayagraj</option>
-                <option value="dehradun">Dehradun</option>
-                <option value="faridabad">Faridabad</option>
-                <option value="warangal">Warangal</option>
-                <option value="navi-mumbai">Navi Mumbai</option>
-                <option value="ludhiana">Ludhiana</option>
-                <option value="aurangabad">Aurangabad</option>
-                <option value="guwahati">Guwahati</option>
-                <option value="vijayawada">Vijayawada</option>
-                <option value="rajkot">Rajkot</option>
-                <option value="thiruvananthapuram">Thiruvananthapuram</option>
-                <option value="puducherry">Puducherry</option>
-                <option value="jamshedpur">Jamshedpur</option>
-                <option value="ghaziabad">Ghaziabad</option>
-                <option value="raipur">Raipur</option>
-                <option value="thane">Thane</option>
-                <option value="ranchi">Ranchi</option>
-                <option value="gwalior">Gwalior</option>
-                <option value="dhanbad">Dhanbad</option>
+              <select id="locations" value={this.state.cityname} className={styles.select} onChange={() => this.changeCity(document.getElementById('locations').value)}>
+                <option disabled value="city" id={styles.selected}>{this.state.cityname}</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Bengaluru">Bengaluru</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Kolkata">Kolkata</option>
+                <option value="Hyderabad">Hyderabad</option>
+                <option value="Jaipur">Jaipur</option>
+                <option value="Pune">Pune</option>
+                <option value="Ahmedabad">Ahmedabad</option>
+                <option value="Agra">Agra</option>
+                <option value="Surat">Surat</option>
+                <option value="New Delhi">New Delhi</option>
+                <option value="Visakhapatnam">Visakhapatnam</option>
+                <option value="Lucknow">Lucknow</option>
+                <option value="Indore">Indore</option>
+                <option value="Varanasi">Varanasi</option>
+                <option value="Bhopal">Bhopal</option>
+                <option value="Nagpur">Nagpur</option>
+                <option value="Amritsar">Amritsar</option>
+                <option value="Kochi">Kochi</option>
+                <option value="Chandigarh">Chandigarh</option>
+                <option value="Vadodara">Vadodara</option>
+                <option value="Mangaluru">Mangaluru</option>
+                <option value="Kanpur">Kanpur</option>
+                <option value="Nashik">Nashik</option>
+                <option value="Madurai">Madurai</option>
+                <option value="Patna">Patna</option>
+                <option value="Mysuru">Mysuru</option>
+                <option value="Jodhpur">Jodhpur</option>
+                <option value="Meerut">Meerut</option>
+                <option value="Udaipur">Udaipur</option>
+                <option value="Coimbatore">Coimbatore</option>
+                <option value="Bhubaneswar">Bhubaneswar</option>
+                <option value="Prayagraj">Prayagraj</option>
+                <option value="Dehradun">Dehradun</option>
+                <option value="Faridabad">Faridabad</option>
+                <option value="Warangal">Warangal</option>
+                <option value="Navi Mumbai">Navi Mumbai</option>
+                <option value="Ludhiana">Ludhiana</option>
+                <option value="Aurangabad">Aurangabad</option>
+                <option value="Guwahati">Guwahati</option>
+                <option value="Vijayawada">Vijayawada</option>
+                <option value="Rajkot">Rajkot</option>
+                <option value="Thiruvananthapuram">Thiruvananthapuram</option>
+                <option value="Puducherry">Puducherry</option>
+                <option value="Jamshedpur">Jamshedpur</option>
+                <option value="Ghaziabad">Ghaziabad</option>
+                <option value="Raipur">Raipur</option>
+                <option value="Thane">Thane</option>
+                <option value="Ranchi">Ranchi</option>
+                <option value="Gwalior">Gwalior</option>
+                <option value="Dhanbad">Dhanbad</option>
               </select>
             </div>
           )}

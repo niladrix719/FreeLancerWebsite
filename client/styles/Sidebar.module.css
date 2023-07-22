@@ -101,6 +101,10 @@
     margin-left: 0.5rem;
 }
 
+#selected{
+    background-color: #f1f1f1;
+}
+
 @media (max-width: 738px){
     .sidebar{
         flex-direction: row;
