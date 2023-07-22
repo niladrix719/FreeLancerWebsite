@@ -8,7 +8,7 @@ export default function App({ Component, pageProps }) {
         <title>Fipezo</title>
         <meta name="description" content="A Freelance Website India" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" type="image/png" href="/icon.png" />
+        {/* <link rel="icon" type="image/png" href="/icon.png" /> */}
       </Head>
       <Component {...pageProps} />
     </div>

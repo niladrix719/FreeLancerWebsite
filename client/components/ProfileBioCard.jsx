@@ -4,15 +4,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot , faShareFromSquare } from '@fortawesome/free-solid-svg-icons';
 import { RWebShare } from 'react-web-share';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 
 function ProfileBioCard(props) {
   const links = JSON.parse(props.freelancer.links);
+  const [display, setDisplay] = useState('none');
   const router = useRouter();
   return (
     <div className={styles.profile_bio_card}>
       <div className={styles.profile_pic} style={{backgroundImage: `url(${process.env.SERVER_URL}/images/${props.freelancer.profilePicture})`}}>
       </div>
-      <h1 className={styles.name}>{props.freelancer.firstname} {props.freelancer.lastname} <Image className={styles.blueTick} src={props.freelancer.verified ? '/tick.png' : '/tickG.png'} height='40' width='40' alt="verified" />
+      <h1 className={styles.name}>{props.freelancer.firstname} {props.freelancer.lastname} <span className={styles.con}><Image className={styles.blueTick} onMouseOver={() => setDisplay('flex')} onMouseOut={() => setDisplay('none')}
+       src={props.freelancer.verified ? '/tick.png' : '/tickG.png'} height='40' width='40' alt="verified" /> <div className={styles.overTick} style={{ display: display }}><span>Verified</span><div className={styles.rectangle}></div></div></span>
         &nbsp;<FontAwesomeIcon icon={faLocationDot} style={{ fontSize: 12, color: 'red' }} />&nbsp;
         <span className={styles.location}>{props.freelancer.location}</span>
       </h1>

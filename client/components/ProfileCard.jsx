@@ -3,10 +3,12 @@ import styles from '../styles/ProfileCard.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { AiOutlineThunderbolt } from 'react-icons/ai';
 import Link from 'next/link';
+import { useState } from 'react';
 import { faCameraRetro, faVideo, faClapperboard, faStar } from '@fortawesome/free-solid-svg-icons';
 
 export default function ProfileCard(props) {
   const profession = props.profile.profession.charAt(0).toUpperCase() + props.profile.profession.slice(1);
+  const [display, setDisplay] = useState('none');
   return (
     <Link className={styles.profileCard} href={`/profile/${props.profile.uid}`} target='_blank'>
       <div className={styles.cover} style={{ backgroundImage: `url(${process.env.SERVER_URL}/images/${props.profile.coverPicture})` }}>
@@ -23,7 +25,8 @@ export default function ProfileCard(props) {
           <p className={styles.num}>({props.profile.reviewCount})</p>
         </div>
       </div>
-      <h3 className={styles.name}>{props.profile.firstname} {props.profile.lastname} &nbsp;&nbsp;<Image className={styles.blueTick} src='/tick.png' height='40' width='40' alt="verified" />  </h3>
+      <h3 className={styles.name}>{props.profile.firstname} {props.profile.lastname} &nbsp;&nbsp;{props.profile.featured && <span className={styles.container}><Image className={styles.blueTick} onMouseOver={() => setDisplay('flex')} onMouseOut={() => setDisplay('none')} src='/tick.png' height='40' width='40' alt="verified" />
+      <div className={styles.overTick} style={{ display: display }}><span>Verified</span><div className={styles.rectangle}></div></div></span>}</h3>
       <p className={styles.bio}>{props.profile.bio}</p>
       <div className={styles.category}>
         {profession === 'Photographer' && <FontAwesomeIcon icon={faCameraRetro} className={styles.logo} />}
@@ -31,7 +34,7 @@ export default function ProfileCard(props) {
         {profession === 'Drone_operator' && <FontAwesomeIcon icon={faClapperboard} className={styles.logo} />}
         <h4>{profession}</h4>
         <div className={styles.rate}>
-          <p>Rs.{props.profile.rate} / Hr</p>
+          <p>Rs.{props.profile.rate} / Day</p>
         </div>
       </div>
     </Link>

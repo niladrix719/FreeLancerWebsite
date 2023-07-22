@@ -149,7 +149,7 @@ function VerificationCard(props) {
             <h1>Company Type : {props.profile.companytype}</h1>
           </div>}
           {props.profile.rate && <div className={styles.field}>
-            <h1>Rate/hr : Rs.{props.profile.rate}</h1>
+            <h1>Rate/day : Rs.{props.profile.rate}</h1>
           </div>}
           <div className={styles.field}>
             <h1>Bio : {props.profile.bio}</h1>

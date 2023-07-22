@@ -81,11 +81,26 @@
     font-size: 0.75rem;
 }
 
-.blueTick {
-    display: inline;
+.container{
     position: relative;
     left: -1.25rem;
-    top: 1px;
+    top: -1px;
+    display: inline;
+}
+
+.overTick{
+    position: absolute;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 0.65rem;
+    padding: 0.45rem;
+    font-weight: 600;
+    top: -2.35rem;
+    left: -0.58rem;
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+    box-shadow: var(--shadow);
 }
 
 /* right */
@@ -134,6 +149,15 @@
     box-shadow: var(--shadow);
 }
 
+.rectangle{
+    height: 0.5rem;
+    width: 0.5rem;
+    position: absolute;
+    background-color: var(--primary-color);
+    bottom: -0.25rem;
+    transform: rotate(45deg);
+}
+
 @media (max-width: 738px) {
     .profileCard {
         width: 10rem;
@@ -162,7 +186,7 @@
         font-size: 0.65rem;
     }
 
-    .blueTick{
+    .container{
         height: 0.75rem;
         width: 1.25rem;
         left: -0.25rem;

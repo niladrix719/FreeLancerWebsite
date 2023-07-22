@@ -544,9 +544,9 @@ class Freelancer extends React.Component {
                 </select>
               </div>}
               {this.state.currentPage === 6 && <div className={styles.inputField} id={styles.rate}>
-                <label htmlFor="rate" className={styles.label}><span style={{ color: 'white' }}>* </span>What is your remuneration per hour?</label>
-                {this.state.rate && <p className={styles.rate}>Rs. {this.state.rate} / Hour</p>}
-                <input required className={styles.range} name="rate" type='range' min='1000' max='50000' step='100'
+                <label htmlFor="rate" className={styles.label}><span style={{ color: 'white' }}>* </span>What is your remuneration per day?</label>
+                {this.state.rate && <p className={styles.rate}>Rs. {this.state.rate} / Day</p>}
+                <input required className={styles.range} name="rate" type='range' min='0' max='50000' step='100'
                   onChange={(event) => this.setState({ rate: event.target.value })} id="rate"
                   value={this.state.rate}
                 />
