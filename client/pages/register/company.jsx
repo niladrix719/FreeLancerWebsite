@@ -502,7 +502,7 @@ class Company extends React.Component {
                   <FontAwesomeIcon className={styles.check} icon={faCheck} style={{ color: "black", }} /><p>Maintains Privacy and Fully Transparent</p>
                 </div>
               </div>
-              <Image className={styles.img} src='/ani3.png' alt='registration' width={250} height={250} />
+              <Image className={styles.img} src='/ani3.png' alt='registration-image' width={250} height={250} />
             </div>
             <hr className={styles.divider} />
           </div>}

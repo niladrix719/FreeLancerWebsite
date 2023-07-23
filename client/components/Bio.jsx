@@ -22,8 +22,8 @@ export default function Bio() {
               so you can trust that you&apos;re working with skilled professionals who are committed to delivering top-notch results.</p>
             </div>
             <div className={styles.images}>
-              <Image id={styles.photographer} src='/person1.jpg' width={300} height={300} alt='image' />
-              <Image id={styles.cinematographer} src='/cover05.jpg' width={300} height={300} alt='image' />
+              <Image id={styles.photographer} src='/person1.jpg' width={300} height={300} alt='person-image' />
+              <Image id={styles.cinematographer} src='/cover05.jpg' width={300} height={300} alt='drone-image' />
             </div>
           </div>
         </div>

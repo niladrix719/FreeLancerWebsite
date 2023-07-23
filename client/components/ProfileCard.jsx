@@ -25,7 +25,7 @@ export default function ProfileCard(props) {
           <p className={styles.num}>({props.profile.reviewCount})</p>
         </div>
       </div>
-      <h3 className={styles.name}>{props.profile.firstname} {props.profile.lastname} &nbsp;&nbsp;{props.profile.featured && <span className={styles.container}><Image className={styles.blueTick} onMouseOver={() => setDisplay('flex')} onMouseOut={() => setDisplay('none')} src='/tick.png' height='40' width='40' alt="verified" />
+      <h3 className={styles.name}>{props.profile.firstname} {props.profile.lastname} &nbsp;&nbsp;{props.profile.featured && <span className={styles.container}><Image className={styles.blueTick} onMouseOver={() => setDisplay('flex')} onMouseOut={() => setDisplay('none')} src='/tick.png' height='40' width='40' alt="verified-tick" />
       <div className={styles.overTick} style={{ display: display }}><span>Verified</span><div className={styles.rectangle}></div></div></span>}</h3>
       <p className={styles.bio}>{props.profile.bio}</p>
       <div className={styles.category}>

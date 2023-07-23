@@ -608,7 +608,7 @@ class Freelancer extends React.Component {
                   <FontAwesomeIcon icon={faCheck} style={{ color: "black", }} /><p>Maintains Privacy and Fully Transparent</p>
                 </div>
               </div>
-              <Image src='/ani1.png' alt='registration' width='200' height='200' className={styles.img} />
+              <Image src='/ani1.png' alt='registration-image' width='200' height='200' className={styles.img} />
             </div>
             <hr className={styles.divider} />
           </div>}

@@ -161,7 +161,7 @@ function Signup() {
           </form>
         </div>}
         <div className={styles.presentation}>
-          <Image id={styles.img} src="/pre3.jpg" alt="image" height="1006" width="1000" />
+          <Image id={styles.img} src="/pre3.jpg" alt="side-image" height="1006" width="1000" />
         </div>
       </div>
       <Footer />

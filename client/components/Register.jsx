@@ -6,7 +6,7 @@ import Link from 'next/link';
 function Register() {
   return (
     <div className={styles.features}>
-      <Image src='/mac4.png' width={700} className={styles.image} height={700} />
+      <Image src='/mac4.png' alt='computer-screen' width={700} className={styles.image} height={700} />
       <div className={styles.container}>
         <div className={styles.btns}>
           <Link href='/register/freelancer' className={styles.btn}>

@@ -110,7 +110,7 @@ function User_profile() {
 
   const handleLogout = () => {
     localStorage.removeItem('user');
-    router.push('/');  
+    router.push('/');
   }
 
   const handleDeleteAccount = () => {
@@ -142,7 +142,7 @@ function User_profile() {
       <div className={style.body}>
         <div className={style.profileBox}>
           {!editProfile && <div className={style.profileImage}>
-            <Image className={style.dp} src={profilePicture === '' ? '/dp.png' : `${process.env.SERVER_URL}/images/${profilePicture}`} alt="profile" height='100' width='100' />
+            <Image className={style.dp} src={profilePicture === '' ? '/dp.png' : `${process.env.SERVER_URL}/images/${profilePicture}`} alt="profile-pic" height='100' width='100' />
           </div>}
           {!editProfile && <div className={style.profileInfo}>
             <h1 className={style.name}>{firstname} {lastname}</h1>

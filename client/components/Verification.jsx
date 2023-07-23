@@ -79,7 +79,7 @@ function Verification(props) {
     if (index === 3 || index === 2 || index === 1 || index === 0 || index === 8 || index === 9 || index === 10 || index === 11) {
       props.getVerificationDetails(file, index);
       setWorks([...works, file]);
-    } 
+    }
 
     props.setWarns(false, -1);
 
@@ -140,7 +140,7 @@ function Verification(props) {
           <p className={styles.navText}>Verification</p>
         </div>
         <div className={styles.navStep}>
-          <Image src='/tick.png' width={80} height={80} alt='verified' />
+          <Image src='/tick.png' width={80} height={80} alt='verified-tick' />
         </div>
         <div className={styles.navRoad}></div>
       </div>

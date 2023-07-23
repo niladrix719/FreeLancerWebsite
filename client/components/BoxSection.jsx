@@ -11,7 +11,7 @@ function BoxSection() {
         <div className={styles.box} id={styles.box1}>
           <div className={styles.left1}>
             <div className={styles.top}>
-              <Image className={styles.icon} src="/instagramC.png" width={80} height={80} alt="box1" />
+              <Image className={styles.icon} src="/instagramC.png" width={80} height={80} alt="icon" />
             </div>
             <div className={styles.down}>
               <p className={styles.p1}>Fipezo</p>

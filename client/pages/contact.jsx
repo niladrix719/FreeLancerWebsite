@@ -113,7 +113,7 @@ function Contact() {
             <Image src='/contactus.jpg' width='700' height='700' alt='contact_us' />
           </div>
         </div>
-        <ReactWhatsapp number="+917001599126" message="Hello Fipezo" className={styles.whatsapp}><Image src='/whatsapp.png' height={50} width={50} /></ReactWhatsapp>
+        <ReactWhatsapp number="+917001599126" message="Hello Fipezo" className={styles.whatsapp}><Image src='/whatsapp.png' height={50} width={50} alt='whatsapp-icon' /></ReactWhatsapp>
       </div>
       <Footer />
     </div>
