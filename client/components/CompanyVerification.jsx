@@ -1,8 +1,8 @@
 import styles from '../styles/Verification.module.css';
 import Image from 'next/image';
-import { faPlus, faCheck, faFile, faExclamation } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
+import { BsCheckLg } from 'react-icons/bs';
+import { AiOutlinePlus , AiFillFile } from 'react-icons/ai';
 import TermsAndConditions from './TermsAndConditions';
 
 function Verification(props) {
@@ -106,7 +106,7 @@ function Verification(props) {
     <>
       <div className={styles.navigation}>
         <div className={styles.navStep}>
-          <FontAwesomeIcon icon={faCheck} style={{ color: "white", position: 'absolute', zIndex: 100 }} />
+          <BsCheckLg style={{ color: "white", position: 'absolute', zIndex: 100 }} />
           <p className={styles.navText}>Account Created</p>
         </div>
         <div className={styles.navStep}>
@@ -149,20 +149,20 @@ function Verification(props) {
       </div>
       <div className={styles.uploads}>
         <label className={styles.boxC}>
-          <FontAwesomeIcon icon={faPlus} style={{ color: 'white' }} />
+          <AiOutlinePlus style={{ color: 'white' }} />
           &nbsp;&nbsp;&nbsp;&nbsp;Company Pan Card
           <input type="file" className={styles.upload} onChange={(e) => handleImageChange(e, 6)} accept="image/jpeg,image/png" />
           &nbsp;&nbsp;&nbsp;&nbsp;
-          {images[6] && <FontAwesomeIcon icon={faFile} style={{ color: "#ffffff", }} />}
+          {images[6] && <AiFillFile style={{ color: 'white' }} />}
           {props.panError && <p className={styles.warn}>Please Provide Company Pan Card</p>}
           {props.warns[2] && <p className={styles.warn}>File size exceeds maximum limit of 1MB</p>}
         </label>
         <label className={styles.boxC}>
-          <FontAwesomeIcon icon={faPlus} style={{ color: 'white' }} />
+          <AiOutlinePlus style={{ color: 'white' }} />
           &nbsp;&nbsp;&nbsp;&nbsp;Incorporation Certificate
           <input type="file" className={styles.upload} onChange={(e) => handleImageChange(e, 7)} accept="image/jpeg,image/png" />
           &nbsp;&nbsp;&nbsp;&nbsp;
-          {images[7] && <FontAwesomeIcon icon={faFile} style={{ color: "#ffffff", }} />}
+          {images[7] && <AiFillFile style={{ color: "white", }} />}
           {props.addharError && <p className={styles.warn}>Please Provide Company Incorporation Certificate</p>}
           {props.warns[3] && <p className={styles.warn}>File size exceeds maximum limit of 1MB</p>}
         </label>

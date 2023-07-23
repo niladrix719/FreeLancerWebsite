@@ -175,6 +175,8 @@
     cursor: pointer;
     width: 18rem;
     position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .boxC:hover{

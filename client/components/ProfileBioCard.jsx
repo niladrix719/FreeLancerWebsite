@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import styles from '../styles/ProfileBioCard.module.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLocationDot , faShareFromSquare } from '@fortawesome/free-solid-svg-icons';
 import { RWebShare } from 'react-web-share';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import { IoLocationSharp } from 'react-icons/io5';
+import { FaShareSquare } from 'react-icons/fa';
 
 function ProfileBioCard(props) {
   const links = JSON.parse(props.freelancer.links);
@@ -16,7 +16,7 @@ function ProfileBioCard(props) {
       </div>
       <h1 className={styles.name}>{props.freelancer.firstname} {props.freelancer.lastname} <span className={styles.con}><Image className={styles.blueTick} onMouseOver={() => setDisplay('flex')} onMouseOut={() => setDisplay('none')}
        src={props.freelancer.verified ? '/tick.png' : '/tickG.png'} height='40' width='40' alt="verified-tick" /> <div className={styles.overTick} style={{ display: display }}><span>Verified</span><div className={styles.rectangle}></div></div></span>
-        &nbsp;<FontAwesomeIcon icon={faLocationDot} style={{ fontSize: 12, color: 'red' }} />&nbsp;
+        &nbsp;<IoLocationSharp style={{ fontSize: 12, color: 'red' }} />&nbsp;
         <span className={styles.location}>{props.freelancer.location}</span>
       </h1>
       {props.copied && (
@@ -32,7 +32,7 @@ function ProfileBioCard(props) {
           title: "Fipezo",
         }}
       >
-        <button className={styles.share}><FontAwesomeIcon icon={faShareFromSquare} style={{color: "white",}} /> Share Profile</button>
+        <button className={styles.share}><FaShareSquare style={{color: "white",}} /> Share Profile</button>
       </RWebShare>
       <div className={styles.equipment_available}>
         <h1 className={styles.title}>Equipments Available</h1>

@@ -1,5 +1,4 @@
-import styles from '../styles/Register.module.css'
-import FeatureCard from '@/components/FeatureCard';
+import styles from '../styles/Register.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
 
