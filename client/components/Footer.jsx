@@ -19,7 +19,7 @@ function Footer() {
         </ul>
         <ul className={styles.law}>
           <li className={styles.heading}>Law and Order</li>
-          <Link href="/terms_and_conditions"><span className={styles.subHeading}>Terms of service</span></Link>
+          <Link href="/terms_and_conditions"><span className={styles.subHeading} id={styles.subTerm}>Terms of service</span></Link>
           <li className={styles.subHeading}>Data Protection</li>
           <li className={styles.subHeading}>Privacy Policy</li>
         </ul>

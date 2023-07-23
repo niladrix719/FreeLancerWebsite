@@ -1,10 +1,11 @@
 import Image from 'next/image'
 import styles from '../styles/ProfileCard.module.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { AiOutlineThunderbolt } from 'react-icons/ai';
+import { ImCamera } from 'react-icons/im';
+import { FaVideo, FaStar } from 'react-icons/fa';
+import { TbDrone } from 'react-icons/tb';
 import Link from 'next/link';
 import { useState } from 'react';
-import { faCameraRetro, faVideo, faClapperboard, faStar } from '@fortawesome/free-solid-svg-icons';
 
 export default function ProfileCard(props) {
   const profession = props.profile.profession.charAt(0).toUpperCase() + props.profile.profession.slice(1);
@@ -19,7 +20,7 @@ export default function ProfileCard(props) {
       <div className={styles.image} style={{ backgroundImage: `url(${process.env.SERVER_URL}/images/${props.profile.profilePicture})` }}></div>
       <div className={styles.right}>
         <div className={styles.rating}>
-          <p>{props.profile.rating.toFixed(1)}</p><FontAwesomeIcon icon={faStar} className={styles.star} />
+          <p>{props.profile.rating.toFixed(1)}</p><FaStar className={styles.star} />
         </div>
         <div className={styles.noOfReviews}>
           <p className={styles.num}>({props.profile.reviewCount})</p>
@@ -29,9 +30,9 @@ export default function ProfileCard(props) {
       <div className={styles.overTick} style={{ display: display }}><span>Verified</span><div className={styles.rectangle}></div></div></span>}</h3>
       <p className={styles.bio}>{props.profile.bio}</p>
       <div className={styles.category}>
-        {profession === 'Photographer' && <FontAwesomeIcon icon={faCameraRetro} className={styles.logo} />}
-        {profession === 'Cinematographer' && <FontAwesomeIcon icon={faVideo} className={styles.logo} />}
-        {profession === 'Drone_operator' && <FontAwesomeIcon icon={faClapperboard} className={styles.logo} />}
+        {profession === 'Photographer' && <ImCamera className={styles.logo} />}
+        {profession === 'Cinematographer' && <FaVideo className={styles.logo} />}
+        {profession === 'Drone_operator' && <TbDrone className={styles.logo} />}
         <h4>{profession}</h4>
         <div className={styles.rate}>
           <p>Rs.{props.profile.rate} / Day</p>

@@ -31,6 +31,10 @@
     margin-bottom: 1rem;
 }
 
+#subTerm{
+    display: inline-block;
+}
+
 .divider{
     margin-top: 2rem;
     margin-bottom: 2rem;
