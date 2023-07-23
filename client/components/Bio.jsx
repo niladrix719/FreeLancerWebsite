@@ -1,8 +1,6 @@
 import Image from 'next/image'
 import styles from '../styles/Bio.module.css'
-import { Fade } from "react-awesome-reveal";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { IoLocationSharp } from 'react-icons/io5'
 
 export default function Bio() {
   return (
@@ -12,7 +10,9 @@ export default function Bio() {
           <div className={styles.pictures}>
             <h1 className={styles.heading} id={styles.head}>One-Stop Platform for Freelance Talent</h1>
             <p className={styles.subHeading}>Find the Right Freelancer for Your Project with Our Easy-to-Use Platform</p>
-            <button className={styles.button}><span className={styles.location}><FontAwesomeIcon icon={faLocationDot} /></span><span className={styles.span}>India</span></button>
+            <button className={styles.button}><span className={styles.location}>
+              <IoLocationSharp id={styles.location} />
+            </span><span className={styles.span}>India</span></button>
           </div>
           <div className={styles.Text}>
             <h1 className={styles.boxtext}>Fipezo</h1>

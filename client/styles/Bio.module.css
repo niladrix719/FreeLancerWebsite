@@ -22,7 +22,7 @@
 
 .subHeading {
     font-size: 1.5rem;
-    color: rgb(145, 124, 124);
+    color: rgb(123, 123, 123);
 }
 
 .picturesNText {
@@ -54,6 +54,11 @@
     display: flex;
     flex-direction: column;
     position: relative;
+}
+
+#location{
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
 }
 
 .details {
@@ -129,7 +134,7 @@
 
 .boxsubheading {
     font-size: 0.9rem;
-    color: rgb(145, 124, 124);
+    color: rgb(125, 125, 125);
     width: 45%;
     margin: 1rem auto;
 }

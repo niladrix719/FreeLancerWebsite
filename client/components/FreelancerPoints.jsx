@@ -21,7 +21,7 @@ function FreelancerPoints() {
               <p className={styles.para}><FontAwesomeIcon className={styles.icon} icon={faHeadphonesSimple} style={{color: "#9fd9e0",}} /> &nbsp; Get inspired that use Fipezo to build a better future.</p>
             </li>
           </ul>
-          <Link href='/faqs' className={styles.btn}>Learn More</Link>
+          <Link href='/faqs' className={styles.btn}>Learn More at FAQS</Link>
         </div>
       </div>
       <div className={styles.right}></div>
