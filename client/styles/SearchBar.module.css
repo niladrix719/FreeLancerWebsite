@@ -33,6 +33,7 @@
 }
 
 .arrow{
+    font-size: 1rem;
     cursor: pointer;
 }
 
@@ -60,13 +61,21 @@
 }
 
 #span{
-    width: 4.75rem;
+    width: 4.85rem;
     overflow: hidden;
+}
+
+.locationIcon{
+    font-size: 1.1rem;
 }
 
 @media (max-width: 768px) {
     .searchMain{
         gap: 0.5rem;
+    }
+
+    .arrow{
+        font-size: 0.6rem;
     }
 
     .location {
@@ -76,6 +85,10 @@
         height: 2.4rem;
     }
 
+    .locationIcon{
+        font-size: 0.6rem;
+    }
+
     .dropDown{
         width: 9rem;
         top : 2.7rem;
@@ -83,5 +96,6 @@
 
     #span{
         width: 2.75rem;
+        font-size: 0.6rem;
     }
 }

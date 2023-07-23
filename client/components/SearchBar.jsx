@@ -1,7 +1,7 @@
 import styles from '../styles/SearchBar.module.css';
 import SearchBox from '../components/SearchBox';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLocationDot, faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { IoLocationSharp } from 'react-icons/io5';
+import { IoIosArrowDown } from 'react-icons/io';
 import React from 'react';
 
 class SearchBar extends React.Component {
@@ -38,12 +38,8 @@ class SearchBar extends React.Component {
       <div>
         <div className={styles.searchMain}>
           <div className={styles.location}>
-            <FontAwesomeIcon icon={faLocationDot} style={{ color: 'red' }} /> <span id={styles.span}>{this.state.cityname}</span>
-            <FontAwesomeIcon
-              icon={faChevronDown}
-              className={styles.arrow}
-              onClick={this.toggle}
-            />
+            <IoLocationSharp className={styles.locationIcon} style={{color: 'red' }} /> <span id={styles.span}>{this.state.cityname}</span>
+            <IoIosArrowDown className={styles.arrow} onClick={this.toggle} />
             <div
               className={styles.dropDown}
               style={{ display: this.state.showDropDown ? "block" : "none" }}

@@ -1,6 +1,5 @@
 import styles from '../styles/SearchBox.module.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { IoSearch } from 'react-icons/io5';
 import React from 'react';
 import Link from 'next/link';
 import Router from 'next/router';
@@ -69,7 +68,7 @@ class SearchBox extends React.Component {
     return (
       <div className={styles.searchBox} style={{ border: this.props.border ? '1px solid lightgray' : 'none' }}>
         <button className={styles.searchIcon} onClick={this.handleSearchBtn}>
-          <FontAwesomeIcon icon={faSearch} style={{ color: 'white' }} />
+          <IoSearch style={{fontSize: '1.25rem' , color: 'white'}} />
         </button>
         <input
           type="text"
