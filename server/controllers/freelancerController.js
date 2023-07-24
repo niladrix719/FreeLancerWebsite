@@ -84,9 +84,6 @@ async function registerFreelancer(req, res) {
 
       await Promise.all(filePromises);
 
-      console.log(resizedProfilePicture.path);
-      console.log('uploads/'+req.files['profilePicture'][0].filename);
-
       await unlinkFile('uploads/'+req.files['profilePicture'][0].filename);
       await unlinkFile('uploads/'+req.files['coverPicture'][0].filename);
       await unlinkFile('uploads/'+req.files['aadhaarCard'][0].filename);

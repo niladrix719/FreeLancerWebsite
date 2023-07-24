@@ -42,7 +42,7 @@
   }
 
   .image{
-    width: 36px;
+    width: auto;
     height: 29px;
   }
 }
