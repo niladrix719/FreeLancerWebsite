@@ -57,7 +57,7 @@ function Footer() {
           <Link href='https://twitter.com/fipezoindia' target='_blank'><Image src='/twitter.png' alt='Twitter' width={30} height={30} className={styles.social}></Image></Link>
           <Link href='https://in.pinterest.com/fipezoindia' target='_blank'><Image src='/pinterest.png' alt='Pinterest' width={30} height={30} className={styles.social}></Image></Link>
           <Link href='https://www.youtube.com/@Fipezo' target='_blank'><Image src='/yt.png' alt='Youtube' width={30} height={30} className={styles.social}></Image></Link>
-          <Image src='/linkedin.png' alt='Linkedin' width={30} height={30} className={styles.social}></Image>
+          <Link href='https://www.linkedin.com/in/fipezo' target='_blank'><Image src='/linkedin.png' alt='Linkedin' width={30} height={30} className={styles.social}></Image></Link>
         </div>
         <div className={styles.app}>
           <div className={styles.google_play}>
