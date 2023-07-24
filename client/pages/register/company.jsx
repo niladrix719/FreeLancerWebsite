@@ -1,12 +1,11 @@
 import Navbar from '@/components/Navbar'
 import React from 'react'
 import styles from '../../styles/Freelancer.module.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCheck } from '@fortawesome/free-solid-svg-icons'
+import { BsCheckAll } from 'react-icons/bs'
 import Image from 'next/image'
 import Footer from '@/components/Footer'
 import CompanyVerification from '@/components/CompanyVerification'
-import { faRotateRight } from '@fortawesome/free-solid-svg-icons'
+import { IoReloadOutline } from 'react-icons/io5'
 import Router from 'next/router'
 
 class Company extends React.Component {
@@ -468,7 +467,7 @@ class Company extends React.Component {
                 <button className={styles.backBtn} type='button' onClick={() => this.decreProgress(14.25)}>Back</button>
                 {this.state.currentPage !== 3 && <button className={styles.NextBtn} type='button' onClick={() => this.increProgress(14.25)}>{this.state.btn}</button>}
                 {this.state.currentPage === 3 && <button className={styles.NextBtn} type='button' onClick={this.handleOtp}>Verify</button>}
-                {this.state.resendOtp && this.state.currentPage === 3 && <button className={styles.NextBtn} type='button' onClick={this.getOtp}><FontAwesomeIcon icon={faRotateRight} /> Resend</button>}
+                {this.state.resendOtp && this.state.currentPage === 3 && <button className={styles.NextBtn} type='button' onClick={this.getOtp}><IoReloadOutline /> Resend</button>}
               </div>}
               {this.state.currentPage === 3 && this.state.count > 0 && <p className={styles.resendOtp}>Resend OTP in {this.state.count}s?</p>}
               {this.state.form && <CompanyVerification
@@ -493,13 +492,13 @@ class Company extends React.Component {
               <div className={styles.freelancer}>
                 <h1 className={styles.minHeading}>For Companies</h1>
                 <div className={styles.feature}>
-                  <FontAwesomeIcon className={styles.check} icon={faCheck} style={{ color: "black", }} /><p>Helps You get The right Talent for your Project</p>
+                  <BsCheckAll className={styles.check} style={{ color: "black", fontSize: '16px' }} /><p>Helps You get The right Talent for your Project</p>
                 </div>
                 <div className={styles.feature}>
-                  <FontAwesomeIcon className={styles.check} icon={faCheck} style={{ color: "black", }} /><p>All Verified Freelancers</p>
+                  <BsCheckAll className={styles.check} style={{ color: "black", fontSize: '16px' }} /><p>All Verified Freelancers</p>
                 </div>
                 <div className={styles.feature}>
-                  <FontAwesomeIcon className={styles.check} icon={faCheck} style={{ color: "black", }} /><p>Maintains Privacy and Fully Transparent</p>
+                  <BsCheckAll className={styles.check} style={{ color: "black", fontSize: '16px' }} /><p>Maintains Privacy and Fully Transparent</p>
                 </div>
               </div>
               <Image className={styles.img} src='/ani3.png' alt='registration-image' width={250} height={250} />

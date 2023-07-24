@@ -4,8 +4,7 @@ import Footer from '@/components/Footer';
 import RequestCard from '@/components/RequestCard';
 import { useEffect, useState } from 'react';
 import DeleteBox from '@/components/DeleteBox';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
+import { BsCheckCircleFill } from 'react-icons/bs';
 
 export default function My_requests() {
   const [freelancer, setFreelancer] = useState(null);
@@ -114,7 +113,7 @@ export default function My_requests() {
         </div>}
         {showAcceptBox && <div className={styles.acceptBox}>
           <div className={styles.box}>
-            <h1 className={styles.headingReq}>Request Accepted <FontAwesomeIcon icon={faCircleCheck} style={{color: "#1bd03f",}} /></h1>
+            <h1 className={styles.headingReq}>Request Accepted <BsCheckCircleFill style={{color: "#1bd03f",}} /></h1>
             <p className={styles.textReq}>Please contact the client to discuss the details. Ensure that you are punctual and perform the job diligently. Remember to collect the payment from the client. Failing to arrive on time may result in a negative review or even a suspension.</p>
             <button className={styles.btnReq} onClick={() => setShowAcceptBox(false)}>Close</button>
           </div>

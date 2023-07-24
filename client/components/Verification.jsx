@@ -1,9 +1,7 @@
 import styles from '../styles/Verification.module.css';
 import Image from 'next/image';
-import { faPlus, faCheck, faFile, faExclamation } from '@fortawesome/free-solid-svg-icons';
 import { BsCheckLg } from 'react-icons/bs';
 import { AiOutlinePlus , AiFillFile } from 'react-icons/ai';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
 import TermsAndConditions from './TermsAndConditions';
 

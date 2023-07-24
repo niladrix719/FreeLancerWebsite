@@ -2,8 +2,7 @@ import Navbar from '@/components/Navbar';
 import styles from '../styles/Contact_soon.module.css';
 import Footer from '@/components/Footer';
 import Image from 'next/image';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { IoArrowBack } from 'react-icons/io5';
 import ReactConfetti from 'react-confetti';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
@@ -30,7 +29,7 @@ function Contact_soon() {
             <span className={styles.color}>Congratulations !</span> <br /> <span className={styles.span}>Your registration is currently undergoing verification</span>
             <p className={styles.subHeading}>Our Team will contact you soon .&nbsp;.&nbsp;.</p>
             <Link href='/'><button className={styles.btn}>
-              <FontAwesomeIcon icon={faArrowLeft} id={styles.arrow} />&nbsp;&nbsp;Back to Home
+              <IoArrowBack style={{display : 'inline'}} id={styles.arrow} />&nbsp;&nbsp;Back to Home
             </button></Link>
             <div className={styles.socials}>
               <Image className={styles.social} src='/facebook.png' width='160' height='160' alt='facebook' />

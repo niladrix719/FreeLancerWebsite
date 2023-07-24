@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import Navbar from '../components/Navbar';
 import Header from '../components/Header';
 import Categories from '../components/Categories';
@@ -9,6 +8,7 @@ import VerifiedExplore from '@/components/VerifiedExplore';
 import Register from '@/components/Register';
 import FreelancerPoints from '@/components/FreelancerPoints';
 import BoxSection from '@/components/BoxSection';
+
 export default function Index() {
 
   return (

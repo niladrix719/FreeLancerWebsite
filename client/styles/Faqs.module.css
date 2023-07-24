@@ -19,6 +19,11 @@
     padding-left: 4rem;
 }
 
+/* .points{
+    display: flex;
+    align-items: center;
+} */
+
 .qnas {
     display: flex;
     flex-direction: column;
