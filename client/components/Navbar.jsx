@@ -1,12 +1,7 @@
 import styles from '../styles/Navbar.module.css'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from 'next/link';
-import Image from 'next/image';
+import { IoMdArrowDropdown } from 'react-icons/io';
 import { useEffect, useState } from 'react';
-
-import {
-  faSortDown
-} from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from 'next/router';
 
 export default function Navbar(props) {
@@ -91,9 +86,8 @@ export default function Navbar(props) {
             <span>
               Register&nbsp;&nbsp;
             </span>
-            <FontAwesomeIcon className={styles.icon}
-              icon={faSortDown}
-              style={{ fontSize: 10, color: color }}
+            <IoMdArrowDropdown className={styles.icon}
+              style={{ fontSize: 16, color: color }}
             />
             <div className={styles.dropDown} id={styles.box}>
               <Link className={styles.optionBox} href='/register/freelancer'>
@@ -109,9 +103,8 @@ export default function Navbar(props) {
 
           <li className={styles.navElement}>
             <span>Help&nbsp;&nbsp;</span>
-            <FontAwesomeIcon className={styles.icon}
-              icon={faSortDown}
-              style={{ fontSize: 10, color: color }}
+            <IoMdArrowDropdown className={styles.icon}
+              style={{ fontSize: 16, color: color }}
             />
             <div className={styles.dropDown} id={styles.box}>
               <Link className={styles.optionBox} href='/contact'>
@@ -140,9 +133,8 @@ export default function Navbar(props) {
           {user && (
             <li className={`${styles.navElement} ${styles.user}`} id={styles.user}>
               <span>{user && !company ? `${user.firstname}` : ''}&nbsp;&nbsp;</span>
-              <FontAwesomeIcon
-                icon={faSortDown}
-                style={{ fontSize: 10, color: color }}
+              <IoMdArrowDropdown
+                style={{ fontSize: 16, color: color }}
               />
               <div className={styles.profile_card}>
                 <div className={styles.dp} style={{ backgroundImage: `url(${user.profilePicture ? `${process.env.SERVER_URL}/images/${user.profilePicture}` : '/dp.png'})` }}></div>
@@ -158,9 +150,8 @@ export default function Navbar(props) {
           {company && (
             <li className={`${styles.navElement} ${styles.user}`} id={styles.user}>
               <span>{company && !user ? `${company.companyname}` : ''}&nbsp;&nbsp;</span>
-              <FontAwesomeIcon
-                icon={faSortDown}
-                style={{ fontSize: 10, color: props.color }}
+              <IoMdArrowDropdown
+                style={{ fontSize: 16, color: props.color }}
               />
               <div className={styles.profile_card}>
                 <div className={styles.dp} style={{ backgroundImage: `url(${process.env.SERVER_URL}/images/${company.profilePicture})` }}></div>

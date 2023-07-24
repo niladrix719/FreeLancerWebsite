@@ -1,7 +1,7 @@
 import styles from '../styles/Sidebar.module.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown, faStar } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
+import { MdKeyboardArrowDown } from 'react-icons/md';
+import { BsStarFill } from 'react-icons/bs';
 
 class Sidebar extends React.Component {
   constructor(props) {
@@ -47,7 +47,7 @@ class Sidebar extends React.Component {
       <div className={styles.sidebar}>
         <div className={styles.filter} id={styles.category}>
           <div className={styles.title}>
-            Category <FontAwesomeIcon onClick={this.toggle} icon={faChevronDown} className={styles.arrow} />
+            Category <MdKeyboardArrowDown style={{ fontSize: '20'}} onClick={this.toggle} className={styles.arrow} />
           </div>
           {this.state.showDropDown && <div className={styles.options}>
             <div className={styles.inputs}>
@@ -90,19 +90,19 @@ class Sidebar extends React.Component {
 
         <div className={styles.filter} id={styles.rating}>
           <div className={styles.title}>
-            Customer Rating <FontAwesomeIcon onClick={this.toggleRating} icon={faChevronDown} className={styles.arrow} />
+            Customer Rating <MdKeyboardArrowDown style={{ fontSize: '20'}} onClick={this.toggleRating} className={styles.arrow} />
           </div>
           {this.state.showDropDownRating && <div className={styles.options}>
             <div className={styles.inputs}>
               <input className={styles.checkbox} type="checkbox" id='star4' onChange={(e) => this.props.setFourStars(e.target.checked)} />
-              <label className={styles.label} htmlFor="star4">
-                4<FontAwesomeIcon icon={faStar} className={styles.star} style={{ color: "#1f1c1c", fontSize: '12px' }} /> & Above
+              <label id={styles.labelid} className={styles.label} htmlFor="star4">
+                4&nbsp;<BsStarFill className={styles.star} style={{ color: "#1f1c1c", fontSize: '18px' }} /> &nbsp; <span>& Above</span>
               </label>
             </div>
             <div className={styles.inputs}>
               <input className={styles.checkbox} type="checkbox" id='star3' onChange={(e) => this.props.setThreeStars(e.target.checked)} />
-              <label className={styles.label} htmlFor="star3">
-                3<FontAwesomeIcon icon={faStar} className={styles.star} style={{ color: "#1f1c1c", fontSize: '12px' }} /> & Above
+              <label id={styles.labelid} className={styles.label} htmlFor="star3">
+                3&nbsp;<BsStarFill className={styles.star} style={{ color: "#1f1c1c", fontSize: '18px' }} /> &nbsp; <span>& Above</span>
               </label>
             </div>
           </div>}
@@ -112,7 +112,7 @@ class Sidebar extends React.Component {
 
         <div className={styles.filter} id={styles.location}>
           <div className={styles.title}>
-            Location <FontAwesomeIcon onClick={this.toggleLocation} icon={faChevronDown} className={styles.arrow} />
+            Location <MdKeyboardArrowDown style={{ fontSize: '20'}} onClick={this.toggleLocation} className={styles.arrow} />
           </div>
           {this.state.showDropDownLocation && (
             <div id={styles.optionx}>

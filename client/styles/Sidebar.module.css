@@ -32,6 +32,8 @@
     margin-bottom: 0.75rem;
     font-weight: 500;
     letter-spacing: 1px;
+    display: flex;
+    align-items: center;
 }
 
 .checkbox {
@@ -47,6 +49,7 @@
 .inputs {
     display: flex;
     gap: 0.5rem;
+    align-items: center;
 }
 
 .arrow {
@@ -99,6 +102,11 @@
 
 .cont > .label{
     margin-left: 0.5rem;
+}
+
+#labelid{
+    display: flex;
+    align-items: center;
 }
 
 #selected{
