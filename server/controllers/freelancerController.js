@@ -6,6 +6,25 @@ const unlinkFile = util.promisify(fs.unlink);
 const jwt = require('jsonwebtoken');
 const secret = process.env.JWT_SECRET;
 const { uploadFile , deleteFile} = require('../middlewares/s3');
+const sharp = require('sharp');
+const path = require('path');
+
+// Function to resize an image and return the path of the resized image
+async function resizeImage(file, width, height) {
+  const filename = path.parse(file.filename).name;
+  const ext = path.parse(file.filename).ext;
+  const resizedFilename = filename + '-' + width + 'x' + height + ext;
+  const outputPath = 'uploads/' + resizedFilename;
+
+  await sharp(file.path)
+    .resize(width, height)
+    .toFile(outputPath);
+
+  return {
+    filename: resizedFilename,
+    path: outputPath,
+  };
+}
 
 //Registration
 
@@ -18,6 +37,15 @@ async function registerFreelancer(req, res) {
         return;
       }
 
+      const resizedProfilePicture= await resizeImage(req.files['profilePicture'][0], 400, 300);
+      const resizedCoverPicture = await resizeImage(req.files['coverPicture'][0], 400, 300);
+      const resizedAadhaarCard = await resizeImage(req.files['aadhaarCard'][0], 400, 300);
+      const resizedPanCard = await resizeImage(req.files['panCard'][0], 400, 300);
+
+      const resizedWorks = await Promise.all(
+        req.files['works[]'].map((file) => resizeImage(file, 400, 300))
+      );
+
       const freelancerData = new freelancerCollection({
         uid: req.body.uid,
         firstname: req.body.firstname,
@@ -28,11 +56,11 @@ async function registerFreelancer(req, res) {
         rate: req.body.rate,
         bio: req.body.bio,
         equipments: req.body.equipments,
-        profilePicture: req.files['profilePicture'][0].filename,
-        coverPicture: req.files['coverPicture'][0].filename,
-        aadhaarCard: req.files['aadhaarCard'][0].filename,
-        panCard: req.files['panCard'][0].filename,
-        works: req.files['works[]'].map(file => file.filename),
+        profilePicture: resizedProfilePicture.filename,
+        coverPicture: resizedCoverPicture.filename,
+        aadhaarCard: resizedAadhaarCard.filename,
+        panCard: resizedPanCard.filename,
+        works: resizedWorks.map((file) => file.filename),
         links: req.body.links,
         rating: 0,
         reviewCount: 0,
@@ -45,24 +73,35 @@ async function registerFreelancer(req, res) {
       await freelancerData.save();
 
       const filePromises = [];
-      filePromises.push(uploadFile(req.files['profilePicture'][0]));
-      filePromises.push(uploadFile(req.files['coverPicture'][0]));
-      filePromises.push(uploadFile(req.files['aadhaarCard'][0]));
-      filePromises.push(uploadFile(req.files['panCard'][0]));
+      filePromises.push(uploadFile(resizedProfilePicture));
+      filePromises.push(uploadFile(resizedCoverPicture));
+      filePromises.push(uploadFile(resizedAadhaarCard));
+      filePromises.push(uploadFile(resizedPanCard));
 
-      req.files['works[]'].forEach(file => {
+      resizedWorks.forEach(file => {
         filePromises.push(uploadFile(file));
       });
 
       await Promise.all(filePromises);
 
+      console.log(resizedProfilePicture.path);
+      console.log('uploads/'+req.files['profilePicture'][0].filename);
+
       await unlinkFile('uploads/'+req.files['profilePicture'][0].filename);
       await unlinkFile('uploads/'+req.files['coverPicture'][0].filename);
       await unlinkFile('uploads/'+req.files['aadhaarCard'][0].filename);
       await unlinkFile('uploads/'+req.files['panCard'][0].filename);
+      await unlinkFile(resizedProfilePicture.path);
+      await unlinkFile(resizedCoverPicture.path);
+      await unlinkFile(resizedAadhaarCard.path);
+      await unlinkFile(resizedPanCard.path);
 
       req.files['works[]'].forEach(file => {
         unlinkFile('uploads/'+file.filename);
+      });
+
+      resizedWorks.forEach(file => {
+        unlinkFile(file.path);
       });
 
       const user = await freelancerCollection.findOne({ phone: req.body.phone });
