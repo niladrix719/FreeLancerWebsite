@@ -1,6 +1,5 @@
 import styles from '../styles/Featured.module.css'
 import ProfileCard from './ProfileCard';
-import { faCameraRetro, faVideo, faClapperboard } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 
 export default function Featured() {
