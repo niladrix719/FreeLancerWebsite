@@ -12,12 +12,13 @@ const path = require('path');
 // Function to resize an image and return the path of the resized image
 async function resizeImage(file, width, height) {
   const filename = path.parse(file.filename).name;
-  const ext = path.parse(file.filename).ext;
+  const ext = '.webp';
   const resizedFilename = filename + '-' + width + 'x' + height + ext;
   const outputPath = 'uploads/' + resizedFilename;
 
   await sharp(file.path)
     .resize(width, height)
+    .toFormat('webp')
     .toFile(outputPath);
 
   return {
