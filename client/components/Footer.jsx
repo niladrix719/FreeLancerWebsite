@@ -52,8 +52,8 @@ function Footer() {
           </div>
         </div>
         <div className={styles.socials}>
-          <Image src='/fb.png' alt='facebook' width={30} height={30} className={styles.social}></Image>
-          <Image src='/insta.png' alt='Instagram' width={30} height={30} className={styles.social}></Image>
+          <Link href='https://www.facebook.com/people/Fipezo/100094694632348/?mibextid=ZbWKwL' target='_blank'><Image src='/fb.png' alt='facebook' width={30} height={30} className={styles.social}></Image></Link>
+          <Link href='https://www.instagram.com/fipezoindia' target='_blank'><Image src='/insta.png' alt='Instagram' width={30} height={30} className={styles.social}></Image></Link>
           <Image src='/twitter.png' alt='Twitter' width={30} height={30} className={styles.social}></Image>
           <Image src='/pinterest.png' alt='Pinterest' width={30} height={30} className={styles.social}></Image>
           <Image src='/yt.png' alt='Youtube' width={30} height={30} className={styles.social}></Image>

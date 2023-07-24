@@ -68,7 +68,7 @@ class SearchBox extends React.Component {
     return (
       <div className={styles.searchBox} style={{ border: this.props.border ? '1px solid lightgray' : 'none' }}>
         <button className={styles.searchIcon} onClick={this.handleSearchBtn}>
-          <IoSearch style={{fontSize: '1.25rem' , color: 'white'}} />
+          <IoSearch style={{fontSize: '1.25rem' , color: 'white'}} aria-label="Search" />
         </button>
         <input
           type="text"

@@ -31,10 +31,10 @@ export default function Navbar(props) {
         .then(data => {
           if (data.authData.user.phone === 7001599126)
             setIsAdmin(true);
-          if (data.authData.user.companyname)  
+          if (data.authData.user.companyname)
             setCompany(data.authData.user)
-          else  
-          setUser(data.authData.user);
+          else
+            setUser(data.authData.user);
           if (props.checkLoggedIn)
             props.checkLoggedIn(true);
         })
@@ -47,13 +47,13 @@ export default function Navbar(props) {
   const handleLogout = () => {
     localStorage.removeItem('user');
     setIsAdmin(false);
-    if(user)
-    setUser(null);
-    if(company)
-    setCompany(null);
+    if (user)
+      setUser(null);
+    if (company)
+      setCompany(null);
     if (props.checkLoggedIn)
       props.checkLoggedIn(false);
-    router.push('/');  
+    router.push('/');
   }
 
   useEffect(() => {
@@ -79,11 +79,14 @@ export default function Navbar(props) {
       </div>
       <div className={styles.right}>
         <ul className={styles.navigations}>
-          <Link className={styles.navElement} href='/'>
-            <span id={styles.home}>
-              Home&nbsp;&nbsp;
-            </span>
-          </Link>
+          <li className={styles.navElement}>
+            <Link href='/'>
+              <span id={styles.home}>
+                Home&nbsp;&nbsp;
+              </span>
+            </Link>
+          </li>
+
           <li className={styles.navElement}>
             <span>
               Register&nbsp;&nbsp;
@@ -121,37 +124,53 @@ export default function Navbar(props) {
               </Link>
             </div>
           </li>
-          {isAdmin && <Link href='/verification' className={styles.navElement}>Verify</Link>}
-          {user === null && company === null && <li><Link href='/login' className={styles.login}>Login</Link></li>}
-          {user && <li className={styles.navElement} id={styles.user}>
-            <span>{user && !company ? `${user.firstname}` : ''}&nbsp;&nbsp;</span>
-            <FontAwesomeIcon
-              icon={faSortDown}
-              style={{ fontSize: 10, color: color }}
-            />
-            <div className={styles.profile_card}>
-              <div className={styles.dp} style={{backgroundImage: `url(${user.profilePicture ? `${process.env.SERVER_URL}/images/${user.profilePicture}` : '/dp.png'})`}}></div>
-              <h1 className={styles.name}>{user ? `${user.firstname} ${user.lastname}` : ''}</h1>
-              <p className={styles.number}>{user ? user.phone : ''}</p>
-              {user.uid && <Link className={styles.btn} href={`/freelancer_profile`}>My Profile</Link>}
-              {!user.uid && <Link className={styles.btn} href='/user_profile'>My Profile</Link>}
-              <button className={styles.btn} type='button' onClick={handleLogout}>Log Out</button>
-            </div>
-          </li>}
-          {company && <li className={styles.navElement} id={styles.user}>
-            <span>{company && !user ? `${company.companyname}` : ''}&nbsp;&nbsp;</span>
-            <FontAwesomeIcon
-              icon={faSortDown}
-              style={{ fontSize: 10, color: props.color }}
-            />
-            <div className={styles.profile_card}>
-              <div className={styles.dp} style={{backgroundImage: `url(${process.env.SERVER_URL}/images/${company.profilePicture})`}}></div>
-              <h1 className={styles.name}>{company ? `${company.companyname} ` : ''}</h1>
-              <p className={styles.number}>{company ? company.companyphone : ''}</p>
-              <Link className={styles.btn} href='/company_profile'>My Profile</Link>
-              <button className={styles.btn} type='button' onClick={handleLogout}>Log Out</button>
-            </div>
-          </li>}
+
+          {isAdmin && (
+            <li className={styles.navElement}>
+              <Link href='/verification' className={styles.navElement}>Verify</Link>
+            </li>
+          )}
+
+          {!user && !company && (
+            <li className={styles.navElement}>
+              <Link href='/login' className={styles.login}>Login</Link>
+            </li>
+          )}
+
+          {user && (
+            <li className={`${styles.navElement} ${styles.user}`} id={styles.user}>
+              <span>{user && !company ? `${user.firstname}` : ''}&nbsp;&nbsp;</span>
+              <FontAwesomeIcon
+                icon={faSortDown}
+                style={{ fontSize: 10, color: color }}
+              />
+              <div className={styles.profile_card}>
+                <div className={styles.dp} style={{ backgroundImage: `url(${user.profilePicture ? `${process.env.SERVER_URL}/images/${user.profilePicture}` : '/dp.png'})` }}></div>
+                <h1 className={styles.name}>{user ? `${user.firstname} ${user.lastname}` : ''}</h1>
+                <p className={styles.number}>{user ? user.phone : ''}</p>
+                {user.uid && <Link className={styles.btn} href={`/freelancer_profile`}>My Profile</Link>}
+                {!user.uid && <Link className={styles.btn} href='/user_profile'>My Profile</Link>}
+                <button className={styles.btn} type='button' onClick={handleLogout}>Log Out</button>
+              </div>
+            </li>
+          )}
+
+          {company && (
+            <li className={`${styles.navElement} ${styles.user}`} id={styles.user}>
+              <span>{company && !user ? `${company.companyname}` : ''}&nbsp;&nbsp;</span>
+              <FontAwesomeIcon
+                icon={faSortDown}
+                style={{ fontSize: 10, color: props.color }}
+              />
+              <div className={styles.profile_card}>
+                <div className={styles.dp} style={{ backgroundImage: `url(${process.env.SERVER_URL}/images/${company.profilePicture})` }}></div>
+                <h1 className={styles.name}>{company ? `${company.companyname} ` : ''}</h1>
+                <p className={styles.number}>{company ? company.companyphone : ''}</p>
+                <Link className={styles.btn} href='/company_profile'>My Profile</Link>
+                <button className={styles.btn} type='button' onClick={handleLogout}>Log Out</button>
+              </div>
+            </li>
+          )}
         </ul>
       </div>
     </nav>

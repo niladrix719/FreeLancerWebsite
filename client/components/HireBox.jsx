@@ -1,6 +1,5 @@
 import styles from '../styles/HireBox.module.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faXmark } from '@fortawesome/free-solid-svg-icons'
+import { ImCross } from 'react-icons/im'
 import { useState } from 'react'
 
 function HireBox(props) {
@@ -50,7 +49,7 @@ function HireBox(props) {
   return (
     <div className={styles.hireBox}>
       <span onClick={(() => props.handleHireBox(false))} className={styles.cross}>
-        <FontAwesomeIcon icon={faXmark} />
+        <ImCross />
       </span>
       <h1 className={styles.heading}>Send Your Task</h1>
       <p className={styles.error}>{hireError ? 'Please fill all the fields' : ''}</p>

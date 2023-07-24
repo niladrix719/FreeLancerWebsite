@@ -1,7 +1,6 @@
 import styles from '../styles/ReviewBox.module.css'
 import { FaStar } from 'react-icons/fa'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faXmark } from '@fortawesome/free-solid-svg-icons'
+import { ImCross } from 'react-icons/im'
 import { useState } from 'react'
 
 function ReviewBox(props) {
@@ -45,7 +44,7 @@ function ReviewBox(props) {
   return (
     <div className={styles.reviewBox}>
       <span onClick={(() => props.handleReviewBox(false))} className={styles.cross}>
-        <FontAwesomeIcon icon={faXmark} />
+        <ImCross />
       </span>
       <h1 className={styles.heading}>Give a Feedback</h1>
       <p className={styles.error}>{reviewError ? 'Please fill all the fields' : ''}</p>
