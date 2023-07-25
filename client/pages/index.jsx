@@ -16,12 +16,18 @@ export default function Index() {
       <Navbar color='white' />
       <Header />
       <Categories />
-      <Bio />
+      <div className='grey-container'>
+        <Bio />
+      </div>
       <VerifiedExplore />
       <FreelancerPoints />
-      <Register />
+      <div className='color-container'>
+        <Register />
+      </div>
       <BoxSection />
-      <Featured />
+      <div className='grey-container'>
+        <Featured />
+      </div>
       <Footer />
     </div>
   )

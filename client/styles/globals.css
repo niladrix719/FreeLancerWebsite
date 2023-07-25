@@ -125,3 +125,19 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.grey-container{
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(180deg, #fff 30%, #fafafa 50%, #fafafa 100%);
+  border-bottom: 1px solid #eaeaea;
+  width: 100%;
+}
+
+.color-container{
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(0deg, #fff 30%, #fafafa 50%, #fafafa 100%);
+  border-top: 1px solid #eaeaea;
+  width: 100%;
+}

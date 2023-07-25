@@ -10,11 +10,11 @@ function Register() {
         <div className={styles.btns}>
           <Link href='/register/freelancer' className={styles.btn}>
             <h1 className={styles.h1}>Register as a Freelancer</h1>
-            <p className={styles.p}>Fill up the form -&gt;</p>
+            <p className={styles.p}>Are you a skilled professional? Register as a freelancer to showcase your talents and connect with potential clients, opening the door to exciting new opportunities.</p>
           </Link>
           <Link href='/register/company' className={styles.btn}>
             <h1 className={styles.h1}>Register as a Company</h1>
-            <p className={styles.p}>Fill up the form -&gt;</p>
+            <p className={styles.p}>Grow your team with the best talent available. Register your company to post job opportunities and find qualified freelancers and professionals who can contribute to your projects and business growth.</p>
           </Link>
         </div>
       </div>

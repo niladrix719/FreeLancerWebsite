@@ -137,6 +137,7 @@
     color: rgb(125, 125, 125);
     width: 45%;
     margin: 1rem auto;
+    word-spacing: 1px;
 }
 
 #head{

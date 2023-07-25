@@ -11,7 +11,7 @@
     display: flex;
     width: 65%;
     height: inherit;
-    background-color: #163539;
+    background-color: var(--primary-color);
     padding: 2rem;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
@@ -19,7 +19,7 @@
 }
 
 .right{
-    background-image: url(/boxS.webp);
+    background-image: url(/turn.webp);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -82,7 +82,7 @@
 }
 
 .btn:hover{
-    background-color: var(--primary-color);
+    background-color: black;
     color: white;
 }
 

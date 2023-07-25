@@ -136,7 +136,7 @@ export default function Navbar(props) {
           {user && (
             <li className={`${styles.navElement} ${styles.user}`} id={styles.user}>
               <span>{user && !company ? `${user.firstname}` : ''}&nbsp;&nbsp;</span>
-              <IoMdArrowDropdown
+              <BiChevronDown
                 style={{ fontSize: 16, color: color }}
               />
               <div className={styles.profile_card}>
@@ -153,7 +153,7 @@ export default function Navbar(props) {
           {company && (
             <li className={`${styles.navElement} ${styles.user}`} id={styles.user}>
               <span>{company && !user ? `${company.companyname}` : ''}&nbsp;&nbsp;</span>
-              <IoMdArrowDropdown
+              <BiChevronDown
                 style={{ fontSize: 16, color: props.color }}
               />
               <div className={styles.profile_card}>
