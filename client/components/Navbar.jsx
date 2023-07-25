@@ -1,6 +1,6 @@
 import styles from '../styles/Navbar.module.css'
 import Link from 'next/link';
-import { IoMdArrowDropdown } from 'react-icons/io';
+import { BiChevronDown } from 'react-icons/bi';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
@@ -9,6 +9,7 @@ export default function Navbar(props) {
   const [freelancer, setFreelancer] = useState(null);
   const [company, setCompany] = useState(null);
   const [background, setBackground] = useState('transparent');
+  const [border, setBorder] = useState('0px');
   const [color, setColor] = useState(props.color);
   const [isAdmin, setIsAdmin] = useState(false);
   const router = useRouter();
@@ -53,18 +54,20 @@ export default function Navbar(props) {
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 100) {
+      if (window.scrollY > 0) {
         setColor('#000');
+        setBorder('1px solid lightgray');
         setBackground('#fff');
       } else {
         setColor(props.color);
+        setBorder('0px');
         setBackground('transparent');
       }
     });
   }, [props.color]);
 
   return (
-    <nav className={styles.navbar} style={{ color: color, backgroundColor: background }}>
+    <nav className={styles.navbar} style={{ color: color, backgroundColor: background , borderBottom: border }}>
       <div className={styles.left}>
         <Link href='/'>
           <i className={styles.fipezo}>
@@ -86,8 +89,8 @@ export default function Navbar(props) {
             <span>
               Register&nbsp;&nbsp;
             </span>
-            <IoMdArrowDropdown className={styles.icon}
-              style={{ fontSize: 16, color: color }}
+            <BiChevronDown className={styles.icon}
+              style={{ fontSize: 15, color: color }}
             />
             <div className={styles.dropDown} id={styles.box}>
               <Link className={styles.optionBox} href='/register/freelancer'>
@@ -103,8 +106,8 @@ export default function Navbar(props) {
 
           <li className={styles.navElement}>
             <span>Help&nbsp;&nbsp;</span>
-            <IoMdArrowDropdown className={styles.icon}
-              style={{ fontSize: 16, color: color }}
+            <BiChevronDown className={styles.icon}
+              style={{ fontSize: 15, color: color }}
             />
             <div className={styles.dropDown} id={styles.box}>
               <Link className={styles.optionBox} href='/contact'>

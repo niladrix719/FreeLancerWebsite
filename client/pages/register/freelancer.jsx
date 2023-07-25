@@ -19,7 +19,7 @@ class Freelancer extends React.Component {
       lastName: '',
       phone: '',
       otp: '',
-      location: 'kolkata',
+      location: 'Kolkata',
       profession: 'photographer',
       rate: 1000,
       bio: '',
