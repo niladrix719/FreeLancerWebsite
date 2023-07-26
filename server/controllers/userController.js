@@ -223,9 +223,9 @@ const getProfile = async (req, res) => {
           user = await freelancerCollection.findOne({ _id: authData.user._id });
         else if (authData.user && authData.user.companyname)
           user = await companyCollection.findOne({ _id: authData.user._id });
-        else{
-          if(authData.user)
-          user = await userCollection.findOne({ _id: authData.user._id });
+        else {
+          if (authData.user)
+            user = await userCollection.findOne({ _id: authData.user._id });
         }
 
         if (user) {
@@ -293,12 +293,14 @@ async function deleteUserProfile(req, res) {
 //OTP
 
 function sendTextMessage(phoneNumber, message) {
-  phoneNumber = "+91" + phoneNumber.toString();
-  twilio.messages.create({
-    body: message,
-    from: process.env.TWILIO_PHONE_NUMBER,
-    to: phoneNumber
-  });
+  if (process.env.CLIENT_URL !== 'http://localhost:3001') {
+    phoneNumber = "+91" + phoneNumber.toString();
+    twilio.messages.create({
+      body: message,
+      from: process.env.TWILIO_PHONE_NUMBER,
+      to: phoneNumber
+    });
+  }
 }
 
 module.exports = {

@@ -48,7 +48,7 @@ async function addHire(req, res) {
         description: req.body.description,
         address: req.body.address,
         phone: phone,
-        date: req.body.date,  
+        date: req.body.date,
         startTime: req.body.startTime,
         endTime: req.body.endTime,
         budget: req.body.budget,
@@ -74,7 +74,7 @@ async function getHires(req, res) {
         res.sendStatus(403);
         return;
       }
-      
+
       let user;
       if(authData.user.companyname)
       user = await companyCollection.findOne({ _id: authData.user._id });
@@ -213,12 +213,14 @@ async function acceptRequest(req, res) {
 }
 
 function sendTextMessage(phoneNumber, message) {
-  phoneNumber = "+91" + phoneNumber.toString();
-  twilio.messages.create({
-    body: message,
-    from: process.env.TWILIO_PHONE_NUMBER,
-    to: phoneNumber
-  });
+  if (process.env.CLIENT_URL !== 'http://localhost:3001') {
+    phoneNumber = "+91" + phoneNumber.toString();
+    twilio.messages.create({
+      body: message,
+      from: process.env.TWILIO_PHONE_NUMBER,
+      to: phoneNumber
+    });
+  }
 }
 
 module.exports = {

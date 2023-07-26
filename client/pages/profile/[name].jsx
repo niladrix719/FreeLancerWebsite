@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react';
 import ReviewBox from '@/components/ReviewBox';
 import HireBox from '@/components/HireBox';
 import Link from 'next/link';
+import DialogBox from '@/components/DialogBox';
 import Modal from '@/components/Modal';
 
 function Name(props) {
@@ -25,6 +26,7 @@ function Name(props) {
   const [clickedImg, setClickedImg] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(null);
   const [copied, setCopied] = useState(false);
+  const [showDialogBox, setShowDialogBox] = useState(false);
 
   const handleClick = (item, index) => {
     setCurrentIndex(index);
@@ -147,6 +149,10 @@ function Name(props) {
     });
   };
 
+  const handleDialogBox = (val) => {
+    setShowDialogBox(val);
+  };
+
   return (
     <div className={styles.profile}>
       <Navbar color='white' checkLoggedIn={checkLoggedIn} user={props.user} company={props.company} setCompany={props.setCompany} setUser={props.setUser} />
@@ -171,10 +177,11 @@ function Name(props) {
           )}
           {hireBox && (
             <div id={styles.boxContainer2}>
-              <HireBox handleHireBox={handleHireBox} freelancer={freelancer} user={user} />
+              <HireBox handleHireBox={handleHireBox} freelancer={freelancer} user={user} setShowDialogBox={setShowDialogBox} />
             </div>
           )}
         </div>
+      {showDialogBox && <DialogBox title='Sent Successfully!' text='Your Request has been sent to the Freelancer. You will be contacted within 24hours via sms. If you have any queries fell free to reach out to us.' handleDialogBox={handleDialogBox} />}
       <div className={styles.profile_details}>
         {freelancer.links && <ProfileBioCard freelancer={freelancer} copyURL={copyURL} copied={copied} />}
         {isFreelancerLoaded && <Details works={freelancer.works} reviews={reviews} handleClick={handleClick} />}
@@ -198,7 +205,7 @@ function Name(props) {
           )}
           {hireBox && (
             <div id={styles.boxContainer2}>
-              <HireBox handleHireBox={handleHireBox} freelancer={freelancer} user={user} />
+              <HireBox handleHireBox={handleHireBox} freelancer={freelancer} user={user} setShowDialogBox={setShowDialogBox} />
             </div>
           )}
         </div>

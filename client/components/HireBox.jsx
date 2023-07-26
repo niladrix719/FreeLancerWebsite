@@ -36,6 +36,7 @@ function HireBox(props) {
           });
           const data = await response.json();
         }
+        props.setShowDialogBox(true);
         props.handleHireBox(false);
       } catch (error) {
         setHireError(true);

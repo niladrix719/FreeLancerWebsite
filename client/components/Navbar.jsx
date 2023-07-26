@@ -132,7 +132,7 @@ export default function Navbar(props) {
           )}
 
           {!props.user && !props.company && (
-            <li className={styles.navElement}>
+            <li className={styles.navElement} id={styles.noUnderline}>
               <Link href='/login' className={styles.login}>Login</Link>
             </li>
           )}

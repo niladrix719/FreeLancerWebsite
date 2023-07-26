@@ -7,7 +7,7 @@ function Review(props) {
   return (
     <div className={styles.review}>
       <div className={styles.user_info}>
-      <div className={styles.avatar} style={{backgroundImage: `url(${profilePicture === '' ? '/dp.png' : `${process.env.SERVER_URL}/images/${profilePicture}`})`}}></div>
+      <div className={styles.avatar} style={{backgroundImage: `url(${profilePicture === undefined ? '/dp.png' : `${process.env.SERVER_URL}/images/${profilePicture}`})`}}></div>
         <div className={styles.user_details}>
           <h3 className={styles.user_name}>{props.review.userDetails.firstname} {props.review.userDetails.lastname}</h3>
         </div>
