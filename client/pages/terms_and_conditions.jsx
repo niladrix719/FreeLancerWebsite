@@ -2,10 +2,10 @@ import styles from '@/styles/Terms_And_Conditions.module.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
-function Terms_And_Conditions() {
+function Terms_And_Conditions(props) {
   return (
     <div className={styles.termsNConditions}>
-      <Navbar />
+      <Navbar user={props.user} company={props.company} setCompany={props.setCompany} setUser={props.setUser} />
       <div className={styles.main}>
         <div className={styles.body}>
           <div className={styles.termsNConditions_form} style={{height : '88.3vh'}}>

@@ -3,7 +3,7 @@ import Footer from '@/components/Footer';
 import styles from '../styles/VerificationPanel.module.css'
 import VerificationCard from '@/components/VerificationCard';
 import { useEffect, useState } from 'react';
-function VerificationPanel() {
+function VerificationPanel(props) {
   const [freelancers, setFreelancers] = useState([]);
   const [companies, setCompanies] = useState([]);
   useEffect(() => {
@@ -24,7 +24,7 @@ function VerificationPanel() {
         console.error(error);
       }
     }
-  
+
     fetchFreelancer();
   }, []);
 
@@ -46,7 +46,7 @@ function VerificationPanel() {
         console.error(error);
       }
     }
-  
+
     fetchCompany();
   }, []);
 
@@ -66,7 +66,7 @@ function VerificationPanel() {
 
   return (
     <div className={styles.verification}>
-      <Navbar />
+      <Navbar user={props.user} company={props.company} setCompany={props.setCompany} setUser={props.setUser} />
       <div className={styles.body}>
         <h1 className={styles.heading}>Verification Panel</h1>
         <div className={styles.cards}>

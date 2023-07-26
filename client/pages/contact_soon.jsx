@@ -6,7 +6,7 @@ import { IoArrowBack } from 'react-icons/io5';
 import ReactConfetti from 'react-confetti';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-function Contact_soon() {
+function Contact_soon(props) {
   const [windowDm, setWindowDm] = useState({ width: 1600, height: 650 });
   const dectectSize = () => {
     setWindowDm({ width: 1600, height: 650 });
@@ -20,7 +20,7 @@ function Contact_soon() {
   return (
     <div className={styles.contactSoon}>
       <ReactConfetti height={windowDm.height} width={windowDm.width} numberOfPieces={150} />
-      <Navbar />
+      <Navbar user={props.user} company={props.company} setCompany={props.setCompany} setUser={props.setUser} />
       <div className={styles.body}>
         <div className={styles.box}>
           <Image className={styles.image} src='/soon.png' width='1000' height='1000' alt='contacting image' />

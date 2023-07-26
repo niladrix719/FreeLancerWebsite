@@ -6,7 +6,7 @@ import SearchBox from '@/components/SearchBox';
 import Footer from '@/components/Footer';
 import { useEffect, useState } from 'react';
 
-function Explore() {
+function Explore(props) {
   const [currentPage, setCurrentPage] = useState(1);
   const [freelancers, setFreelancers] = useState([]);
   const [showPhotographers, setShowPhotographers] = useState(false);
@@ -130,7 +130,7 @@ function Explore() {
 
   return (
     <div className={styles.explore}>
-      <Navbar />
+      <Navbar user={props.user} company={props.company} setCompany={props.setCompany} setUser={props.setUser} />
       <div className={styles.search}>
         <SearchBox border={true} />
       </div>

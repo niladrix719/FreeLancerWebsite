@@ -9,11 +9,11 @@ import Register from '@/components/Register';
 import FreelancerPoints from '@/components/FreelancerPoints';
 import BoxSection from '@/components/BoxSection';
 
-export default function Index() {
+export default function Index(props) {
 
   return (
     <div className='app'>
-      <Navbar color='white' />
+      <Navbar color='white' user={props.user} company={props.company} setCompany={props.setCompany} setUser={props.setUser} />
       <Header />
       <Categories />
       <div className='grey-container'>

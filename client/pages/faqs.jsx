@@ -38,7 +38,7 @@ class Faqs extends React.Component {
   render() {
     return (
       <div className={styles.faqs}>
-        <Navbar />
+        <Navbar user={this.props.user} company={this.props.company} setCompany={this.props.setCompany} setUser={this.props.setUser} />
         <div className={styles.body}>
           <h1 className={styles.heading}>Questions? Look here.</h1>
           <div className={styles.container}>

@@ -6,7 +6,7 @@ import DeleteBox from '@/components/DeleteBox';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-function Company_Profile() {
+function Company_Profile(props) {
   const [companyname, setCompanyname] = React.useState('');
   const [companyaddress, setCompanyaddress] = React.useState('');
   const [bio, setBio] = React.useState('');
@@ -94,24 +94,24 @@ function Company_Profile() {
   const handleImageChange = (e, val) => {
     const file = e.target.files[0];
     const reader = new FileReader();
-  
+
     if (!file) {
       return;
     }
-  
+
     if (file.size > 1048576) {
       setWarns(true);
       return;
     }
-  
+
     if (val === 1) {
       setProfilePicture(file);
     } else {
       setCoverPicture(file);
     }
-  
+
     reader.readAsDataURL(file);
-  
+
     if (val === 1) {
       reader.onloadend = () => {
         setImage(reader.result);
@@ -121,7 +121,7 @@ function Company_Profile() {
         setCover(reader.result);
       };
     }
-  
+
     reader.onerror = () => {
       console.error('Something went wrong!');
     };
@@ -152,12 +152,12 @@ function Company_Profile() {
 
   const handleLogout = () => {
     localStorage.removeItem('user');
-    router.push('/');  
+    router.push('/');
   }
 
   return (
     <div className={style.profile}>
-      <Navbar color='black' />
+      <Navbar color='black' user={props.user} company={props.company} setCompany={props.setCompany} setUser={props.setUser} />
       <div className={style.body}>
         <div className={style.profileBox}>
           {!editProfile && <div className={style.form}>

@@ -6,7 +6,7 @@ import Footer from '@/components/Footer';
 import { useRouter } from 'next/router';
 import { useState , useEffect } from 'react';
 
-export default function Login() {
+export default function Login(props) {
   const [phone, setPhone] = useState('');
   const [type, setType] = useState('user');
   const [otpForm, setOtpForm] = useState(false);
@@ -91,7 +91,7 @@ export default function Login() {
   return (
     <div className={styles.login}>
       <div className={styles.navbar}>
-        <Navbar color='black' />
+        <Navbar color='black' user={props.user} company={props.company} setCompany={props.setCompany} setUser={props.setUser} />
       </div>
       {!otpForm && <div className={styles.body}>
         <form className={styles.form}>

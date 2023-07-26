@@ -6,7 +6,7 @@ import DeleteBox from '@/components/DeleteBox';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-function User_profile() {
+function User_profile(props) {
   const [firstname, setFirstname] = React.useState('');
   const [lastname, setLastname] = React.useState('');
   const [editProfile, setEditProfile] = React.useState(false);
@@ -138,7 +138,7 @@ function User_profile() {
 
   return (
     <div className={style.profile}>
-      <Navbar color='black' />
+      <Navbar color='black' user={props.user} company={props.company} setCompany={props.setCompany} setUser={props.setUser} />
       <div className={style.body}>
         <div className={style.profileBox}>
           {!editProfile && <div className={style.profileImage}>

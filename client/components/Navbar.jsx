@@ -5,9 +5,6 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
 export default function Navbar(props) {
-  const [user, setUser] = useState(null);
-  const [freelancer, setFreelancer] = useState(null);
-  const [company, setCompany] = useState(null);
   const [background, setBackground] = useState('transparent');
   const [border, setBorder] = useState('0px');
   const [color, setColor] = useState(props.color);
@@ -16,7 +13,7 @@ export default function Navbar(props) {
 
   useEffect(() => {
     const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
-    if (token) {
+    if (token && !props.user && !props.company) {
       fetch(`${process.env.SERVER_URL}/navbar`, {
         method: 'GET',
         headers: {
@@ -28,9 +25,9 @@ export default function Navbar(props) {
           if (data.authData.user.phone === 7001599126)
             setIsAdmin(true);
           if (data.authData.user.companyname)
-            setCompany(data.authData.user)
+            props.setCompany(data.authData.user)
           else
-            setUser(data.authData.user);
+            props.setUser(data.authData.user);
           if (props.checkLoggedIn)
             props.checkLoggedIn(true);
         })
@@ -38,15 +35,22 @@ export default function Navbar(props) {
           console.error(error);
         });
     }
+
+    else if (token && (props.user || props.company)) {
+      if (props.user.phone === 7001599126)
+        setIsAdmin(true);
+      if (props.checkLoggedIn)
+        props.checkLoggedIn(true);
+    }
   }, []);
 
   const handleLogout = () => {
     localStorage.removeItem('user');
     setIsAdmin(false);
-    if (user)
-      setUser(null);
-    if (company)
-      setCompany(null);
+    if (props.user)
+      props.setUser(null);
+    if (props.company)
+      props.setCompany(null);
     if (props.checkLoggedIn)
       props.checkLoggedIn(false);
     router.push('/');
@@ -67,7 +71,7 @@ export default function Navbar(props) {
   }, [props.color]);
 
   return (
-    <nav className={styles.navbar} style={{ color: color, backgroundColor: background , borderBottom: border }}>
+    <nav className={styles.navbar} style={{ color: color, backgroundColor: background, borderBottom: border }}>
       <div className={styles.left}>
         <Link href='/'>
           <i className={styles.fipezo}>
@@ -127,39 +131,39 @@ export default function Navbar(props) {
             </li>
           )}
 
-          {!user && !company && (
+          {!props.user && !props.company && (
             <li className={styles.navElement}>
               <Link href='/login' className={styles.login}>Login</Link>
             </li>
           )}
 
-          {user && (
+          {props.user && (
             <li className={`${styles.navElement} ${styles.user}`} id={styles.user}>
-              <span>{user && !company ? `${user.firstname}` : ''}&nbsp;&nbsp;</span>
+              <span>{props.user && !props.company ? `${props.user.firstname}` : ''}&nbsp;&nbsp;</span>
               <BiChevronDown
                 style={{ fontSize: 16, color: color }}
               />
               <div className={styles.profile_card}>
-                <div className={styles.dp} style={{ backgroundImage: `url(${user.profilePicture ? `${process.env.SERVER_URL}/images/${user.profilePicture}` : '/dp.png'})` }}></div>
-                <h1 className={styles.name}>{user ? `${user.firstname} ${user.lastname}` : ''}</h1>
-                <p className={styles.number}>{user ? user.phone : ''}</p>
-                {user.uid && <Link className={styles.btn} href={`/freelancer_profile`}>My Profile</Link>}
-                {!user.uid && <Link className={styles.btn} href='/user_profile'>My Profile</Link>}
+                <div className={styles.dp} style={{ backgroundImage: `url(${props.user.profilePicture ? `${process.env.SERVER_URL}/images/${props.user.profilePicture}` : '/dp.png'})` }}></div>
+                <h1 className={styles.name}>{props.user ? `${props.user.firstname} ${props.user.lastname}` : ''}</h1>
+                <p className={styles.number}>{props.user ? props.user.phone : ''}</p>
+                {props.user.uid && <Link className={styles.btn} href={`/freelancer_profile`}>My Profile</Link>}
+                {!props.user.uid && <Link className={styles.btn} href='/user_profile'>My Profile</Link>}
                 <button className={styles.btn} type='button' onClick={handleLogout}>Log Out</button>
               </div>
             </li>
           )}
 
-          {company && (
+          {props.company && (
             <li className={`${styles.navElement} ${styles.user}`} id={styles.user}>
-              <span>{company && !user ? `${company.companyname}` : ''}&nbsp;&nbsp;</span>
+              <span>{props.company && !props.user ? `${props.company.companyname}` : ''}&nbsp;&nbsp;</span>
               <BiChevronDown
                 style={{ fontSize: 16, color: props.color }}
               />
               <div className={styles.profile_card}>
-                <div className={styles.dp} style={{ backgroundImage: `url(${process.env.SERVER_URL}/images/${company.profilePicture})` }}></div>
-                <h1 className={styles.name}>{company ? `${company.companyname} ` : ''}</h1>
-                <p className={styles.number}>{company ? company.companyphone : ''}</p>
+                <div className={styles.dp} style={{ backgroundImage: `url(${process.env.SERVER_URL}/images/${props.company.profilePicture})` }}></div>
+                <h1 className={styles.name}>{props.company ? `${props.company.companyname} ` : ''}</h1>
+                <p className={styles.number}>{props.company ? props.company.companyphone : ''}</p>
                 <Link className={styles.btn} href='/company_profile'>My Profile</Link>
                 <button className={styles.btn} type='button' onClick={handleLogout}>Log Out</button>
               </div>

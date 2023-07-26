@@ -4,7 +4,7 @@ import Footer from '@/components/Footer'
 import ContactCard from '@/components/ContactCard';
 import { useState, useEffect } from 'react';
 
-function Contact_panel() {
+function Contact_panel(props) {
 
   const [messages, setMessages] = useState([]);
   useEffect(() => {
@@ -25,13 +25,13 @@ function Contact_panel() {
         console.error(error);
       }
     }
-  
+
     fetchMessages();
   }, []);
 
   return (
     <div className={styles.contactPanel}>
-      <Navbar color='black' />
+      <Navbar color='black' user={props.user} company={props.company} setCompany={props.setCompany} setUser={props.setUser} />
       <div className={styles.body}>
         <h1 className={styles.heading}>Contact Panel</h1>
         <div className={styles.contactCards}>

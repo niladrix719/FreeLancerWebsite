@@ -362,7 +362,7 @@ class Company extends React.Component {
   render() {
     return (
       <div className={styles.main}>
-        <Navbar />
+        <Navbar user={this.props.user} company={this.props.company} setCompany={this.props.setCompany} setUser={this.props.setUser} />
         <div className={`${this.state.form ? styles.newbody : styles.body}`}>
           <div className={`${this.state.form ? styles.newLeft : styles.left}`}>
             {!this.state.form && <h1 className={styles.heading}>Fill Up The Registration Form.</h1>}

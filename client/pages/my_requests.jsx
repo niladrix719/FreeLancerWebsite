@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import DeleteBox from '@/components/DeleteBox';
 import { BsCheckCircleFill } from 'react-icons/bs';
 
-export default function My_requests() {
+export default function My_requests(props) {
   const [freelancer, setFreelancer] = useState(null);
   const [isFreelancerLoaded, setIsFreelancerLoaded] = useState(false);
   const [requests, setRequests] = useState([]);
@@ -100,7 +100,7 @@ export default function My_requests() {
 
   return (
     <div className={styles.myRequests}>
-      <Navbar />
+      <Navbar user={props.user} company={props.company} setCompany={props.setCompany} setUser={props.setUser} />
       <div className={styles.requests}>
         <h1 className={styles.heading}>My Requests</h1>
         <div className={styles.requestsContainer}>

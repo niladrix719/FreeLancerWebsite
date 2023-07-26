@@ -6,7 +6,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 import ReactWhatsapp from 'react-whatsapp';
 import { useState, useRef } from 'react';
 
-function Contact() {
+function Contact(props) {
   const siteKey = process.env.CAPTCHA_SITE_KEY;
   const [reCaptchaValue, setReCaptchaValue] = useState('');
   const captchaRef = useRef();
@@ -59,7 +59,7 @@ function Contact() {
 
   return (
     <div className={styles.contact}>
-      <Navbar />
+      <Navbar user={props.user} company={props.company} setCompany={props.setCompany} setUser={props.setUser} />
       <div className={styles.body}>
         <div className={styles.contact_form}>
           <div className={styles.left}>

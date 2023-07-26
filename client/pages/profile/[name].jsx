@@ -12,7 +12,7 @@ import HireBox from '@/components/HireBox';
 import Link from 'next/link';
 import Modal from '@/components/Modal';
 
-function Name() {
+function Name(props) {
   const router = useRouter();
   const uid = router.query.name;
   const [freelancer, setFreelancer] = useState({});
@@ -71,7 +71,7 @@ function Name() {
       fetch(`${process.env.SERVER_URL}/profile`, {
         method: 'GET',
         headers: {
-          'Authorization': `Bearer ${token}` 
+          'Authorization': `Bearer ${token}`
         }
       })
         .then(res => res.json())
@@ -149,7 +149,7 @@ function Name() {
 
   return (
     <div className={styles.profile}>
-      <Navbar color='white' checkLoggedIn={checkLoggedIn} />
+      <Navbar color='white' checkLoggedIn={checkLoggedIn} user={props.user} company={props.company} setCompany={props.setCompany} setUser={props.setUser} />
       <Cover coverPicture={freelancer.coverPicture} />
       <div className={styles.btnBox2}>
           {!loggedIn && <Link href='/login' className={styles.btn} id={styles.hire}>Hire</Link>}

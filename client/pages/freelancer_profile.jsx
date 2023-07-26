@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react';
 import Modal from '@/components/Modal';
 import Link from 'next/link';
 
-function Freelancer_Profile() {
+function Freelancer_Profile(props) {
   const router = useRouter();
   const [freelancer, setFreelancer] = useState({});
   const [reviews, setReviews] = useState([]);
@@ -105,7 +105,7 @@ function Freelancer_Profile() {
 
   return (
     <div className={styles.profile}>
-      <Navbar color='white' checkLoggedIn={checkLoggedIn} />
+      <Navbar color='white' checkLoggedIn={checkLoggedIn} user={props.user} company={props.company} setCompany={props.setCompany} setUser={props.setUser} />
       <Cover coverPicture={freelancer.coverPicture} />
       <div className={styles.profile_details}>
         {freelancer.links && <ProfileBioCard freelancer={freelancer} />}

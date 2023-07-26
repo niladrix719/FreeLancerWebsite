@@ -5,7 +5,7 @@ import HireCard from '@/components/HireCard';
 import { useEffect, useState } from 'react';
 import DeleteBox from '@/components/DeleteBox';
 
-export default function My_hires() {
+export default function My_hires(props) {
   const [user, setUser] = useState(null);
   const [isUserLoaded, setIsUserLoaded] = useState(false);
   const [hires, setHires] = useState([]);
@@ -77,7 +77,7 @@ export default function My_hires() {
 
   return (
     <div className={styles.myRequests}>
-      <Navbar />
+      <Navbar user={props.user} company={props.company} setCompany={props.setCompany} setUser={props.setUser} />
       <div className={styles.requests}>
         <h1 className={styles.heading}>My Requests</h1>
         <div className={styles.requestsContainer}>
