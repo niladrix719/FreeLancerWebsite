@@ -248,11 +248,13 @@
 
     .left{
         width: 25%;
+        margin-left: 0.2rem;
     }
 
     .right{
         width: 75%;
         padding-right: 1rem;
+        margin-right: 0.4rem;
     }
 
     .navigations{
