@@ -5,6 +5,7 @@ import RequestCard from '@/components/RequestCard';
 import { useEffect, useState } from 'react';
 import DeleteBox from '@/components/DeleteBox';
 import { BsCheckCircleFill } from 'react-icons/bs';
+import { useRouter } from 'next/router';
 
 export default function My_requests(props) {
   const [freelancer, setFreelancer] = useState(null);
@@ -13,6 +14,8 @@ export default function My_requests(props) {
   const [showDeleteBox, setShowDeleteBox] = useState(false);
   const [reqId, setReqId] = useState(null);
   const [showAcceptBox, setShowAcceptBox] = useState(false);
+  const router = useRouter();
+  
   useEffect(() => {
     const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
     if (token) {
@@ -30,6 +33,9 @@ export default function My_requests(props) {
         .catch(error => {
           console.error(error);
         });
+    }
+    else {
+      router.push('/login');
     }
   }, []);
 

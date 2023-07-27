@@ -57,7 +57,7 @@ async function addHire(req, res) {
 
       const postData = await hireData.save();
 
-      sendTextMessage(freelancerDetails.phone, `You have a new hire request from ${name}. Click here to view details: https://fipezo.vercel.app/my_requests`);
+      sendTextMessage(freelancerDetails.phone, `You have a new hire request from ${name}. Click here to view details: https://fipezo.com/my_requests`);
 
       res.send(postData);
     });
@@ -174,6 +174,8 @@ async function deleteRequest(req, res) {
 
       await hireCollection.deleteOne({ _id: req.params.id });
 
+      sendTextMessage(hireData.freelancerDetails.phone, `Your hire request from ${hireData.userDetails.firstname} ${hireData.userDetails.lastname} has been declinded by the freelancer. Feel free to hire other freelancers from https://fipezo.com`);
+
       res.json({ success: true });
     });
   } catch (error) {
@@ -203,6 +205,8 @@ async function acceptRequest(req, res) {
       }
 
       await hireCollection.updateOne({ _id: req.params.id }, { $set: { status: 'accepted' } });
+
+      sendTextMessage(hireData.userDetails.phone, `Your hire request has been accepted by ${hireData.freelancerDetails.firstname} ${hireData.freelancerDetails.lastname}. Click here to view details: https://fipezo.com/my_hires`);
 
       res.json({ success: true });
     });

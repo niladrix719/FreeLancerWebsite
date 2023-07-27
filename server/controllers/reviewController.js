@@ -30,6 +30,7 @@ async function addReview(req, res) {
       }
 
       const existingReview = await reviewCollection.findOne({ freelancer: req.body.freelancer, user: authData.user._id });
+      console.log(existingReview);
       if (existingReview) {
         res.status(400).send('Review already exists');
         return;

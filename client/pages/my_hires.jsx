@@ -4,6 +4,7 @@ import Footer from '@/components/Footer';
 import HireCard from '@/components/HireCard';
 import { useEffect, useState } from 'react';
 import DeleteBox from '@/components/DeleteBox';
+import { useRouter } from 'next/router';
 
 export default function My_hires(props) {
   const [user, setUser] = useState(null);
@@ -11,6 +12,7 @@ export default function My_hires(props) {
   const [hires, setHires] = useState([]);
   const [showDeleteBox, setShowDeleteBox] = useState(false);
   const [reqId, setReqId] = useState(null);
+  const router = useRouter();
 
   useEffect(() => {
     const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
@@ -29,6 +31,9 @@ export default function My_hires(props) {
         .catch(error => {
           console.error(error);
         });
+    }
+    else{
+      router.push('/login');
     }
   }, []);
 

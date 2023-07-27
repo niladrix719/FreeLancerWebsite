@@ -21,7 +21,7 @@ async function uploadFile(file) {
   try {
     const data = await s3Client.send(new PutObjectCommand(uploadParams));
   } catch (error) {
-    console.log('Error');
+    // console.log('Error');
   }
 }
 
@@ -37,7 +37,7 @@ async function getFileStream(fileKey) {
     const data = await s3Client.send(new GetObjectCommand(downloadParams));
     return data.Body;
   } catch (error) {
-    console.log('Error');
+    // console.log('Error');
     throw error;
   }
 }
@@ -53,7 +53,7 @@ async function deleteFile(fileKey) {
   try {
     const data = await s3Client.send(new DeleteObjectCommand(deleteParams));
   } catch (error) {
-    console.log('Error');
+    // console.log('Error');
     throw error;
   }
 }

@@ -187,7 +187,7 @@ function Name(props) {
           )}
         </div>
       {showDialogBox && <DialogBox title='Sent Successfully!' text='Your Request has been sent to the Freelancer. You will be contacted within 24hours via sms. If you have any queries fell free to reach out to us.' handleDialogBox={handleDialogBox} />}
-      {showReviewDialogBox && <DialogBox title='Review Sent Successfully!' text='Your Review has been sent to the Freelancer. You will be contacted within 24hours via sms. If you have any queries fell free to reach out to us.' handleDialogBox={handleReviewDialogBox} />}
+      {showReviewDialogBox && <DialogBox title='Review Sent Successfully!' text="Thank you for the review. Your valuable feedback will help us enhance our services and better serve our clients." handleDialogBox={handleReviewDialogBox} />}
       <div className={styles.profile_details}>
         {freelancer.links && <ProfileBioCard freelancer={freelancer} copyURL={copyURL} copied={copied} />}
         {isFreelancerLoaded && <Details works={freelancer.works} reviews={reviews} handleClick={handleClick} />}
