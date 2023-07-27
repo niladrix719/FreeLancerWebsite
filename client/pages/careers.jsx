@@ -17,7 +17,7 @@ function Careers(props) {
             height={500}
           />
         </div>
-        <p className={styles.p}>We don't have any open positions at the moment, but we are always interested in hearing from talented individuals.</p>
+        <p className={styles.p}>We don&apos;t have any open positions at the moment, but we are always interested in hearing from talented individuals.</p>
         <p className={styles.p}>Please check back later or feel free to send us your resume for future consideration.</p>
       </div>
     </div>

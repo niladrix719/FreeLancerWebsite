@@ -16,7 +16,7 @@ function Data_Protection(props) {
               <span className={styles.title}>Information Collection and Use</span>
               1.1 Personal Data: We may collect personal information, such as your name, email address, and contact details, when you create an account or interact with the Platform. This data is used to provide and improve our services and communicate with you.
 
-              1.2 Usage Data: When you access the Platform, we may automatically collect certain information about your device, including your IP address, browser type, and usage patterns. This data is used to analyze user behavior and improve the Platform's performance.
+              1.2 Usage Data: When you access the Platform, we may automatically collect certain information about your device, including your IP address, browser type, and usage patterns. This data is used to analyze user behavior and improve the Platform&apos;s performance.
 
               <span className={styles.title}>Data Storage and Security</span>
               2.1 Data Retention: We will retain your personal information only for as long as necessary to fulfill the purposes outlined in this Policy, or as required by law.
