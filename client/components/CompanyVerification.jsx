@@ -16,6 +16,11 @@ function Verification(props) {
   const [cameras, setCameras] = useState([false, false]);
   const [dialogBox, setDialogBox] = useState(false);
 
+  useEffect(() => {
+    props.setUser(null);
+    props.setCompany(null);
+  }, []);
+
   const handleImageChange = (e, index) => {
     const file = e.target.files[0];
     const reader = new FileReader();

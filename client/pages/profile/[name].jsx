@@ -176,7 +176,7 @@ function Name(props) {
             </Link>
           )}
           {reviewBox && (
-            <div id={styles.boxContainer} className=''>
+            <div id={styles.boxContainer}>
               <ReviewBox handleReviewBox={handleReviewBox} appendReview={appendReview} freelancer={freelancer} setShowReviewDialogBox={setShowReviewDialogBox} />
             </div>
           )}

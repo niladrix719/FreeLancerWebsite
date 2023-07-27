@@ -2,7 +2,7 @@ import styles from '../styles/Verification.module.css';
 import Image from 'next/image';
 import { BsCheckLg } from 'react-icons/bs';
 import { AiOutlinePlus , AiFillFile } from 'react-icons/ai';
-import { useState } from 'react';
+import { use, useEffect, useState } from 'react';
 import TermsAndConditions from './TermsAndConditions';
 
 function Verification(props) {
@@ -16,6 +16,11 @@ function Verification(props) {
   const [termsAndConditions, setTermsAndConditions] = useState(true);
   const [cameras, setCameras] = useState([false, false]);
   const [dialogBox, setDialogBox] = useState(false);
+
+  useEffect(() => {
+    props.setUser(null);
+    props.setCompany(null);
+  }, []);
 
   const handleImageChange = (e, index) => {
     const file = e.target.files[0];

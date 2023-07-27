@@ -10,6 +10,7 @@ function ReviewBox(props) {
   const [hover, setHover] = useState(null);
   const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
   const [reviewError, setReviewError] = useState(false);
+  const [reviewAlreadyExists, setReviewAlreadyExists] = useState(false);
 
   const submitReview = () => {
     async function postReview() {
@@ -29,12 +30,17 @@ function ReviewBox(props) {
             })
           });
           const data = await response.json();
+          console.log(data);
+          if(data.message === 'Review already exists') {
+            setReviewAlreadyExists(true);
+            return;
+          }
           props.appendReview(data);
         }
         props.setShowReviewDialogBox(true);
         props.handleReviewBox(false);
       } catch (error) {
-        console.log(error.response);
+        if(!reviewAlreadyExists)
         setReviewError(true);
       }
     }
@@ -49,6 +55,7 @@ function ReviewBox(props) {
       </span>
       <h1 className={styles.heading}>Give a Feedback</h1>
       <p className={styles.error}>{reviewError ? 'Please fill all the fields' : ''}</p>
+      {reviewAlreadyExists && <p className={styles.error}><span>You have already given a review previously</span></p>}
       <div className={styles.stars}>
         {[...Array(5)].map((star, index) => (
           <label key={index}>

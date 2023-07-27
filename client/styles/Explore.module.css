@@ -47,6 +47,22 @@
     justify-content: center;
 }
 
+.empty{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nobodyMainText{
+    font-size: 30px;
+    margin-top: 1.5rem;
+}
+
+.nobodyText{
+    font-size: 17px;
+    margin-top: 1rem;
+}
+
 /* navigations */
 
 .nav{

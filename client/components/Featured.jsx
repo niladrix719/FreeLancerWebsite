@@ -21,8 +21,8 @@ export default function Featured() {
 
   return (
     <div className={styles.featured}>
-      <h1 className={styles.heading}>Featured Freelancers</h1>
-      <p className={styles.subHeading}>Discover Skilled Freelancers on Our Platform</p>
+      {freelancers.length > 0 && <h1 className={styles.heading}>Featured Freelancers</h1>}
+      {freelancers.length > 0 && <p className={styles.subHeading}>Discover Skilled Freelancers on Our Platform</p>}
       <div className={styles.cards}>
         {freelancers.map((freelancer, index) => {
           return (

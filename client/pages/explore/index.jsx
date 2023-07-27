@@ -5,6 +5,7 @@ import Sidebar from '@/components/Sidebar';
 import SearchBox from '@/components/SearchBox';
 import Footer from '@/components/Footer';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 function Explore(props) {
   const [currentPage, setCurrentPage] = useState(1);
@@ -148,29 +149,45 @@ function Explore(props) {
           />
         </div>
         <div className={styles.main}>
-          <div className={styles.cards}>
-            {final.map((freelancer, index) => {
-              return (
-                <ProfileCard key={index} profile={freelancer} />
-              )
-            })}
-          </div>
-          <nav className={styles.nav}>
-            <div className={styles.pages}>
-              <button className={styles.btn} onClick={decrePage}>Back</button>
-              {Array.from({ length: pages }, (_, index) => (
-                <div
-                  className={styles.page}
-                  style={currentPage === index + 1 ? { backgroundColor: 'black', color: 'white' } : {}}
-                  onClick={() => setCurrentPage(index + 1)}
-                  key={index}
-                >
-                  <span>{index + 1}</span>
-                </div>
-              ))}
-              <button className={styles.btn} onClick={increPage}>Next</button>
+          {final.length === 0 ? (
+            <div className={styles.empty}>
+              <Image src="/nobody.webp" width={500} height={500} />
+              <p className={styles.nobodyMainText}>No freelancers available!</p>
+              <p className={styles.nobodyText}>Try changing the filters or search for a different city.</p>
             </div>
-          </nav>
+          ) : (
+            <>
+              <div className={styles.cards}>
+                {final.map((freelancer, index) => (
+                  <ProfileCard key={index} profile={freelancer} />
+                ))}
+              </div>
+              <nav className={styles.nav}>
+                <div className={styles.pages}>
+                  <button className={styles.btn} onClick={decrePage}>
+                    Back
+                  </button>
+                  {Array.from({ length: pages }, (_, index) => (
+                    <div
+                      className={styles.page}
+                      style={
+                        currentPage === index + 1
+                          ? { backgroundColor: 'black', color: 'white' }
+                          : {}
+                      }
+                      onClick={() => setCurrentPage(index + 1)}
+                      key={index}
+                    >
+                      <span>{index + 1}</span>
+                    </div>
+                  ))}
+                  <button className={styles.btn} onClick={increPage}>
+                    Next
+                  </button>
+                </div>
+              </nav>
+            </>
+          )}
         </div>
       </div>
       <div className={styles.footer}>
