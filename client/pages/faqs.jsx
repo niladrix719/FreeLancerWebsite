@@ -68,7 +68,7 @@ class Faqs extends React.Component {
                 }
                 &nbsp; &nbsp; <h1 className={styles.summary}>What is Fipezo?</h1>
                 {this.state.currentAnswer === 'first' && <p className={styles.details}>
-                Welcome to Fipezo, the freelancer's dream platform! Connect, Collaborate, and Conquer with Fipezo - Where Boundless Opportunities Meet Exceptional Talent. Get ready to upscale to new heights in your freelance career with our seamless interface, unique project diversity, and secure payment system. Say goodbye to freelancing frustrations and hello to a world of endless possibilities. Join Fipezo today and unleash the full potential of your freelancing journey!
+                Welcome to Fipezo, the freelancer&apos;s dream platform! Connect, Collaborate, and Conquer with Fipezo - Where Boundless Opportunities Meet Exceptional Talent. Get ready to upscale to new heights in your freelance career with our seamless interface, unique project diversity, and secure payment system. Say goodbye to freelancing frustrations and hello to a world of endless possibilities. Join Fipezo today and unleash the full potential of your freelancing journey!
                 </p>}
               </li>
               <hr className={styles.divider} />
