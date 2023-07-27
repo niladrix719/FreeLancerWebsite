@@ -9,7 +9,7 @@ function Footer() {
         <ul className={styles.about}>
           <li className={styles.heading}>About</li>
           <Link href='/faqs' className={styles.subHeading}>Who are we?</Link>
-          <li className={styles.subHeading}>careers</li>
+          <Link href='/careers' className={styles.subHeading}>careers</Link>
           <li className={styles.subHeading}>Guides and Reviews</li>
         </ul>
         <ul className={styles.help}>
@@ -20,8 +20,8 @@ function Footer() {
         <ul className={styles.law}>
           <li className={styles.heading}>Law and Order</li>
           <Link href="/terms_and_conditions"><span className={styles.subHeading} id={styles.subTerm}>Terms of service</span></Link>
-          <li className={styles.subHeading}>Data Protection</li>
-          <li className={styles.subHeading}>Privacy Policy</li>
+          <Link href="/data_protection" className={styles.subHeading}>Data Protection</Link>
+          <Link href="/privacy_and_policy" className={styles.subHeading}>Privacy Policy</Link>
         </ul>
         <ul className={styles.law}>
           <li className={styles.heading}>Freelancing Services</li>
@@ -36,17 +36,17 @@ function Footer() {
         </ul>
         <ul id={styles.socials}>
           <li className={styles.heading}>Socials</li>
-          <li className={styles.subHeading}>Facebook</li>
-          <li className={styles.subHeading}>Instagram</li>
-          <li className={styles.subHeading}>Twitter</li>
+          <Link className={styles.subHeading} target='_blank' href='https://www.facebook.com/people/Fipezo/100094694632348/?mibextid=ZbWKwL'>Facebook</Link>
+          <Link className={styles.subHeading} target='_blank' href='https://www.instagram.com/fipezoindia'>Instagram</Link>
+          <Link className={styles.subHeading} target='_blank' href='https://twitter.com/fipezoindia'>Twitter</Link>
         </ul>
       </div>
       <hr className={styles.divider} />
       <div className={styles.lower}>
         <div className={styles.company}>
-          <div className={styles.logo}>
+          <Link className={styles.logo} href='/'>
             <i style={{fontWeight: '600'}}>Fipezo</i>
-          </div>
+          </Link>
           <div className={styles.copyri8}>
             <p>Copyright © 2023 Fipezo, All rights reserved.</p>
           </div>

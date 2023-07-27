@@ -27,6 +27,7 @@ function Name(props) {
   const [currentIndex, setCurrentIndex] = useState(null);
   const [copied, setCopied] = useState(false);
   const [showDialogBox, setShowDialogBox] = useState(false);
+  const [showReviewDialogBox, setShowReviewDialogBox] = useState(false);
 
   const handleClick = (item, index) => {
     setCurrentIndex(index);
@@ -153,6 +154,10 @@ function Name(props) {
     setShowDialogBox(val);
   };
 
+  const handleReviewDialogBox = (val) => {
+    setShowReviewDialogBox(val);
+  };
+
   return (
     <div className={styles.profile}>
       <Navbar color='white' checkLoggedIn={checkLoggedIn} user={props.user} company={props.company} setCompany={props.setCompany} setUser={props.setUser} />
@@ -172,7 +177,7 @@ function Name(props) {
           )}
           {reviewBox && (
             <div id={styles.boxContainer} className=''>
-              <ReviewBox handleReviewBox={handleReviewBox} appendReview={appendReview} freelancer={freelancer} />
+              <ReviewBox handleReviewBox={handleReviewBox} appendReview={appendReview} freelancer={freelancer} setShowReviewDialogBox={setShowReviewDialogBox} />
             </div>
           )}
           {hireBox && (
@@ -182,6 +187,7 @@ function Name(props) {
           )}
         </div>
       {showDialogBox && <DialogBox title='Sent Successfully!' text='Your Request has been sent to the Freelancer. You will be contacted within 24hours via sms. If you have any queries fell free to reach out to us.' handleDialogBox={handleDialogBox} />}
+      {showReviewDialogBox && <DialogBox title='Review Sent Successfully!' text='Your Review has been sent to the Freelancer. You will be contacted within 24hours via sms. If you have any queries fell free to reach out to us.' handleDialogBox={handleReviewDialogBox} />}
       <div className={styles.profile_details}>
         {freelancer.links && <ProfileBioCard freelancer={freelancer} copyURL={copyURL} copied={copied} />}
         {isFreelancerLoaded && <Details works={freelancer.works} reviews={reviews} handleClick={handleClick} />}
@@ -200,7 +206,7 @@ function Name(props) {
           )}
           {reviewBox && (
             <div id={styles.boxContainer} className=''>
-              <ReviewBox handleReviewBox={handleReviewBox} appendReview={appendReview} freelancer={freelancer} />
+              <ReviewBox handleReviewBox={handleReviewBox} appendReview={appendReview} freelancer={freelancer} setShowReviewDialogBox={setShowReviewDialogBox} />
             </div>
           )}
           {hireBox && (

@@ -31,6 +31,7 @@ function ReviewBox(props) {
           const data = await response.json();
           props.appendReview(data);
         }
+        props.setShowDialogBox(true);
         props.handleReviewBox(false);
       } catch (error) {
         console.log(error.response);
