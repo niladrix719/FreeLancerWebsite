@@ -1,7 +1,7 @@
 import Navbar from '@/components/Navbar'
 import React from 'react'
 import styles from '../../styles/Freelancer.module.css'
-import { BsCheckAll } from 'react-icons/bs'
+import { TiTick } from 'react-icons/ti'
 import Image from 'next/image'
 import Footer from '@/components/Footer'
 import Verification from '@/components/Verification'
@@ -118,7 +118,11 @@ class Freelancer extends React.Component {
       return;
     }
 
-    if (this.state.bio.length > 300 && this.state.bio.length < 50 && this.state.currentPage === 7) {
+    console.log(this.state.bio.length);
+    console.log(this.state.currentPage);
+
+    if ((this.state.bio.length > 300 || this.state.bio.length < 50) && this.state.currentPage === 7) {
+      console.log('here');
       this.setState({ textareaError: true });
       return;
     }
@@ -602,13 +606,13 @@ class Freelancer extends React.Component {
               <div className={styles.freelancer}>
                 <h1 className={styles.minHeading}>For Freelancers</h1>
                 <div className={styles.feature}>
-                  <BsCheckAll style={{ color: "black", }} /><p>Helps You get more reach</p>
+                  <TiTick style={{ color: "black", }} /><p>Helps You get more reach</p>
                 </div>
                 <div className={styles.feature}>
-                  <BsCheckAll style={{ color: "black", }} /><p>All Verified Companies</p>
+                  <TiTick style={{ color: "black", }} /><p>All Verified Companies</p>
                 </div>
                 <div className={styles.feature}>
-                  <BsCheckAll style={{ color: "black", }} /><p>Maintains Privacy and Fully Transparent</p>
+                  <TiTick style={{ color: "black", fontSize: '32px' }} /><p>Maintains Privacy and Fully Transparent</p>
                 </div>
               </div>
               <Image src='/ani1.png' alt='registration-image' width='200' height='200' className={styles.img} />

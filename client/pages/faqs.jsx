@@ -52,11 +52,11 @@ class Faqs extends React.Component {
                 <li className={`${styles.list} ${this.state.currentTab === 'general' ? styles.active : ''}`}
                   onClick={this.generalShow} id={styles.generalTab}>General
                 </li>
-                <li className={`${styles.list} ${this.state.currentTab === 'privacy' ? styles.active : ''}`}
-                  onClick={this.privacyShow} id={styles.privacyTab}>Safety and Privacy
-                </li>
                 <li className={`${styles.list} ${this.state.currentTab === 'services' ? styles.active : ''}`}
                   onClick={this.servicesShow} id={styles.servicesTab}>Services
+                </li>
+                <li className={`${styles.list} ${this.state.currentTab === 'privacy' ? styles.active : ''}`}
+                  onClick={this.privacyShow} id={styles.privacyTab}>Safety and Privacy
                 </li>
               </ul>
             </div>
@@ -68,7 +68,7 @@ class Faqs extends React.Component {
                 }
                 &nbsp; &nbsp; <h1 className={styles.summary}>What is Fipezo?</h1>
                 {this.state.currentAnswer === 'first' && <p className={styles.details}>
-                  Fipezo is a user-friendly platform that allows clients to easily find and connect with skilled freelancers from various fields
+                Welcome to Fipezo, the freelancer's dream platform! Connect, Collaborate, and Conquer with Fipezo - Where Boundless Opportunities Meet Exceptional Talent. Get ready to upscale to new heights in your freelance career with our seamless interface, unique project diversity, and secure payment system. Say goodbye to freelancing frustrations and hello to a world of endless possibilities. Join Fipezo today and unleash the full potential of your freelancing journey!
                 </p>}
               </li>
               <hr className={styles.divider} />
@@ -77,9 +77,9 @@ class Faqs extends React.Component {
                   <AiOutlineMinus className={styles.icon} style={{ color: "#00aaff", display: 'inline' }} /> :
                   <AiOutlinePlus className={styles.icon} style={{ color: "#00aaff", display: 'inline' }} />
                 }
-                &nbsp; &nbsp; <h1 className={styles.summary}>What is Freelancing?</h1>
+                &nbsp; &nbsp; <h1 className={styles.summary}>Why Freelancing?</h1>
                 {this.state.currentAnswer === 'second' && <p className={styles.details}>
-                  Freelancing is a term used to describe a person who is self-employed and not necessarily committed to a particular employer long-term.
+                Without having to commit to a long-term job, freelancers can provide their talents and services to a variety of clients or businesses on a project-by-project basis.
                 </p>}
               </li>
               <hr className={styles.divider} />
@@ -113,7 +113,7 @@ class Faqs extends React.Component {
                 }
                 &nbsp; &nbsp; <h1 className={styles.summary}>How is my Privacy of my data safe?</h1>
                 {this.state.currentAnswer === 'fifth' && <p className={styles.details}>
-                  Fipezo is committed to protecting the privacy of its users. We aim to provide a safe, secure user experience. We will use our best efforts to ensure that the information you submit to us remains private, and is used only for the purposes as set forth herein. The following reflects our commitment to you.
+                  Fipezo is committed to protecting the privacy of its users. Rest assured, we employ cutting-edge encryption measures and stringent data protection protocols to safeguard all user information. Your privacy is our utmost commitment.
                 </p>}
               </li>
               <hr className={styles.divider} />
@@ -133,7 +133,7 @@ class Faqs extends React.Component {
                   <AiOutlineMinus className={styles.icon} style={{ color: "#00aaff", display: 'inline' }} /> :
                   <AiOutlinePlus className={styles.icon} style={{ color: "#00aaff", display: 'inline' }} />
                 }
-                &nbsp; &nbsp; <h1 className={styles.summary}>what information does Fipezo discloses?</h1>
+                &nbsp; &nbsp; <h1 className={styles.summary}>To whom is the data disclosed?</h1>
                 {this.state.currentAnswer === 'seventh' && <p className={styles.details}>
                   Fipezo does not disclose any information to third parties.
                 </p>}

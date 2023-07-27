@@ -1,23 +1,23 @@
 import styles from '../styles/FreelancerPoints.module.css';
 import Link from 'next/link';
-import { FaPencilRuler } from 'react-icons/fa';
+import { SiTrustpilot } from 'react-icons/si';
 
 function FreelancerPoints() {
   return (
     <div className={styles.points}>
       <div className={styles.left}>
         <div className={styles.text}>
-          <h1 className={styles.heading}>Why Freelancers turn to <span className={styles.colorful}>Fipezo.</span></h1>
-          <h1 className={styles.head}>Access the top 1% of talent on Upwork, and a full suite of hybrid workforce management tools. This is how innovation works now.</h1>
+          <h1 className={styles.heading}>Why You should use <span className={styles.colorful}>Fipezo?</span></h1>
+          <h1 className={styles.head}>Fipezo: Where Freelancers upscale! Unleash your potential with seamless connections, top gigs, and boundless success!</h1>
           <ul className={styles.ul}>
             <li>
-              <p className={styles.para}><FaPencilRuler className={styles.icon} style={{color: "#9fd9e0",}} /> &nbsp; Get inspired by stories of to build a better future.</p>
+              <p className={styles.para}><SiTrustpilot className={styles.icon} style={{color: "#9fd9e0", fontSize: '22px'}} /> &nbsp; most fraudless freelance profiles.</p>
             </li>
             <li>
-              <p className={styles.para}><FaPencilRuler className={styles.icon} style={{color: "#9fd9e0",}} /> &nbsp; Get inspired by use Fipezo to build a better future.</p>
+              <p className={styles.para}><SiTrustpilot className={styles.icon} style={{color: "#9fd9e0", fontSize: '22px'}} /> &nbsp; unique project diversity.</p>
             </li>
             <li>
-              <p className={styles.para}><FaPencilRuler className={styles.icon} style={{color: "#9fd9e0",}} /> &nbsp; Get inspired that use Fipezo to build a better future.</p>
+              <p className={styles.para}><SiTrustpilot className={styles.icon} style={{color: "#9fd9e0", fontSize: '22px'}} /> &nbsp; most seamless interface.</p>
             </li>
           </ul>
           <Link href='/faqs' className={styles.btn}>Learn More at FAQS</Link>

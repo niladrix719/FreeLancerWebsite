@@ -36,11 +36,21 @@ export default function Navbar(props) {
         });
     }
 
-    else if (token && (props.user || props.company)) {
-      if (props.user.phone === 7001599126)
+    else if (props.user && token) {
+      if (props.user.phone && props.user.phone === 7001599126)
         setIsAdmin(true);
       if (props.checkLoggedIn)
         props.checkLoggedIn(true);
+    }
+
+    else if (props.company && token) {
+      if (props.checkLoggedIn)
+        props.checkLoggedIn(true);
+    }
+
+    else {
+      if (props.checkLoggedIn)
+        props.checkLoggedIn(false);
     }
   }, []);
 

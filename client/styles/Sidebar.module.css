@@ -11,6 +11,10 @@
     justify-content: center;
 }
 
+.checkbox{
+    margin-right: 0.5rem;
+}
+
 .options {
     display: flex;
     flex-direction: column;
@@ -48,7 +52,6 @@
 
 .inputs {
     display: flex;
-    gap: 0.5rem;
     align-items: center;
 }
 
@@ -143,7 +146,7 @@
     }
 
     .rate{
-        font-size: 0.55rem;
+        font-size: 0.45rem;
     }
 
     .slider{

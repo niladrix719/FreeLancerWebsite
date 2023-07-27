@@ -1,7 +1,7 @@
 import Navbar from '@/components/Navbar'
 import React from 'react'
 import styles from '../../styles/Freelancer.module.css'
-import { BsCheckAll } from 'react-icons/bs'
+import { TiTick } from 'react-icons/ti'
 import Image from 'next/image'
 import Footer from '@/components/Footer'
 import CompanyVerification from '@/components/CompanyVerification'
@@ -496,13 +496,13 @@ class Company extends React.Component {
               <div className={styles.freelancer}>
                 <h1 className={styles.minHeading}>For Companies</h1>
                 <div className={styles.feature}>
-                  <BsCheckAll className={styles.check} style={{ color: "black", fontSize: '16px' }} /><p>Helps You get The right Talent for your Project</p>
+                  <TiTick className={styles.check} style={{ color: "black", fontSize: '32px' }} /><p>Helps You get The right Talent for your Project</p>
                 </div>
                 <div className={styles.feature}>
-                  <BsCheckAll className={styles.check} style={{ color: "black", fontSize: '16px' }} /><p>All Verified Freelancers</p>
+                  <TiTick className={styles.check} style={{ color: "black", fontSize: '16px' }} /><p>All Verified Freelancers</p>
                 </div>
                 <div className={styles.feature}>
-                  <BsCheckAll className={styles.check} style={{ color: "black", fontSize: '16px' }} /><p>Maintains Privacy and Fully Transparent</p>
+                  <TiTick className={styles.check} style={{ color: "black", fontSize: '32px' }} /><p>Maintains Privacy and Fully Transparent</p>
                 </div>
               </div>
               <Image className={styles.img} src='/ani3.png' alt='registration-image' width={250} height={250} />
