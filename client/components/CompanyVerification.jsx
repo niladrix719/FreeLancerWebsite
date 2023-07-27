@@ -1,6 +1,6 @@
 import styles from '../styles/Verification.module.css';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState , useEffect } from 'react';
 import { BsCheckLg } from 'react-icons/bs';
 import { AiOutlinePlus , AiFillFile } from 'react-icons/ai';
 import TermsAndConditions from './TermsAndConditions';

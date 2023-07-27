@@ -130,7 +130,7 @@
     }
 
     .label{
-        font-size: 0.6rem;
+        font-size: 0.45rem;
     }
 
     .checkbox{
@@ -153,5 +153,17 @@
 
     .arrow {
         font-size: 0.55rem;
+    }
+
+    .star{
+        font-size: 0.5rem !important;
+    }
+
+    .select{
+        font-size: 0.55rem;
+    }
+
+    #optionx{
+        width: 4rem;
     }
 }

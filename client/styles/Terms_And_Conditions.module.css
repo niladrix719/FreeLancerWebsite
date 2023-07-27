@@ -67,7 +67,15 @@
 }
 
 @media (max-width: 738px){
+    .body{
+        width: 90vw;
+    }
+
     .termsNConditions_form{
-        width: 100vw;
+        width: 90vw;
+    }
+
+    .btn{
+        width: 8rem
     }
 }

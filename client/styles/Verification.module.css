@@ -135,7 +135,6 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 2rem;
 }
 
 .upload {
@@ -179,6 +178,8 @@
     position: relative;
     display: flex;
     align-items: center;
+    margin-bottom: 2rem;
+    margin-left: 2rem;
 }
 
 .boxC:hover{
@@ -194,7 +195,6 @@
     padding: 0.5rem;
     display: flex;
     flex-direction: row;
-    gap: 2.5rem;
     flex-wrap: wrap;
     justify-content: center;
     margin-bottom: 3rem;
@@ -202,6 +202,8 @@
 
 .social{
     justify-content: flex-start;
+    margin-bottom: 2rem;
+    margin-left: 2rem;
     gap: 3rem;
 }
 
@@ -424,5 +426,13 @@
     .camera{
         bottom: 0.5rem;
         left: 0.85rem;
+    }
+
+    .boxC{
+        margin-left: 0;
+    }
+
+    .social{
+        margin-left: 0;
     }
 }

@@ -105,6 +105,14 @@
         padding: 0;
         min-height: 0;
     }
+
+    .nobodyText{
+        font-size: 15px;
+    }
+
+    .nobodyMainText{
+        font-size: 25px;
+    }
 }
 
 @media (max-width: 738px){
@@ -121,5 +129,13 @@
     .sidebar{
         width: 100%;
         padding: 1rem;
+    }
+
+    .nobodyText{
+        font-size: 13px;
+    }
+
+    .nobodyMainText{
+        font-size: 20px;
     }
 }

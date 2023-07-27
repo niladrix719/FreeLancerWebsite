@@ -585,6 +585,10 @@ class Freelancer extends React.Component {
                 profilePicError={this.state.profilePicError}
                 warns={this.state.warns}
                 setWarns={this.setWarns}
+                user={this.props.user}
+                setUser={this.props.setUser}
+                company={this.props.company}
+                setCompany={this.props.setCompany}
               />}
             </form>
           </div>
