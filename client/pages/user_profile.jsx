@@ -110,6 +110,7 @@ function User_profile(props) {
 
   const handleLogout = () => {
     localStorage.removeItem('user');
+    props.setUser(null);
     router.push('/');
   }
 
@@ -125,6 +126,7 @@ function User_profile(props) {
         .then(res => {
           if (res.ok) {
             localStorage.removeItem('user');
+            props.setUser(null);
             router.push('/');
           } else {
             console.log('Error deleting user profile');

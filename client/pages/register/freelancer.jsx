@@ -43,7 +43,7 @@ class Freelancer extends React.Component {
       invalidOtp: false,
       registerFailed: false,
       warns: [false, false, false, false, false, false, false, false, false, false, false, false],
-      count: 60,
+      count: 120,
       resendOtp: false,
       timerId: null
     }
@@ -59,7 +59,7 @@ class Freelancer extends React.Component {
   startCountdown = () => {
     this.setState({ resendOtp: false });
     this.setState({
-      count: 60,
+      count: 120,
       timerId: setInterval(() => {
         this.setState((prevState) => ({
           count: prevState.count - 1
@@ -132,7 +132,7 @@ class Freelancer extends React.Component {
       return;
     }
 
-    if (this.state.equipments.length > 300 && this.state.currentPage === 8) {
+    if ((this.state.equipments.length > 300 || this.state.equipments.length < 50) && this.state.currentPage === 8) {
       this.setState({ textareaError: true });
       return;
     }
@@ -156,7 +156,7 @@ class Freelancer extends React.Component {
     this.setState({ invalidOtp: false });
     if (this.state.currentPage === 3) {
       this.setState({ resendOtp: false });
-      this.setState({ count: 60 });
+      this.setState({ count: 120 });
     }
     this.increPage();
   }

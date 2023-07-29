@@ -13,7 +13,7 @@ export default function Login(props) {
   const router = useRouter();
   const [loginFailed, setLoginFailed] = useState(false);
   const [otpFailed, setOtpFailed] = useState(false);
-  const [count, setCount] = useState(60);
+  const [count, setCount] = useState(120);
   const [timerId, setTimerId] = useState(null);
 
   useEffect(() => {
@@ -23,7 +23,7 @@ export default function Login(props) {
   }, [count]);
 
   const startCountdown = () => {
-    setCount(60);
+    setCount(120);
     setTimerId(
       setInterval(() => {
         setCount((prevCount) => prevCount - 1);

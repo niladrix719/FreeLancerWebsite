@@ -32,10 +32,10 @@ function Contact_soon(props) {
               <IoArrowBack style={{display : 'inline'}} id={styles.arrow} />&nbsp;&nbsp;Back to Home
             </button></Link>
             <div className={styles.socials}>
-              <Image className={styles.social} src='/facebook.png' width='160' height='160' alt='facebook' />
-              <Image className={styles.social} src='/instagramC.png' width='160' height='160' alt='instagram' />
-              <Image className={styles.social} src='/twitterC.png' width='160' height='160' alt='twitter' />
-              <Image className={styles.social} src='/youtube.png' width='160' height='160' alt='youtube' />
+              <Link target='_blank' href='https://www.facebook.com/people/Fipezo/100094694632348/?mibextid=ZbWKwL'><Image className={styles.social} src='/facebook.png' width='160' height='160' alt='facebook' /></Link>
+              <Link target='_blank' href='https://www.instagram.com/fipezoindia'><Image className={styles.social} src='/instagramC.png' width='160' height='160' alt='instagram' /></Link>
+              <Link target='_blank' href='https://twitter.com/fipezoindia'><Image className={styles.social} src='/twitterC.png' width='160' height='160' alt='twitter' /></Link>
+              <Link target='_blank' href='https://www.youtube.com/@Fipezo'><Image className={styles.social} src='/youtube.png' width='160' height='160' alt='youtube' /></Link>
             </div>
             <div className={styles.backBox}>
 

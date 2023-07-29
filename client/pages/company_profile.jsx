@@ -139,6 +139,7 @@ function Company_Profile(props) {
         .then(res => {
           if (res.ok) {
             localStorage.removeItem('user');
+            props.setCompany(null);
             router.push('/');
           } else {
             console.log('Error deleting user profile');
@@ -152,6 +153,7 @@ function Company_Profile(props) {
 
   const handleLogout = () => {
     localStorage.removeItem('user');
+    props.setCompany(null);
     router.push('/');
   }
 

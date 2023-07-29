@@ -121,7 +121,7 @@ function Freelancer_Profile(props) {
         <Footer />
       </div>
       <div>
-        {clickedImg && (
+        {false && (
           <Modal
             clickedImg={clickedImg}
             handelRotationRight={handelRotationRight}

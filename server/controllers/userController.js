@@ -70,7 +70,7 @@ async function signupController(req, res) {
       } catch (error) {
         console.error('Error deleting OTP:', error);
       }
-    }, 30000);
+    }, 120000);
 
     res.status(200).json({ phone: phone });
 
@@ -123,7 +123,7 @@ const loginController = async (req, res) => {
       } catch (error) {
         console.error('Error deleting OTP:', error);
       }
-    }, 30000);
+    }, 120000);
 
     res.status(200).json({ phone: phone, type: type });
 

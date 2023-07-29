@@ -40,7 +40,7 @@ class Company extends React.Component {
       invalidOtp: false,
       registerFailed: false,
       warns: [false],
-      count: 60,
+      count: 120,
       resendOtp: false,
       timerId: null
     }
@@ -56,7 +56,7 @@ class Company extends React.Component {
   startCountdown = () => {
     this.setState({ resendOtp: false });
     this.setState({
-      count: 60,
+      count: 120,
       timerId: setInterval(() => {
         this.setState((prevState) => ({
           count: prevState.count - 1
@@ -143,7 +143,7 @@ class Company extends React.Component {
     this.setState({ invalidOtp: false });
     if (this.state.currentPage === 3) {
       this.setState({ resendOtp: false });
-      this.setState({ count: 60 });
+      this.setState({ count: 120 });
     }
     this.setState({ registerFailed: false });
     this.increPage();

@@ -220,7 +220,7 @@ function Name(props) {
         <Footer />
       </div>
       <div>
-        {clickedImg && (
+        {false && (
           <Modal
             clickedImg={clickedImg}
             handelRotationRight={handelRotationRight}
