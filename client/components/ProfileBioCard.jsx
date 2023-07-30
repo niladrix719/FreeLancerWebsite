@@ -38,6 +38,10 @@ function ProfileBioCard(props) {
         <h1 className={styles.title}>Equipments Available</h1>
         <p>{props.freelancer.equipments}</p>
       </div>
+      <div className='flex w-full justify-evenly flex-wrap'>
+        <p className='bg-red-500 p-2 text-white rounded-3xl px-6 mb-8'>{props.freelancer.profession.charAt(0).toUpperCase() + props.freelancer.profession.slice(1)}</p>
+        {props.freelancer.featured && <p className='bg-violet-500 p-2 mb-8 text-white rounded-3xl px-6'>Featured Freelancer</p>}
+      </div>
     </div>
   );
 }

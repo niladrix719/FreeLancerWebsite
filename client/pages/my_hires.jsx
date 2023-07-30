@@ -7,6 +7,7 @@ import DeleteBox from '@/components/DeleteBox';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Link from 'next/link';
+import DialogBox from '@/components/DialogBox';
 
 export default function My_hires(props) {
   const [user, setUser] = useState(null);
@@ -14,6 +15,10 @@ export default function My_hires(props) {
   const [hires, setHires] = useState([]);
   const [showDeleteBox, setShowDeleteBox] = useState(false);
   const [reqId, setReqId] = useState(null);
+  const [notaccepted, setNotaccepted] = useState(false);
+  const [accepted, setAccepted] = useState(false);
+  const [declined, setDeclined] = useState(false);
+  const [freelancerPhone, setFreelancerPhone] = useState(null);
   const router = useRouter();
 
   useEffect(() => {
@@ -79,9 +84,25 @@ export default function My_hires(props) {
     }
   }
 
+  const contactFreelancer = (status, phone) => {
+    if(status === 'accepted') {
+      setAccepted(true);
+      setFreelancerPhone(phone);
+    }
+    else if(status === 'declined') {
+      setDeclined(true);
+    }
+    else {
+      setNotaccepted(true);
+    }
+  }
+
   return (
     <div className={styles.myRequests}>
       <Navbar user={props.user} company={props.company} setCompany={props.setCompany} setUser={props.setUser} />
+      {notaccepted && <DialogBox icon='no' title='Sorry!' text='Freelancer has not accepted your request yet.' handleDialogBox={setNotaccepted} />}
+      {accepted && <DialogBox title='Congratulations!' text={`Freelancer has accepted your request. You can contact him on ${freelancerPhone}.`} handleDialogBox={setAccepted} />}
+      {declined && <DialogBox icon='no' title='Sorry!' text='Freelancer has declined your request.' handleDialogBox={setDeclined} />}
       <div className={styles.requests}>
         <h1 className={styles.heading}>My Requests</h1>
         {hires.length === 0 ? (
@@ -93,7 +114,7 @@ export default function My_hires(props) {
         ) : (
           <div className={styles.requestsContainer}>
             {hires.map((hire, i) => {
-              return <HireCard setReqId={setReqId} setShowDeleteBox={setShowDeleteBox} key={i} hire={hire} />
+              return <HireCard contactFreelancer={contactFreelancer} setReqId={setReqId} setShowDeleteBox={setShowDeleteBox} key={i} hire={hire} />
             })}
           </div>
         )}

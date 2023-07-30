@@ -6,6 +6,26 @@ const fs = require('fs');
 const util = require('util');
 const unlinkFile = util.promisify(fs.unlink);
 const { uploadFile , deleteFile } = require('../middlewares/s3');
+const sharp = require('sharp');
+const path = require('path');
+
+// Function to resize an image and return the path of the resized image
+async function resizeImage(file, width, height) {
+  const filename = path.parse(file.filename).name;
+  const ext = '.webp';
+  const resizedFilename = filename + '-' + width + 'x' + height + ext;
+  const outputPath = 'uploads/' + resizedFilename;
+
+  await sharp(file.path)
+    .resize(width, height)
+    .toFormat('webp')
+    .toFile(outputPath);
+
+  return {
+    filename: resizedFilename,
+    path: outputPath,
+  };
+}
 
 async function registerCompany(req, res) {
   try {
@@ -16,6 +36,9 @@ async function registerCompany(req, res) {
         return;
       }
 
+      const resizedProfilePicture = await resizeImage(req.files['profilePicture'][0], 400, 300);
+      const resizedCoverPicture = await resizeImage(req.files['coverPicture'][0], 400, 300);
+
       const companyData = new companyCollection({
         companyname: req.body.companyname,
         companyphone: req.body.companyphone,
@@ -25,8 +48,8 @@ async function registerCompany(req, res) {
         lastname: req.body.lastname,
         position: req.body.position,
         bio: req.body.bio,
-        profilePicture: req.files['profilePicture'][0].filename,
-        coverPicture: req.files['coverPicture'][0].filename,
+        profilePicture: resizedProfilePicture.filename,
+        coverPicture: resizedCoverPicture.filename,
         panCard: req.files['panCard'][0].filename,
         incorporationCertificate: req.files['incorporationCertificate'][0].filename,
         links: req.body.links,
@@ -37,8 +60,8 @@ async function registerCompany(req, res) {
       await companyData.save();
 
       const filePromises = [];
-      filePromises.push(uploadFile(req.files['profilePicture'][0]));
-      filePromises.push(uploadFile(req.files['coverPicture'][0]));
+      filePromises.push(uploadFile(resizedProfilePicture));
+      filePromises.push(uploadFile(resizedCoverPicture));
       filePromises.push(uploadFile(req.files['panCard'][0]));
       filePromises.push(uploadFile(req.files['incorporationCertificate'][0]));
 
@@ -48,6 +71,8 @@ async function registerCompany(req, res) {
       await unlinkFile('uploads/' + req.files['coverPicture'][0].filename);
       await unlinkFile('uploads/' + req.files['panCard'][0].filename);
       await unlinkFile('uploads/' + req.files['incorporationCertificate'][0].filename);
+      await unlinkFile(resizedProfilePicture.path);
+      await unlinkFile(resizedCoverPicture.path);
 
       const user = await companyCollection.findOne({ companyphone: req.body.companyphone })
 
@@ -75,6 +100,9 @@ async function editCompanyProfile(req, res) {
         return;
       }
 
+      const resizedProfilePicture = await resizeImage(req.files['profilePicture'][0], 400, 300);
+      const resizedCoverPicture = await resizeImage(req.files['coverPicture'][0], 400, 300);
+
       let updatedAuthData;
 
       if (!req.body.profilePicture && !req.body.coverPicture) {
@@ -82,22 +110,24 @@ async function editCompanyProfile(req, res) {
           $set: {
             companyname: req.body.companyname,
             companyaddress: req.body.companyaddress,
-            profilePicture: req.files.profilePicture[0].filename,
-            coverPicture: req.files.coverPicture[0].filename,
+            profilePicture: resizedProfilePicture.filename,
+            coverPicture: resizedCoverPicture.filename,
             bio: req.body.bio
           }
         });
 
         const filePromises = [];
-        filePromises.push(uploadFile(req.files['profilePicture'][0]));
-        filePromises.push(uploadFile(req.files['coverPicture'][0]));
+        filePromises.push(uploadFile(resizedProfilePicture));
+        filePromises.push(uploadFile(resizedCoverPicture));
 
         await Promise.all(filePromises);
 
         await unlinkFile('uploads/' + req.files['profilePicture'][0].filename);
         await unlinkFile('uploads/' + req.files['coverPicture'][0].filename);
+        await unlinkFile(resizedProfilePicture.path);
+        await unlinkFile(resizedCoverPicture.path);
 
-        updatedAuthData = { ...authData, user: { ...authData.user, companyname: req.body.companyname, companyaddress: req.body.companyaddress, profilePicture: req.files.profilePicture[0].filename, coverPicture: req.files.coverPicture[0].filename, bio: req.body.bio } };
+        updatedAuthData = { ...authData, user: { ...authData.user, companyname: req.body.companyname, companyaddress: req.body.companyaddress, profilePicture: resizedProfilePicture.filename, coverPicture: resizedCoverPicture.filename, bio: req.body.bio } };
       }
       else if (!req.body.profilePicture) {
         await companyCollection.updateOne({ _id: authData.user._id }, {

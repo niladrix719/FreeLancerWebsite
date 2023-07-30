@@ -76,7 +76,7 @@
 #boxContainer {
     position: absolute;
     left: -26.5rem;
-    top: -6rem;
+    top: -12rem;
     width: 40rem;
     background-color: rgb(230, 230, 230);
     border: 1px solid lightgray;
@@ -87,7 +87,7 @@
 #boxContainer2 {
     position: absolute;
     left: -36.5rem;
-    top: -11.5rem;
+    top: -18.5rem;
     width: 40rem;
     background-color: rgb(230, 230, 230);
     border: 1px solid lightgray;

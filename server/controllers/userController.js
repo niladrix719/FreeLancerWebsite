@@ -9,6 +9,8 @@ const unlinkFile = util.promisify(fs.unlink);
 const twilio = require('twilio')(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
 const otpCollection = require('../models/otpModel');
 const { uploadFile } = require('../middlewares/s3');
+const sharp = require('sharp');
+const path = require('path');
 let otpTimer;
 
 // signup
@@ -157,6 +159,24 @@ async function getUserProfile(req, res) {
   }
 }
 
+// Function to resize an image and return the path of the resized image
+async function resizeImage(file, width, height) {
+  const filename = path.parse(file.filename).name;
+  const ext = '.webp';
+  const resizedFilename = filename + '-' + width + 'x' + height + ext;
+  const outputPath = 'uploads/' + resizedFilename;
+
+  await sharp(file.path)
+    .resize(width, height)
+    .toFormat('webp')
+    .toFile(outputPath);
+
+  return {
+    filename: resizedFilename,
+    path: outputPath,
+  };
+}
+
 //edit user profile
 
 async function editUserProfile(req, res) {
@@ -170,22 +190,24 @@ async function editUserProfile(req, res) {
         let updatedAuthData;
         if (user) {
           if (!req.body.profilePicture) {
+            const resizedProfilePicture = await resizeImage(req.file, 200, 200);
             await userCollection.updateOne({ _id: authData.user._id }, {
               $set: {
                 firstname: req.body.firstname,
                 lastname: req.body.lastname,
-                profilePicture: req.file.filename
+                profilePicture: resizedProfilePicture.filename
               }
             });
 
             const filePromises = [];
-            filePromises.push(uploadFile(req.file));
+            filePromises.push(uploadFile(resizedProfilePicture));
 
             await Promise.all(filePromises);
 
             await unlinkFile('uploads/' + req.file.filename);
+            await unlinkFile(resizedProfilePicture.path);
 
-            updatedAuthData = { ...authData, user: { ...authData.user, firstname: req.body.firstname, lastname: req.body.lastname, profilePicture: req.file.filename } };
+            updatedAuthData = { ...authData, user: { ...authData.user, firstname: req.body.firstname, lastname: req.body.lastname, profilePicture: resizedProfilePicture.filename } };
           }
           else {
             await userCollection.updateOne({ _id: authData.user._id }, {

@@ -38,7 +38,7 @@ async function registerFreelancer(req, res) {
         return;
       }
 
-      const resizedProfilePicture= await resizeImage(req.files['profilePicture'][0], 400, 300);
+      const resizedProfilePicture = await resizeImage(req.files['profilePicture'][0], 400, 300);
 
       const resizedWorks = await Promise.all(
         req.files['works[]'].map((file) => resizeImage(file, 400, 300))
