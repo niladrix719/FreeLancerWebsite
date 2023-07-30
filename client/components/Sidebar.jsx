@@ -47,7 +47,7 @@ class Sidebar extends React.Component {
       <div className={styles.sidebar}>
         <div className={styles.filter} id={styles.category}>
           <div className={styles.title}>
-            Category <MdKeyboardArrowDown style={{ fontSize: '20'}} onClick={this.toggle} className={styles.arrow} />
+            Category <MdKeyboardArrowDown style={{ fontSize: '20' }} onClick={this.toggle} className={styles.arrow} />
           </div>
           {this.state.showDropDown && <div className={styles.options}>
             <div className={styles.inputs}>
@@ -90,7 +90,7 @@ class Sidebar extends React.Component {
 
         <div className={styles.filter} id={styles.rating}>
           <div className={styles.title}>
-            Customer Rating <MdKeyboardArrowDown style={{ fontSize: '20'}} onClick={this.toggleRating} className={styles.arrow} />
+            Customer Rating <MdKeyboardArrowDown style={{ fontSize: '20' }} onClick={this.toggleRating} className={styles.arrow} />
           </div>
           {this.state.showDropDownRating && <div className={styles.options}>
             <div className={styles.inputs}>
@@ -112,64 +112,64 @@ class Sidebar extends React.Component {
 
         <div className={styles.filter} id={styles.location}>
           <div className={styles.title}>
-            Location <MdKeyboardArrowDown style={{ fontSize: '20'}} onClick={this.toggleLocation} className={styles.arrow} />
+            Location <MdKeyboardArrowDown style={{ fontSize: '20' }} onClick={this.toggleLocation} className={styles.arrow} />
           </div>
           {this.state.showDropDownLocation && (
             <div id={styles.optionx}>
               <select id="locations" value={this.state.cityname} className={styles.select} onChange={() => this.changeCity(document.getElementById('locations').value)}>
-                <option disabled value="city" id={styles.selected}>{this.state.cityname}</option>
-                <option value="Mumbai">Mumbai</option>
-                <option value="Bengaluru">Bengaluru</option>
-                <option value="Chennai">Chennai</option>
-                <option value="Kolkata">Kolkata</option>
-                <option value="Hyderabad">Hyderabad</option>
-                <option value="Jaipur">Jaipur</option>
-                <option value="Pune">Pune</option>
-                <option value="Ahmedabad">Ahmedabad</option>
-                <option value="Agra">Agra</option>
-                <option value="Surat">Surat</option>
-                <option value="New Delhi">New Delhi</option>
-                <option value="Visakhapatnam">Visakhapatnam</option>
-                <option value="Lucknow">Lucknow</option>
-                <option value="Indore">Indore</option>
-                <option value="Varanasi">Varanasi</option>
-                <option value="Bhopal">Bhopal</option>
-                <option value="Nagpur">Nagpur</option>
-                <option value="Amritsar">Amritsar</option>
-                <option value="Kochi">Kochi</option>
-                <option value="Chandigarh">Chandigarh</option>
-                <option value="Vadodara">Vadodara</option>
-                <option value="Mangaluru">Mangaluru</option>
-                <option value="Kanpur">Kanpur</option>
-                <option value="Nashik">Nashik</option>
-                <option value="Madurai">Madurai</option>
-                <option value="Patna">Patna</option>
-                <option value="Mysuru">Mysuru</option>
-                <option value="Jodhpur">Jodhpur</option>
-                <option value="Meerut">Meerut</option>
-                <option value="Udaipur">Udaipur</option>
-                <option value="Coimbatore">Coimbatore</option>
-                <option value="Bhubaneswar">Bhubaneswar</option>
-                <option value="Prayagraj">Prayagraj</option>
-                <option value="Dehradun">Dehradun</option>
-                <option value="Faridabad">Faridabad</option>
-                <option value="Warangal">Warangal</option>
-                <option value="Navi Mumbai">Navi Mumbai</option>
-                <option value="Ludhiana">Ludhiana</option>
-                <option value="Aurangabad">Aurangabad</option>
-                <option value="Guwahati">Guwahati</option>
-                <option value="Vijayawada">Vijayawada</option>
-                <option value="Rajkot">Rajkot</option>
-                <option value="Thiruvananthapuram">Thiruvananthapuram</option>
-                <option value="Puducherry">Puducherry</option>
-                <option value="Jamshedpur">Jamshedpur</option>
-                <option value="Ghaziabad">Ghaziabad</option>
-                <option value="Raipur">Raipur</option>
-                <option value="Thane">Thane</option>
-                <option value="Ranchi">Ranchi</option>
-                <option value="Gwalior">Gwalior</option>
-                <option value="Dhanbad">Dhanbad</option>
-              </select>
+                  <option disabled value="city" id={styles.selected}>{this.state.cityname}</option>
+                  <option value="Agra">Agra</option>
+                  <option value="Ahmedabad">Ahmedabad</option>
+                  <option value="Amritsar">Amritsar</option>
+                  <option value="Bengaluru">Bengaluru</option>
+                  <option value="Bhopal">Bhopal</option>
+                  <option value="Bhubaneswar">Bhubaneswar</option>
+                  <option value="Chandigarh">Chandigarh</option>
+                  <option value="Chennai">Chennai</option>
+                  <option value="Coimbatore">Coimbatore</option>
+                  <option value="Dehradun">Dehradun</option>
+                  <option value="Delhi">Delhi</option>
+                  <option value="Dhanbad">Dhanbad</option>
+                  <option value="Faridabad">Faridabad</option>
+                  <option value="Ghaziabad">Ghaziabad</option>
+                  <option value="Guwahati">Guwahati</option>
+                  <option value="Gwalior">Gwalior</option>
+                  <option value="Hyderabad">Hyderabad</option>
+                  <option value="Indore">Indore</option>
+                  <option value="Jaipur">Jaipur</option>
+                  <option value="Jamshedpur">Jamshedpur</option>
+                  <option value="Jodhpur">Jodhpur</option>
+                  <option value="Kanpur">Kanpur</option>
+                  <option value="Kochi">Kochi</option>
+                  <option value="Kolkata">Kolkata</option>
+                  <option value="Lucknow">Lucknow</option>
+                  <option value="Ludhiana">Ludhiana</option>
+                  <option value="Madurai">Madurai</option>
+                  <option value="Mangaluru">Mangaluru</option>
+                  <option value="Meerut">Meerut</option>
+                  <option value="Mumbai">Mumbai</option>
+                  <option value="Mysuru">Mysuru</option>
+                  <option value="Nagpur">Nagpur</option>
+                  <option value="Nashik">Nashik</option>
+                  <option value="New Delhi">New Delhi</option>
+                  <option value="Navi Mumbai">Navi Mumbai</option>
+                  <option value="Patna">Patna</option>
+                  <option value="Prayagraj">Prayagraj</option>
+                  <option value="Puducherry">Puducherry</option>
+                  <option value="Pune">Pune</option>
+                  <option value="Raipur">Raipur</option>
+                  <option value="Rajkot">Rajkot</option>
+                  <option value="Ranchi">Ranchi</option>
+                  <option value="Surat">Surat</option>
+                  <option value="Thane">Thane</option>
+                  <option value="Thiruvananthapuram">Thiruvananthapuram</option>
+                  <option value="Udaipur">Udaipur</option>
+                  <option value="Vadodara">Vadodara</option>
+                  <option value="Varanasi">Varanasi</option>
+                  <option value="Vijayawada">Vijayawada</option>
+                  <option value="Visakhapatnam">Visakhapatnam</option>
+                  <option value="Warangal">Warangal</option>
+                </select>
             </div>
           )}
         </div>

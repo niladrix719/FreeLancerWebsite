@@ -90,7 +90,7 @@ class Faqs extends React.Component {
                 }
                 &nbsp; &nbsp; <h1 className={styles.summary}>How to Register as an Freelancer?</h1>
                 {this.state.currentAnswer === 'third' && <p className={styles.details}>
-                  To register as an Freelancer, you need to click on the Register button on the top right corner of the page and fill in the details.
+                  To register as an Freelancer, you need to click on the Register button &gt; Resgister as a Freelancer on the top right corner of the page and fill in the details.
                 </p>}
               </li>
               <hr className={styles.divider} />
@@ -101,7 +101,7 @@ class Faqs extends React.Component {
                 }
                 &nbsp; &nbsp; <h1 className={styles.summary}>How to Register as an Company?</h1>
                 {this.state.currentAnswer === 'fourth' && <p className={styles.details}>
-                  To register as an Company, you need to click on the Register button on the top right corner of the page and fill in the details.
+                  To register as an Company, you need to click on the Register button &gt; Resgister as a Company on the top right corner of the page and fill in the details.
                 </p>}
               </li>
             </ul>}

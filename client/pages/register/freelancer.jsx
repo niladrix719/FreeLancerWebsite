@@ -1,7 +1,7 @@
 import Navbar from '@/components/Navbar'
 import React from 'react'
 import styles from '../../styles/Freelancer.module.css'
-import { TiTick } from 'react-icons/ti'
+import { AiOutlineCheck } from 'react-icons/ai'
 import Image from 'next/image'
 import Footer from '@/components/Footer'
 import Verification from '@/components/Verification'
@@ -482,57 +482,58 @@ class Freelancer extends React.Component {
                   onChange={(event) => this.setState({ location: event.target.value })} id="location"
                   value={this.state.location}
                 >
-                  <option className={styles.option} value="Mumbai">Mumbai</option>
-                  <option className={styles.option} value="Bengaluru">Bengaluru</option>
-                  <option className={styles.option} value="Chennai">Chennai</option>
-                  <option className={styles.option} value="Kolkata">Kolkata</option>
-                  <option className={styles.option} value="Hyderabad">Hyderabad</option>
-                  <option className={styles.option} value="Jaipur">Jaipur</option>
-                  <option className={styles.option} value="Pune">Pune</option>
-                  <option className={styles.option} value="Ahmedabad">Ahmedabad</option>
                   <option className={styles.option} value="Agra">Agra</option>
-                  <option className={styles.option} value="Surat">Surat</option>
-                  <option className={styles.option} value="New Delhi">New Delhi</option>
-                  <option className={styles.option} value="Visakhapatnam">Visakhapatnam</option>
-                  <option className={styles.option} value="Lucknow">Lucknow</option>
-                  <option className={styles.option} value="Indore">Indore</option>
-                  <option className={styles.option} value="Varanasi">Varanasi</option>
-                  <option className={styles.option} value="Bhopal">Bhopal</option>
-                  <option className={styles.option} value="Nagpur">Nagpur</option>
+                  <option className={styles.option} value="Ahmedabad">Ahmedabad</option>
                   <option className={styles.option} value="Amritsar">Amritsar</option>
-                  <option className={styles.option} value="Kochi">Kochi</option>
-                  <option className={styles.option} value="Chandigarh">Chandigarh</option>
-                  <option className={styles.option} value="Vadodara">Vadodara</option>
-                  <option className={styles.option} value="Mangaluru">Mangaluru</option>
-                  <option className={styles.option} value="Kanpur">Kanpur</option>
-                  <option className={styles.option} value="Nashik">Nashik</option>
-                  <option className={styles.option} value="Madurai">Madurai</option>
-                  <option className={styles.option} value="Patna">Patna</option>
-                  <option className={styles.option} value="Mysuru">Mysuru</option>
-                  <option className={styles.option} value="Jodhpur">Jodhpur</option>
-                  <option className={styles.option} value="Meerut">Meerut</option>
-                  <option className={styles.option} value="Udaipur">Udaipur</option>
-                  <option className={styles.option} value="Coimbatore">Coimbatore</option>
-                  <option className={styles.option} value="Bhubaneswar">Bhubaneswar</option>
-                  <option className={styles.option} value="Prayagraj">Prayagraj</option>
-                  <option className={styles.option} value="Dehradun">Dehradun</option>
-                  <option className={styles.option} value="Faridabad">Faridabad</option>
-                  <option className={styles.option} value="Warangal">Warangal</option>
-                  <option className={styles.option} value="Navi Mumbai">Navi Mumbai</option>
-                  <option className={styles.option} value="Ludhiana">Ludhiana</option>
                   <option className={styles.option} value="Aurangabad">Aurangabad</option>
-                  <option className={styles.option} value="Guwahati">Guwahati</option>
-                  <option className={styles.option} value="Vijayawada">Vijayawada</option>
-                  <option className={styles.option} value="Rajkot">Rajkot</option>
-                  <option className={styles.option} value="Thiruvananthapuram">Thiruvananthapuram</option>
-                  <option className={styles.option} value="Puducherry">Puducherry</option>
-                  <option className={styles.option} value="Jamshedpur">Jamshedpur</option>
-                  <option className={styles.option} value="Ghaziabad">Ghaziabad</option>
-                  <option className={styles.option} value="Raipur">Raipur</option>
-                  <option className={styles.option} value="Thane">Thane</option>
-                  <option className={styles.option} value="Ranchi">Ranchi</option>
-                  <option className={styles.option} value="Gwalior">Gwalior</option>
+                  <option className={styles.option} value="Bengaluru">Bengaluru</option>
+                  <option className={styles.option} value="Bhopal">Bhopal</option>
+                  <option className={styles.option} value="Bhubaneswar">Bhubaneswar</option>
+                  <option className={styles.option} value="Chandigarh">Chandigarh</option>
+                  <option className={styles.option} value="Chennai">Chennai</option>
+                  <option className={styles.option} value="Coimbatore">Coimbatore</option>
+                  <option className={styles.option} value="Dehradun">Dehradun</option>
+                  <option className={styles.option} value="Delhi">Delhi</option>
                   <option className={styles.option} value="Dhanbad">Dhanbad</option>
+                  <option className={styles.option} value="Faridabad">Faridabad</option>
+                  <option className={styles.option} value="Ghaziabad">Ghaziabad</option>
+                  <option className={styles.option} value="Guwahati">Guwahati</option>
+                  <option className={styles.option} value="Gwalior">Gwalior</option>
+                  <option className={styles.option} value="Hyderabad">Hyderabad</option>
+                  <option className={styles.option} value="Indore">Indore</option>
+                  <option className={styles.option} value="Jaipur">Jaipur</option>
+                  <option className={styles.option} value="Jamshedpur">Jamshedpur</option>
+                  <option className={styles.option} value="Jodhpur">Jodhpur</option>
+                  <option className={styles.option} value="Kanpur">Kanpur</option>
+                  <option className={styles.option} value="Kochi">Kochi</option>
+                  <option className={styles.option} value="Kolkata">Kolkata</option>
+                  <option className={styles.option} value="Lucknow">Lucknow</option>
+                  <option className={styles.option} value="Ludhiana">Ludhiana</option>
+                  <option className={styles.option} value="Madurai">Madurai</option>
+                  <option className={styles.option} value="Mangaluru">Mangaluru</option>
+                  <option className={styles.option} value="Meerut">Meerut</option>
+                  <option className={styles.option} value="Mumbai">Mumbai</option>
+                  <option className={styles.option} value="Mysuru">Mysuru</option>
+                  <option className={styles.option} value="Nagpur">Nagpur</option>
+                  <option className={styles.option} value="Nashik">Nashik</option>
+                  <option className={styles.option} value="New Delhi">New Delhi</option>
+                  <option className={styles.option} value="Navi Mumbai">Navi Mumbai</option>
+                  <option className={styles.option} value="Patna">Patna</option>
+                  <option className={styles.option} value="Prayagraj">Prayagraj</option>
+                  <option className={styles.option} value="Puducherry">Puducherry</option>
+                  <option className={styles.option} value="Pune">Pune</option>
+                  <option className={styles.option} value="Raipur">Raipur</option>
+                  <option className={styles.option} value="Rajkot">Rajkot</option>
+                  <option className={styles.option} value="Ranchi">Ranchi</option>
+                  <option className={styles.option} value="Surat">Surat</option>
+                  <option className={styles.option} value="Thane">Thane</option>
+                  <option className={styles.option} value="Thiruvananthapuram">Thiruvananthapuram</option>
+                  <option className={styles.option} value="Udaipur">Udaipur</option>
+                  <option className={styles.option} value="Vadodara">Vadodara</option>
+                  <option className={styles.option} value="Varanasi">Varanasi</option>
+                  <option className={styles.option} value="Vijayawada">Vijayawada</option>
+                  <option className={styles.option} value="Visakhapatnam">Visakhapatnam</option>
+                  <option className={styles.option} value="Warangal">Warangal</option>
                 </select>
               </div>}
               {this.state.currentPage === 5 && <div className={styles.inputField} id={styles.profession}>
@@ -606,13 +607,13 @@ class Freelancer extends React.Component {
               <div className={styles.freelancer}>
                 <h1 className={styles.minHeading}>For Freelancers</h1>
                 <div className={styles.feature}>
-                  <TiTick style={{ color: "black", }} /><p>Helps You get more reach</p>
+                  <AiOutlineCheck style={{ color: "black", }} /><p>Helps You get more reach</p>
                 </div>
                 <div className={styles.feature}>
-                  <TiTick style={{ color: "black", }} /><p>All Verified Companies</p>
+                  <AiOutlineCheck style={{ color: "black", }} /><p>All Verified Companies</p>
                 </div>
                 <div className={styles.feature}>
-                  <TiTick style={{ color: "black", fontSize: '32px' }} /><p>Maintains Privacy and Fully Transparent</p>
+                  <AiOutlineCheck style={{ color: "black", fontSize: '32px' }} /><p>Maintains Privacy and Fully Transparent</p>
                 </div>
               </div>
               <Image src='/ani1.png' alt='registration-image' width='200' height='200' className={styles.img} />

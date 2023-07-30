@@ -1,7 +1,7 @@
 import Navbar from '@/components/Navbar'
 import React from 'react'
 import styles from '../../styles/Freelancer.module.css'
-import { TiTick } from 'react-icons/ti'
+import { AiOutlineCheck } from 'react-icons/ai'
 import Image from 'next/image'
 import Footer from '@/components/Footer'
 import CompanyVerification from '@/components/CompanyVerification'
@@ -456,7 +456,7 @@ class Company extends React.Component {
               </div>}
               {this.state.textareaError && <p className={styles.error}>Please provide less than 300 characters and atleast 50 characters.</p>}
               {!this.state.form && this.state.currentPage === 8 && <div className={styles.inputField} id={styles.bio}>
-                <label htmlFor="bio" className={styles.label}><span style={{ color: 'white' }}>* </span>Bio :</label>
+                <label htmlFor="bio" className={styles.label}><span style={{ color: 'white' }}>* </span>About :</label>
                 <textarea required name="bio" id="bio" cols="30" rows="10"
                   onChange={(event) => this.setState({ bio: event.target.value })}
                   className={styles.textarea} placeholder='Write Your Company here...'
@@ -496,13 +496,13 @@ class Company extends React.Component {
               <div className={styles.freelancer}>
                 <h1 className={styles.minHeading}>For Companies</h1>
                 <div className={styles.feature}>
-                  <TiTick className={styles.check} style={{ color: "black", fontSize: '32px' }} /><p>Helps You get The right Talent for your Project</p>
+                  <AiOutlineCheck className={styles.check} style={{ color: "black", fontSize: '32px' }} /><p>Helps You get The right Talent for your Project</p>
                 </div>
                 <div className={styles.feature}>
-                  <TiTick className={styles.check} style={{ color: "black", fontSize: '16px' }} /><p>All Verified Freelancers</p>
+                  <AiOutlineCheck className={styles.check} style={{ color: "black", fontSize: '16px' }} /><p>All Verified Freelancers</p>
                 </div>
                 <div className={styles.feature}>
-                  <TiTick className={styles.check} style={{ color: "black", fontSize: '32px' }} /><p>Maintains Privacy and Fully Transparent</p>
+                  <AiOutlineCheck className={styles.check} style={{ color: "black", fontSize: '32px' }} /><p>Maintains Privacy and Fully Transparent</p>
                 </div>
               </div>
               <Image className={styles.img} src='/ani3.png' alt='registration-image' width={250} height={250} />

@@ -138,7 +138,7 @@ function Signup(props) {
             <button type='submit' className={styles.btn}>Submit</button>
           </div>
           <div className={styles.lower}>
-            <Link href='/login' className={styles.login}>Already have an Account? Log in</Link>
+            <Link href='/login' className={`${styles.login} text-green-400`}>Already have an Account? Log in</Link>
           </div>
         </form>}
         {otpForm && <div className={styles.body}>

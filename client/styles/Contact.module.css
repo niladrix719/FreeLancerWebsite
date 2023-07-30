@@ -45,6 +45,12 @@
     height: 10rem;
 }
 
+#phone::-webkit-inner-spin-button,
+#phone::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 .btn{
     background-color: #00aaff;
     color: rgb(255, 255, 255);

@@ -77,7 +77,7 @@ function Contact(props) {
                 </div>
                 <div className={styles.inputs}>
                   <label htmlFor="phone" className={styles.label}>Phone :</label>
-                  <input type='number' id='phone' className={styles.input} onChange={() => setContactError(false)} />
+                  <input type='number' id={styles.phone} className={styles.input} onChange={() => setContactError(false)} />
                 </div>
                 <div className={styles.inputs}>
                   <label htmlFor="email" className={styles.label}>Email :</label>
