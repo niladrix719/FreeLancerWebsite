@@ -616,7 +616,7 @@ class Freelancer extends React.Component {
                   <AiOutlineCheck style={{ color: "black", fontSize: '32px' }} /><p>Maintains Privacy and Fully Transparent</p>
                 </div>
               </div>
-              <Image src='/ani1.png' alt='registration-image' width='200' height='200' className={styles.img} />
+              <Image src='/freelanx.png' alt='registration-image' width='200' height='200' className={styles.img} />
             </div>
             <hr className={styles.divider} />
           </div>}

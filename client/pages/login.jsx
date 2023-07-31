@@ -123,9 +123,9 @@ export default function Login(props) {
             <button className={styles.btn} type='button' onClick={handleSubmit}>Send OTP</button>
           </div>
           <div className={styles.lower}>
-            {type === 'user' && <Link href='/signup' className={`${styles.signup} text-green-400`}>Don&apos;t have an Account? Sign up now</Link>}
-            {type === 'freelancer' && <Link href='/register/freelancer' className={styles.signup}>Don&apos;t have an Account? Register now As a Freelancer</Link>}
-            {type === 'company' && <Link href='/register/company' className={styles.signup}>Don&apos;t have an Account? Register now As a Company</Link>}
+            {type === 'user' && <Link href='/signup' className={`${styles.signup} text-cyan-500`}>Don&apos;t have an Account? Sign up now</Link>}
+            {type === 'freelancer' && <Link href='/register/freelancer' className={`${styles.signup} text-cyan-500`}>Don&apos;t have an Account? Register now As a Freelancer</Link>}
+            {type === 'company' && <Link href='/register/company' className={`${styles.signup} text-cyan-500`}>Don&apos;t have an Account? Register now As a Company</Link>}
           </div>
         </form>
         <div className={styles.presentation}>

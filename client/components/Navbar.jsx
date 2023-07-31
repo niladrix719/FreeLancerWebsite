@@ -22,7 +22,7 @@ export default function Navbar(props) {
       })
         .then(res => res.json())
         .then(data => {
-          if (data.authData.user.phone === 7001599126 && !data.authData.user.location)
+          if (data.authData.user.phone === 9038578787 && !data.authData.user.location)
             setIsAdmin(true);
           if (data.authData.user.companyname)
             props.setCompany(data.authData.user)
@@ -37,7 +37,7 @@ export default function Navbar(props) {
     }
 
     else if (props.user && token) {
-      if (props.user.phone && props.user.phone === 7001599126)
+      if (props.user.phone && props.user.phone === 9038578787)
         setIsAdmin(true);
       if (props.checkLoggedIn)
         props.checkLoggedIn(true);
