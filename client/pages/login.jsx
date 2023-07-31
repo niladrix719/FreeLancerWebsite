@@ -129,7 +129,7 @@ export default function Login(props) {
           </div>
         </form>
         <div className={styles.presentation}>
-          <Image src="/pre.jpg" alt="side-image" height="1006" width="1000" />
+          <Image src="/loginbg.jpg" alt="side-image" height="1006" width="1000" />
         </div>
       </div>}
       {otpForm && <div className={styles.body}>
@@ -151,7 +151,7 @@ export default function Login(props) {
           </div>
         </form>
         <div className={styles.presentation}>
-          <Image src="/pre.jpg" alt="side-image" height="1006" width="1000" />
+          <Image src="/loginbg.jpg" alt="side-image" height="1006" width="1000" />
         </div>
       </div>}
       <Footer />
