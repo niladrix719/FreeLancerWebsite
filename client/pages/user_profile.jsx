@@ -156,7 +156,7 @@ function User_profile(props) {
             <Link className={style.option} href='/my_hires'>Hire Requests</Link>
             <p className={style.option} onClick={() => setEditProfile(true)}>Edit Profile</p>
             <p className={style.option} onClick={() => setShowDeleteBox(true)}>Delete Account</p>
-            <p className={style.option}>Rate our Services</p>
+            <Link target='_blank' href='https://www.facebook.com/profile.php?id=100094694632348&sk=reviews' className={style.option}>Rate our Services</Link>
           </div>}
           {!editProfile && <div>
             <button className={style.logout} onClick={handleLogout}>Logout</button>

@@ -86,11 +86,14 @@ function Contact(props) {
                 <div className={styles.inputs}>
                   <label htmlFor="issue" className={styles.label}>Issue :</label>
                   <select className={styles.options} name="issue" onChange={() => setContactError(false)}>
-                    <option className={styles.option} value="Service">Service Related</option>
-                    <option className={styles.option} value="Payment">Payment Related</option>
-                    <option className={styles.option} value="Client">Client Related</option>
-                    <option className={styles.option} value="Freelancer">Freelancer Related</option>
-                    <option className={styles.option} value="Platform">Platform Related</option>
+                    <option className={styles.option} value="User Profile Related">User Profile Related</option>
+                    <option className={styles.option} value="Freelancer Profile Related">Freelancer Profile Related</option>
+                    <option className={styles.option} value="Company Profile Related">Company Profile Related</option>
+                    <option className={styles.option} value="OTP Related">OTP Related</option>
+                    <option className={styles.option} value="Fraud / Scam">Fraud / Scam</option>
+                    <option className={styles.option} value="Delete Profile">Delete Profile</option>
+                    <option className={styles.option} value="Update Profile">Update Profile</option>
+                    <option className={styles.option} value="Other">Other</option>
                   </select>
                 </div>
                 <div className={styles.inputs}>

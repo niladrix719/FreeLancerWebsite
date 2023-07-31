@@ -8,7 +8,7 @@ function Footer() {
       <div className={styles.upper}>
         <ul className={styles.about}>
           <li className={styles.heading}>About</li>
-          <Link href='/faqs' className={styles.subHeading}>Who are we?</Link>
+          <Link href='/about_us' className={styles.subHeading}>About Us</Link>
           <Link href='/careers' className={styles.subHeading}>careers</Link>
           <li className={styles.subHeading}>Guides and Reviews</li>
         </ul>
@@ -16,6 +16,7 @@ function Footer() {
           <li className={styles.heading}>Help and Support</li>
           <Link href='/contact' className={styles.subHeading}>Support</Link>
           <Link href='/faqs' className={styles.subHeading}>FAQs</Link>
+          <Link target='_blank' href='https://www.facebook.com/profile.php?id=100094694632348&sk=reviews' className={styles.subHeading}>Rate our Services</Link>
         </ul>
         <ul className={styles.law}>
           <li className={styles.heading}>Law and Order</li>

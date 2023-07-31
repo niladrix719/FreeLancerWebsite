@@ -78,7 +78,7 @@ class Sidebar extends React.Component {
             Price
           </div>
           <span className={styles.rate}>Rs. {this.props.rateSort} / Day</span>
-          <input type='range' min='0' max='50000' step='100' className={styles.slider}
+          <input type='range' min='500' max='50000' step='100' className={styles.slider}
             onChange={(e) => {
               this.props.setRateSort(e.target.value);
             }}

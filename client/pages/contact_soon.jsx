@@ -7,9 +7,9 @@ import ReactConfetti from 'react-confetti';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 function Contact_soon(props) {
-  const [windowDm, setWindowDm] = useState({ width: 1600, height: 650 });
+  const [windowDm, setWindowDm] = useState({ width: 2000, height: 650 });
   const dectectSize = () => {
-    setWindowDm({ width: 1600, height: 650 });
+    setWindowDm({ width: 2000, height: 650 });
   }
   useEffect(() => {
     addEventListener('resize', dectectSize);
