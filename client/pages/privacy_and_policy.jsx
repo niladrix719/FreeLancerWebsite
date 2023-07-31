@@ -28,13 +28,13 @@ function Privacy_And_Policy(props) {
 
               b. Non-Personal Information:
 
-              Non-personal information is used to analyze trends, improve our website's performance, and enhance user experience.
+              Non-personal information is used to analyze trends, improve our website&apos;s performance, and enhance user experience.
               Cookies and Similar Technologies:
               We may use cookies and similar technologies (e.g., web beacons, pixels) to collect information about your interactions with our website. Cookies are small data files stored on your device that help us remember your preferences and understand how you use our website. You can manage your cookie preferences through your browser settings.
               <span className={styles.title}>Data Security:</span>
               We take reasonable measures to safeguard your personal information from unauthorized access, disclosure, alteration, or destruction. However, no data transmission over the internet or electronic storage is entirely secure, and we cannot guarantee absolute security.
 
-              <span className={styles.title}>Children's Privacy:</span>
+              <span className={styles.title}>Children&apos;s Privacy:</span>
               Fipezo is not intended for use by children under the age of 13. We do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe your child has provided us with personal information, please contact us, and we will promptly delete such data.
 
               <span className={styles.title}>Changes to this Privacy Policy:</span>
