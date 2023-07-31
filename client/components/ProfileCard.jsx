@@ -26,7 +26,7 @@ export default function ProfileCard(props) {
           <p className={styles.num}>({props.profile.reviewCount})</p>
         </div>
       </div>
-      <h3 className={styles.name}><span className='w-1/2 truncate'>{props.profile.firstname} {props.profile.lastname}</span> &nbsp;&nbsp;<Image className={styles.blueTick} onMouseOver={() => setDisplay('flex')} onMouseOut={() => setDisplay('none')} src='/tick.png' height='40' width='40' alt="verified-tick" />{props.profile.featured && <span className={styles.container}>
+      <h3 className={styles.name}><span className='w-22 truncate' style={{maxWidth: '11rem'}}>{props.profile.firstname} {props.profile.lastname}</span><Image className={styles.blueTick} onMouseOver={() => setDisplay('flex')} onMouseOut={() => setDisplay('none')} src='/tick.png' height='40' width='40' alt="verified-tick" />{props.profile.featured && <span className={styles.container}>
       <div className={styles.overTick} style={{ display: display }}><span>Verified</span><div className={styles.rectangle}></div></div></span>}</h3>
       <p className={`w-full ${styles.bio} break-words max-w-xs`}>{props.profile.bio}</p>
       <div className={styles.category}>

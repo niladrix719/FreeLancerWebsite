@@ -15,18 +15,19 @@ function ProfileBioCard(props) {
     <div className={styles.profile_bio_card}>
       <div className={styles.profile_pic} style={{backgroundImage: `url(${process.env.SERVER_URL}/images/${props.freelancer.profilePicture})`}}>
       </div>
-      <h1 className={styles.name}><span className='w-4/6 truncate'>{props.freelancer.firstname} {props.freelancer.lastname}</span> <span className={styles.con}><Image className={styles.blueTick} onMouseOver={() => setDisplay('flex')} onMouseOut={() => setDisplay('none')}
+      <h1 className={styles.name}><span className='w-34 truncate' style={{maxWidth: '11rem'}}>{props.freelancer.firstname} {props.freelancer.lastname}</span> <span className={styles.con}><Image className={styles.blueTick} onMouseOver={() => setDisplay('flex')} onMouseOut={() => setDisplay('none')}
        src={props.freelancer.verified ? '/tick.png' : '/tickG.png'} height='40' width='40' alt="verified-tick" /> {props.freelancer.verified && <div className={styles.overTick} style={{ display: display }}><span>Verified</span><div className={styles.rectangle}></div></div>}</span>
         &nbsp;<IoLocationSharp style={{ fontSize: 12, color: 'red' }} />&nbsp;
         <span className={styles.location}>{props.freelancer.location}</span>
       </h1>
       <div className='flex w-full justify-evenly flex-wrap'>
-        <p className='bg-red-500 p-2 text-sm text-white rounded-3xl px-6 mb-8'>{props.freelancer.profession.charAt(0).toUpperCase() + props.freelancer.profession.slice(1)}</p>
-        {props.freelancer.featured && <p className='bg-violet-500 text-sm p-2 mb-8 text-white rounded-3xl px-6 flex items-center'><AiOutlineThunderbolt style={{ color: 'yellow' }} className='mr-2' />Featured Freelancer</p>}
-      </div>
-      <div className='flex w-full px-8 flex-wrap'>
+        <p className='bg-red-500 p-2 text-sm text-white rounded-3xl px-4 mb-8'>{props.freelancer.profession.charAt(0).toUpperCase() + props.freelancer.profession.slice(1)}</p>
+        {props.freelancer.featured && <p className='bg-violet-500 text-sm p-2 mb-8 text-white rounded-3xl px-4 flex items-center'><AiOutlineThunderbolt style={{ color: 'yellow' }} className='mr-2' />Featured Freelancer</p>}
         <p className='bg-green-500 p-2 text-sm text-white border-2 px-12 mb-8 rounded-3xl'>Rs. {props.freelancer.rate} / Day</p>
       </div>
+      {/* <div className='flex w-full px-4 flex-wrap'>
+        <p className='bg-green-500 p-2 text-sm text-white border-2 px-12 mb-8 rounded-3xl'>Rs. {props.freelancer.rate} / Day</p>
+      </div> */}
       {props.copied && (
         <div className={styles.copy}>
           URL copied to clipboard!
