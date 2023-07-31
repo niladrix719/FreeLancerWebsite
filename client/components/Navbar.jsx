@@ -149,7 +149,7 @@ export default function Navbar(props) {
 
           {props.user && (
             <li className={`${styles.navElement} ${styles.user}`} id={styles.user}>
-              <span>{props.user && !props.company ? `${props.user.firstname}` : ''}&nbsp;&nbsp;</span>
+              <span className='truncate w-5/6'>{props.user && !props.company ? `${props.user.firstname}` : ''}&nbsp;&nbsp;</span>
               <BiChevronDown
                 style={{ fontSize: 16, color: color }}
               />

@@ -99,7 +99,8 @@
     }
 
     .p{
-        display: none;
+        display: flex;
+        font-size: 0.45rem;
     }
 }
 

@@ -422,6 +422,13 @@ class Freelancer extends React.Component {
     }
   };
 
+  handleEnterKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      this.increProgress(14.25);
+    }
+  };
+
   render() {
     return (
       <div className={styles.main}>
@@ -443,6 +450,7 @@ class Freelancer extends React.Component {
                   placeholder='Enter Your First name'
                   name='firstname' id='firstname' required
                   onChange={(event) => this.setState({ firstName: event.target.value, error: false })}
+                  onKeyDown={this.handleEnterKeyPress}
                   value={this.state.firstName}
                   maxLength={13}
                 />
@@ -452,6 +460,7 @@ class Freelancer extends React.Component {
                 <input type='text' className={styles.input}
                   placeholder='Enter Your Last name'
                   name='lastname' id='lastname' required
+                  onKeyDown={this.handleEnterKeyPress}
                   onChange={(event) => this.setState({ lastName: event.target.value, error: false })}
                   value={this.state.lastName}
                   maxLength={13}
@@ -464,6 +473,7 @@ class Freelancer extends React.Component {
                   name='phone' required
                   onChange={(event) => this.setState({ phone: event.target.value, error: false })}
                   value={this.state.phone}
+                  onKeyDown={this.handleEnterKeyPress}
                   max={10}
                 />
               </div>}
@@ -472,6 +482,7 @@ class Freelancer extends React.Component {
                 <input type='number' id={styles.number} className={styles.input}
                   placeholder='Enter Your OTP'
                   name='otp' required
+                  onKeyDown={this.handleEnterKeyPress}
                   onChange={(event) => this.setState({ otp: event.target.value, error: false })}
                   value={this.state.otp}
                 />
@@ -480,7 +491,7 @@ class Freelancer extends React.Component {
                 <label htmlFor="location" className={styles.label}><span style={{ color: 'white' }}>* </span>Where do you live?</label>
                 <select required className={styles.options} name="location"
                   onChange={(event) => this.setState({ location: event.target.value })} id="location"
-                  value={this.state.location}
+                  value={this.state.location} onKeyDown={this.handleEnterKeyPress}
                 >
                   <option className={styles.option} value="Agra">Agra</option>
                   <option className={styles.option} value="Ahmedabad">Ahmedabad</option>
@@ -540,7 +551,7 @@ class Freelancer extends React.Component {
                 <label htmlFor="profession" className={styles.label}><span style={{ color: 'white' }}>* </span>What is your profession?</label>
                 <select required className={styles.options} name="profession"
                   onChange={(event) => this.setState({ profession: event.target.value })} id="profession"
-                  value={this.state.profession}
+                  value={this.state.profession} onKeyDown={this.handleEnterKeyPress}
                 >
                   <option className={styles.option} value="photographer">Photographer</option>
                   <option className={styles.option} value="cinematographer">Cinematographer</option>
@@ -552,22 +563,28 @@ class Freelancer extends React.Component {
                 {this.state.rate && <p className={styles.rate}>Rs. {this.state.rate} / Day</p>}
                 <input required className={styles.range} name="rate" type='range' min='500' max='50000' step='100'
                   onChange={(event) => this.setState({ rate: event.target.value })} id="rate"
-                  value={this.state.rate}
+                  value={this.state.rate} onKeyDown={this.handleEnterKeyPress}
                 />
               </div>}
               {this.state.textareaError && <p className={styles.error}>Please provide less than 300 characters and atleast 50 characters.</p>}
+              {this.state.currentPage === 7 && this.state.bio.length < 50 && !this.state.textareaError && <p>No of characters left: {50 - this.state.bio.length}</p>}
+              {this.state.currentPage === 7 && this.state.bio.length > 300 && !this.state.textareaError && <p>No of characters excceded: {this.state.bio.length - 300}</p>}
               {this.state.currentPage === 7 && <div className={styles.inputField} id={styles.bio}>
                 <label htmlFor="bio" className={styles.label}><span style={{ color: 'white' }}>* </span>Bio :</label>
                 <textarea required name="bio" id="bio" cols="30" rows="10"
                   onChange={(event) => this.handleTextChange(event, 1)}
+                  onKeyDown={this.handleEnterKeyPress}
                   className={styles.textarea} placeholder='Write Your Yourself here...'
                   value={this.state.bio}>
                 </textarea>
               </div>}
+              {this.state.currentPage === 8 && this.state.equipments.length < 50 && !this.state.textareaError && <p>No of characters left: {50 - this.state.equipments.length}</p>}
+              {this.state.currentPage === 8 && this.state.equipments.length > 300 && !this.state.textareaError && <p>No of characters excceded: {this.state.equipments.length - 300}</p>}
               {!this.state.form && this.state.currentPage === 8 && <div className={styles.inputField} id={styles.equipment}>
                 <label htmlFor="equipments" className={styles.label}><span style={{ color: 'white' }}>* </span>Equipments Available :</label>
                 <textarea required name="equipments" id="equipments" cols="30" rows="10"
                   onChange={(event) => this.handleTextChange(event, 2)}
+                  onKeyDown={this.handleEnterKeyPress}
                   className={styles.textarea} placeholder='Write Your equipments here...'
                   value={this.state.equipments}>
                 </textarea>

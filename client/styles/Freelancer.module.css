@@ -82,6 +82,8 @@
     display: flex;
     gap: 1rem;
     align-items: center;
+    height: 3rem;
+    width: 15rem;
 }
 
 .divider {

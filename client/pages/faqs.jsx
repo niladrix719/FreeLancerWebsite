@@ -42,7 +42,7 @@ class Faqs extends React.Component {
         <div className={styles.body}>
           <h1 className={styles.heading}>Questions? Look here.</h1>
           <div className={styles.container}>
-            <Link className={styles.subHeading} href='/contact'>Can&apos;t find an Answer contact us on fipezocare@gmail.com</Link>
+            <Link className={styles.subHeading} href='mailto:help@fipezo.com'>Can&apos;t find an Answer contact us on help@fipezo.com</Link>
             <hr className={styles.divider} />
           </div>
           <div className={styles.content}>
@@ -135,7 +135,7 @@ class Faqs extends React.Component {
                 }
                 &nbsp; &nbsp; <h1 className={styles.summary}>To whom is the data disclosed?</h1>
                 {this.state.currentAnswer === 'seventh' && <p className={styles.details}>
-                  Fipezo does not disclose any information to third parties.
+                  We take reasonable measures to safeguard your personal information from unauthorized access, disclosure, alteration, or destruction. However, no data transmission over the internet or electronic storage is entirely secure, and we cannot guarantee absolute security.
                 </p>}
               </li>
               <hr className={styles.divider} />
@@ -158,7 +158,7 @@ class Faqs extends React.Component {
                 }
                 &nbsp; &nbsp; <h1 className={styles.summary}>What Service does Fipezo provide?</h1>
                 {this.state.currentAnswer === 'ninth' && <p className={styles.details}>
-                  Fipezo provides a platform for Freelancers and Companies to connect with each other.
+                  Fipezo offers a comprehensive range of services for freelancers, including a user-friendly platform for showcasing portfolios, connecting with clients, and secure payment processing. Access valuable resources, project management tools, and a supportive community to enhance your freelance journey. Join Fipezo today and unlock your full potential.
                 </p>}
               </li>
               <hr className={styles.divider} />

@@ -37,9 +37,6 @@ function Contact_soon(props) {
               <Link target='_blank' href='https://twitter.com/fipezoindia'><Image className={styles.social} src='/twitterC.png' width='160' height='160' alt='twitter' /></Link>
               <Link target='_blank' href='https://www.youtube.com/@Fipezo'><Image className={styles.social} src='/youtube.png' width='160' height='160' alt='youtube' /></Link>
             </div>
-            <div className={styles.backBox}>
-
-            </div>
           </div>
           <div className={styles.flex}>
             <h1 className={styles.text}>What&apos;s to do Next?</h1>

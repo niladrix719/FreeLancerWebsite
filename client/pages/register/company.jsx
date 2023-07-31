@@ -359,6 +359,13 @@ class Company extends React.Component {
     }
   };
 
+  handleEnterKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      this.increProgress(14.25);
+    }
+  };
+
   render() {
     return (
       <div className={styles.main}>
@@ -378,6 +385,7 @@ class Company extends React.Component {
                 <label htmlFor="companyname" className={styles.label}><span style={{ color: 'white' }}>* </span>Company Name :</label>
                 <input type='text' className={styles.input}
                   placeholder='Enter Your Company name'
+                  onKeyDown={this.handleEnterKeyPress}
                   name='companyname' id='companyname' required
                   onChange={(event) => this.setState({ companyname: event.target.value })}
                   value={this.state.companyname !== '' ? this.state.companyname : ''}
@@ -388,6 +396,7 @@ class Company extends React.Component {
                 <label htmlFor="companyphone" className={styles.label}><span style={{ color: 'white' }}>* </span>Company Phone :</label>
                 <input type='number' id={styles.number} className={styles.input}
                   placeholder='Enter Company Phone no.'
+                  onKeyDown={this.handleEnterKeyPress}
                   name='companyphone' required
                   onChange={(event) => this.setState({ companyphone: event.target.value })}
                   value={this.state.companyphone !== 'photographer' ? this.state.companyphone : 'photographer'}
@@ -399,6 +408,7 @@ class Company extends React.Component {
                 <input type='number' id={styles.number} className={styles.input}
                   placeholder='Enter Your OTP'
                   name='otp' required
+                  onKeyDown={this.handleEnterKeyPress}
                   onChange={(event) => this.setState({ otp: event.target.value, error: false })}
                   value={this.state.otp}
                 />
@@ -406,7 +416,7 @@ class Company extends React.Component {
               {this.state.currentPage === 4 && <div className={styles.inputField} id={styles.profession}>
                 <label htmlFor="companytype" className={styles.label}><span style={{ color: 'white' }}>* </span>What is your company type?</label>
                 <select required className={styles.options} name="companytype"
-                  onChange={(event) => this.setState({ companytype: event.target.value })} id="companytype"
+                  onChange={(event) => this.setState({ companytype: event.target.value })} onKeyDown={this.handleEnterKeyPress} id="companytype"
                   value={this.state.companytype !== '' ? this.state.companytype : ''}
                 >
                   <option className={styles.option} value="photography">Photography Company</option>
@@ -421,6 +431,7 @@ class Company extends React.Component {
                 <input type='text' id={styles.number} className={styles.input}
                   placeholder='Enter Company Address no.'
                   name='companyaddress' required
+                  onKeyDown={this.handleEnterKeyPress}
                   onChange={(event) => this.setState({ companyaddress: event.target.value })}
                   value={this.state.companyaddress}
                 />
@@ -430,6 +441,7 @@ class Company extends React.Component {
                 <input type='text' className={styles.input}
                   placeholder='Enter Your First name'
                   name='firstname' required
+                  onKeyDown={this.handleEnterKeyPress}
                   onChange={(event) => this.setState({ firstname: event.target.value, error: false })}
                   value={this.state.firstname}
                   maxLength={13}
@@ -440,6 +452,7 @@ class Company extends React.Component {
                 <input type='text' className={styles.input}
                   placeholder='Enter Your Last name'
                   name='lastname' required
+                  onKeyDown={this.handleEnterKeyPress}
                   onChange={(event) => this.setState({ lastname: event.target.value, error: false })}
                   value={this.state.lastname}
                   maxLength={13}
@@ -450,15 +463,19 @@ class Company extends React.Component {
                 <input type='text' className={styles.input}
                   placeholder='Enter Your Designation in the Company'
                   name='position' required
+                  onKeyDown={this.handleEnterKeyPress}
                   onChange={(event) => this.setState({ position: event.target.value, error: false })}
                   value={this.state.position}
                 />
               </div>}
               {this.state.textareaError && <p className={styles.error}>Please provide less than 300 characters and atleast 50 characters.</p>}
+              {this.state.currentPage === 8 && this.state.bio.length < 50 && !this.state.textareaError && <p>No of characters left: {50 - this.state.bio.length}</p>}
+              {this.state.currentPage === 8 && this.state.bio.length > 300 && !this.state.textareaError && <p>No of characters excceded: {this.state.bio.length - 300}</p>}
               {!this.state.form && this.state.currentPage === 8 && <div className={styles.inputField} id={styles.bio}>
                 <label htmlFor="bio" className={styles.label}><span style={{ color: 'white' }}>* </span>About :</label>
                 <textarea required name="bio" id="bio" cols="30" rows="10"
-                  onChange={(event) => this.setState({ bio: event.target.value })}
+                  onChange={(event) =>{ this.setState({ bio: event.target.value }); this.setState({ textareaError: false });}}
+                  onKeyDown={this.handleEnterKeyPress}
                   className={styles.textarea} placeholder='Write Your Company here...'
                   value={this.state.bio !== '' ? this.state.bio : ''}>
                 </textarea>

@@ -34,7 +34,8 @@
 
 .bio {
     font-size: 1rem;
-    padding: 1.5rem;
+    padding: 0rem;
+    padding-bottom: 1rem;
     padding-top: 0rem;
     color: #aea9a9;
     background-color: white;
