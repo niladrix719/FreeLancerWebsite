@@ -1,6 +1,7 @@
 import styles from '@/styles/Terms_And_Conditions.module.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import Link from 'next/link'
 
 function Privacy_And_Policy(props) {
   return (
@@ -9,43 +10,39 @@ function Privacy_And_Policy(props) {
       <div className={styles.main}>
         <div className={styles.body}>
           <div className={styles.termsNConditions_form} style={{ height: '88.3vh' }}>
-            <h1 className={styles.heading}>Privacy Policy</h1>
-            <p className={styles.subHeading}>Your Agreement</p>
-            <p className={styles.para}>Welcome to Fipezo, a freelancing platform connecting clients and freelancers. Before using our services, please carefully read the following Privacy Policy (&quot;Policy&quot;) which governs your use of the Fipezo website and any associated services (collectively referred to as the &quot;Platform&quot;). By accessing or using the Platform, you agree to be bound by this Policy. If you do not agree with any part of this Policy, please refrain from using the Platform.
+            <h1 className={styles.heading}>Privacy Policy of Fipezo Website</h1>
+            <p className={styles.para}>Welcome to Fipezo! This Privacy Policy explains how we collect, use, disclose, and safeguard your personal information when you use our website (www.fipezo.com) and the services offered through it. We are committed to protecting your privacy and ensuring that your personal information is handled responsibly and in accordance with applicable data protection laws. By accessing and using our website, you consent to the practices described in this Privacy Policy.
 
-              <span className={styles.title}>General</span>
-              1.1 Acceptance of Policy: By using the Fipezo Platform, you acknowledge that you have read, understood, and agreed to this Policy, as well as our Terms of Service. This Policy constitutes a legally binding agreement between you and Fipezo.
+              <span className={styles.title}>Information We Collect:</span>
+              a. Personal Information:
 
-              1.2 Age Restriction: You must be at least 18 years old to use the Fipezo Platform. By using the Platform, you confirm that you meet this requirement.
+              When you register an account on Fipezo, we may collect information such as your name, email address, and other contact details.<br /><br />
 
-              1.3 Modification of Policy: Fipezo reserves the right to modify, update, or change this Policy at any time, without prior notice. Any modifications will become effective immediately upon posting on the Fipezo website. It is your responsibility to review this Policy periodically. Continued use of the Platform after any modifications constitutes acceptance of the updated Policy.
+              b. Non-Personal Information:
 
-              <span className={styles.title}>User Responsibilities</span>
-              2.1 Account Creation: In order to access certain features of the Fipezo Platform, you must create a user account. You are responsible for maintaining the confidentiality of your account login credentials and for all activities that occur under your account.
+              We may automatically collect non-personal information, such as your IP address, browser type, device information, and usage data, to enhance your experience on our website.
+              <span className={styles.title}>How We Use Your Information:</span>
+              a. Personal Information:
 
-              2.2 User Conduct: You agree to use the Fipezo Platform in compliance with all applicable laws and regulations. You shall not engage in any illegal, harmful, or fraudulent activities, including but not limited to theft, infringement of intellectual property rights, or any other activity that may harm Fipezo, its users, or third parties.
+              We may use your personal information to create and manage your account, provide customer support, and send you important updates and notifications.<br /><br />
 
-              2.3 Content Accuracy: You are solely responsible for the accuracy and legality of any content you post, submit, or provide through the Fipezo Platform. Fipezo does not guarantee the accuracy, completeness, or reliability of any user-generated content.
+              b. Non-Personal Information:
 
-              <span className={styles.title}>Fipezo&apos;s Role and Limitations</span>
-              3.1 Platform Provider: Fipezo acts solely as a platform to facilitate connections between clients and freelancers. Fipezo does not participate in any contractual agreements or assume any responsibility for the services provided by freelancers.
+              Non-personal information is used to analyze trends, improve our website's performance, and enhance user experience.
+              Cookies and Similar Technologies:
+              We may use cookies and similar technologies (e.g., web beacons, pixels) to collect information about your interactions with our website. Cookies are small data files stored on your device that help us remember your preferences and understand how you use our website. You can manage your cookie preferences through your browser settings.
+              <span className={styles.title}>Data Security:</span>
+              We take reasonable measures to safeguard your personal information from unauthorized access, disclosure, alteration, or destruction. However, no data transmission over the internet or electronic storage is entirely secure, and we cannot guarantee absolute security.
 
-              3.2 No Liability for Theft or Others: Fipezo shall not be responsible for any theft, loss, damage, or any other harm resulting from the use of the Platform, including any transactions or interactions between users. Users are solely responsible for their own actions and interactions.
+              <span className={styles.title}>Children's Privacy:</span>
+              Fipezo is not intended for use by children under the age of 13. We do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe your child has provided us with personal information, please contact us, and we will promptly delete such data.
 
-              3.3 Third-Party Services: Fipezo may provide links or integrate with third-party websites, applications, or services. These third-party services are not under the control of Fipezo, and Fipezo assumes no responsibility for their content, accuracy, availability, or any damages incurred by using such services.
+              <span className={styles.title}>Changes to this Privacy Policy:</span>
+              We may update this Privacy Policy from time to time to reflect changes in our practices or for other operational, legal, or regulatory reasons. When we make significant changes, we will provide notice by posting a prominent notice on our website.
 
-              <span className={styles.title}>Dispute Resolution</span>
-              4.1 User Disputes: Fipezo is not responsible for disputes or disagreements that may arise between users of the Platform. Any resolution of such disputes must be conducted directly between the parties involved.
-
-              4.2 Release of Claims: In the event of a dispute with another user or third party, you release Fipezo, its officers, directors, employees, agents, and affiliates from any and all claims, demands, and damages (actual and consequential) of every kind and nature, known and unknown, arising out of or in any way connected with such disputes.
-
-              <span className={styles.title}>Termination</span>
-              5.1 Termination by Fipezo: Fipezo reserves the right, at its sole discretion, to suspend, terminate,</p>
+              <span className={styles.title}>Contact Us:</span>
+              If you have any questions or concerns about this Privacy Policy or your personal information, please contact us at <Link href='mailto:fipezocare@gmail.com'>fipezocare@gmail.com</Link>.</p>
           </div>
-          {/* <div className={styles.btns}>
-            <button className={styles.btn}>I Agree</button>
-            <button className={styles.btn}>Cancel</button>
-          </div> */}
         </div>
       </div>
       <Footer />

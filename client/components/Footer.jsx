@@ -45,7 +45,7 @@ function Footer() {
       <div className={styles.lower}>
         <div className={styles.company}>
           <Link className={styles.logo} href='/'>
-            <i style={{fontWeight: '600'}}>Fipezo</i>
+            <i style={{fontWeight: '800', letterSpacing: '-0.5px'}}>Fipezo</i>
           </Link>
           <div className={styles.copyri8}>
             <p>Copyright © 2023 Fipezo, All rights reserved.</p>

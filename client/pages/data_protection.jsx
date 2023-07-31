@@ -9,43 +9,43 @@ function Data_Protection(props) {
       <div className={styles.main}>
         <div className={styles.body}>
           <div className={styles.termsNConditions_form} style={{ height: '88.3vh' }}>
-            <h1 className={styles.heading}>Data Protection Policy</h1>
-            <p className={styles.subHeading}>Your Agreement</p>
-            <p className={styles.para}>Welcome to Fipezo, a platform committed to protecting your data and privacy. This Data Protection Policy (&quot;Policy&quot;) outlines how we collect, use, and safeguard your personal information when you use the Fipezo website and any associated services (collectively referred to as the &quot;Platform&quot;). By accessing or using the Platform, you agree to the practices described in this Policy. If you do not agree with any part of this Policy, please refrain from using the Platform.
+            <h1 className={styles.heading}>User Data Safe Commitment by FIPEZO Website</h1>
+            <p className={styles.para}>At FIPEZO, we prioritize the security and privacy of our users&apos; data. We are committed to maintaining the highest standards of data protection to ensure that your personal information remains safe and secure. Our commitment to safeguarding your data is reflected in the following principles:
 
-              <span className={styles.title}>Information Collection and Use</span>
-              1.1 Personal Data: We may collect personal information, such as your name, email address, and contact details, when you create an account or interact with the Platform. This data is used to provide and improve our services and communicate with you.
+              <span className={styles.title}>Data Encryption:</span>
+              We employ industry-standard encryption protocols to protect the transmission and storage of your data. This ensures that any data you share with us remains confidential and cannot be accessed by unauthorized parties.
 
-              1.2 Usage Data: When you access the Platform, we may automatically collect certain information about your device, including your IP address, browser type, and usage patterns. This data is used to analyze user behavior and improve the Platform&apos;s performance.
+              <span className={styles.title}>Secure Data Storage:</span>
+              All user data is stored in highly secure data centres with strict access controls. We regularly review and update our security measures to stay ahead of potential threats.
 
-              <span className={styles.title}>Data Storage and Security</span>
-              2.1 Data Retention: We will retain your personal information only for as long as necessary to fulfill the purposes outlined in this Policy, or as required by law.
+              <span className={styles.title}>Limited Access:</span>
+              Only authorized personnel with a genuine need to access your data, such as for customer support or technical assistance, will be allowed to do so. All our employees undergo extensive training on data protection and privacy.
 
-              2.2 Data Security: We take reasonable measures to protect your data from unauthorized access, disclosure, or alteration. However, no data transmission over the internet or electronic storage is entirely secure, and we cannot guarantee absolute security.
+              <span className={styles.title}>No Third-Party Sharing:</span>
+              We do not sell, trade, or rent your personal information to third parties. Your data is used solely to provide you with the services you have requested from us.
 
-              <span className={styles.title}>Cookies and Tracking Technologies</span>
-              3.1 Cookies: The Platform may use cookies and similar tracking technologies to enhance your user experience and collect information about your interactions with the Platform.
+              <span className={styles.title}>Anonymized Analytics:</span>
+              We may use anonymized data for analytical purposes to improve our services and user experience. However, this data will never contain any personally identifiable information.
 
-              3.2 Third-Party Services: We may use third-party services that utilize cookies and other tracking technologies. These services are governed by their respective privacy policies.
+              <span className={styles.title}>Consent-Based Communication:</span>
+              We will always seek your explicit consent before sending you any marketing or promotional materials. You have full control over the communication preferences and can opt out at any time.
 
-              <span className={styles.title}>Your Choices</span>
-              4.1 Account Information: You have the right to access, update, and delete your personal information by managing your account settings.
+              <span className={styles.title}>Compliance with Laws:</span>
+              We strictly adhere to all applicable data protection and privacy laws to ensure that your rights are protected.
 
-              4.2 Marketing Communications: You can opt-out of receiving promotional emails or notifications from us by following the unsubscribe instructions included in the messages.
+              <span className={styles.title}>Regular Security Audits:</span>
+              We conduct regular security audits and vulnerability assessments to identify and address potential weaknesses in our systems.
 
-              <span className={styles.title}>Changes to this Policy</span>
-              5.1 Policy Updates: Fipezo may modify or update this Policy from time to time. We will notify you of significant changes through the Platform or other communication channels.
+              <span className={styles.title}>User Account Security:</span>
+              We encourage users to create strong and unique passwords for their accounts. Additionally, we offer optional two-factor authentication for an added layer of security.
 
-              <span className={styles.title}>Contact Us</span>
-              6.1 If you have any questions or concerns about this Policy or your data, please contact us at privacy@fipezo.com.
+              <span className={styles.title}>Transparency and Communication:</span>
+              In the event of any data breach or security incident, we will promptly notify affected users and take necessary measures to rectify the situation.
 
-              <span className={styles.title}>Termination</span>
-              7.1 Termination by Fipezo: Fipezo reserves the right, at its sole discretion, to suspend, terminate,</p>
+              <span className='block mt-4'>Your trust is of utmost importance to us. We are continuously working to enhance our data security practices and welcome feedback from our users to further improve our measures.</span>
+
+              <span className='block mt-4'>Thank you for choosing FIPEZO. We remain committed to protecting your data and providing you with a safe and secure online experience.</span></p>
           </div>
-          {/* <div className={styles.btns}>
-            <button className={styles.btn}>I Agree</button>
-            <button className={styles.btn}>Cancel</button>
-          </div> */}
         </div>
       </div>
       <Footer />
