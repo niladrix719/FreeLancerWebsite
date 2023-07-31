@@ -52,7 +52,7 @@ function Careers(props) {
         </div>
 
         <p className={styles.p}>
-          We are hiring! If you are a talented individual looking for exciting opportunities, we'd love to hear from you.
+          We are hiring! If you are a talented individual looking for exciting opportunities, we&apos;d love to hear from you.
         </p>
         <p className={styles.p}>
           Feel free to send us your resume for future consideration at <Link href='mailto:careers@fipezo.com'>careers@fipezo.com</Link>.

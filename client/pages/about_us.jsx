@@ -21,7 +21,7 @@ function About_Us(props) {
               We envision a world where freelancers can unleash their true potential, pursuing their passions and shaping their own destinies. We strive to create a community that fosters collaboration, encourages creativity, and empowers freelancers to take control of their careers.
 
               <span className={styles.title}>What Sets Us Apart:</span>
-              Diverse Range of Talents: Fipezo boasts a diverse pool of talents, covering a wide array of industries and expertise. Whether you're a creative artist, a tech guru, a marketing mastermind, or a skilled professional in any field, Fipezo is the platform to showcase your skills and find projects that align with your strengths.<br /><br />
+              Diverse Range of Talents: Fipezo boasts a diverse pool of talents, covering a wide array of industries and expertise. Whether you&apos;re a creative artist, a tech guru, a marketing mastermind, or a skilled professional in any field, Fipezo is the platform to showcase your skills and find projects that align with your strengths.<br /><br />
 
               User-Friendly Interface: Our user-friendly platform is designed to make your freelancing journey smooth and hassle-free. With an intuitive interface and comprehensive features, you can easily create a professional profile, search for relevant projects, communicate with clients, and get paid securely.<br /><br />
 
@@ -30,7 +30,7 @@ function About_Us(props) {
               Supportive Community: Joining Fipezo means becoming part of a supportive and inspiring community of freelancers. Share experiences, exchange knowledge, and collaborate with fellow freelancers, empowering each other to grow and excel in your respective fields.
 
               <span className={styles.title}>Join Us Today:</span>
-              Are you ready to take your freelancing career to new heights? Whether you're just starting or a seasoned pro, Fipezo welcomes you with open arms. Join our platform today and embark on an exciting journey filled with endless opportunities and the freedom to be your own boss.</p><br /><br />
+              Are you ready to take your freelancing career to new heights? Whether you&apos;re just starting or a seasoned pro, Fipezo welcomes you with open arms. Join our platform today and embark on an exciting journey filled with endless opportunities and the freedom to be your own boss.</p><br /><br />
 
             <span className={styles.para} >Join Fipezo and discover the world of limitless possibilities for freelancers like you! </span>
           </div>
