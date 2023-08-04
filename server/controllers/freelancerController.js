@@ -39,9 +39,10 @@ async function registerFreelancer(req, res) {
       }
 
       const resizedProfilePicture = await resizeImage(req.files['profilePicture'][0], 400, 300);
+      const resizedCoverPicture = await resizeImage(req.files['coverPicture'][0], 1600, 1200);
 
       const resizedWorks = await Promise.all(
-        req.files['works[]'].map((file) => resizeImage(file, 400, 300))
+        req.files['works[]'].map((file) => resizeImage(file, 1200, 900))
       );
 
       const freelancerData = new freelancerCollection({
@@ -55,7 +56,7 @@ async function registerFreelancer(req, res) {
         bio: req.body.bio,
         equipments: req.body.equipments,
         profilePicture: resizedProfilePicture.filename,
-        coverPicture: req.files['coverPicture'][0].filename,
+        coverPicture: resizedCoverPicture.filename,
         aadhaarCard: req.files['aadhaarCard'][0].filename,
         panCard: req.files['panCard'][0].filename,
         works: resizedWorks.map((file) => file.filename),
@@ -72,7 +73,7 @@ async function registerFreelancer(req, res) {
 
       const filePromises = [];
       filePromises.push(uploadFile(resizedProfilePicture));
-      filePromises.push(uploadFile(req.files['coverPicture'][0]));
+      filePromises.push(uploadFile(resizedCoverPicture));
       filePromises.push(uploadFile(req.files['aadhaarCard'][0]));
       filePromises.push(uploadFile(req.files['panCard'][0]));
 
@@ -87,6 +88,7 @@ async function registerFreelancer(req, res) {
       await unlinkFile('uploads/'+req.files['aadhaarCard'][0].filename);
       await unlinkFile('uploads/'+req.files['panCard'][0].filename);
       await unlinkFile(resizedProfilePicture.path);
+      await unlinkFile(resizedCoverPicture.path);
 
       req.files['works[]'].forEach(file => {
         unlinkFile('uploads/'+file.filename);
