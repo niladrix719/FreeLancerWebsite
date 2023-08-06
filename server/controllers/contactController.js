@@ -3,6 +3,7 @@ const secret = process.env.JWT_SECRET;
 const contactCollection = require('../models/contactModel');
 const axios = require('axios');
 const userCollection = require('../models/userModel');
+const emailCollection = require('../models/emailModel');
 
 async function contactUs(req, res) {
   try {
@@ -62,7 +63,37 @@ async function fetchContactUs(req, res) {
   }
 }
 
+// notify email
+
+async function notifyEmail(req, res) {
+  try {
+    const email = req.body.email;
+    const device = req.body.device;
+    if(!email){
+      return res.sendStatus(403);
+    }
+
+    const existingEmail = await emailCollection.findOne({ email: email, device: device });
+    if(existingEmail){
+      return res.json({ message: 'Email already exists' });
+    }
+
+    const emailData = new emailCollection({
+      email: email,
+      device: device
+    });
+
+    const postData = await emailData.save();
+    res.status(200).send(postData);
+  }
+  catch (error) {
+    console.error(error);
+    res.status(500).send('Internal server error');
+  }
+}
+
 module.exports = {
   contactUs,
-  fetchContactUs
+  fetchContactUs,
+  notifyEmail
 };

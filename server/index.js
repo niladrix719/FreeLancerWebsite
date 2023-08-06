@@ -14,7 +14,7 @@ const { registerFreelancer,
   deleteFreelancerProfile,
   verifyFreelancerProfile,
   getFeaturedFreelancerProfiles } = require('./controllers/freelancerController');
-const { contactUs, fetchContactUs } = require('./controllers/contactController');
+const { contactUs, fetchContactUs, notifyEmail } = require('./controllers/contactController');
 const { addHire, getHires, getRequests , cancelRequest , deleteRequest , acceptRequest } = require('./controllers/hireController');
 const jwt = require('jsonwebtoken');
 const { addReview, getReviews } = require('./controllers/reviewController');
@@ -71,6 +71,7 @@ app.get('/api/navbar', verifyToken, getNavbar);
 app.post('/api/add/review', verifyToken, addReview);
 app.get('/api/reviews/:id', getReviews);
 app.post('/api/add/hire', verifyToken, addHire);
+app.post('/api/notify', notifyEmail);
 app.put('/api/profile/user/edit', userProfilePic, verifyToken, editUserProfile);
 app.put('/api/profile/company/edit', companyEditUpload, verifyToken, editCompanyProfile);
 app.get('/api/profile', verifyToken, getProfile);

@@ -56,12 +56,12 @@ function BoxSection() {
           </Link>
         </div>
         <div className={styles.box} id={styles.box4}>
-          <div className={styles.left4}>
+          <Link href='/guides_and_reviews'  className={styles.left4}>
             <div className={styles.plus}>
               <BsFillPlusCircleFill />
             </div>
             <p className={styles.p6}>Guides &amp; Reviews</p>
-          </div>
+          </Link>
           <Link href='/careers' className={styles.right4}>
             <div className={styles.plus}>
               <BsFillPlusCircleFill style={{ color : '#f71a42' }} />
