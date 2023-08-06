@@ -83,7 +83,8 @@
     gap: 1rem;
     align-items: center;
     height: 3rem;
-    width: 15rem;
+    width: 13rem;
+    font-size: 0.9rem;
 }
 
 .divider {
@@ -377,7 +378,7 @@
 
 .img {
     height: auto;
-    width: 300px;
+    width: 280px;
 }
 
 .check {

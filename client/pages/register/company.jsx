@@ -1,7 +1,6 @@
 import Navbar from '@/components/Navbar'
 import React from 'react'
 import styles from '../../styles/Freelancer.module.css'
-import { AiOutlineCheck } from 'react-icons/ai'
 import Image from 'next/image'
 import Footer from '@/components/Footer'
 import CompanyVerification from '@/components/CompanyVerification'
@@ -513,16 +512,16 @@ class Company extends React.Component {
               <div className={styles.freelancer}>
                 <h1 className={styles.minHeading}>For Companies</h1>
                 <div className={styles.feature}>
-                  <AiOutlineCheck className={styles.check} style={{ color: "black", fontSize: '32px' }} /><p>Helps You get The right Talent for your Project</p>
+                  &#x2713;<p>Helps You get The right Talent for your Project</p>
                 </div>
                 <div className={styles.feature}>
-                  <AiOutlineCheck className={styles.check} style={{ color: "black", fontSize: '16px' }} /><p>All Verified Freelancers</p>
+                  &#x2713;<p>All Verified Freelancers</p>
                 </div>
                 <div className={styles.feature}>
-                  <AiOutlineCheck className={styles.check} style={{ color: "black", fontSize: '32px' }} /><p>Maintains Privacy and Fully Transparent</p>
+                  &#x2713;<p>Maintains Privacy and Fully Transparent</p>
                 </div>
               </div>
-              <Image className={styles.img} src='/compa.png' alt='registration-image' width={250} height={250} />
+              <Image className={styles.img} src='/ComX.png' alt='registration-image' width={250} height={250} />
             </div>
             <hr className={styles.divider} />
           </div>}
