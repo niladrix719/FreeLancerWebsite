@@ -42,7 +42,7 @@ function Contact(props) {
     })
       .then(res => res.json())
       .then(response => {
-        if (response.status === 'success') {
+        if (response.message === 'success') {
           alert('Your message has been sent successfully!');
           captchaRef.current.reset();
         } else {

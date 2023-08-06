@@ -21,7 +21,7 @@ async function contactUs(req, res) {
           message: req.body.message
         });
         const postData = await contactData.save();
-        res.status(200);
+        res.status(200).send({message: 'success'});
       } else {
         res.status(500).send('CAPTCHA verification failed');
       }
