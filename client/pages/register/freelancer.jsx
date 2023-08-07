@@ -230,6 +230,12 @@ class Freelancer extends React.Component {
     if (index === 16) {
       this.setState({ termsAndConditions: val });
     }
+    if(index === 17 || index === 18 || index === 19 || index === 20 || index === 21 || index === 22 || index === 23 || index === 24 || index === 25) {
+      const newIndex = index - 17;
+      this.setState((prevState) => ({
+        works: [...prevState.works.slice(0, newIndex), val, ...prevState.works.slice(newIndex)],
+      }));
+    }
   }
 
   handleTextChange = (event, val) => {
@@ -610,6 +616,7 @@ class Freelancer extends React.Component {
                 setUser={this.props.setUser}
                 company={this.props.company}
                 setCompany={this.props.setCompany}
+                profession={this.state.profession}
               />}
             </form>
           </div>

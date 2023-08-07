@@ -24,6 +24,15 @@ function ProfileBioCard(props) {
         <p className='bg-red-500 p-2 text-sm text-white rounded-3xl px-3 mb-8'>{props.freelancer.profession.charAt(0).toUpperCase() + props.freelancer.profession.slice(1)}</p>
         {props.freelancer.featured && <p className='bg-violet-500 text-sm p-2 mb-8 text-white rounded-3xl px-3 flex items-center'><AiOutlineThunderbolt style={{ color: 'yellow' }} className='mr-2' />Featured Freelancer</p>}
       </div>
+      {props.copied && (
+        <div className={styles.copy}>
+          URL copied to clipboard!
+        </div>
+      )}
+      <div className='flex w-full px-4 flex-wrap'>
+        <p className='bg-white p-2 text-sm w-full text-black border-2 flex justify-center mb-8 rounded-3xl'>Rs. {props.freelancer.rate} / Day</p>
+      </div>
+      <p className={`w-full ${styles.bio} break-words max-w-xs`}>{props.freelancer.bio}</p>
       <RWebShare
         data={{
           text: "Share the profile of " + props.freelancer.firstname + " " + props.freelancer.lastname + " on your social media!",
@@ -33,15 +42,6 @@ function ProfileBioCard(props) {
       >
         <button className={styles.share}><FaShareSquare style={{color: "white",}} /> Share Profile</button>
       </RWebShare>
-      {props.copied && (
-        <div className={styles.copy}>
-          URL copied to clipboard!
-        </div>
-      )}
-      <p className={`w-full ${styles.bio} break-words max-w-xs`}>{props.freelancer.bio}</p>
-      <div className='flex w-full px-4 flex-wrap'>
-        <p className='bg-white p-2 text-sm w-full text-black border-2 flex justify-center mb-8 rounded-3xl'>Rs. {props.freelancer.rate} / Day</p>
-      </div>
       <div className={styles.equipment_available}>
         <h1 className={styles.title}>Equipments Available</h1>
         <p className={`w-full break-words max-w-xs`}>{props.freelancer.equipments}</p>

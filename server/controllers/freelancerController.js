@@ -5,7 +5,7 @@ const util = require('util');
 const unlinkFile = util.promisify(fs.unlink);
 const jwt = require('jsonwebtoken');
 const secret = process.env.JWT_SECRET;
-const { uploadFile , deleteFile} = require('../middlewares/s3');
+const { uploadFile, deleteFile } = require('../middlewares/s3');
 const sharp = require('sharp');
 const path = require('path');
 
@@ -41,9 +41,13 @@ async function registerFreelancer(req, res) {
       const resizedProfilePicture = await resizeImage(req.files['profilePicture'][0], 400, 300);
       const resizedCoverPicture = await resizeImage(req.files['coverPicture'][0], 1600, 1200);
 
-      const resizedWorks = await Promise.all(
-        req.files['works[]'].map((file) => resizeImage(file, 1200, 900))
-      );
+      let resizedWorks = [];
+
+      if (req.body.profession === 'photographer' || req.body.profession === 'drone_operator') {
+        resizedWorks = await Promise.all(
+          req.files['works[]']?.map((file) => resizeImage(file, 1200, 900))
+        );
+      }
 
       const freelancerData = new freelancerCollection({
         uid: req.body.uid,
@@ -59,7 +63,7 @@ async function registerFreelancer(req, res) {
         coverPicture: resizedCoverPicture.filename,
         aadhaarCard: req.files['aadhaarCard'][0].filename,
         panCard: req.files['panCard'][0].filename,
-        works: resizedWorks.map((file) => file.filename),
+        works: req.body.profession === 'photographer' || req.body.profession === 'drone_operator' ? resizedWorks.map((file) => file.filename) : req.body.works,
         links: req.body.links,
         rating: 0,
         reviewCount: 0,
@@ -77,26 +81,30 @@ async function registerFreelancer(req, res) {
       filePromises.push(uploadFile(req.files['aadhaarCard'][0]));
       filePromises.push(uploadFile(req.files['panCard'][0]));
 
-      resizedWorks.forEach(file => {
-        filePromises.push(uploadFile(file));
-      });
+      if (req.body.profession === 'photographer' || req.body.profession === 'drone_operator') {
+        resizedWorks.forEach(file => {
+          filePromises.push(uploadFile(file));
+        });
+      }
 
       await Promise.all(filePromises);
 
-      await unlinkFile('uploads/'+req.files['profilePicture'][0].filename);
-      await unlinkFile('uploads/'+req.files['coverPicture'][0].filename);
-      await unlinkFile('uploads/'+req.files['aadhaarCard'][0].filename);
-      await unlinkFile('uploads/'+req.files['panCard'][0].filename);
+      await unlinkFile('uploads/' + req.files['profilePicture'][0].filename);
+      await unlinkFile('uploads/' + req.files['coverPicture'][0].filename);
+      await unlinkFile('uploads/' + req.files['aadhaarCard'][0].filename);
+      await unlinkFile('uploads/' + req.files['panCard'][0].filename);
       await unlinkFile(resizedProfilePicture.path);
       await unlinkFile(resizedCoverPicture.path);
 
-      req.files['works[]'].forEach(file => {
-        unlinkFile('uploads/'+file.filename);
-      });
+      if (req.body.profession === 'photographer' || req.body.profession === 'drone_operator') {
+        req.files['works[]'].forEach(file => {
+          unlinkFile('uploads/' + file.filename);
+        });
 
-      resizedWorks.forEach(file => {
-        unlinkFile(file.path);
-      });
+        resizedWorks.forEach(file => {
+          unlinkFile(file.path);
+        });
+      }
 
       const user = await freelancerCollection.findOne({ phone: req.body.phone });
 

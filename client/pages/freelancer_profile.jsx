@@ -109,7 +109,7 @@ function Freelancer_Profile(props) {
       <Cover coverPicture={freelancer.coverPicture} />
       <div className={styles.profile_details}>
         {freelancer.links && <ProfileBioCard freelancer={freelancer} />}
-        {isFreelancerLoaded && <Details works={freelancer.works} reviews={reviews} handleClick={handleClick} />}
+        {isFreelancerLoaded && <Details profession={freelancer.profession} works={freelancer.works} reviews={reviews} handleClick={handleClick} />}
         <div className={styles.btnBox}>
           <Link className={styles.btn} id={styles.hire} href='/my_requests'>Requests</Link>
           <div className={styles.btn} id={styles.logout} onClick={handleLogout}>

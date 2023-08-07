@@ -3,6 +3,7 @@ import ProfileNav from '@/components/ProfileNav'
 import Reviews from '@/components/Reviews'
 import PortfolioCard from '@/components/PortfolioCard'
 import { useEffect, useState } from 'react'
+import ReactPlayer from 'react-player'
 
 function Details(props) {
   const [showReviews, setShowReviews] = useState(false);
@@ -32,7 +33,10 @@ function Details(props) {
           if (index > 5 && !showMore)
             return;
           return (
-            <PortfolioCard key={index} i={index} work={work} handleClick={props.handleClick} />
+            <>
+              {(props.profession === 'photographer' || props.profession === 'drone_operator') && <PortfolioCard key={index} i={index} work={work} handleClick={props.handleClick} />}
+              {props.profession === 'cinematographer' && <div className='mb-4'><ReactPlayer controls={true} width='280px' height='250px' url={work} /></div>}
+            </>
           )
         })}
       </div>}

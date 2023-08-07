@@ -1,7 +1,7 @@
 import styles from '../styles/Verification.module.css';
 import Image from 'next/image';
 import { BsCheckLg } from 'react-icons/bs';
-import { AiOutlinePlus , AiFillFile } from 'react-icons/ai';
+import { AiOutlinePlus, AiFillFile } from 'react-icons/ai';
 import { use, useEffect, useState } from 'react';
 import TermsAndConditions from './TermsAndConditions';
 
@@ -31,8 +31,8 @@ function Verification(props) {
     }
 
     if (file.size > 1048576 && index === 4) {
-      props.setWarns(true,0);
-      props.setPicError(false,1);
+      props.setWarns(true, 0);
+      props.setPicError(false, 1);
       return;
     }
 
@@ -43,8 +43,8 @@ function Verification(props) {
     }
 
     if (file.size > 1048576 && index === 5) {
-      props.setWarns(true,1);
-      props.setPicError(false,2);
+      props.setWarns(true, 1);
+      props.setPicError(false, 2);
       return;
     }
 
@@ -55,8 +55,8 @@ function Verification(props) {
     }
 
     if (file.size > 1048576 && index === 6) {
-      props.setWarns(true,2);
-      props.setPicError(false,3);
+      props.setWarns(true, 2);
+      props.setPicError(false, 3);
       return;
     }
 
@@ -66,8 +66,8 @@ function Verification(props) {
     }
 
     if (file.size > 1048576 && index === 7) {
-      props.setWarns(true,3);
-      props.setPicError(false,4);
+      props.setWarns(true, 3);
+      props.setPicError(false, 4);
       return;
     }
 
@@ -77,7 +77,7 @@ function Verification(props) {
     }
 
     if (file.size > 1048576) {
-      props.setWarns(true,index);
+      props.setWarns(true, index);
       return;
     }
 
@@ -96,23 +96,23 @@ function Verification(props) {
 
     reader.readAsDataURL(file);
 
-    if(works.length >= 7 && (index === 3 || index === 2 || index === 1 || index === 0 || index === 8 || index === 9 || index === 10 || index === 11)) {
+    if (works.length >= 7 && (index === 3 || index === 2 || index === 1 || index === 0 || index === 8 || index === 9 || index === 10 || index === 11)) {
       props.checkWorks(1);
     }
 
-    if(index === 4){
+    if (index === 4) {
       props.checkWorks(4);
     }
 
-    if(index === 5){
+    if (index === 5) {
       props.checkWorks(5);
     }
 
-    if(index === 6){
+    if (index === 6) {
       props.checkWorks(2);
     }
 
-    if(index === 7){
+    if (index === 7) {
       props.checkWorks(3);
     }
   };
@@ -237,9 +237,9 @@ function Verification(props) {
         </label>
       </div>
       <h1 className={styles.heading}>Add Your Works
-      {props.worksError && <p className={styles.err}>Please Provide atleast 8 Works for you</p>}
+        {props.worksError && <p className={styles.err}>Please Provide atleast 8 Works for you</p>}
       </h1>
-      <div className={styles.portfolio}>
+      {(props.profession === 'photographer' || props.profession === 'drone_operator') && <div className={styles.portfolio}>
         <div className={styles.addBox} style={{
           backgroundImage: images[0] ? `url(${images[0]})` : `none`,
         }}>
@@ -296,10 +296,60 @@ function Verification(props) {
           {!images[11] && <AiOutlinePlus className={styles.plus} style={{ color: '#1f1c1c' }} />}
           {props.warns[11] && <p className={styles.warn} id={styles.warn}>File size exceeds maximum limit of 1MB</p>}
         </div>
-      </div>
+      </div>}
+      {props.profession === 'cinematographer' && <div className={styles.portfolio}>
+        <input type="url" className={styles.input} placeholder="https://www.youtube.com/example"
+          onChange={(e) => {
+            props.getVerificationDetails(e.target.value, 17)
+          }}
+          required
+        />
+        <input type="url" className={styles.input} placeholder="https://www.youtube.com/example"
+          onChange={(e) => {
+            props.getVerificationDetails(e.target.value, 18)
+          }}
+          required
+        />
+        <input type="url" className={styles.input} placeholder="https://www.youtube.com/example"
+          onChange={(e) => {
+            props.getVerificationDetails(e.target.value, 19)
+          }}
+          required
+        />
+        <input type="url" className={styles.input} placeholder="https://www.youtube.com/example"
+          onChange={(e) => {
+            props.getVerificationDetails(e.target.value, 20)
+          }}
+          required
+        />
+        <input type="url" className={styles.input} placeholder="https://www.youtube.com/example"
+          onChange={(e) => {
+            props.getVerificationDetails(e.target.value, 21)
+          }}
+          required
+        />
+        <input type="url" className={styles.input} placeholder="https://www.youtube.com/example"
+          onChange={(e) => {
+            props.getVerificationDetails(e.target.value, 22)
+          }}
+          required
+        />
+        <input type="url" className={styles.input} placeholder="https://www.youtube.com/example"
+          onChange={(e) => {
+            props.getVerificationDetails(e.target.value, 23)
+          }}
+          required
+        />
+        <input type="url" className={styles.input} placeholder="https://www.youtube.com/example"
+          onChange={(e) => {
+            props.getVerificationDetails(e.target.value, 24)
+          }}
+          required
+        />
+      </div>}
       <div className={styles.check}><input type="checkbox" required checked={termsAndConditions} className={styles.checkbox}
         onChange={(e) => {
-          props.getVerificationDetails(e.target.checked, 16)
+          props.getVerificationDetails(e.target.checked, 25)
           setTermsAndConditions(e.target.checked)
         }}
       />
