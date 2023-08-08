@@ -9,6 +9,8 @@ export default function Navbar(props) {
   const [border, setBorder] = useState('0px');
   const [color, setColor] = useState(props.color);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [display, setDisplay] = useState('none');
+  const [display2, setDisplay2] = useState('none');
   const router = useRouter();
 
   useEffect(() => {
@@ -99,14 +101,19 @@ export default function Navbar(props) {
             </Link>
           </li>
 
-          <li className={styles.navElement}>
+          <li className={styles.navElement} onClick={() => {
+            if(display === 'none')
+              setDisplay('flex')
+            else
+              setDisplay('none')
+          }} onMouseEnter={() => setDisplay('flex')} onMouseLeave={() => setDisplay('none')}>
             <span>
               Register&nbsp;&nbsp;
             </span>
             <BiChevronDown className={styles.icon}
               style={{ fontSize: 15, color: color }}
             />
-            <div className={styles.dropDown} id={styles.box}>
+            <div className={styles.dropDown} id={styles.box} style={{display: display}}>
               <Link className={styles.optionBox} href='/register/freelancer'>
                 <h1 className={styles.mainText}>As a Freelancer</h1>
                 <p className={styles.subText}>Empowering Your Career: Registering as a Freelancer</p>
@@ -118,12 +125,17 @@ export default function Navbar(props) {
             </div>
           </li>
 
-          <li className={styles.navElement}>
+          <li className={styles.navElement} onClick={() => {
+            if(display2 === 'none')
+              setDisplay2('flex')
+            else
+              setDisplay2('none')
+          }} onMouseEnter={() => setDisplay2('flex')} onMouseLeave={() => setDisplay2('none')}>
             <span>Help&nbsp;&nbsp;</span>
             <BiChevronDown className={styles.icon}
               style={{ fontSize: 15, color: color }}
             />
-            <div className={styles.dropDown} id={styles.box}>
+            <div className={styles.dropDown} id={styles.box} style={{display: display2}}>
               <Link className={styles.optionBox} href='/contact'>
                 <h1 className={styles.mainText}>Contact Us</h1>
                 <p className={styles.subText}>Reach out to use for an query or help</p>

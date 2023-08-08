@@ -454,7 +454,12 @@ class Freelancer extends React.Component {
                 <input type='text' className={styles.input}
                   placeholder='Enter Your First name'
                   name='firstname' id='firstname' required
-                  onChange={(event) => this.setState({ firstName: event.target.value, error: false })}
+                  onChange={(event) => {
+                    const inputValue = event.target.value;
+                    if (/^[a-zA-Z]*$/.test(inputValue)) {
+                      this.setState({ firstName: inputValue, error: false });
+                    }
+                  }}
                   onKeyDown={this.handleEnterKeyPress}
                   value={this.state.firstName}
                   maxLength={13}
@@ -466,7 +471,12 @@ class Freelancer extends React.Component {
                   placeholder='Enter Your Last name'
                   name='lastname' id='lastname' required
                   onKeyDown={this.handleEnterKeyPress}
-                  onChange={(event) => this.setState({ lastName: event.target.value, error: false })}
+                  onChange={(event) => {
+                    const inputValue = event.target.value;
+                    if (/^[a-zA-Z]*$/.test(inputValue)) {
+                      this.setState({ lastName: inputValue, error: false });
+                    }
+                  }}
                   value={this.state.lastName}
                   maxLength={13}
                 />
