@@ -145,7 +145,7 @@ function Verification(props) {
           <p className={styles.navText}>Verification</p>
         </div>
         <div className={styles.navStep}>
-          <Image src='/tick.png' width={80} height={80} alt='verified-tick' />
+          <Image src='/tickx.png' width={80} height={80} alt='verified-tick' />
         </div>
         <div className={styles.navRoad}></div>
       </div>

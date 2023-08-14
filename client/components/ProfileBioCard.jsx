@@ -16,7 +16,7 @@ function ProfileBioCard(props) {
       <div className={styles.profile_pic} style={{backgroundImage: `url(${process.env.SERVER_URL}/images/${props.freelancer.profilePicture})`}}>
       </div>
       <h1 className={styles.name}><span className='w-34 truncate' style={{maxWidth: '11rem'}}>{props.freelancer.firstname} {props.freelancer.lastname}</span> <span className={styles.con}><Image className={styles.blueTick} onMouseOver={() => setDisplay('flex')} onMouseOut={() => setDisplay('none')}
-       src={props.freelancer.verified ? '/tick.png' : '/tickG.png'} height='40' width='40' alt="verified-tick" /> {props.freelancer.verified && <div className={styles.overTick} style={{ display: display }}><span>Verified</span><div className={styles.rectangle}></div></div>}</span>
+       src={props.freelancer.verified ? '/tickx.png' : '/tickGx.png'} height='40' width='40' alt="verified-tick" /> {props.freelancer.verified && <div className={styles.overTick} style={{ display: display }}><span>Verified</span><div className={styles.rectangle}></div></div>}</span>
         &nbsp;<IoLocationSharp style={{ fontSize: 12, color: 'red' }} />&nbsp;
         <span className={styles.location}>{props.freelancer.location}</span>
       </h1>
