@@ -23,7 +23,7 @@
     top: -2.5rem;
     border: 1px solid lightgray;
     height: 5rem;
-    width: 12.5rem;
+    width: 13rem;
     left: 1rem;
     background-color: white;
     border-radius: 1rem;
@@ -38,10 +38,10 @@
 
 .btn {
     background-color: #3fcc76;
-    padding: 0.5rem;
+    padding: 0.5rem 0.25rem;
     border-radius: 5px;
     box-shadow: var(--shadow);
-    font-size: 0.9rem;
+    font-size: 0.75rem;
     font-weight: 500;
     color: white;
     width: 50%;

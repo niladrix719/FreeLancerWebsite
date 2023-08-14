@@ -110,7 +110,7 @@
     -webkit-background-clip: text;
     -moz-background-clip: text;
     background-clip: text;
-    -webkit-text-fill-color: transparent; 
+    -webkit-text-fill-color: transparent;
     -moz-text-fill-color: transparent;
     font-size: 2.5rem;
     font-weight: 700;
@@ -154,11 +154,17 @@
     }
 
     .span{
-        font-size: 1rem;
+        font-size: 0.85rem;
+        display: inline-block;
     }
 
     .color{
-        font-size: 1.5rem;
+        font-size: 1.25rem;
+    }
+
+    .subHeading{
+        font-size: 0.65rem;
+        letter-spacing: 0;
     }
 
     .image{

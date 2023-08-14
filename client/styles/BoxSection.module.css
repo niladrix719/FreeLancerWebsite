@@ -120,9 +120,9 @@
 .right4{
     height: 67%;
     width: 100%;
-    background-color: #7b7d82;
+    background-color: #ebebeb;
     padding: 2rem;
-    background-image: url('/peoples80S.webp');
+    /* background-image: url('/peoples80S.webp'); */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -219,7 +219,7 @@
 }
 
 #carrers{
-    color: white;
+    color: rgb(0, 0, 0);
     margin-bottom: 3rem;
 }
 

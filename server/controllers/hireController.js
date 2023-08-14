@@ -15,7 +15,7 @@ async function addHire(req, res) {
       else
       user = await userCollection.findOne({ _id: authData.user._id });
 
-      if (err || !user) {
+      if (err || !user || authData.user._id === req.body.freelancer || authData.user.verified === false) {
         res.sendStatus(403);
         return;
       }

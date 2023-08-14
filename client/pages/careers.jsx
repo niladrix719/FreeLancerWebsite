@@ -21,35 +21,37 @@ function Careers(props) {
         </div>
 
         <div className={`flex flex-col items-center ${styles.p}`}>
-          <h2>Current Job Openings:</h2><br />
-          <ul className='flex justify-evenly w-4/6'>
-            <li>
-              <button className='bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded'>
-                Web Developer
-              </button>
-            </li>
-            <li>
-              <button className='bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded'>
-                UI/UX Designer
-              </button>
-            </li>
-            <li>
-              <button className='bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded'>
-                App Developer
-              </button>
-            </li>
-            <li>
-              <button className='bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded'>
-                Management
-              </button>
-            </li>
-            <li>
-              <button className='bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded'>
-                Operations Head
-              </button>
-            </li>
-          </ul>
-        </div>
+  <h2 className="text-center text-xl font-semibold">Current Job Openings:</h2><br />
+  <ul className='flex flex-wrap gap-4 justify-center lg:w-2/3'>
+    <li className="my-2">
+      <button className='bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded text-xs'>
+        Web Developer
+      </button>
+    </li>
+    <li className="my-2">
+      <button className='bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded text-xs'>
+        UI/UX Designer
+      </button>
+    </li>
+    <li className="my-2">
+      <button className='bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded text-xs'>
+        App Developer
+      </button>
+    </li>
+    <li className="my-2">
+      <button className='bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded text-xs'>
+        Management
+      </button>
+    </li>
+    <li className="my-2">
+      <button className='bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded text-xs'>
+        Operations Head
+      </button>
+    </li>
+  </ul>
+</div>
+
+
 
         <p className={styles.p}>
           We are hiring! If you are a talented individual looking for exciting opportunities, we&apos;d love to hear from you.

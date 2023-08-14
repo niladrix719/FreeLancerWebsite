@@ -192,16 +192,16 @@ function Name(props) {
         {freelancer.links && <ProfileBioCard freelancer={freelancer} copyURL={copyURL} copied={copied} />}
         {isFreelancerLoaded && <Details profession={freelancer.profession} works={freelancer.works} reviews={reviews} handleClick={handleClick} />}
         <div className={styles.btnBox}>
-          {!loggedIn && <Link href='/login' className={styles.btn} id={styles.hire}>Hire</Link>}
-          {loggedIn && <button className={styles.btn} id={styles.hire} onClick={handleHireBox}>Hire</button>}
+          {!loggedIn && <Link href='/login' className={styles.btn} id={styles.hire}>Hire Me</Link>}
+          {loggedIn && <button className={styles.btn} id={styles.hire} onClick={handleHireBox}>Hire Me</button>}
           {loggedIn && (
             <button className={styles.btn} id={styles.msg} onClick={() => handleReviewBox(true)}>
-              Review
+              Give Review
             </button>
           )}
           {!loggedIn && (
             <Link href='/login' className={styles.btn} id={styles.msg}>
-              Review
+              Give Review
             </Link>
           )}
           {reviewBox && (
