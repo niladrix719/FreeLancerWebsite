@@ -67,10 +67,10 @@ function ReviewBox(props) {
           </label>
         ))}
       </div>
-      <label htmlFor='title' className={styles.label}>Overview</label>
+      <label htmlFor='title' className={styles.label}><span className='text-red-500'>* </span>Overview</label>
       <input className={styles.input} type="text" id='title' name='title'
         onChange={(e) => { setReviewError(false); setTitle(e.target.value) }} />
-      <label htmlFor='review' className={styles.label}>Describe in Details</label>
+      <label htmlFor='review' className={styles.label}><span className='text-red-500'>* </span>Describe in Details</label>
       <textarea className={styles.textarea} name="review" id="review" cols="30" rows="10"
         onChange={(e) => { setReviewError(false); setReview(e.target.value) }}>
       </textarea>

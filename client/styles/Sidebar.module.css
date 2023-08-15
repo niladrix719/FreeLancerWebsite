@@ -128,6 +128,10 @@
         width: 10px;
     }
 
+    #optionx{
+        border: none;
+    }
+
     .filter{
         justify-content: flex-start;
     }

@@ -57,46 +57,46 @@ function HireBox(props) {
       <div className={styles.fields}>
         <div className={styles.field}>
           <div className={styles.subField}>
-            <label htmlFor='name' className={styles.label}>Full Name</label>
+            <label htmlFor='name' className={styles.label}><span className='text-red-500'>* </span>Full Name</label>
             <input className={styles.input} type="text" id='name' name='fullname'
               value={`${props.user.firstname} ${props.user.lastname}`}
             />
           </div>
           <div className={styles.subField}>
-            <label htmlFor='phone' className={styles.label}>Phone</label>
+            <label htmlFor='phone' className={styles.label}><span className='text-red-500'>* </span>Phone</label>
             <input className={styles.input} type="number" id='phone' name='phone'
               value={props.user.phone ? props.user.phone : props.user.companyphone}
             />
           </div>
         </div>
         <div className={styles.field} id={styles.purpose}>
-          <label htmlFor='description' className={styles.label}>Task Description</label>
+          <label htmlFor='description' className={styles.label}><span className='text-red-500'>* </span>Task Description</label>
           <textarea className={styles.textarea} name="description" id="description" cols="30" rows="10"
             onChange={(e) => { setHireError(false); setDescription(e.target.value) }}>
           </textarea>
         </div>
         <div className={styles.field}>
-          <label htmlFor='location' className={styles.label}>Address</label>
+          <label htmlFor='location' className={styles.label}><span className='text-red-500'>* </span>Address</label>
           <input className={styles.input} type="text" id='address' name='address'
             onChange={(e) => { setHireError(false); setAddress(e.target.value) }} />
         </div>
         <div className={styles.field}>
-          <label htmlFor='date' className={styles.label}>Date</label>
+          <label htmlFor='date' className={styles.label}><span className='text-red-500'>* </span>Date</label>
           <input className={styles.input} type="date" id='date' name='date'
             onChange={(e) => { setHireError(false); setDate(e.target.value) }} />
         </div>
         <div className={styles.field}>
-          <label htmlFor='startTime' className={styles.label}>Start Time</label>
+          <label htmlFor='startTime' className={styles.label}><span className='text-red-500'>* </span>Start Time</label>
           <input className={styles.input} type="time" id='startTime' name='startTime'
             onChange={(e) => { setHireError(false); setStartTime(e.target.value) }} />
         </div>
         <div className={styles.field}>
-          <label htmlFor='endTime' className={styles.label}>End Time</label>
+          <label htmlFor='endTime' className={styles.label}><span className='text-red-500'>* </span>End Time</label>
           <input className={styles.input} type="time" id='endTime' name='endTime'
             onChange={(e) => { setHireError(false); setEndTime(e.target.value) }} />
         </div>
         <div className={styles.field}>
-          <label htmlFor='budget' className={styles.label}>Total Budget (&#8377;)</label>
+          <label htmlFor='budget' className={styles.label}><span className='text-red-500'>* </span>Total Budget (&#8377;)</label>
           <input className={styles.input} type="number" id='budget' name='budget'
             onChange={(e) => { setHireError(false); setBudget(e.target.value) }} />
         </div>
