@@ -172,10 +172,6 @@
     word-break: normal;
 }
 
-#user:hover .profile_card{
-    display: flex;
-}
-
 .number{
     color: #c7c7c7;
     margin-top: -0.75rem;

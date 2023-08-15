@@ -299,6 +299,7 @@
 #number::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
+    display: none;
 }
 
 .inputField {

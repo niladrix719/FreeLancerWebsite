@@ -68,23 +68,23 @@ function Contact(props) {
               {contactError && <p className={styles.error}>Please fill all the fields!</p>}
               <form className={styles.form} onSubmit={handleSubmit}>
                 <div className={styles.inputs}>
-                  <label htmlFor="name" className={styles.label}>First name :</label>
+                  <label htmlFor="name" className={styles.label}><span className='text-red-500'>* </span>First name :</label>
                   <input type='text' id='name' className={styles.input} onChange={() => setContactError(false)} />
                 </div>
                 <div className={styles.inputs}>
-                  <label htmlFor="name" className={styles.label}>Last name :</label>
+                  <label htmlFor="name" className={styles.label}><span className='text-red-500'>* </span>Last name :</label>
                   <input type='text' id='name' className={styles.input} onChange={() => setContactError(false)} />
                 </div>
                 <div className={styles.inputs}>
-                  <label htmlFor="phone" className={styles.label}>Phone :</label>
+                  <label htmlFor="phone" className={styles.label}><span className='text-red-500'>* </span>Phone :</label>
                   <input type='number' id={styles.phone} className={styles.input} onChange={() => setContactError(false)} />
                 </div>
                 <div className={styles.inputs}>
-                  <label htmlFor="email" className={styles.label}>Email :</label>
+                  <label htmlFor="email" className={styles.label}><span className='text-red-500'>* </span>Email :</label>
                   <input type='email' id='email' className={styles.input} onChange={() => setContactError(false)} />
                 </div>
                 <div className={styles.inputs}>
-                  <label htmlFor="issue" className={styles.label}>Issue :</label>
+                  <label htmlFor="issue" className={styles.label}><span className='text-red-500'>* </span>Issue :</label>
                   <select className={styles.options} name="issue" onChange={() => setContactError(false)}>
                     <option className={styles.option} value="User Profile Related">User Profile Related</option>
                     <option className={styles.option} value="Freelancer Profile Related">Freelancer Profile Related</option>
@@ -97,7 +97,7 @@ function Contact(props) {
                   </select>
                 </div>
                 <div className={styles.inputs}>
-                  <label htmlFor="message" className={styles.label}>Message :</label>
+                  <label htmlFor="message" className={styles.label}><span className='text-red-500'>* </span>Message :</label>
                   <textarea className={styles.textarea} name="message" id="message" cols="30" rows="10"
                     onChange={() => setContactError(false)}
                   ></textarea>

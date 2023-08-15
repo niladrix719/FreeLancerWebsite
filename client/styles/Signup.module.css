@@ -95,6 +95,7 @@
 #number::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
+    display: none;
 }
 
 .login{
@@ -226,12 +227,14 @@
 #number::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
+    display: none;
 }
 
 #otp::-webkit-inner-spin-button,
 #otp::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
+    display: none;
 }
 
 .signup{

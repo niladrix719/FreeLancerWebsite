@@ -11,6 +11,8 @@ export default function Navbar(props) {
   const [isAdmin, setIsAdmin] = useState(false);
   const [display, setDisplay] = useState('none');
   const [display2, setDisplay2] = useState('none');
+  const [display3, setDisplay3] = useState('none');
+  const [display4, setDisplay4] = useState('none');
   const router = useRouter();
 
   useEffect(() => {
@@ -160,12 +162,17 @@ export default function Navbar(props) {
           )}
 
           {props.user && (
-            <li className={`${styles.navElement} ${styles.user}`} id={styles.user}>
+            <li className={`${styles.navElement} ${styles.user}`} id={styles.user} onClick={() => {
+            if(display3 === 'none')
+              setDisplay3('flex')
+            else
+              setDisplay3('none')
+          }} onMouseEnter={() => setDisplay3('flex')} onMouseLeave={() => setDisplay3('none')}>
               <span className='truncate w-5/6'>{props.user && !props.company ? `${props.user.firstname}` : ''}&nbsp;&nbsp;</span>
               <BiChevronDown
                 style={{ fontSize: 16, color: color }}
               />
-              <div className={styles.profile_card}>
+              <div className={styles.profile_card} style={{display: display3}}>
                 <div className={styles.dp} style={{ backgroundImage: `url(${props.user.profilePicture ? `${process.env.SERVER_URL}/images/${props.user.profilePicture}` : '/dp.png'})` }}></div>
                 <h1 className={styles.name}>{props.user ? `${props.user.firstname} ${props.user.lastname}` : ''}</h1>
                 <p className={styles.number}>{props.user ? props.user.phone : ''}</p>
@@ -177,12 +184,17 @@ export default function Navbar(props) {
           )}
 
           {props.company && (
-            <li className={`${styles.navElement} ${styles.user}`} id={styles.user}>
+            <li className={`${styles.navElement} ${styles.user}`} id={styles.user} onClick={() => {
+            if(display4 === 'none')
+              setDisplay4('flex')
+            else
+              setDisplay4('none')
+          }} onMouseEnter={() => setDisplay4('flex')} onMouseLeave={() => setDisplay4('none')}>
               <span>{props.company && !props.user ? `${props.company.companyname}` : ''}&nbsp;&nbsp;</span>
               <BiChevronDown
                 style={{ fontSize: 16, color: props.color }}
               />
-              <div className={styles.profile_card}>
+              <div className={styles.profile_card} style={{display: display4}}>
                 <div className={styles.dp} style={{ backgroundImage: `url(${process.env.SERVER_URL}/images/${props.company.profilePicture})` }}></div>
                 <h1 className={styles.name}>{props.company ? `${props.company.companyname} ` : ''}</h1>
                 <p className={styles.number}>{props.company ? props.company.companyphone : ''}</p>

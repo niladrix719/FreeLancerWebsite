@@ -121,7 +121,7 @@
     }
 
     .lists{
-        font-size: 0.65rem;
+        font-size: 0.85rem;
         flex-direction: row;
         width: 80vw;
         margin-bottom: 1rem;
@@ -141,7 +141,7 @@
     }
 
     .qnas li{
-        font-size: 1rem;
+        font-size: 1.8rem;
     }
 
     .divider{
