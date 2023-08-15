@@ -85,6 +85,10 @@
         width: 60%;
         height: 60%;
     }
+
+    .p{
+        display: none;
+    }
 }
 
 @media (max-width: 720px) {
@@ -94,13 +98,12 @@
     }
 
     .btn > h1{
-        font-size: 0.6rem;
+        font-size: 0.8rem;
         width: 100%;
         margin-bottom: 0;
     }
 
     .p{
-        display: flex;
         font-size: 0.45rem;
     }
 }

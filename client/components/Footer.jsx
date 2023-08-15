@@ -65,7 +65,7 @@ function Footer() {
             <Link href='/google_play'><Image src='/google-play.png' alt='Google Play' width={130} height={130}></Image></Link>
           </div>
           <div className={styles.app_store}>
-            <Link href='/app_store'><Image src='/apple-png.png' alt='App Store' width={130} height={130}></Image></Link>
+            <Link href='/app_store'><Image src='/apple-png.png' alt='App Store' width={143} height={143}></Image></Link>
           </div>
         </div>
       </div>

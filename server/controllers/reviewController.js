@@ -29,6 +29,11 @@ async function addReview(req, res) {
         return;
       }
 
+      if(req.body.freelancer === authData.user._id) {
+        res.status(400).send('You cannot review yourself');
+        return;
+      }
+
       const existingReview = await reviewCollection.findOne({ freelancer: req.body.freelancer, user: authData.user._id });
       if (existingReview) {
         res.send({ message: 'Review already exists' });
