@@ -18,8 +18,8 @@ function Review(props) {
         ))}
       </div>
       <div className={styles.review_details}>
-        <h4 className={styles.review_title}>{props.review.title}</h4>
-        <p className={styles.review_text}>
+        <h4 className={`${styles.review_title} break-words`}>{props.review.title}</h4>
+        <p className={`${styles.review_text} break-words`}>
           {props.review.review}
         </p>
       </div>

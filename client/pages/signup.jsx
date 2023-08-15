@@ -113,14 +113,14 @@ function Signup(props) {
                 <label htmlFor="fisrtname" className={styles.labels}>First Name - </label>
                 <input className={styles.inputs} type='text' placeholder='Enter Your firstname'
                   onChange={(e) => { setFirstname(e.target.value); setSignupFailed(false); setOtpFailed(false); }}
-                  id={styles.firstname} name='firstname'
+                  id={styles.firstname} name='firstname' maxLength={13}
                 /> <br />
               </div>
               <div className={styles.inputLabels}>
                 <label htmlFor="lastname" className={styles.labels}>Last Name - </label>
                 <input className={styles.inputs} type='text' placeholder='Enter Your lastname'
                   id={styles.lastname} name='lastname'
-                  onChange={(e) => { setLastname(e.target.value); setSignupFailed(false); setOtpFailed(false); }}
+                  onChange={(e) => { setLastname(e.target.value); setSignupFailed(false); setOtpFailed(false); }} maxLength={13}
                 /> <br />
               </div>
             </div>

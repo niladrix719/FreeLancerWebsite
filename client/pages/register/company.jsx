@@ -433,6 +433,7 @@ class Company extends React.Component {
                   onKeyDown={this.handleEnterKeyPress}
                   onChange={(event) => this.setState({ companyaddress: event.target.value })}
                   value={this.state.companyaddress}
+                  maxLength={80}
                 />
               </div>}
               {this.state.currentPage === 7 && <div className={styles.inputField} id={styles.otp}>
@@ -465,6 +466,7 @@ class Company extends React.Component {
                   onKeyDown={this.handleEnterKeyPress}
                   onChange={(event) => this.setState({ position: event.target.value, error: false })}
                   value={this.state.position}
+                  maxLength={40}
                 />
               </div>}
               {this.state.textareaError && <p className={styles.error}>Please provide less than 300 characters and atleast 50 characters.</p>}
@@ -476,7 +478,8 @@ class Company extends React.Component {
                   onChange={(event) =>{ this.setState({ bio: event.target.value }); this.setState({ textareaError: false });}}
                   onKeyDown={this.handleEnterKeyPress}
                   className={styles.textarea} placeholder='Write Your Company here...'
-                  value={this.state.bio !== '' ? this.state.bio : ''}>
+                  value={this.state.bio !== '' ? this.state.bio : ''}
+                >
                 </textarea>
               </div>}
               {!this.state.form && <div className={styles.btns}>

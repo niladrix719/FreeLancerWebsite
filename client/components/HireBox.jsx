@@ -71,14 +71,14 @@ function HireBox(props) {
         </div>
         <div className={styles.field} id={styles.purpose}>
           <label htmlFor='description' className={styles.label}><span className='text-red-500'>* </span>Task Description</label>
-          <textarea className={styles.textarea} name="description" id="description" cols="30" rows="10"
+          <textarea className={styles.textarea} name="description" id="description" cols="30" rows="10" maxLength={500}
             onChange={(e) => { setHireError(false); setDescription(e.target.value) }}>
           </textarea>
         </div>
         <div className={styles.field}>
           <label htmlFor='location' className={styles.label}><span className='text-red-500'>* </span>Address</label>
           <input className={styles.input} type="text" id='address' name='address'
-            onChange={(e) => { setHireError(false); setAddress(e.target.value) }} />
+            onChange={(e) => { setHireError(false); setAddress(e.target.value) }} maxLength={80} />
         </div>
         <div className={styles.field}>
           <label htmlFor='date' className={styles.label}><span className='text-red-500'>* </span>Date</label>

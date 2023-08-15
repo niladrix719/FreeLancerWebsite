@@ -11,9 +11,19 @@ function ReviewBox(props) {
   const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
   const [reviewError, setReviewError] = useState(false);
   const [reviewAlreadyExists, setReviewAlreadyExists] = useState(false);
+  const [minErr1, setMinErr1] = useState(false);
+  const [minErr2, setMinErr2] = useState(false);
 
   const submitReview = () => {
     async function postReview() {
+      if(title.length < 5) {
+        setMinErr1(true);
+        return;
+      }
+      if(review.length < 25) {
+        setMinErr2(true);
+        return;
+      }
       try {
         if (token) {
           const response = await fetch(`${process.env.SERVER_URL}/add/review`, {
@@ -56,6 +66,8 @@ function ReviewBox(props) {
       <h1 className={styles.heading}>Give a Feedback</h1>
       <p className={styles.error}>{reviewError ? 'Please fill all the fields' : ''}</p>
       {reviewAlreadyExists && <p className={styles.error}><span>You have already given a review previously</span></p>}
+      {minErr1 && <p className={styles.error}><span>Title must be atleast 5 characters long</span></p>}
+      {minErr2 && <p className={styles.error}><span>Review must be atleast 25 characters long</span></p>}
       <div className={styles.stars}>
         {[...Array(5)].map((star, index) => (
           <label key={index}>
@@ -69,10 +81,10 @@ function ReviewBox(props) {
       </div>
       <label htmlFor='title' className={styles.label}><span className='text-red-500'>* </span>Overview</label>
       <input className={styles.input} type="text" id='title' name='title'
-        onChange={(e) => { setReviewError(false); setTitle(e.target.value) }} />
+        onChange={(e) => { setReviewError(false); setMinErr1(false); setMinErr2(false); setReviewAlreadyExists(false); setTitle(e.target.value) }} maxLength={60} />
       <label htmlFor='review' className={styles.label}><span className='text-red-500'>* </span>Describe in Details</label>
       <textarea className={styles.textarea} name="review" id="review" cols="30" rows="10"
-        onChange={(e) => { setReviewError(false); setReview(e.target.value) }}>
+        onChange={(e) => { setReviewError(false); setMinErr1(false); setMinErr2(false); setReviewAlreadyExists(false); setReview(e.target.value) }} maxLength={500}>
       </textarea>
       <button className={styles.btn} onClick={submitReview}>Submit</button>
     </div>
