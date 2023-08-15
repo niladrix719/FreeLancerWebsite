@@ -158,6 +158,14 @@ function Name(props) {
     setShowReviewDialogBox(val);
   };
 
+  useEffect(() => {
+  if(props.user !== null)
+  console.log(props.user, uid);
+    if(props.user !== null && props.user.uid === uid) {
+      router.push('/freelancer_profile');
+    }
+  }, [props.user]);
+
   return (
     <div className={styles.profile}>
       <Navbar color='white' checkLoggedIn={checkLoggedIn} user={props.user} company={props.company} setCompany={props.setCompany} setUser={props.setUser} />
