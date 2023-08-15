@@ -100,8 +100,12 @@ async function editCompanyProfile(req, res) {
         return;
       }
 
-      const resizedProfilePicture = await resizeImage(req.files['profilePicture'][0], 400, 300);
-      const resizedCoverPicture = await resizeImage(req.files['coverPicture'][0], 400, 300);
+      let resizedProfilePicture;
+      if(req.files['profilePicture'])
+      resizedProfilePicture = await resizeImage(req.files['profilePicture'][0], 400, 300);
+      let resizedCoverPicture;
+      if(req.files['coverPicture'])
+      resizedCoverPicture = await resizeImage(req.files['coverPicture'][0], 400, 300);
 
       let updatedAuthData;
 

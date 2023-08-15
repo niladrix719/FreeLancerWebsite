@@ -74,6 +74,7 @@ function Company_Profile(props) {
             setCompanyname(data.user.user.companyname);
             setProfilePicture(data.user.user.profilePicture);
             setCoverPicture(data.user.user.coverPicture);
+            props.setCompany(data.user.user);
             setCompanyaddress(data.user.user.companyaddress);
             setBio(data.user.user.bio);
           }

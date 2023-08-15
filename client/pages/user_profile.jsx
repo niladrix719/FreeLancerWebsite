@@ -66,6 +66,7 @@ function User_profile(props) {
             setEditProfile(false);
             setFirstname(data.user.user.firstname);
             setLastname(data.user.user.lastname);
+            props.setUser(data.user.user);
             setProfilePicture(data.user.user.profilePicture);
           }
         })

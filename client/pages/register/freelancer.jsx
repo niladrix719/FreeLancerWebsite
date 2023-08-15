@@ -44,7 +44,8 @@ class Freelancer extends React.Component {
       warns: [false, false, false, false, false, false, false, false, false, false, false, false],
       count: 120,
       resendOtp: false,
-      timerId: null
+      timerId: null,
+      isLoading: false
     }
   }
 
@@ -257,6 +258,7 @@ class Freelancer extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    this.setState({ isLoading: true });
     let c = 0;
     if (this.state.works.length < 8) {
       this.setState({ worksError: true });
@@ -286,6 +288,7 @@ class Freelancer extends React.Component {
       return;
 
     const postData = async () => {
+      this.setState({ isLoading: true });
       const token = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).token : null;
       try {
         const data = new FormData();
@@ -436,7 +439,13 @@ class Freelancer extends React.Component {
 
   render() {
     return (
-      <div className={styles.main}>
+      <>
+      {this.state.isLoading && <div className='flex flex-col items-center justify-center h-screen'>
+        <Image src='/loading.gif' width={300} height={300} alt='loading' />
+        <span>Please wait...</span>
+          <span>Sending Your Profile Details...</span>
+      </div>}
+      {!this.state.isLoading && <div className={styles.main}>
         <Navbar user={this.props.user} company={this.props.company} setCompany={this.props.setCompany} setUser={this.props.setUser} />
         <div className={`${this.state.form ? styles.newBody : styles.body}`}>
           <div className={`${this.state.form ? styles.newLeft : styles.left}`}>
@@ -658,7 +667,8 @@ class Freelancer extends React.Component {
           <div className={styles.progress} style={{ width: `${this.state.progress}%` }}></div>
         </div>}
         <Footer />
-      </div>
+      </div>}
+      </>
     )
   }
 }
