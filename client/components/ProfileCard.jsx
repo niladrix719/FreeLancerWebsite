@@ -35,7 +35,7 @@ export default function ProfileCard(props) {
       <div className={styles.category}>
         {profession === 'Photographer' && <ImCamera className={styles.logo} />}
         {profession === 'Cinematographer' && <FaVideo className={styles.logo} />}
-        {profession === 'Drone_operator' && <TbDrone className={styles.logo} />}
+        {profession === 'Drone Operator' && <TbDrone className={styles.logo} />}
         <h4>{profession}</h4>
         <div className={styles.rate}>
           <p>Rs.{props.profile.rate} / Day</p>

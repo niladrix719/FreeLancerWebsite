@@ -239,7 +239,7 @@ function Verification(props) {
       <h1 className={styles.heading}>Add Your Works
         {props.worksError && <p className={styles.err}>Please Provide atleast 8 Works for you</p>}
       </h1>
-      {(props.profession === 'photographer' || props.profession === 'drone_operator') && <div className={styles.portfolio}>
+      {props.profession === 'photographer' && <div className={styles.portfolio}>
         <div className={styles.addBox} style={{
           backgroundImage: images[0] ? `url(${images[0]})` : `none`,
         }}>
@@ -268,6 +268,60 @@ function Verification(props) {
           {!images[3] && <AiOutlinePlus className={styles.plus} style={{ color: '#1f1c1c' }} />}
           {props.warns[7] && <p className={styles.warn} id={styles.warn}>File size exceeds maximum limit of 1MB</p>}
         </div>
+        <div className={styles.addBox} style={{
+          backgroundImage: images[8] ? `url(${images[8]})` : `none`,
+        }}>
+          <input type="file" className={styles.work} onChange={(e) => handleImageChange(e, 8)} accept="image/jpeg,image/png" />
+          {!images[8] && <AiOutlinePlus className={styles.plus} style={{ color: '#1f1c1c' }} />}
+          {props.warns[8] && <p className={styles.warn} id={styles.warn}>File size exceeds maximum limit of 1MB</p>}
+        </div>
+        <div className={styles.addBox} style={{
+          backgroundImage: images[9] ? `url(${images[9]})` : `none`,
+        }}>
+          <input type="file" className={styles.work} onChange={(e) => handleImageChange(e, 9)} accept="image/jpeg,image/png" />
+          {!images[9] && <AiOutlinePlus className={styles.plus} style={{ color: '#1f1c1c' }} />}
+          {props.warns[9] && <p className={styles.warn} id={styles.warn}>File size exceeds maximum limit of 1MB</p>}
+        </div>
+        <div className={styles.addBox} style={{
+          backgroundImage: images[10] ? `url(${images[10]})` : `none`,
+        }}>
+          <input type="file" className={styles.work} onChange={(e) => handleImageChange(e, 10)} accept="image/jpeg,image/png" />
+          {!images[10] && <AiOutlinePlus className={styles.plus} style={{ color: '#1f1c1c' }} />}
+          {props.warns[10] && <p className={styles.warn} id={styles.warn}>File size exceeds maximum limit of 1MB</p>}
+        </div>
+        <div className={styles.addBox} style={{
+          backgroundImage: images[11] ? `url(${images[11]})` : `none`,
+        }}>
+          <input type="file" className={styles.work} onChange={(e) => handleImageChange(e, 11)} accept="image/jpeg,image/png" />
+          {!images[11] && <AiOutlinePlus className={styles.plus} style={{ color: '#1f1c1c' }} />}
+          {props.warns[11] && <p className={styles.warn} id={styles.warn}>File size exceeds maximum limit of 1MB</p>}
+        </div>
+      </div>}
+      {props.profession === 'drone_operator' && <div className={styles.portfolio}>
+        <input type="url" className={styles.input} placeholder="https://www.youtube.com/example"
+          onChange={(e) => {
+            props.getVerificationDetails(e.target.value, 17)
+          }}
+          required
+        />
+        <input type="url" className={styles.input} placeholder="https://www.youtube.com/example"
+          onChange={(e) => {
+            props.getVerificationDetails(e.target.value, 18)
+          }}
+          required
+        />
+        <input type="url" className={styles.input} placeholder="https://www.youtube.com/example"
+          onChange={(e) => {
+            props.getVerificationDetails(e.target.value, 19)
+          }}
+          required
+        />
+        <input type="url" className={styles.input} placeholder="https://www.youtube.com/example"
+          onChange={(e) => {
+            props.getVerificationDetails(e.target.value, 20)
+          }}
+          required
+        />
         <div className={styles.addBox} style={{
           backgroundImage: images[8] ? `url(${images[8]})` : `none`,
         }}>

@@ -34,10 +34,24 @@ function Details(props) {
             return;
           return (
             <>
-              {(props.profession === 'photographer' || props.profession === 'drone_operator') && <PortfolioCard key={index} i={index} work={work} handleClick={props.handleClick} />}
+              {props.profession === 'photographer' && <PortfolioCard key={index} i={index} work={work} handleClick={props.handleClick} />}
               {props.profession === 'cinematographer' && <div className='mb-4'><ReactPlayer controls={true} width='280px' height='250px' url={work} /></div>}
             </>
           )
+        })}
+        {works.map((work, index) => {
+          if(index >= 0 && index < 4){
+            return props.profession === 'drone_operator' && <div className='mb-4'><ReactPlayer controls={true} width='280px' height='250px' url={work} /></div>
+          }
+          else if(index >= 4 && index < 6){
+            return props.profession === 'drone_operator' && <PortfolioCard key={index} i={index} work={work} handleClick={props.handleClick} />
+          }
+          else if(index >= 6 && index < 8 && showMore){
+            return props.profession === 'drone_operator' && <PortfolioCard key={index} i={index} work={work} handleClick={props.handleClick} />
+          }
+          else{
+            return;
+          }
         })}
       </div>}
       <div className={styles.cont}>

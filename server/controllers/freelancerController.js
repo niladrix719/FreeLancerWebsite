@@ -49,6 +49,22 @@ async function registerFreelancer(req, res) {
         );
       }
 
+      let worksToStore = [];
+      if (req.body.profession === 'photographer') {
+        worksToStore = resizedWorks.map((file) => file.filename);
+      } else if (req.body.profession === 'drone_operator') {
+        const droneWorksFromBody = [
+          req.body.works[0],
+          req.body.works[1],
+          req.body.works[2],
+          req.body.works[3],
+        ];
+        const droneWorksFromFiles = resizedWorks.map((file) => file.filename);
+        worksToStore = droneWorksFromBody.concat(droneWorksFromFiles);
+      } else {
+        worksToStore = req.body.works;
+      }
+
       const freelancerData = new freelancerCollection({
         uid: req.body.uid,
         firstname: req.body.firstname,
@@ -63,7 +79,7 @@ async function registerFreelancer(req, res) {
         coverPicture: resizedCoverPicture.filename,
         aadhaarCard: req.files['aadhaarCard'][0].filename,
         panCard: req.files['panCard'][0].filename,
-        works: req.body.profession === 'photographer' || req.body.profession === 'drone_operator' ? resizedWorks.map((file) => file.filename) : req.body.works,
+        works: worksToStore,
         links: req.body.links,
         rating: 0,
         reviewCount: 0,
