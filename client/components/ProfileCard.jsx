@@ -8,7 +8,10 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 export default function ProfileCard(props) {
-  const profession = props.profile.profession.charAt(0).toUpperCase() + props.profile.profession.slice(1);
+  const profession = props.profile.profession
+    .split('_')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
   const [display, setDisplay] = useState('none');
   return (
     <Link className={styles.profileCard} href={`/profile/${props.profile.uid}`} target='_blank'>
@@ -26,7 +29,7 @@ export default function ProfileCard(props) {
           <p className={styles.num}>({props.profile.reviewCount})</p>
         </div>
       </div>
-      <h3 className={styles.name}><span className='w-22 truncate' style={{maxWidth: '11rem', letterSpacing: '0', fontSize: '1.1rem'}}>{props.profile.firstname} {props.profile.lastname}</span><Image className={styles.blueTick} onMouseOver={() => setDisplay('flex')} onMouseOut={() => setDisplay('none')} src='/tick.png' height='40' width='40' alt="verified-tick" />{props.profile.featured && <span className={styles.container}>
+      <h3 className={styles.name}><span className='w-22 truncate' style={{maxWidth: '11rem', letterSpacing: '0'}}>{props.profile.firstname} {props.profile.lastname}</span><Image className={styles.blueTick} onMouseOver={() => setDisplay('flex')} onMouseOut={() => setDisplay('none')} src='/tick.png' height='40' width='40' alt="verified-tick" />{props.profile.featured && <span className={styles.container}>
       <div className={styles.overTick} style={{ display: display }}><span>Verified</span><div className={styles.rectangle}></div></div></span>}</h3>
       <p className={`w-full ${styles.bio} break-words max-w-xs`}>{props.profile.bio}</p>
       <div className={styles.category}>

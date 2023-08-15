@@ -27,7 +27,10 @@ function VerificationCard(props) {
   const panCard = props.profile.panCard;
   let profession;
   if (props.profile.profession) {
-    profession = props.profile.profession.charAt(0).toUpperCase() + props.profile.profession.slice(1);
+    profession = props.profile.profession
+      .split('_')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
   }
   const links = JSON.parse(props.profile.links);
 

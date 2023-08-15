@@ -163,16 +163,16 @@ function Name(props) {
       <Navbar color='white' checkLoggedIn={checkLoggedIn} user={props.user} company={props.company} setCompany={props.setCompany} setUser={props.setUser} />
       <Cover coverPicture={freelancer.coverPicture} />
       <div className={styles.btnBox2}>
-          {!loggedIn && <Link href='/login' className={styles.btn} id={styles.hire}>Hire</Link>}
-          {loggedIn && <button className={styles.btn} id={styles.hire} onClick={handleHireBox}>Hire</button>}
+          {!loggedIn && <Link href='/login' className={styles.btn} id={styles.hire}>Hire Me</Link>}
+          {loggedIn && <button className={styles.btn} id={styles.hire} onClick={handleHireBox}>Hire Me</button>}
           {loggedIn && (
             <button className={styles.btn} id={styles.msg} onClick={() => handleReviewBox(true)}>
-              Review
+              Give Review
             </button>
           )}
           {!loggedIn && (
             <Link href='/login' className={styles.btn} id={styles.msg}>
-              Review
+              Give Review
             </Link>
           )}
           {reviewBox && (

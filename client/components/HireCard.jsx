@@ -16,7 +16,10 @@ function HireCard(props) {
       <h2 className={styles.cardTitle}>
         {props.hire.freelancerDetails.firstname}&nbsp;
         {props.hire.freelancerDetails.lastname} - &nbsp;
-        {props.hire.freelancerDetails.profession.charAt(0).toUpperCase()}{props.hire.freelancerDetails.profession.slice(1)}
+        {props.hire.freelancerDetails.profession
+        .split('_')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ')}
       </h2>
       {props.hire.status === 'pending' && <div className={styles.tag}><span id={styles.pending} className={styles.status}>Pending</span></div>}
       {props.hire.status === 'accepted' && <div className={styles.tag}><span id={styles.accepted} className={styles.status}>Accepted</span></div>}
