@@ -116,7 +116,7 @@ function Contact(props) {
             <Image src='/contactus.jpg' width='700' height='700' alt='contact_us' />
           </div>
         </div>
-        <ReactWhatsapp number="+919038578787" message="Hello Fipezo" className={styles.whatsapp}><Image src='/whatsapp.png' height={50} width={50} alt='whatsapp-icon' /></ReactWhatsapp>
+        <ReactWhatsapp number="+919038578787" message="Hello Fipezo" className={styles.whatsapp}><Image src='/chat.png' height={70} width={70} alt='whatsapp-icon' /></ReactWhatsapp>
       </div>
       <Footer />
     </div>

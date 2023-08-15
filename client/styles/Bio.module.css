@@ -151,6 +151,10 @@
         align-items: center;
     }
 
+    .boxtext{
+        text-align: center;
+    }
+
     #head{
         font-size: 2.5rem;
     }
