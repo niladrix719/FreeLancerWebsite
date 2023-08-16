@@ -43,15 +43,17 @@ async function registerFreelancer(req, res) {
 
       let resizedWorks = [];
 
-      if (req.body.profession === 'photographer' || req.body.profession === 'drone_operator') {
-        resizedWorks = await Promise.all(
-          req.files['works[]']?.map((file) => resizeImage(file, 1200, 900))
-        );
-      }
+      // if (req.body.profession === 'photographer' || req.body.profession === 'drone_operator') {
+      //   resizedWorks = await Promise.all(
+      //     req.files['works[]']?.map((file) => resizeImage(file, 1200, 900))
+      //   );
+      // }
+
+      console.log(req.files);
 
       let worksToStore = [];
       if (req.body.profession === 'photographer') {
-        worksToStore = resizedWorks.map((file) => file.filename);
+        worksToStore = req.files['works[]']?.map((file) => file.filename);
       } else if (req.body.profession === 'drone_operator') {
         const droneWorksFromBody = [
           req.body.works[0],
@@ -59,7 +61,7 @@ async function registerFreelancer(req, res) {
           req.body.works[2],
           req.body.works[3],
         ];
-        const droneWorksFromFiles = resizedWorks.map((file) => file.filename);
+        const droneWorksFromFiles = req.files['works[]']?.map((file) => file.filename);
         worksToStore = droneWorksFromBody.concat(droneWorksFromFiles);
       } else {
         worksToStore = req.body.works;
@@ -98,7 +100,7 @@ async function registerFreelancer(req, res) {
       filePromises.push(uploadFile(req.files['panCard'][0]));
 
       if (req.body.profession === 'photographer' || req.body.profession === 'drone_operator') {
-        resizedWorks.forEach(file => {
+        req.files['works[]']?.forEach(file => {
           filePromises.push(uploadFile(file));
         });
       }
@@ -112,15 +114,15 @@ async function registerFreelancer(req, res) {
       await unlinkFile(resizedProfilePicture.path);
       await unlinkFile(resizedCoverPicture.path);
 
-      if (req.body.profession === 'photographer' || req.body.profession === 'drone_operator') {
-        req.files['works[]'].forEach(file => {
-          unlinkFile('uploads/' + file.filename);
-        });
+      // if (req.body.profession === 'photographer' || req.body.profession === 'drone_operator') {
+      //   req.files['works[]'].forEach(file => {
+      //     unlinkFile('uploads/' + file.filename);
+      //   });
 
-        resizedWorks.forEach(file => {
-          unlinkFile(file.path);
-        });
-      }
+      //   req.files['works[]'].forEach(file => {
+      //     unlinkFile(file.path);
+      //   });
+      // }
 
       const user = await freelancerCollection.findOne({ phone: req.body.phone });
 
