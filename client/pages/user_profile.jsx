@@ -145,7 +145,10 @@ function User_profile(props) {
       <div className={style.body}>
         <div className={style.profileBox}>
           {!editProfile && <div className={style.profileImage}>
-            <Image className={style.dp} src={profilePicture === '' ? '/dp.png' : `${process.env.SERVER_URL}/images/${profilePicture}`} alt="profile-pic" height='100' width='100' />
+            {/* <Image className={style.dp} src={profilePicture === '' ? '/dp.png' : `${process.env.SERVER_URL}/images/${profilePicture}`} alt="profile-pic" height='100' width='100' /> */}
+            <div className={style.editProfileImage} style={{
+                backgroundImage: `url(${image ? image : (profilePicture ? `${process.env.SERVER_URL}/images/${user.profilePicture}` : '/dp.png')})`,
+              }}></div>
           </div>}
           {!editProfile && <div className={style.profileInfo}>
             <h1 className={style.name}>{firstname} {lastname}</h1>

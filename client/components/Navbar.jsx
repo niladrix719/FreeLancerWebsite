@@ -192,7 +192,7 @@ export default function Navbar(props) {
           }} onMouseEnter={() => setDisplay4('flex')} onMouseLeave={() => setDisplay4('none')}>
               <span>{props.company && !props.user ? `${props.company.companyname}` : ''}&nbsp;&nbsp;</span>
               <BiChevronDown
-                style={{ fontSize: 16, color: props.color }}
+                style={{ fontSize: 16, color: color }}
               />
               <div className={styles.profile_card} style={{display: display4}}>
                 <div className={styles.dp} style={{ backgroundImage: `url(${process.env.SERVER_URL}/images/${props.company.profilePicture})` }}></div>
