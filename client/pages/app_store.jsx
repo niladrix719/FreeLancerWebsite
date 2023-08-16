@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Footer from '@/components/Footer';
 import { BsCheckCircleFill } from 'react-icons/bs';
 import { useState } from 'react';
+import Head from 'next/head';
 
 function Mobile(props) {
   const [clicked, setClicked] = useState(false);
@@ -35,11 +36,14 @@ function Mobile(props) {
 
   return (
     <div className={styles.mobile}>
+      <Head>
+        <title>Fipezo | Comming soon on iPhone Devices</title>
+      </Head>
       <Navbar user={props.user} company={props.company} setCompany={props.setCompany} setUser={props.setUser} />
       <div className={styles.body}>
         <Image className={styles.img} src='/iphone.png' alt='iphone' width={400} height={400}></Image>
         <h1 className={styles.heading}>
-          comming soon on iPhone Devices <br />
+          Comming soon on iPhone Devices <br />
           <form className='flex flex-col gap-4 items-center w-5/6' onSubmit={(e) => handleNotify(e)}>
             <input
               className='text-xs p-2 border-2 border-black sm:text-lg sm:p-3 w-5/6'

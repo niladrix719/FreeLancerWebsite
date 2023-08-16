@@ -5,6 +5,7 @@ import styles from '@/styles/Login.module.css';
 import Footer from '@/components/Footer';
 import { useRouter } from 'next/router';
 import { useState , useEffect } from 'react';
+import Head from 'next/head';
 
 export default function Login(props) {
   const [phone, setPhone] = useState('');
@@ -90,6 +91,9 @@ export default function Login(props) {
 
   return (
     <div className={styles.login}>
+      <Head>
+        <title>Fipezo | Login</title>
+      </Head>
       <div className={styles.navbar}>
         <Navbar color='black' user={props.user} company={props.company} setCompany={props.setCompany} setUser={props.setUser} />
       </div>

@@ -9,6 +9,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import Modal from '@/components/Modal';
 import Link from 'next/link';
+import Head from 'next/head';
 
 function Freelancer_Profile(props) {
   const router = useRouter();
@@ -105,6 +106,9 @@ function Freelancer_Profile(props) {
 
   return (
     <div className={styles.profile}>
+      <Head>
+        <title>Fipezo | My Profile</title>
+      </Head>
       <Navbar color='white' checkLoggedIn={checkLoggedIn} user={props.user} company={props.company} setCompany={props.setCompany} setUser={props.setUser} />
       <Cover coverPicture={freelancer.coverPicture} />
       {/* <div className='w-full'><Link className={styles.btn} style={{width: '100%'}} id={styles.hire} href='/my_requests'>My Requests</Link></div> */}

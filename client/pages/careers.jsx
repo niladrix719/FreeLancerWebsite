@@ -4,10 +4,14 @@ import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
+import Head from 'next/head';
 
 function Careers(props) {
   return (
     <div className={styles.careersPage}>
+      <Head>
+        <title>Fipezo | Join your Team at Fipezo</title>
+      </Head>
       <Navbar color='black' user={props.user} company={props.company} setCompany={props.setCompany} setUser={props.setUser} />
       <div className={styles.body}>
         <h1 className={styles.h1}>Join Our Team</h1>

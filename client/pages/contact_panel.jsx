@@ -3,6 +3,7 @@ import styles from '@/styles/Contact_panel.module.css'
 import Footer from '@/components/Footer'
 import ContactCard from '@/components/ContactCard';
 import { useState, useEffect } from 'react';
+import Head from 'next/head';
 
 function Contact_panel(props) {
 
@@ -31,6 +32,9 @@ function Contact_panel(props) {
 
   return (
     <div className={styles.contactPanel}>
+      <Head>
+        <title>Fipezo | Contact Panel</title>
+      </Head>
       <Navbar color='black' user={props.user} company={props.company} setCompany={props.setCompany} setUser={props.setUser} />
       <div className={styles.body}>
         <h1 className={styles.heading}>Contact Panel</h1>

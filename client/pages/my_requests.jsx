@@ -7,7 +7,7 @@ import DeleteBox from '@/components/DeleteBox';
 import { BsCheckCircleFill } from 'react-icons/bs';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-import Link from 'next/link';
+import Head from 'next/head';
 
 export default function My_requests(props) {
   const [freelancer, setFreelancer] = useState(null);
@@ -104,6 +104,9 @@ export default function My_requests(props) {
 
   return (
     <div className={styles.myRequests}>
+      <Head>
+        <title>Fipezo | My Requests</title>
+      </Head>
       <Navbar user={props.user} company={props.company} setCompany={props.setCompany} setUser={props.setUser} />
       <div className={styles.requests}>
         <h1 className={styles.heading}>My Requests</h1>

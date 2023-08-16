@@ -4,6 +4,7 @@ import { AiOutlinePlus , AiOutlineMinus } from 'react-icons/ai';
 import Link from 'next/link';
 import React from 'react';
 import Footer from '@/components/Footer';
+import Head from 'next/head';
 
 class Faqs extends React.Component {
   constructor(props) {
@@ -38,6 +39,9 @@ class Faqs extends React.Component {
   render() {
     return (
       <div className={styles.faqs}>
+        <Head>
+          <title>Fipezo | Frequently Asked Questions</title>
+        </Head>
         <Navbar user={this.props.user} company={this.props.company} setCompany={this.props.setCompany} setUser={this.props.setUser} />
         <div className={styles.body}>
           <h1 className={styles.heading}>Questions? Look here.</h1>

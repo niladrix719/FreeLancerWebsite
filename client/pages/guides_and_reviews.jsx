@@ -3,10 +3,14 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import Image from 'next/image'
 import Link from 'next/link'
+import Head from 'next/head';
 
 function Guides_and_Reviwes(props) {
   return (
     <div className={styles.termsNConditions}>
+      <Head>
+        <title>Fipezo | Guides and Reviews</title>
+      </Head>
       <Navbar user={props.user} company={props.company} setCompany={props.setCompany} setUser={props.setUser} />
       <div className={styles.main}>
         <div className={styles.body}>

@@ -12,6 +12,7 @@ import HireBox from '@/components/HireBox';
 import Link from 'next/link';
 import DialogBox from '@/components/DialogBox';
 import Modal from '@/components/Modal';
+import Head from 'next/head';
 
 function Name(props) {
   const router = useRouter();
@@ -168,6 +169,9 @@ function Name(props) {
 
   return (
     <div className={styles.profile}>
+      <Head>
+        <title>Fipezo | Hire the right Freelancer for you</title>
+      </Head>
       <Navbar color='white' checkLoggedIn={checkLoggedIn} user={props.user} company={props.company} setCompany={props.setCompany} setUser={props.setUser} />
       <Cover coverPicture={freelancer.coverPicture} />
       <div className={styles.btnBox2}>

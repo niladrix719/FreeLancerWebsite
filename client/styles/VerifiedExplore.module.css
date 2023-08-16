@@ -78,7 +78,8 @@
     }
 
     .image{
-        display: none;
+        height: 80px;
+        width: 80px;
     }
 
     .text{

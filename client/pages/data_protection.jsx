@@ -3,10 +3,14 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
 import Image from 'next/image';
+import Head from 'next/head';
 
 function Data_Protection(props) {
   return (
     <div className={styles.termsNConditions}>
+      <Head>
+        <title>Fipezo | Data Protection at Fipezo</title>
+      </Head>
       <Navbar user={props.user} company={props.company} setCompany={props.setCompany} setUser={props.setUser} />
       <div className={styles.main}>
         <div className={styles.body}>

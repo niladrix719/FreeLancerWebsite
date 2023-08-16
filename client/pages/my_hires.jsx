@@ -8,6 +8,7 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Link from 'next/link';
 import DialogBox from '@/components/DialogBox';
+import Head from 'next/head';
 
 export default function My_hires(props) {
   const [user, setUser] = useState(null);
@@ -99,6 +100,9 @@ export default function My_hires(props) {
 
   return (
     <div className={styles.myRequests}>
+      <Head>
+        <title>Fipezo | My Hires</title>
+      </Head>
       <Navbar user={props.user} company={props.company} setCompany={props.setCompany} setUser={props.setUser} />
       {notaccepted && <DialogBox icon='no' title='Sorry!' text='Freelancer has not accepted your request yet.' handleDialogBox={setNotaccepted} />}
       {accepted && <DialogBox title='Congratulations!' text={`Freelancer has accepted your request. You can contact him on ${freelancerPhone}.`} handleDialogBox={setAccepted} />}

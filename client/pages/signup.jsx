@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState,useEffect } from 'react';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 
 function Signup(props) {
   const [phone, setPhone] = useState('');
@@ -99,6 +100,9 @@ function Signup(props) {
 
   return (
     <div className={styles.signup}>
+      <Head>
+        <title>Fipezo | Signup</title>
+      </Head>
       <Navbar color='black' user={props.user} company={props.company} setCompany={props.setCompany} setUser={props.setUser} />
       <div className={styles.body}>
         {!otpForm && <form onSubmit={handleSubmit} className={styles.form}>

@@ -6,6 +6,8 @@ import { IoArrowBack } from 'react-icons/io5';
 import ReactConfetti from 'react-confetti';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Head from 'next/head';
+
 function Contact_soon(props) {
   const [windowDm, setWindowDm] = useState({ width: 2000, height: 650 });
   const dectectSize = () => {
@@ -19,6 +21,9 @@ function Contact_soon(props) {
   }, [windowDm]);
   return (
     <div className={styles.contactSoon}>
+      <Head>
+        <title>Fipezo | You will be Contacted soon</title>
+      </Head>
       <ReactConfetti height={windowDm.height} width={windowDm.width} numberOfPieces={150} />
       <Navbar user={props.user} company={props.company} setCompany={props.setCompany} setUser={props.setUser} />
       <div className={styles.body}>

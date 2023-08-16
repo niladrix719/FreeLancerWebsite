@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Footer from '@/components/Footer';
 import { BsCheckCircleFill } from 'react-icons/bs';
 import { useState } from 'react';
+import Head from 'next/head';
 
 function Mobile(props) {
   const [clicked, setClicked] = useState(false);
@@ -35,6 +36,9 @@ function Mobile(props) {
 
   return (
     <div className={styles.mobile}>
+      <Head>
+        <title>Fipezo | Comming soon on Android Devices</title>
+      </Head>
       <Navbar user={props.user} company={props.company} setCompany={props.setCompany} setUser={props.setUser} />
       <div className={styles.body}>
         <Image className={styles.img} src='/mobile.png' alt='mobile' width={400} height={400}></Image>

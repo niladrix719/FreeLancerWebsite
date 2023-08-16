@@ -5,6 +5,7 @@ import Footer from '@/components/Footer';
 import ReCAPTCHA from "react-google-recaptcha";
 import ReactWhatsapp from 'react-whatsapp';
 import { useState, useRef } from 'react';
+import Head from 'next/head';
 
 function Contact(props) {
   const siteKey = process.env.CAPTCHA_SITE_KEY;
@@ -12,6 +13,7 @@ function Contact(props) {
   const captchaRef = useRef();
   const [contactError, setContactError] = useState(false);
   const [btnValue, setBtnValue] = useState('Submit');
+  const [color, setColor] = useState('#00aaff');
 
   const handleCaptcha = (value) => {
     setReCaptchaValue(value);
@@ -45,6 +47,7 @@ function Contact(props) {
       .then(response => {
         if (response.message === 'success') {
           setBtnValue('Submitted')
+          setColor('#2fe431');
           captchaRef.current.reset();
         } else {
           alert('Something went wrong!');
@@ -60,6 +63,9 @@ function Contact(props) {
 
   return (
     <div className={styles.contact}>
+      <Head>
+        <title>Fipezo | Contact with us</title>
+      </Head>
       <Navbar user={props.user} company={props.company} setCompany={props.setCompany} setUser={props.setUser} />
       <div className={styles.body}>
         <div className={styles.contact_form}>
@@ -109,7 +115,7 @@ function Contact(props) {
                   ref={captchaRef}
                   className={styles.captcha}
                 />
-                <button className={styles.btn} type='submit'>{btnValue}</button>
+                <button className={styles.btn} style={{backgroundColor: color}} type='submit'>{btnValue}</button>
               </form>
             </div>
           </div>

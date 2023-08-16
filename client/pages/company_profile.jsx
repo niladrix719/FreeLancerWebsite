@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar';
 import DeleteBox from '@/components/DeleteBox';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 
 function Company_Profile(props) {
   const [companyname, setCompanyname] = React.useState('');
@@ -160,6 +161,9 @@ function Company_Profile(props) {
 
   return (
     <div className={style.profile}>
+      <Head>
+        <title>Fipezo | Your Profile</title>
+      </Head>
       <Navbar color='black' user={props.user} company={props.company} setCompany={props.setCompany} setUser={props.setUser} />
       <div className={style.body}>
         <div className={style.profileBox}>

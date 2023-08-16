@@ -6,6 +6,7 @@ import SearchBox from '@/components/SearchBox';
 import Footer from '@/components/Footer';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import Head from 'next/head';
 
 function Explore(props) {
   const [currentPage, setCurrentPage] = useState(1);
@@ -131,6 +132,9 @@ function Explore(props) {
 
   return (
     <div className={styles.explore}>
+      <Head>
+        <title>Fipezo | Explore Freelancers</title>
+      </Head>
       <Navbar user={props.user} company={props.company} setCompany={props.setCompany} setUser={props.setUser} />
       <div className={styles.search}>
         <SearchBox border={true} />
