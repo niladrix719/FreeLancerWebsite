@@ -42,7 +42,7 @@ function Mobile(props) {
           comming soon on Android Devices <br />
           <form onSubmit={(e) => handleNotify(e)}>
             <input
-              className='text-xs p-2 border-2 border-black sm:text-lg sm:p-3 w-5/6 mb-2'
+              className='text-xs p-2 border-2 border-black sm:text-lg sm:p-3 mb-2'
               type='email'
               placeholder='Enter your email'
               value={email}
@@ -50,7 +50,7 @@ function Mobile(props) {
             />
             <button type='submit' className={styles.btn}>Get Notified</button>
             {clicked && (
-              <p className='text-xs flex items-start sm:text-lg p-2 sm:p-3 flex'>
+              <p className='text-xs flex items-center sm:text-lg p-2 sm:p-3 flex'>
                 <BsCheckCircleFill className='text-green-500' /> &nbsp;
                 We will notify you when we launch our app
               </p>

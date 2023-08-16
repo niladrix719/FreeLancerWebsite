@@ -111,7 +111,7 @@ function Freelancer_Profile(props) {
         {freelancer.links && <ProfileBioCard freelancer={freelancer} />}
         {isFreelancerLoaded && <Details profession={freelancer.profession} works={freelancer.works} reviews={reviews} handleClick={handleClick} />}
         <div className={styles.btnBox}>
-          <Link className={styles.btn} style={{width: '100%'}} id={styles.hire} href='/my_requests'>Requests</Link>
+          <Link className={styles.btn} style={{width: '100%'}} id={styles.hire} href='/my_requests'>My Requests</Link>
           {/* <div className={styles.btn} id={styles.logout} onClick={handleLogout}>
             Log Out
           </div> */}

@@ -41,7 +41,7 @@ function Privacy_And_Policy(props) {
               We may update this Privacy Policy from time to time to reflect changes in our practices or for other operational, legal, or regulatory reasons. When we make significant changes, we will provide notice by posting a prominent notice on our website.
 
               <span className={styles.title}>Contact Us:</span>
-              If you have any questions or concerns about this Privacy Policy or your personal information, please contact us at <Link href='mailto:fipezocare@gmail.com'>fipezocare@gmail.com</Link>.</p>
+              If you have any questions or concerns about this Privacy Policy or your personal information, please contact us at <Link href='mailto:help@fipezo.com'>help@fipezo.com</Link>.</p>
           </div>
         </div>
       </div>

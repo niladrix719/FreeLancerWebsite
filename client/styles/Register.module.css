@@ -67,6 +67,10 @@
     color: #626262;
 }
 
+.btn:hover p{
+    color: #a3a3a3;
+}
+
 @media (max-width: 1200px) {
     .btn{
         font-size: 0.9rem;

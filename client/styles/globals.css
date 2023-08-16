@@ -126,7 +126,7 @@ body {
 .image{
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
 }
 
 .grey-container{

@@ -53,7 +53,7 @@ function Terms_And_Conditions(props) {
               Fipezo will not charge any fees for certain services or transactions, which will be clearly communicated to users.
 
               <span className={styles.title}>Governing Law and Jurisdiction:</span>
-              By using the Fipezo platform, you acknowledge that you have read, understood, and agree to these Terms & Conditions. If you have any questions or concerns, please contact us at <Link href='mailto:fipezocare@gmail.com'>fipezocare@gmail.com</Link>.</p>
+              By using the Fipezo platform, you acknowledge that you have read, understood, and agree to these Terms & Conditions. If you have any questions or concerns, please contact us at <Link href='mailto:help@fipezo.com'>help@fipezo.com</Link>.</p>
           </div>
         </div>
       </div >

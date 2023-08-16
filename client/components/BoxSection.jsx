@@ -11,7 +11,7 @@ function BoxSection() {
         <div className={styles.box} id={styles.box1}>
           <Link href='https://www.instagram.com/fipezoindia' target='_blank' className={styles.left1}>
             <div className={styles.top}>
-              <Image className={styles.icon} src="/instagramC.png" width={80} height={80} alt="icon" />
+              <Image className={styles.icon} src="/instalogo.png" width={80} height={80} alt="icon" />
             </div>
             <div className={styles.down}>
               <p className={styles.p1}>Fipezo</p>
@@ -44,9 +44,9 @@ function BoxSection() {
         <div className={styles.box} id={styles.box3}>
           <Link href='/terms_and_conditions' className={styles.left3}>
             <div className={styles.plus}>
-              <BsFillPlusCircleFill style={{ color: '#a012ff' }} />
+              <BsFillPlusCircleFill style={{ color: 'white' }} />
             </div>
-            <p className={styles.p5}>Terms of Service </p>
+            <p className={styles.p5} style={{ color: 'white' }}>Terms of Service </p>
           </Link>
           <Link href='/contact' className={styles.right3}>
             <div className={styles.plus}>
@@ -64,7 +64,7 @@ function BoxSection() {
           </Link>
           <Link href='/careers' className={styles.right4}>
             <div className={styles.plus}>
-              <BsFillPlusCircleFill style={{ color : '#f71a42' }} />
+              <BsFillPlusCircleFill style={{ color : 'white' }} />
             </div>
             <p className={styles.p6} id={styles.carrers}>Careers &amp; works</p>
           </Link>

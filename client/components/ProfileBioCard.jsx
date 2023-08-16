@@ -20,7 +20,7 @@ function ProfileBioCard(props) {
         <IoLocationSharp style={{ fontSize: 12, color: 'red' }} />&nbsp;
         <span className={styles.location}>{props.freelancer.location}</span>
       </h1>
-      <div className='flex w-full justify-evenly flex-wrap'>
+      <div className='flex w-full justify-start px-4 gap-4 flex-wrap'>
         <p className='bg-red-500 p-2 text-sm text-white rounded-3xl px-3 mb-8'>
           {props.freelancer.profession
             .split('_')
@@ -37,7 +37,12 @@ function ProfileBioCard(props) {
       <div className='flex w-full px-4 flex-wrap'>
         <p className='bg-white p-2 text-sm w-full text-black border-2 flex justify-center mb-8 rounded-3xl'>Rs. {props.freelancer.rate} / Day</p>
       </div>
-      <p className={`w-full ${styles.bio} break-words max-w-xs`}>{props.freelancer.bio}</p>
+      <h1 className={styles.title} style={{textAlign: 'left', width: '100%', paddingLeft: '2rem'}}>About Me</h1>
+      <p className={`w-full ${styles.bio} break-words max-w-xs border-2 rounded-lg`}>{props.freelancer.bio}</p>
+      <div className={styles.equipment_available}>
+        <h1 className={styles.title}>Equipments Available</h1>
+        <p className={`w-full break-words max-w-xs border-2 p-4 rounded-lg`}>{props.freelancer.equipments}</p>
+      </div>
       <RWebShare
         data={{
           text: "Share the profile of " + props.freelancer.firstname + " " + props.freelancer.lastname + " on your social media!",
@@ -47,10 +52,6 @@ function ProfileBioCard(props) {
       >
         <button className={styles.share}><FaShareSquare style={{ color: "white", }} /> Share Profile</button>
       </RWebShare>
-      <div className={styles.equipment_available}>
-        <h1 className={styles.title}>Equipments Available</h1>
-        <p className={`w-full break-words max-w-xs`}>{props.freelancer.equipments}</p>
-      </div>
     </div>
   );
 }
