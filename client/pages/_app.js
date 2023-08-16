@@ -8,7 +8,7 @@ export default function App({ Component, pageProps }) {
   return (
     <div>
       <Head>
-        <title>Fipezo | Connecting Freelancers and Clients in India</title>
+        <title>Fipezo | Hire Freelancers in your City</title>
         <meta name="description" content="Discover top freelance talent and job opportunities in India at Fipezo, your premier platform for connecting skilled freelancers with employers. Find the perfect match for your projects or hire your expertise today." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#1f1c1c" />

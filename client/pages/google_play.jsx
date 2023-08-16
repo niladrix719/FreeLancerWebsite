@@ -40,9 +40,9 @@ function Mobile(props) {
         <Image className={styles.img} src='/mobile.png' alt='mobile' width={400} height={400}></Image>
         <h1 className={styles.heading}>
           comming soon on Android Devices <br />
-          <form onSubmit={(e) => handleNotify(e)}>
+          <form className='flex flex-col gap-4 items-center w-5/6' onSubmit={(e) => handleNotify(e)}>
             <input
-              className='text-xs p-2 border-2 border-black sm:text-lg sm:p-3 mb-2'
+              className='text-xs p-2 border-2 border-black sm:text-lg sm:p-3 mb-2 w-5/6'
               type='email'
               placeholder='Enter your email'
               value={email}

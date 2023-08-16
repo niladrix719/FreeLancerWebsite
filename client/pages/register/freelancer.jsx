@@ -6,6 +6,7 @@ import Footer from '@/components/Footer'
 import Verification from '@/components/Verification'
 import { IoReloadOutline } from 'react-icons/io5'
 import Router from 'next/router';
+import Head from 'next/head';
 
 class Freelancer extends React.Component {
   constructor(props) {
@@ -440,6 +441,9 @@ class Freelancer extends React.Component {
   render() {
     return (
       <>
+      <Head>
+        <title>Fipezo | Register as a Freelancer</title>
+      </Head>
       {this.state.isLoading && <div className='flex flex-col items-center justify-center h-screen'>
         <Image src='/loading.gif' width={300} height={300} alt='loading' />
         <span>Please wait...</span>

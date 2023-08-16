@@ -2,6 +2,7 @@ import styles from '@/styles/Terms_And_Conditions.module.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import Link from 'next/link'
+import Image from 'next/image'
 
 function Privacy_And_Policy(props) {
   return (
@@ -10,6 +11,7 @@ function Privacy_And_Policy(props) {
       <div className={styles.main}>
         <div className={styles.body}>
           <div className={styles.termsNConditions_form} style={{ height: '88.3vh' }}>
+          <Link className='block flex justify-end' href='/'><Image src='/cross.png' height={28} width={28} alt='cross' ></Image></Link>
             <h1 className={styles.heading}>Privacy Policy of Fipezo Website</h1>
             <p className={styles.para}>Welcome to Fipezo! This Privacy Policy explains how we collect, use, disclose, and safeguard your personal information when you use our website (www.fipezo.com) and the services offered through it. We are committed to protecting your privacy and ensuring that your personal information is handled responsibly and in accordance with applicable data protection laws. By accessing and using our website, you consent to the practices described in this Privacy Policy.
 

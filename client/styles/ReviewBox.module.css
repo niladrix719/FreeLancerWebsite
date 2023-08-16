@@ -20,6 +20,10 @@
   letter-spacing: 1px;
 }
 
+.error{
+  color: red;
+}
+
 .input{
   padding: 0.75rem;
   border: 1px solid lightgray;

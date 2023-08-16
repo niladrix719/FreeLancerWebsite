@@ -2,6 +2,7 @@ import styles from '@/styles/Terms_And_Conditions.module.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import Image from 'next/image'
+import Link from 'next/link'
 
 function Guides_and_Reviwes(props) {
   return (
@@ -10,6 +11,7 @@ function Guides_and_Reviwes(props) {
       <div className={styles.main}>
         <div className={styles.body}>
           <div className={styles.termsNConditions_form} style={{ height: '88.3vh' }}>
+          <Link className='block flex justify-end' href='/'><Image src='/cross.png' height={28} width={28} alt='cross' ></Image></Link>
             <h1 className={styles.heading}>Fipezo - Your Comprehensive Guide and Review for Freelancers</h1>
             <Image src='/guidesX.jpg' width='400' height='400' alt='about_us' />
             <p className={styles.para}>

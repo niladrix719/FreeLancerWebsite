@@ -1,6 +1,8 @@
 import styles from '@/styles/Terms_And_Conditions.module.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import Link from 'next/link';
+import Image from 'next/image';
 
 function Data_Protection(props) {
   return (
@@ -9,6 +11,7 @@ function Data_Protection(props) {
       <div className={styles.main}>
         <div className={styles.body}>
           <div className={styles.termsNConditions_form} style={{ height: '88.3vh' }}>
+            <Link className='block flex justify-end' href='/'><Image src='/cross.png' height={28} width={28} alt='cross' ></Image></Link>
             <h1 className={styles.heading}>User Data Safe Commitment by FIPEZO Website</h1>
             <p className={styles.para}>At FIPEZO, we prioritize the security and privacy of our users&apos; data. We are committed to maintaining the highest standards of data protection to ensure that your personal information remains safe and secure. Our commitment to safeguarding your data is reflected in the following principles:
 

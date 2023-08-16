@@ -11,6 +11,7 @@ function Contact(props) {
   const [reCaptchaValue, setReCaptchaValue] = useState('');
   const captchaRef = useRef();
   const [contactError, setContactError] = useState(false);
+  const [btnValue, setBtnValue] = useState('Submit');
 
   const handleCaptcha = (value) => {
     setReCaptchaValue(value);
@@ -43,7 +44,7 @@ function Contact(props) {
       .then(res => res.json())
       .then(response => {
         if (response.message === 'success') {
-          alert('Your message has been sent successfully!');
+          setBtnValue('Submitted')
           captchaRef.current.reset();
         } else {
           alert('Something went wrong!');
@@ -69,11 +70,11 @@ function Contact(props) {
               <form className={styles.form} onSubmit={handleSubmit}>
                 <div className={styles.inputs}>
                   <label htmlFor="name" className={styles.label}><span className='text-red-500'>* </span>First name :</label>
-                  <input type='text' id='name' className={styles.input} onChange={() => setContactError(false)} required />
+                  <input type='text' id='name' className={styles.input} onChange={() => setContactError(false)} maxLength={13} required />
                 </div>
                 <div className={styles.inputs}>
                   <label htmlFor="name" className={styles.label}><span className='text-red-500'>* </span>Last name :</label>
-                  <input type='text' id='name' className={styles.input} onChange={() => setContactError(false)} required />
+                  <input type='text' id='name' className={styles.input} onChange={() => setContactError(false)} maxLength={13} required />
                 </div>
                 <div className={styles.inputs}>
                   <label htmlFor="phone" className={styles.label}><span className='text-red-500'>* </span>Phone :</label>
@@ -99,7 +100,7 @@ function Contact(props) {
                 <div className={styles.inputs}>
                   <label htmlFor="message" className={styles.label}><span className='text-red-500'>* </span>Message :</label>
                   <textarea className={styles.textarea} name="message" id="message" cols="30" rows="10"
-                    onChange={() => setContactError(false)} required
+                    onChange={() => setContactError(false)} required maxLength={500}
                   ></textarea>
                 </div>
                 <ReCAPTCHA
@@ -108,7 +109,7 @@ function Contact(props) {
                   ref={captchaRef}
                   className={styles.captcha}
                 />
-                <button className={styles.btn} type='submit'>Submit</button>
+                <button className={styles.btn} type='submit'>{btnValue}</button>
               </form>
             </div>
           </div>

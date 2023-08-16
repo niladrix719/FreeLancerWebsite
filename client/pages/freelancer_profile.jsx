@@ -107,6 +107,7 @@ function Freelancer_Profile(props) {
     <div className={styles.profile}>
       <Navbar color='white' checkLoggedIn={checkLoggedIn} user={props.user} company={props.company} setCompany={props.setCompany} setUser={props.setUser} />
       <Cover coverPicture={freelancer.coverPicture} />
+      {/* <div className='w-full'><Link className={styles.btn} style={{width: '100%'}} id={styles.hire} href='/my_requests'>My Requests</Link></div> */}
       <div className={styles.profile_details}>
         {freelancer.links && <ProfileBioCard freelancer={freelancer} />}
         {isFreelancerLoaded && <Details profession={freelancer.profession} works={freelancer.works} reviews={reviews} handleClick={handleClick} />}

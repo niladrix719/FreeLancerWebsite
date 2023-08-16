@@ -124,8 +124,12 @@
     }
 
     .heading{
-        font-size: 0.9rem;
-        width: 7rem;
+        font-size: 0.65rem;
+        width: 8rem;
+    }
+
+    .subHeading{
+        font-size: 0.65rem;
     }
 
     .lower{

@@ -178,6 +178,7 @@ export default function Navbar(props) {
                 <p className={styles.number}>{props.user ? props.user.phone : ''}</p>
                 {props.user.uid && <Link className={styles.btn} href={`/freelancer_profile`}>My Profile</Link>}
                 {!props.user.uid && <Link className={styles.btn} href='/user_profile'>My Profile</Link>}
+                {props.user.uid && <Link className={styles.btn} href={`/my_requests`}>My Requests</Link>}
                 <button className={styles.btn} type='button' onClick={handleLogout}>Log Out</button>
               </div>
             </li>

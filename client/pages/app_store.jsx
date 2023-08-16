@@ -40,16 +40,21 @@ function Mobile(props) {
         <Image className={styles.img} src='/iphone.png' alt='iphone' width={400} height={400}></Image>
         <h1 className={styles.heading}>
           comming soon on iPhone Devices <br />
-          <form onSubmit={(e) => handleNotify(e)}>
+          <form className='flex flex-col gap-4 items-center w-5/6' onSubmit={(e) => handleNotify(e)}>
             <input
-              className='text-xs p-2 border-2 border-black sm:text-lg sm:p-3'
+              className='text-xs p-2 border-2 border-black sm:text-lg sm:p-3 w-5/6'
               type='email'
               placeholder='Enter your email'
               value={email}
               onChange={(e) => { setEmail(e.target.value); setClicked(false) }}
             />
             <button type='submit' className={styles.btn}>Get Notified</button>
-            {clicked && <p className='text-lg p-3 flex items-center'><BsCheckCircleFill className='text-green-500' /> &nbsp;We will notify you when we launch our app</p>}
+            {clicked && (
+              <p className='text-xs flex items-center sm:text-lg p-2 sm:p-3 flex'>
+                <BsCheckCircleFill className='text-green-500' /> &nbsp;
+                We will notify you when we launch our app
+              </p>
+            )}
           </form>
         </h1>
       </div>

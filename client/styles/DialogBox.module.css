@@ -72,3 +72,13 @@
 .btn:focus {
     outline: none;
 }
+
+@media (max-width: 768px){
+    .container{
+        width: 22rem;
+    }
+
+    .title{
+        font-size: 20px;
+    }
+}
