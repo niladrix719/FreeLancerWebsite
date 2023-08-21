@@ -1,5 +1,3 @@
-![Screenshot 2023-05-12 160329](https://github.com/niladrix719/Fipezo/assets/91966855/5b87479a-6952-4eb8-8d27-7f0ed09762f0)
-
 ## A Website For Connecting Freelancers with Clients
 
 we believe in quality over quantity. That's why we carefully verify each freelancer on our platform, so you can trust that you're working with skilled professionals who are committed to delivering top-notch results.
