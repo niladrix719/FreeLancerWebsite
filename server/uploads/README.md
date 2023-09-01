@@ -1,1 +1,0 @@
-This is a Image uploading folder
